@@ -1,0 +1,46 @@
+#!/bin/zsh
+
+ws1= # main
+ws2= # web
+ws3= # mail
+ws4= # code
+ws5= # math [infinity]  (term icon)
+ws6= # media
+ws7= # misc  (9 squares icon)
+ws8= # notes/docs  (pdf icon)
+ws9= # settings  (1 cog settings icon)
+ws10= # security
+
+bspc config border_width        5
+bspc config window_gap          10
+bspc config focus_follows_pointer true
+
+bspc config split_ratio         0.50
+bspc config borderless_monocle  true
+bspc config gapless_monocle     true
+bspc config focus_by_distance   true
+
+# bspc monitor -d i ii iii iv v vi vii viii ix x
+bspc monitor -d $ws1 $ws2 $ws3 $ws4 $ws5 $ws6 $ws7 $ws8 $ws9 $ws10
+
+bspc config -d $ws1 window_gap 0
+bspc config -d $ws2 window_gap 0
+bspc desktop $ws2 -l monocle
+
+bspc rule -a Firefox desktop=^2
+bspc rule -a Dwb desktop=^2
+bspc rule -a Thunderbird desktop=^3
+bspc rule -a Thunar desktop=^7
+bspc rule -a Vlc desktop=^6
+bspc rule -a VirtualBox desktop=^10
+bspc rule -a Cherrytree desktop=^8
+bspc rule -a libreoffice desktop=^8
+bspc rule -a Wireshark desktop=^10
+bspc rule -a Lxappearance desktop=^9
+bspc rule -a Nitrogen desktop=^9
+bspc rule -a burp-StartBurp desktop=^10
+bspc rule -a Evince desktop=^8
+bspc rule -a Feh desktop=^6
+bspc rule -a Gpicview desktop=^6
+
+~/scripts/panel &
