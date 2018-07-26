@@ -31,14 +31,14 @@ offset-y = 0%
 radius = 0.0
 fixed-center = true
  
-background = #fbf1c7 
-foreground = ${colors.bg0}
+background = #282828 
+foreground = #fbf1c7
  
 line-size = 2
 line-color = #f00
  
 border-size = 2
-border-color = ${colors.bg0}
+border-color = #d5c4a1
  
 padding-left = 1
 padding-right = 1
@@ -46,19 +46,19 @@ padding-right = 1
 module-margin-left = 1
 module-margin-right = 2
  
-font-0 = lucy tewi2a:size=10;1
+font-0 = UbuntuMono Nerd Font:size=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
-font-3 = FontAwesome:pixelsize=12;1
+font-3 = FontAwesome:pixelsize=12;1volu
  
-modules-left = date wlan xwindow 
-modules-center = bspwm 
-modules-right = volume battery 
+modules-left = date xwindow 
+modules-center = workspaces 
+modules-right = battery pavuvolume
  
 tray-position = right
 tray-padding = 2
-tray-transparent = true
-tray-background = #0063ff
+tray-transparent = false
+tray-background = #282828
  
 wm-restack = bspwm
 ;wm-restack = i3
@@ -74,7 +74,16 @@ scroll-down = bspwm-deskprev
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
- 
+
+[module/pavuvolume]
+type = custom/script
+exec = ~/scripts/pavuvolume.sh
+tail = true
+click-right = exec pavucontrol &
+click-left = ~/scripts/pavuvolume.sh --mute
+scroll-up = ~/scripts/pavuvolume.sh --up
+scroll-down = ~/scripts/pavuvolume.sh --down
+
 [module/xkeyboard]
 #type = internal/xkeyboard
 #blacklist-0 = num lock
@@ -120,6 +129,13 @@ label-empty = %index%
 label-empty-foreground = ${colors.red}
 label-empty-padding = 2
  
+$ws0 =  
+$ws1 =  
+$ws2 = 
+$ws3 = 
+$ws4 = 
+$ws5 = ♟
+
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
@@ -228,7 +244,46 @@ ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
- 
+
+[module/workspaces]
+type = internal/bspwm
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+pin-workspaces = true
+
+ws-icon-0 = discord; 
+ws-icon-1 = terminal;
+ws-icon-2 = firefox;
+ws-icon-3 = code;
+ws-icon-4 = music;
+ws-icon-5 = matrix;
+ws-icon-default = 
+
+format = <label-state>
+
+label-empty = %icon%
+label-empty-foreground = ${colors.red}
+label-empty-padding = 2
+
+label-dimmed = %icon%
+label-dimmed-padding = 2
+
+label-occupied = %icon%
+label-occupied-underline = ${colors.red}
+label-occupied-padding = 2
+
+label-urgent = %icon%
+label-urgent-padding = 2
+label-urgent-background = #995641
+
+label-focused = %icon%
+label-focused-overline = #30313a
+label-focused-foreground = ${colors.fg2}
+label-focused-underline = ${colors.red}
+label-focused-padding = 2
+
 [module/eth]
 type = internal/network
 interface = eno1
@@ -260,7 +315,20 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.red}
  
 label = %date% %time%
- 
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+use-ui-max = true
+
+format-volume = <ramp-volume> <label-volume>
+
+label-muted = 🔇 muted
+label-muted-foreground = #666
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+
 [module/volume]
 type = internal/volume
  
@@ -302,7 +370,7 @@ format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
  
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix-foreground = ${colors.fg2}
 format-full-underline = ${self.format-charging-underline}
  
 ramp-capacity-0 = 
@@ -370,7 +438,7 @@ screenchange-reload = true
 ;compositing-border = over
  
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+margin-bottom = 0
  
 ; vim:ft=dosini
