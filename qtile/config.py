@@ -1,34 +1,8 @@
-
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
 from libqtile import layout, bar, widget
 import os
+
 
 try:
     from typing import List  # noqa: F401
@@ -57,11 +31,12 @@ keys = [
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
-    Key([mod], "Return", lazy.spawn("terminator")),
+    Key([mod], "Return", lazy.spawn("termite")),
     Key([mod, "control"], "1", lazy.spawn("firefox")),
     Key([mod, "control"], "2", lazy.spawn("telegram-desktop")),
-    Key([mod, "control"], "3", lazy.spawn("nemo")),
-    Key([mod, "control"], "0", lazy.spawn("flatpak run org.gnu.emacs")),
+    Key([mod, "control"], "3", lazy.spawn("thunar")),
+    Key([mod, "control"], "0", lazy.spawn("emacs")),
+    Key([mod], "p", lazy.spawn("rofi -show run")),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
     Key([mod], "w", lazy.window.kill()),
@@ -69,25 +44,47 @@ keys = [
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
-]
-
-""""groups = [Group(i) for i in "123456"]
-
-for i in groups:
-    keys.extend([
-        # mod1 + letter of group = switch to group
-        Key([mod], i.name, lazy.group[i.name].toscreen()),
-
-        # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
-    ])"""""
+    # Keys BSP layout
+    Key([mod], "j", lazy.layout.down()),
+    Key([mod], "k", lazy.layout.up()),
+    Key([mod], "h", lazy.layout.left()),
+    Key([mod], "l", lazy.layout.right()),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
+    Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
+    Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
+    Key([mod, "mod1"], "j", lazy.layout.flip_down()),
+    Key([mod, "mod1"], "k", lazy.layout.flip_up()),
+    Key([mod, "mod1"], "h", lazy.layout.flip_left()),
+    Key([mod, "mod1"], "l", lazy.layout.flip_right()),
+    Key([mod, "control"], "j", lazy.layout.grow_down()),
+    Key([mod, "control"], "k", lazy.layout.grow_up()),
+    Key([mod, "control"], "h", lazy.layout.grow_left()),
+    Key([mod, "control"], "l", lazy.layout.grow_right()),
+    Key([mod, "shift"], "n", lazy.layout.normalize()),
+    Key([mod], "m", lazy.layout.toggle_split()),
+    # Keys volume.
+    Key(
+        [], "XF86AudioRaiseVolume",
+        lazy.spawn("pamixer -i 2")
+    ),
+    Key(
+        [], "XF86AudioLowerVolume",
+        lazy.spawn("pamixer -d 2")
+    ),
+    Key(
+        [], "XF86AudioMute",
+        lazy.spawn("pamixer -t")
+    ),
+    ]
 
 groups = [
     Group("1"),
     Group("2"),
     Group("3"),
     Group("4"),
-    Group("5")
+    Group("5"),
+    Group("6")
 ]
 
 for i in groups:
@@ -106,7 +103,26 @@ dgroups_app_rules = []
 
 layouts = [
     layout.Max(),
-    layout.Stack(stacks=2, border_focus="#cccccc"),
+    layout.Stack(
+        stacks=3,
+        border_focus="#faf0a5",
+        border_normal="#5f5b17",
+        border_width=3,
+        autosplit=True,
+    ),
+    layout.Bsp(
+        border_normal="#49483e",
+        border_focus="#f9f8f5",
+        border_width=3,
+        margin=2,
+        fair=False,
+        ratio=1.0,
+    ),
+    layout.Floating(
+        border_normal="#49483e",
+        border_focus="f9f8f5",
+        border_width=3,
+    ),
 ]
 
 widget_defaults = dict(
@@ -120,24 +136,157 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(highlight_method='block', fontsize=12),
-                widget.Prompt(fontsize=12),
-                widget.WindowName(fontsize=12),
-                widget.Sep(),
-                widget.TextBox("CPU", fontsize=12),
-                widget.CPUGraph(graph_color="FFFFFF", border_width=0),
-                widget.Sep(),
-                widget.TextBox("MEN", fontsize=12),
-                widget.MemoryGraph(graph_color="FFFFFF", border_width=0),
-                widget.Sep(),
-                widget.Clock(format='%d-%m-%Y %a %I:%M %p'),
-                widget.Systray(),
+                widget.TextBox(
+                    "◢",
+                    fontsize=55,
+                    font='UbuntuMono Nerd Font',
+                    foreground="#002b36",
+                    padding=-2,
+                ),
+                widget.GroupBox(
+                    highlight_method='line',
+                    fontsize=15,
+                    foreground="#daba8b",
+                    active="#dfd1d3",
+                    inactive="#8d1d1d",
+                    padding=0,
+                    highlight_color="#3a1515",
+                    background="#002b36",
+                    font='UbuntuMono Nerd Font',
+                    borderwidth=2,
+                    disable_drag=True,
+                    other_screen_border='002b36',
+                    other_current_screen_border='002b36'
+                ),
+                widget.TextBox(
+                    "◤ ",
+                    fontsize=55,
+                    font='UbuntuMono Nerd Font',
+                    foreground="#002b36",
+                    padding=-5,
+                ),
+                widget.Prompt(
+                    fontsize=15,
+                    max_history=20,
+                    record_history=True,
+                    prompt=' ',
+                    font='UbuntuMono Nerd Font',
+                ),
+                widget.WindowName(
+                    fontsize=12,
+                    foreground="#daba8b",
+                    font='UbuntuMono Nerd Font',
+                    padding=3,
+                ),
+                widget.TextBox(
+                    "◢",
+                    fontsize=55,
+                    font='UbuntuMono Nerd Font',
+                    foreground="#2b303b",
+                    padding=-2,
+                ),
+                widget.CurrentLayout(
+                    padding=0,
+                    fontsize=15,
+                    background="#2b303b",
+                ),
+                widget.TextBox(
+                    " ",
+                    fontsize=12,
+                    font='UbuntuMono Nerd Font',
+                    foreground="#daba8b",
+                    padding=0,
+                    background="#2b303b",
+                ),
+                widget.Battery(
+                    format='{char} {percent:1.0%}',
+                    low_foreground="#c33027",
+                    charge_char='',
+                    discharge_char='',
+                    low_percentage=0.2,
+                    update_delay=60,
+                    font='UbuntuMono Nerd Fonts',
+                    background="#2b303b",
+                    padding=0,
+                ),
+                widget.TextBox(
+                    " ",
+                    font='UbuntuMono Nerd Font',
+                    fontsize=12,
+                    foreground="#daba8b",
+                    background="#2b303b",
+                    padding=0,
+                ),
+                widget.CPUGraph(
+                    graph_color="288b9f",
+                    border_width=1,
+                    border_color="#43454f",
+                    type='line',
+                    line_width=1,
+                    width=50,
+                    padding=0,
+                    background="#2b303b",
+                ),
+                widget.TextBox(
+                    " ",
+                    font='UbuntuMono Nerd Font',
+                    fontsize=15,
+                    foreground="#daba8b",
+                    background="#2b303b",
+                    padding=0,
+                ),
+                widget.MemoryGraph(
+                    graph_color="6882af",
+                    border_width=1,
+                    border_color="#4daa08",
+                    line_width=1,
+                    width=50,
+                    type='box',
+                    padding=0,
+                    background="#2b303b",
+                ),
+                widget.TextBox(
+                    "",
+                    font='UbuntuMono Nerd Font',
+                    fontsize=15,
+                    foreground="#daba8b",
+                    background="#2b303b",
+                    padding=3,
+                ),
+                widget.Pacman(
+                    update_interval=60,
+                    unavailable="c33027",
+                    execute='sudo pacman -Syyu',
+                    padding=0,
+                    fontsize=15,
+                    font='UbuntuMono Nerd Font',
+                    background="#2b303b",
+                ),
+                widget.TextBox(
+                    " ",
+                    background="#2b303b",
+                    padding=0,
+                    fontsize=15,
+                ),
+                widget.Clock(
+                    format='%a %d %b | %H:%M',
+                    foreground="#daba8b",
+                    font="UbuntuMono Nerd Font",
+                    fontsize=15,
+                    padding=0,
+                    background="#2b303b",
+                ),
+                widget.Systray(
+                    icon_size=15,
+                    background="#2b303b",
+                ),
             ],
-            24,
+            background="#191716",
+            opacity=0.7,
+            size=20,
         ),
     ),
 ]
-
 # Drag floating layouts.
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
@@ -153,34 +302,29 @@ main = None
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
-floating_layout = layout.Floating(float_rules=[
-    {'wmclass': 'confirm'},
-    {'wmclass': 'dialog'},
-    {'wmclass': 'download'},
-    {'wmclass': 'error'},
-    {'wmclass': 'file_progress'},
-    {'wmclass': 'notification'},
-    {'wmclass': 'splash'},
-    {'wmclass': 'toolbar'},
-    {'wmclass': 'confirmreset'},  # gitk
-    {'wmclass': 'makebranch'},  # gitk
-    {'wmclass': 'maketag'},  # gitk
-    {'wname': 'branchdialog'},  # gitk
-    {'wname': 'pinentry'},  # GPG key password entry
-    {'wmclass': 'ssh-askpass'},  # ssh-askpass
-])
+floating_layout = layout.Floating(
+    border_normal="#49483e",
+    border_focus="#f9f8f5",
+    border_width=3,
+    float_rules=[
+        {'wmclass': 'confirm'},
+        {'wmclass': 'dialog'},
+        {'wmclass': 'download'},
+        {'wmclass': 'error'},
+        {'wmclass': 'file_progress'},
+        {'wmclass': 'notification'},
+        {'wmclass': 'splash'},
+        {'wmclass': 'toolbar'},
+        {'wmclass': 'confirmreset'},  # gitk
+        {'wmclass': 'makebranch'},  # gitk
+        {'wmclass': 'maketag'},  # gitk
+        {'wname': 'branchdialog'},  # gitk
+        {'wname': 'pinentry'},  # GPG key password entry
+        {'wmclass': 'ssh-askpass'},  # ssh-askpass
+    ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
 
-os.system("feh --bg-center ~/MEGAsync/Animes/saitama_one_punch_man-1366x768.jpg")
-
-# XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
-# string besides java UI toolkits; you can see several discussions on the
-# mailing lists, github issues, and other WM documentation that suggest setting
-# this string if your java app doesn't work correctly. We may as well just lie
-# and say that we're a working one by default.
-#
-# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
-# java that happens to be on java's whitelist.
-wmname = "LG3D"
+os.system("nitrogen --restore")
+wmname = "Qtile"
