@@ -2,7 +2,7 @@ from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
 from libqtile import layout, bar, widget
 import os
-from powerline.bindings.qtile.widget import PowerlineTextBox
+
 
 try:
     from typing import List  # noqa: F401
@@ -122,6 +122,9 @@ layouts = [
         border_normal="#49483e",
         border_focus="f9f8f5",
         border_width=3,
+        padding=5,
+        margin=3,
+        ratio=1.5,
     ),
 ]
 
@@ -136,31 +139,42 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                 widget.TextBox(
-                    "",
-                    fontsize=40,
+                widget.TextBox(
+                    "◢",
+                    fontsize=55,
                     font='UbuntuMono Nerd Font',
                     foreground="#002b36",
-                    padding=0
+                    padding=-2,
                 ),
                 widget.GroupBox(
                     highlight_method='line',
-                    fontsize=12,
+                    fontsize=15,
                     foreground="#daba8b",
                     active="#dfd1d3",
                     inactive="#8d1d1d",
                     padding=0,
                     highlight_color="#3a1515",
                     background="#002b36",
+                    font='UbuntuMono Nerd Font',
+                    borderwidth=2,
+                    disable_drag=True,
+                    other_screen_border='002b36',
+                    other_current_screen_border='002b36'
                 ),
-                 widget.TextBox(
-                    "",
-                    fontsize=40,
+                widget.TextBox(
+                    "◤ ",
+                    fontsize=55,
                     font='UbuntuMono Nerd Font',
                     foreground="#002b36",
-                    padding=0
+                    padding=-5,
                 ),
-                widget.Prompt(fontsize=12),
+                widget.Prompt(
+                    fontsize=15,
+                    max_history=20,
+                    record_history=True,
+                    prompt=' ',
+                    font='UbuntuMono Nerd Font',
+                ),
                 widget.WindowName(
                     fontsize=12,
                     foreground="#daba8b",
@@ -168,11 +182,11 @@ screens = [
                     padding=3,
                 ),
                 widget.TextBox(
-                    "",
-                    fontsize=40,
+                    "◢",
+                    fontsize=55,
                     font='UbuntuMono Nerd Font',
                     foreground="#2b303b",
-                    padding=0
+                    padding=-2,
                 ),
                 widget.CurrentLayout(
                     padding=0,
@@ -271,7 +285,7 @@ screens = [
                 ),
             ],
             background="#191716",
-            opacity=0.7,
+            opacity=0.95,
             size=20,
         ),
     ),
@@ -316,13 +330,5 @@ focus_on_window_activation = "smart"
 
 
 os.system("nitrogen --restore")
-
-# XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
-# string besides java UI toolkits; you can see several discussions on the
-# mailing lists, github issues, and other WM documentation that suggest setting
-# this string if your java app doesn't work correctly. We may as well just lie
-# and say that we're a working one by default.
-#
-# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
-# java that happens to be on java's whitelist.
+os.system("al-compositor --start")
 wmname = "Qtile"
