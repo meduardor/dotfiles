@@ -37,6 +37,7 @@ keys = [
     Key([mod, "control"], "3", lazy.spawn("thunar")),
     Key([mod, "control"], "0", lazy.spawn("emacs")),
     Key([mod], "p", lazy.spawn("rofi -show run")),
+    Key([mod], "o", lazy.spawn("kitty -e ranger")),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
     Key([mod], "w", lazy.window.kill()),
@@ -129,7 +130,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='Inconsolata',
+    font='Hack',
     fontsize=12,
     padding=2,
 )
@@ -148,14 +149,14 @@ screens = [
                 ),
                 widget.GroupBox(
                     highlight_method='line',
-                    fontsize=12,
+                    fontsize=10,
                     foreground="#282828",
                     active="#dc322f",
                     inactive="#000000",
                     padding=0,
                     highlight_color="#ffffff",
                     background="#ffffff",
-                    font='Inconsolata for Poweline',
+                    font='Hack',
                     borderwidth=2,
                     disable_drag=True,
                     other_screen_border='002b36',
@@ -173,12 +174,12 @@ screens = [
                     max_history=20,
                     record_history=True,
                     prompt='run: ',
-                    font='Inconsolata for Powerline',
+                    font='Hack',
                 ),
                 widget.WindowName(
                     fontsize=12,
                     foreground="#e8dfd6",
-                    font='Inconsolata for Powerline',
+                    font='Hack',
                     padding=3,
                 ),
                 widget.TextBox(
@@ -193,7 +194,7 @@ screens = [
                     fontsize=12,
                     background="#ffffff",
                     foreground="#282828",
-                    font='Inconsolata Nerd Fonts',
+                    font='Hack',
                 ),
                 widget.TextBox(
                     "◤",
@@ -216,6 +217,7 @@ screens = [
                     discharge_char='',
                     low_percentage=0.2,
                     update_delay=60,
+                    fontsize=12,
                     font='Inconsolata Nerd Fonts',
                     background="#ffffff",
                     padding=5,
@@ -244,7 +246,7 @@ screens = [
                 widget.Clock(
                     format='%a %d %b | %H:%M',
                     foreground="#282828",
-                    font="Inconsolata for Powerline",
+                    font="Hack",
                     fontsize=12,
                     padding=0,
                     background="#ffffff",

@@ -16,32 +16,40 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Lokaltog/vim-powerline'
-Plug 'mhartington/oceanic-next' 
-"========= Git ===============
+Plug 'mhartington/oceanic-next'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'dracula/vim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+"=============================== Git =================================
 Plug 'tpope/vim-fugitive'
 Plug 'motemen/git-vim'
 Plug 'vimwiki/vimwiki'
-"========= lang ==============
+"=============================== Lang ================================
 Plug 'pangloss/vim-javascript'
 Plug 'vim-syntastic/syntastic'
+Plug 'lervag/vimtex'
 call plug#end()
-"========== Themes =====================
+"=============================== Themes ==============================
 let g:airline_theme='minimalist'
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir = '~/.config/nvim/UltiSnips'
 if (has("termguicolors"))
-	set termguicolors
+    set termguicolors
 endif
-colorscheme OceanicNext 
+"colorscheme OceanicNext 
 syntax enable
-"set background=dark
-"===========Airline ============
+set background=dark
+colorscheme PaperColor 
+"color dracula
+"================================ Airline ============================
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_powerline_fonts=1
-"========================== Config =====================================
+"=============================== Config ==============================
 set number 
 set relativenumber 
 set hidden 
@@ -57,7 +65,7 @@ set tabstop=8
 set expandtab 
 set shiftwidth=4
 set softtabstop=4
-"======= Javascript ===========
+"================================ Javascript =========================
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
@@ -88,4 +96,47 @@ let g:syntastic_tex_checkers = ['lacheck', 'text/language_check']
 autocmd FileType javascript let b:syntastic_javascript_jscs_args =
     \ get(g:, 'syntastic_javascript_jscs_args', '') .
     \ FindConfig('-c', '.jscsrc', expand('<afile>:p:h', 1))
+"============================ VimTeX =================================
 
+let g:matchup_override_vimtex = 1
+let g:vimtex_enabled = 1
+let g:vimtex_compiler_enabled = 1
+let g:vimtex_compiler_arara = {
+\ 'background' : 1,
+\}
+let g:vimtex_complete_enabled = 1
+let g:vintex_syntax_enabled = 1
+let g:vimtex_syntax_minted = [
+\ {
+\ 	'lang' : 'c',
+\ },
+\ { 
+\	'lang' : 'cpp',
+\	'environments' : ['cppcode', 'cppcode_test'],
+\ },
+\ {
+\	'lang' : 'python',
+\	'ignore' : [
+\	  'pythonEscape',
+\	  'pythonBEscape',
+\	  ],
+\ }
+\]	
+let g:vimtex_view_enabled = 1
+let g:vimtex_view_automatic = 1 
+let g:vimtex_view_method = 'mupdf'
+let g:vimtex_viewer_mupdf = 1 
+let g:vimtex_view_mupdf_options = 1 
+let g:vimtex_complete_enabled = 1
+let g:vimtex_complete_close_braces = 1 
+let g:vimtex_complete_recursive_bib = 1
+let g:vimtex_indent_enabled = 1
+let g:vimtex_indent_bib_enabled = 1
+
+"=================================== Completion ======================
+
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
