@@ -1,0 +1,137 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:5611:0:0:0:0:0 with SMTP id l17-v6csp2809360wrv;
+        Mon, 3 Sep 2018 12:42:40 -0700 (PDT)
+X-Received: by 2002:ac8:714c:: with SMTP id h12-v6mr15702522qtp.326.1536003760806;
+        Mon, 03 Sep 2018 12:42:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1536003760; cv=none;
+        d=google.com; s=arc-20160816;
+        b=kCZ1rHGvRM7zUDqRknY+mbNcMVRshI0+iZa1i5BBIJGs3rVp9zo+Cbs7hFcZH9XJro
+         bbLoNApsokjkLxhevQnXtnPTrEAJQfur03ZQUDF7TV4HhiuSUO2mQurJAWLN9CUvjqjV
+         G5qEanftXiZ6nB3R1DOlFDQZ9tYI7V4XqvT4jRczU2A41kvDdISpTTT23DBtgJgyHLW6
+         rAPp37ycU7PvOBD9GGDsRhlcijW+YvGKchiG74afZyEfh6E+odqHkLP6tmkwgSrNk4BP
+         TAyt3N2ov5AqZKh6IE1SDJcvCXRNxRpz51weZoELpphEO6t7oMOebHs9qeNt9tHbCXb4
+         Z2uQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:references:in-reply-to:mime-version
+         :dkim-signature:arc-authentication-results;
+        bh=FJ2MbxoJBdocCkzBzYvhAkYUBD8CBHVZZH80UBizW0o=;
+        b=SOND4zs/1ime+1CMYk5vtCqqCBSSImA44W2JFGJyyHXTNvknTGeV5wMr6+KHl2v0tx
+         rW/HAYOHxtDTDo28Yv3ZB75iETQd5gy6IdL9CMePiTjInKbTTbLRH6K0W6D/ErHFlIEx
+         mCzi5Vwh0JedsTd2ONahsQiWeNxDldm4sXEb5PRxFhxZ+eiKwRFzgExChQHteHJlp0NA
+         f1IDy9np8Y28V92aWicAyh//ijTGy+KIffFow8e6934FdxHQVAGEtaiDvFcX9NANORwi
+         YoJl8BPsjFqDc41B1H+5WO0dhzwXdDzJukyGT18DYFHSqjKNYewy7PanCTWM3jCRKDwM
+         bxAA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@educafro-org-br.20150623.gappssmtp.com header.s=20150623 header.b=RBWfVm8G;
+       spf=softfail (google.com: domain of transitioning educafrorio@educafro.org.br does not designate 209.85.220.41 as permitted sender) smtp.mailfrom=educafrorio@educafro.org.br
+Return-Path: <educafrorio@educafro.org.br>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id g6-v6sor9579959qtk.37.2018.09.03.12.42.40
+        for <meduardo.r@gmail.com>
+        (Google Transport Security);
+        Mon, 03 Sep 2018 12:42:40 -0700 (PDT)
+Received-SPF: softfail (google.com: domain of transitioning educafrorio@educafro.org.br does not designate 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@educafro-org-br.20150623.gappssmtp.com header.s=20150623 header.b=RBWfVm8G;
+       spf=softfail (google.com: domain of transitioning educafrorio@educafro.org.br does not designate 209.85.220.41 as permitted sender) smtp.mailfrom=educafrorio@educafro.org.br
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=educafro-org-br.20150623.gappssmtp.com; s=20150623;
+        h=mime-version:in-reply-to:references:from:date:message-id:subject:to;
+        bh=FJ2MbxoJBdocCkzBzYvhAkYUBD8CBHVZZH80UBizW0o=;
+        b=RBWfVm8Gug6Y0rsqmOG2DKXOF1g28D6tk4knc9QwXT7+tMlTkGs85vawCq0hHeZckl
+         1h0w+AyPBtKBS4zB8qkJZc9DigH9GiZIvB1t6W3s2lMv9PWK+/fcjSutClqyjNslPDIP
+         8Wr6s+wBvePt80IFEvOKkQv/rSYGNCpg39efYo/kxutL1kAqjMmLCFG9koCWxlBAQRox
+         txCXC+z0tFRocKZ/c2Bdy7C9mJjLm49+h1AK/Cv2DLqEq6PlXu6Ru3KJA3Sq6VaK5H3h
+         t/r4ZHmXzPis5C47Zjfmvg7GiTdXU9h15MLIA17goE/feI/jjIeb/oseTOenSE8Wple5
+         H8KA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to;
+        bh=FJ2MbxoJBdocCkzBzYvhAkYUBD8CBHVZZH80UBizW0o=;
+        b=qCQDpNKnANVmGNK7sWeDCuabG4ohxuV7HqNHjxhxqizFgElBp7St6lsC5gLyBd12cP
+         7w8vJtQ81k17An7Khs4ta3PfiR4EH+DWh/01AG4WN6hbn5d2rb+JIU/fKMmlNWfqt4JZ
+         TuMo9pUnVOw2INboYWniTYlCAfBIC1DqS5v3q9L+kf0GnWebCfgZs+KJSRrT1+cHcTNU
+         JJ+XDocazMSsJqOanZ8X6xG9Ar19zC8yQmMuM0lfgRad8GMNMAooAcqVt5O7OKfc6oAX
+         mRIJTKerFc4WPnisJU8fB0A5JWpHd84wTFON04L0Q+SIPcHmIp3yNE1beJOyiSLEOHDX
+         /sgw==
+X-Gm-Message-State: APzg51CkCJcidf8zW6AWNOyYq/OFSfMHzwESp32b5fn12MSZ25uuUZMI
+	LPpwyVYxRvtaCcq/4BxiBuT6ZyPK5M070OL30Jb0JdV7
+X-Google-Smtp-Source: ANB0VdbIR0d+NsQ3i87X254t+/GbiPNSNnRqFXMoKgJ7A49tB2p61zWH0HUyBB+4XQHBU5I+Y3vCIVYZEVQgHOIKQDQ=
+X-Received: by 2002:ac8:2e6c:: with SMTP id s41-v6mr27812520qta.201.1536003760243;
+ Mon, 03 Sep 2018 12:42:40 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:a0c:d1cc:0:0:0:0:0 with HTTP; Mon, 3 Sep 2018 12:42:39 -0700 (PDT)
+In-Reply-To: <CAKtEoxAPCt=+DDh=ZGK0G5H_Z=2tV0ayDzxQfvywsKSm4cqNyQ@mail.gmail.com>
+References: <CAKtEoxAPCt=+DDh=ZGK0G5H_Z=2tV0ayDzxQfvywsKSm4cqNyQ@mail.gmail.com>
+From: Educafro RJ <educafrorio@educafro.org.br>
+Date: Mon, 3 Sep 2018 16:42:39 -0300
+Message-ID: <CAEf1spu1wDgsWX7hi7CkfEx0ZKV12L-cu8_yGeUKqvW=BZaiew@mail.gmail.com>
+Subject: Re: Bolsa de estudos
+To: Marco Eduardo Rodrigues da Silva <meduardo.r@gmail.com>
+Content-Type: multipart/alternative; boundary="00000000000080da410574fcbe8a"
+
+--00000000000080da410574fcbe8a
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Prezado,
+
+Em todos estivemos presente, caso venha em uma pr=C3=B3xima entre em contat=
+o
+pelo zap.
+
+21 960153202
+
+
+
+Em 30 de agosto de 2018 17:05, Marco Eduardo Rodrigues da Silva <
+meduardo.r@gmail.com> escreveu:
+
+> Bom dia.
+>
+> Queria saber como fa=C3=A7o para ir aos encontros que acontecem no CCBB p=
+ois
+> estive no local e n=C3=A3o vi ningu=C3=A9m. Se puderem me dar mais alguma=
+ informa=C3=A7=C3=A3o
+> para que eu possa comparecer no pr=C3=B3ximo encontro, sem que me encontr=
+e
+> perdido.
+>
+> Ass: Mar=C3=A7o Eduardo R da Silva
+> --
+>
+> Atenciosamente
+>
+> Marco Eduardo Rodrigues da Silva
+> Tel: (21) 2779-8055
+> Cel (21)982584345
+>
+
+--00000000000080da410574fcbe8a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Prezado,<div><br></div><div>Em todos estivemos presente, c=
+aso venha em uma pr=C3=B3xima entre em contato pelo zap.</div><div><br></di=
+v><div>21 960153202</div><div><br></div><div><br></div></div><div class=3D"=
+gmail_extra"><br><div class=3D"gmail_quote">Em 30 de agosto de 2018 17:05, =
+Marco Eduardo Rodrigues da Silva <span dir=3D"ltr">&lt;<a href=3D"mailto:me=
+duardo.r@gmail.com" target=3D"_blank">meduardo.r@gmail.com</a>&gt;</span> e=
+screveu:<br><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bo=
+rder-left:1px #ccc solid;padding-left:1ex">Bom dia.=C2=A0<div><br></div><di=
+v>Queria saber como fa=C3=A7o para ir aos encontros que acontecem no CCBB p=
+ois estive no local e n=C3=A3o vi ningu=C3=A9m. Se puderem me dar mais algu=
+ma informa=C3=A7=C3=A3o para que eu possa comparecer no pr=C3=B3ximo encont=
+ro, sem que me encontre perdido.=C2=A0</div><div><br></div><div>Ass: Mar=C3=
+=A7o Eduardo R da Silva=C2=A0</div><span class=3D"HOEnZb"><font color=3D"#8=
+88888">-- <br><div dir=3D"ltr" class=3D"m_1654777263180054468gmail_signatur=
+e" data-smartmail=3D"gmail_signature"><p dir=3D"ltr">Atenciosamente=C2=A0</=
+p>
+<p dir=3D"ltr">Marco Eduardo Rodrigues da Silva=C2=A0<br>
+Tel: (21) 2779-8055<br>
+Cel (21)982584345</p>
+</div>
+</font></span></blockquote></div><br></div>
+
+--00000000000080da410574fcbe8a--

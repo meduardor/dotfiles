@@ -1,0 +1,228 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:560c:0:0:0:0:0 with SMTP id l12-v6csp862434wrv;
+        Wed, 26 Sep 2018 09:37:37 -0700 (PDT)
+X-Received: by 2002:a81:99c7:: with SMTP id q190-v6mr3684518ywg.106.1537979857416;
+        Wed, 26 Sep 2018 09:37:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537979857; cv=none;
+        d=google.com; s=arc-20160816;
+        b=sVipqhUVBQqi/6tc/iCWRsvHcBMKXl5qyXS8b6yWCCsCKM0haXIdeHur+XqKioYWOw
+         TfzeUX4bYg151qFbVxTiQv2H8a7UfHwioK3wjnJ5LWPgp9HDGgl/X28XjA/Ey5DVuYKU
+         w7Pf1Xxk7bLpbCX8tswJO2qopTbjqrIlVq2n2KcbElgSl1pPhdzUbfekqgB+0vyyQIIS
+         J8/H1BBd/j/jQn5Wi278x95ayhPjIS1ThL0L3P519bqrBwcou8BZgQxSm6klq9X1IjI4
+         hnq0jlD8c7xzlvKQ+rTbY8B3tGDNOEtDnXtHESiojWYorgB3yTqnf/mGlYVwKYKRMU0n
+         34WA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:mime-version:subject
+         :message-id:to:from:date:sender:dkim-signature:dkim-signature;
+        bh=7df7afhB+qfYqfBRjjds30JXZuHnBBmQ3LttCyGbSh8=;
+        b=UwDkAJ32B4C4so4JBPnydYfpsFeFB2ZS3/+9ITZNV2Vq0UvrENp6jD6eXQZcSgryu1
+         ATccKnWgKNQCc1k17B0bvt9qnp9XGd9FwZ0/CaGcZpCRYgSXD9nU/ulJQeH0NtDGEjaj
+         cFjU5Pedo2y75YVHcTEZ67ZLGDu83lFTFEmvPwrXQ1ZRVvvPc/p0HNc3jNgBwiPmx7w7
+         gaU3YJJ+oDRtQoTrojgaSd32YLszwALJbryzF07glKzxigSDyLEv1sSH+oZoU7B8CzzA
+         g6l5yA82yCAK0uCY+JBoI7kXkNEmt9BXkRvJ+2dKJunF439yRbH4FRZa+frLwaeNK51O
+         hQyQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=Fg5uilLE;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="ZsDn9YS/";
+       spf=pass (google.com: domain of python-brasil+bncbc4m7rfv2ebbbs7lv3oqkgqe7c6u65i@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBC4M7RFV2EBBBS7LV3OQKGQE7C6U65I@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBC4M7RFV2EBBBS7LV3OQKGQE7C6U65I@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id a5-v6sor730383ybh.84.2018.09.26.09.37.37
+        (Google Transport Security);
+        Wed, 26 Sep 2018 09:37:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbc4m7rfv2ebbbs7lv3oqkgqe7c6u65i@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=Fg5uilLE;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="ZsDn9YS/";
+       spf=pass (google.com: domain of python-brasil+bncbc4m7rfv2ebbbs7lv3oqkgqe7c6u65i@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBC4M7RFV2EBBBS7LV3OQKGQE7C6U65I@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=7df7afhB+qfYqfBRjjds30JXZuHnBBmQ3LttCyGbSh8=;
+        b=Fg5uilLEmFxkPTNwUiyAZLDMmNwgqySlx6MUfalknsf42Q66ci1SGEp4Hf9uCyCmPI
+         NDXR2df7t4TpRCoyBwMGceP7mDi1B955Iuzj8eeXui5qxhEUuoKHgLg1yF+Qp7eao0fU
+         /ezuGJ7ROeFrQG9aidmLTQtcBlI0bwsodD7RyNc3po3w65MNvubn/gbIBGKZ/CyX4q0W
+         TwBfVcqUPMrpz2pqKsa2ujTxiFiib5G9l2R0tt5QfH/PzYoIUsGcl7UKVPkwFQGb6xx6
+         Vc5HdAMKg0yPOo+D6mv1gPDk4c2tBW+X4hMD9wx0WAsnUueky2pbXXK/vR5FInv36cXp
+         JXiA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=7df7afhB+qfYqfBRjjds30JXZuHnBBmQ3LttCyGbSh8=;
+        b=ZsDn9YS/idU1UWbs0v3L5MI4B4Fwa74/sXSHr209UY1DYFo7aMbty5sHTagdAZHZlK
+         PnYG/zoLwmrkG6wMEUCT+NaDmusoadkJ50F3yVusOxOT/ZaL+9NzwLU9nd9rt4IvZPAV
+         kKmpNjqaIT8iERiNa9B1RQsYpBpTltpxxvFtwNUqdnLrTkcRaPQeaaHVS/spROTEYERq
+         svI/g8DV3iAukYkOEC33OQWq3Zq7f0GduxXW6tZrVm/zAdjHZkuO1DCrExuGjqpjadk9
+         P4eeG4gze6oVDWc4PpBfHIZfFbXWosy74PIxYd88yAbT7womG+lu2zMQReVE+lYyimhk
+         MCCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:date:from:to:message-id:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=7df7afhB+qfYqfBRjjds30JXZuHnBBmQ3LttCyGbSh8=;
+        b=szKPkqliJvCUpW22yWZWbKCspA6eLKcP+Lbp7U2JYTyjUvcvYiRrJfrvJs76EgdUln
+         pLp0YOUT9wY9HnM2eXVCmB8UP80H98snGu9c5Yxa1tdeq/KmEDya/lusJjje2oZ2j+3o
+         U0K2MIqMBlXrGDpyMhePmWW5PUrm9+HHG7WWxKMvk1kjuBVOSDYFjF/BDiZr8q3Y9/89
+         PFlVLMYBlbcsRY2YjxgUI9oglb0WtsYM87Kn4Ot6YHIhBYhj7tSrfrj5NWHd8vvc3N69
+         FJa4gZ8pef0cidfTWNLTeiDYK9okNbLFPmafRer0faDaWVdGFwMHPkih9fb9hXbxeOiw
+         Y6Zw==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: ABuFfojeXXOWjChzKpAmBeY266CK3mgODDWawqeG6y3e+r6nc5kK/QOj
+	EpfTt/nKe8HjGmpRaqf1EOA=
+X-Google-Smtp-Source: ACcGV60j/aKmM1cEJ/w4L1/RaOzS+O7gx5PPvzvqxMzOvybICwmWra7iZjJhUV6/PrRrVpeIlg3a8Q==
+X-Received: by 2002:a25:2f97:: with SMTP id v145-v6mr86304ybv.2.1537979857128;
+        Wed, 26 Sep 2018 09:37:37 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a25:6d44:: with SMTP id i65-v6ls556778ybc.8.gmail; Wed, 26
+ Sep 2018 09:37:31 -0700 (PDT)
+X-Received: by 2002:a25:2483:: with SMTP id k125-v6mr80300ybk.5.1537979851046;
+        Wed, 26 Sep 2018 09:37:31 -0700 (PDT)
+Date: Wed, 26 Sep 2018 09:37:30 -0700 (PDT)
+From: Dioni Alves de Oliveira <dionialves@gmail.com>
+To: Python Brasil <python-brasil@googlegroups.com>
+Message-Id: <5ae42d3c-6f8f-4690-a627-771b40be0ec5@googlegroups.com>
+Subject: [python-brasil] Sistema Python para Desktop
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_124_308432377.1537979850348"
+X-Original-Sender: dionialves@gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Spam-Checked-In-Group: python-brasil@googlegroups.com
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+------=_Part_124_308432377.1537979850348
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_125_112069824.1537979850348"
+
+------=_Part_125_112069824.1537979850348
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Boa Tarde aos colegas.
+
+Tenho um sistema completo em django, um Software de Gest=C3=A3o para proved=
+or.=20
+Feito todo em cima do django admin. O software evoluiu tanto que estou com=
+=20
+dificuldades de implementar o que eu preciso devidos as customiza=C3=A7=C3=
+=B5es em=20
+cima do djago admin.
+Infelizmente n=C3=A3o tenho capacidade de desenvolver um layout do zero, de=
+vido=20
+a limita=C3=A7=C3=B5es pr=C3=B3prias, at=C3=A9 por esse motivo sempre usei =
+o django-admin, pois=20
+supria essa minha dificuldade.
+
+Ent=C3=A3o estou procurando op=C3=A7=C3=B5es, e estava pensando em migrar e=
+sse sistema=20
+para o Desktop, estava vendo algumas op=C3=A7=C3=B5es como o Tkinter ou mes=
+mo PyQt.
+
+O que os colegas pensam a respeito? Python seria uma boa op=C3=A7=C3=A3o pa=
+ra=20
+Desktop? Kivy, WxWidget, PyQt, Gtk+?
+
+
+Observa=C3=A7=C3=A3o: Porque n=C3=A3o consigo criar uma aplica=C3=A7=C3=A3o=
+ web do zero? Devido a=20
+limita=C3=A7=C3=B5es de criatividade mesmo, estilizar um layout usando core=
+s, estilos=20
+n=C3=A3o =C3=A9 para mim.
+
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/5ae42d3c-6f8f-4690-a627-771b40be0ec5%40googlegroups.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+------=_Part_125_112069824.1537979850348
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Boa Tarde aos colegas.<div><br></div><div>Tenho um sistema=
+ completo em django, um Software de Gest=C3=A3o para provedor. Feito todo e=
+m cima do django admin. O software evoluiu tanto que estou com dificuldades=
+ de implementar o que eu preciso devidos as customiza=C3=A7=C3=B5es em cima=
+ do djago admin.</div><div>Infelizmente n=C3=A3o tenho capacidade de desenv=
+olver um layout do zero, devido a limita=C3=A7=C3=B5es pr=C3=B3prias, at=C3=
+=A9 por esse motivo sempre usei o django-admin, pois supria essa minha difi=
+culdade.</div><div><br></div><div>Ent=C3=A3o estou procurando op=C3=A7=C3=
+=B5es, e estava pensando em migrar esse sistema para o Desktop, estava vend=
+o algumas op=C3=A7=C3=B5es como o Tkinter ou mesmo PyQt.</div><div><br></di=
+v><div>O que os colegas pensam a respeito? Python seria uma boa op=C3=A7=C3=
+=A3o para Desktop? Kivy, WxWidget, PyQt, Gtk+?<br><br><br>Observa=C3=A7=C3=
+=A3o: Porque n=C3=A3o consigo criar uma aplica=C3=A7=C3=A3o web do zero? De=
+vido a limita=C3=A7=C3=B5es de criatividade mesmo, estilizar um layout usan=
+do cores, estilos n=C3=A3o =C3=A9 para mim.</div><div><br></div><div><br></=
+div></div>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/5ae42d3c-6f8f-4690-a627-771b40be0ec5%40googlegr=
+oups.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/=
+d/msgid/python-brasil/5ae42d3c-6f8f-4690-a627-771b40be0ec5%40googlegroups.c=
+om</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+------=_Part_125_112069824.1537979850348--
+
+------=_Part_124_308432377.1537979850348--

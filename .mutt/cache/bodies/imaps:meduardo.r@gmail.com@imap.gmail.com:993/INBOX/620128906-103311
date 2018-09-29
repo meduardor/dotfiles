@@ -1,0 +1,671 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:5604:0:0:0:0:0 with SMTP id l4-v6csp790916wrv;
+        Fri, 17 Aug 2018 08:16:39 -0700 (PDT)
+X-Received: by 2002:a25:b904:: with SMTP id x4-v6mr19024002ybj.56.1534518999509;
+        Fri, 17 Aug 2018 08:16:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1534518999; cv=none;
+        d=google.com; s=arc-20160816;
+        b=MceL2E2t13lYc9MFIbM+yyWjc6kumZO9I9aM7UuycAXFsgkQLL/YrAm6mP1MGDjG2e
+         ithWcyzE2n9GPDbU/AGlXNhebPKv/DGBEOUUTi20ixR40jxXZUZ/9xc5GWQQwtrzCFdv
+         tW+MdeTxEVuaBbOHb+FJAHbMNG8ZKR/NKdBwk5NZcTZdIHMAe/EW8+7b5Ebz/orDU6rW
+         mPXD5cq9b1uJwh4cruyqB+Z+iMJ3W7i2QAu7I8Kf12KcQFTD6sSEo+EhUnqh8W81WnW1
+         3ZxIhTMNTWNfziWSFRo/dVeC2TJAOSMNygamwEVEUJOootqdllUxgTl2DgyzVl5yXz99
+         6ctA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:mime-version:subject
+         :message-id:to:from:date:sender:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=hFUXe2g4EOXqVwnpuN3aU32Av6h0csjZhamd/Fxd8vw=;
+        b=AbdO9E/KamAq/z8KB6hTj56x7jtBSJMPstQXBSkoqPdPtkQiYCoPhwSnSLxyo87vbk
+         usI+uPMTm8PlRv1LZ6X2ZbmVs9EoWNnbdXBYOod0nO3cOdyYbDjvr1FWvznQKkzm/Rgh
+         sMQgNky8RsRIrY9LUF3Qbie43gDWk0XvsPwpm4QLcDtPkjAyQIOA/3b4qWCV1Nc9qlMn
+         9kjEAFWIikjaY0lW4z1qPxm2xVIbccWyglqLHM6QWe08rYrGyTRhvgFo2keGvE2VNeaP
+         YroNNrWuuyZyUIutH4GyhQEJ1gW7H3DR+5DiyVHo3lA35m+BKaNlbsSNZyfNeXg+kiZW
+         oT/w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=l4H3xsjz;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kQjakpzo;
+       spf=pass (google.com: domain of python-brasil+bncbcoolzv3xulrbtwn3pnqkgqelwlyx6q@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCOOLZV3XULRBTWN3PNQKGQELWLYX6Q@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBCOOLZV3XULRBTWN3PNQKGQELWLYX6Q@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id m128-v6sor700988ybb.100.2018.08.17.08.16.39
+        (Google Transport Security);
+        Fri, 17 Aug 2018 08:16:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbcoolzv3xulrbtwn3pnqkgqelwlyx6q@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=l4H3xsjz;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kQjakpzo;
+       spf=pass (google.com: domain of python-brasil+bncbcoolzv3xulrbtwn3pnqkgqelwlyx6q@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCOOLZV3XULRBTWN3PNQKGQELWLYX6Q@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=hFUXe2g4EOXqVwnpuN3aU32Av6h0csjZhamd/Fxd8vw=;
+        b=l4H3xsjzy3uAa8mci6IggQvZIL8sjHdKWPI5LjMvzzkBBERkWJZ4lGF1yutJnf37EN
+         5SW57eXSlNjEvvhFeOumw+aJixWAgnMdULt1rCuzCk54WwDHuwtqKJKnY+FnuN7JbT0l
+         ausGf9EfxwI0/ixxFzrKxjtpi0n4M1gANNOLo1+WxCIbFt5yRnZDIxRm8lXF0eetl8J0
+         umfNCxYZLmMUPgFh2Tz/61Zjiv4nja7BBgeHmIDaVc/C9gY3B6J+bh0EhJqS0Hk9hoaC
+         kD1zlmRnZvShmAAmYwekbs7boZN4EGk71kcW4dA2pZhHVA2Lad5oqr+mhASTKm4FigqE
+         LC5g==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=hFUXe2g4EOXqVwnpuN3aU32Av6h0csjZhamd/Fxd8vw=;
+        b=kQjakpzoOyHnvQf4HjS70E4o4cu9tTXv1i0n9YL1vcxzlP2t1vEHev0h7wcFvbYRDh
+         zyXwSgD2EPesDlUAi7fOVjj6GtCzoCpq7+R3tHiCsWz5MfRsiYu6VRTuc41Y6oRoZn5N
+         LeuxOaYcCIAtX/QkgoS01qzpsKU5ZppdGz/VGZq+JJnGQTlDimWQTlemIjGxZvB6rV/o
+         Haa9CSjWUWmrR/cS3dBXF+VbK3Qagb+QQuxY70MszMpB11ZOR3qzi1WPYLS4HqbkQiws
+         GFXiPfdkDIuOcvvJR6T1Rm3SIAD6yOBlngw0AOHLtte2T5VMs/tSWRUCDNUXHKvqGm4h
+         y1ZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:date:from:to:message-id:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=hFUXe2g4EOXqVwnpuN3aU32Av6h0csjZhamd/Fxd8vw=;
+        b=CIHS2stzsMrDPYXrGTMRUdeQAle2C+sjhHgjBZ8yHJYDVcYZZhV4/ghN7cEJR6NxG1
+         RXdNan0CmuysasxDvLj61F2mNQUXA+oo9AHFvZwTUVLtoczclY3vMnzrc7GQUHaMhdjJ
+         ruDqB3dQIGTjHFyB1bquhK8hiI374tZZ/Lm1My/x2quM4B0g24VMjAdpriMtsKnmeCN6
+         lSZcj97dnS6yCnt83LrRO8sk9fcYGUOjDCjZq+OAaHMp5QuzYGsEZh0Z2kh6LlaT8pXb
+         XZwta5nk1gG6IfXeWGG+I/Q2jluuFZKtFmjEOwzuU/qUU9F1OYCo/eI7uG8w6MWs85M7
+         vDWQ==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: AOUpUlFeeUd8M5wxz2lHimi9WThPFCjuuz8eTY34tiiixJczwM4kdgjy
+	PxigW4P374at1ELWmATeeig=
+X-Google-Smtp-Source: AA+uWPzNJEveXiT+Jw0ped28ppsiGB9v1BrmP81NGmzcXl6MTTvuOgI/YwYfKd1qWCG3p6DnGW5lcg==
+X-Received: by 2002:a25:8448:: with SMTP id r8-v6mr436063ybm.2.1534518998964;
+        Fri, 17 Aug 2018 08:16:38 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a25:2c86:: with SMTP id s128-v6ls1757686ybs.20.gmail; Fri,
+ 17 Aug 2018 08:16:30 -0700 (PDT)
+X-Received: by 2002:a25:c5d2:: with SMTP id v201-v6mr432703ybe.4.1534518990008;
+        Fri, 17 Aug 2018 08:16:30 -0700 (PDT)
+Date: Fri, 17 Aug 2018 08:16:29 -0700 (PDT)
+From: Freeb <escobardemian@gmail.com>
+To: Python Brasil <python-brasil@googlegroups.com>
+Message-Id: <e741688d-4006-4cdf-a68e-31069b7fa066@googlegroups.com>
+Subject: [python-brasil] Pyramid com MongoDB
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_844_1926357895.1534518989290"
+X-Original-Sender: escobardemian@gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Spam-Checked-In-Group: python-brasil@googlegroups.com
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+------=_Part_844_1926357895.1534518989290
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_845_1244135795.1534518989291"
+
+------=_Part_845_1244135795.1534518989291
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Boa tarde pessoal, tudo bem ?
+
+Estou implementando Pyramid com MongoDb em um projeto.
+Para tal estou seguindo o seguinte tutorial:
+
+https://docs.pylonsproject.org/projects/pyramid-cookbook/en/latest/database=
+/mongodb.html
+
+Ja estou com virtualenvwrapper funcionando, usei o   " cookiecutter=20
+gh:Pylons/pyramid-cookiecutter-starter --checkout 1.9-branch " para criar=
+=20
+meus arquivos, instalei mongodb, pymongo, funciona pelo shell ok, e tamb=C3=
+=A9m=20
+conecta ao usar python com mongodb puro, por=C3=A9m, ao tentar usar ele com=
+=20
+pyramid, ao setar esta variavel, da erro:
+
+First add the MongoDB URI to your development.ini file. (Note: user,=20
+password and port are not required.)
+
+
+[app:myapp]# ... other settings ...mongo_uri =3D mongodb://user:password@ho=
+st:port/database
+
+
+Meu mongodb n=C3=A3o tem senha!=20
+Outra coisa =C3=A9 que so estou conseguindo rodar o mongod como root porque=
+ como=20
+usuario normal na=C3=B5 funciona, mas n=C3=A3o sei se isto tem algo a ver c=
+om o=20
+problema.
+
+Testei diversas combina=C3=A7=C3=B5es, ex:
+
+mongo_uri =3D mongodb://root:@127.0.0.1:27017/teste
+mongo_uri =3D mongodb://meuUsuario:senhaDoMeuUsuario@localhost:/teste
+mongo_uri =3D mongodb://:@host:port/database
+
+etc ....
+
+E sempre recebo este erro aqui:
+
+env1) freeb@debprod:~/Envs/env1/projectTestRepo$ ../bin/pserve development.=
+ini
+Traceback (most recent call last):
+  File "../bin/pserve", line 11, in <module>
+    sys.exit(main())
+  File "/home/freeb/Envs/env1/lib/python3.5/site-packages/pyramid/scripts/p=
+serve.py", line 32, in main
+    return command.run()
+  File "/home/freeb/Envs/env1/lib/python3.5/site-packages/pyramid/scripts/p=
+serve.py", line 229, in run
+    app =3D loader.get_wsgi_app(app_name, config_vars)
+  File "/home/freeb/Envs/env1/lib/python3.5/site-packages/plaster_pastedepl=
+oy/__init__.py", line 131, in get_wsgi_app
+    global_conf=3Ddefaults)
+  File "/home/freeb/Envs/env1/lib/python3.5/site-packages/paste/deploy/load=
+wsgi.py", line 247, in loadapp
+    return loadobj(APP, uri, name=3Dname, **kw)
+  File "/home/freeb/Envs/env1/lib/python3.5/site-packages/paste/deploy/load=
+wsgi.py", line 272, in loadobj
+    return context.create()
+  File "/home/freeb/Envs/env1/lib/python3.5/site-packages/paste/deploy/load=
+wsgi.py", line 710, in create
+    return self.object_type.invoke(self)
+  File "/home/freeb/Envs/env1/lib/python3.5/site-packages/paste/deploy/load=
+wsgi.py", line 146, in invoke
+    return fix_call(context.object, context.global_conf, **context.local_co=
+nf)
+  File "/home/freeb/Envs/env1/lib/python3.5/site-packages/paste/deploy/util=
+.py", line 55, in fix_call
+    val =3D callable(*args, **kw)
+  File "/home/freeb/Envs/env1/projectTestRepo/projectTestRepo/__init__.py",=
+ line 21, in main
+    db_url =3D urlparse(settings['mongo_uri'])=20
+KeyError: 'mongo_uri'
+
+
+
+#################### __init__.py ##########################################=
+###########
+
+from pyramid.config import Configurator
+
+try:
+# for python 2
+from urlparse import urlparse
+except ImportError:
+# for python 3
+from urllib.parse import urlparse
+
+from gridfs import GridFS
+from pymongo import MongoClient
+
+
+def main(global_config, **settings):
+""" This function returns a Pyramid WSGI application.
+"""
+config =3D Configurator(settings=3Dsettings)
+config.include('pyramid_jinja2')
+config.add_static_view('static', 'static', cache_max_age=3D3600)
+db_url =3D urlparse(settings['mongo_uri'])=20
+config.registry.db =3D MongoClient(
+host=3Ddb_url.hostname,
+port=3Ddb_url.port,
+)=20
+
+
+def add_db(request):
+db =3D config.registry.db[db_url.path[1:]]
+if db_url.username and db_url.password:
+db.authenticate(db_url.username, db_url.password)
+return db
+
+def add_fs(request):
+return GridFS(request.db)
+config.add_request_method(add_db, 'db', reify=3DTrue)
+config.add_request_method(add_fs, 'fs', reify=3DTrue)
+
+config.add_route('home', '/')
+config.scan()
+return config.make_wsgi_app()
+
+
+
+
+#################### views.py #############################################=
+########
+
+from pyramid.view import view_config
+
+
+@view_config(route_name=3D'home', renderer=3D'templates/mytemplate.jinja2')
+def my_view(request):
+return {'project': 'projectTest'}
+
+def dashboard(request):
+vendors =3D request.db['vendors'].find()
+return {'vendors':vendors}
+
+
+
+
+#################### development.py #######################################=
+##############
+
+
+###
+# app configuration
+#=20
+https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/environment.=
+html
+###
+
+
+[app:myapp]
+# ... other settings ...
+mongo_uri =3D mongodb://:@127.0.0.1:27017/
+
+
+[app:main]
+use =3D egg:projectTestRepo
+
+pyramid.reload_templates =3D true
+pyramid.debug_authorization =3D false
+pyramid.debug_notfound =3D false
+pyramid.debug_routematch =3D false
+pyramid.default_locale_name =3D en
+pyramid.includes =3D
+pyramid_debugtoolbar
+
+# By default, the toolbar only appears for clients from IP addresses
+# '127.0.0.1' and '::1'.
+# debugtoolbar.hosts =3D 127.0.0.1 ::1
+
+###
+# wsgi server configuration
+###
+
+[server:main]
+use =3D egg:waitress#main
+listen =3D localhost:6543
+
+###
+# logging configuration
+#=20
+https://docs.pylonsproject.org/projects/pyramid/en/latest/narr/logging.html
+###
+
+[loggers]
+keys =3D root, projectTestRepo
+
+[handlers]
+keys =3D console
+
+[formatters]
+keys =3D generic
+
+[logger_root]
+level =3D INFO
+handlers =3D console
+
+[logger_projectTestRepo]
+level =3D DEBUG
+handlers =3D
+qualname =3D projectTestRepo
+
+[handler_console]
+class =3D StreamHandler
+args =3D (sys.stderr,)
+level =3D NOTSET
+formatter =3D generic
+
+[formatter_generic]
+format =3D %(asctime)s %(levelname)-5.5s=20
+[%(name)s:%(lineno)s][%(threadName)s] %(message)s
+
+
+
+
+
+Agrade=C3=A7o qualquer ajuda pessoal,=20
+
+
+obrigado
+
+Freeb
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/e741688d-4006-4cdf-a68e-31069b7fa066%40googlegroups.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+------=_Part_845_1244135795.1534518989291
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Boa tarde pessoal, tudo bem ?<br><br>Estou implementando P=
+yramid com MongoDb em um projeto.<br>Para tal estou seguindo o seguinte tut=
+orial:<br><br>https://docs.pylonsproject.org/projects/pyramid-cookbook/en/l=
+atest/database/mongodb.html<br><br>Ja estou com virtualenvwrapper funcionan=
+do, usei o =C2=A0 &quot; cookiecutter gh:Pylons/pyramid-cookiecutter-starte=
+r --checkout 1.9-branch &quot; para criar meus arquivos, instalei mongodb, =
+pymongo, funciona pelo shell ok, e tamb=C3=A9m conecta ao usar python com m=
+ongodb puro, por=C3=A9m, ao tentar usar ele com pyramid, ao setar esta vari=
+avel, da erro:<br><br><p>First add the MongoDB URI to your <code class=3D"d=
+ocutils literal notranslate"><span class=3D"pre">development.ini</span></co=
+de> file. (Note: <code class=3D"docutils literal notranslate"><span class=
+=3D"pre">user</span></code>, <code class=3D"docutils literal notranslate"><=
+span class=3D"pre">password</span></code> and <code class=3D"docutils liter=
+al notranslate"><span class=3D"pre">port</span></code> are not required.)</=
+p>
+<table class=3D"highlighttable"><tbody><tr><td class=3D"linenos"><div class=
+=3D"linenodiv"><pre></pre></div></td><td class=3D"code"><div class=3D"highl=
+ight"><pre><br><span></span><span class=3D"k">[app:myapp]</span>
+<span class=3D"c1"># ... other settings ...</span>
+<span class=3D"na">mongo_uri</span> <span class=3D"o">=3D</span> <span clas=
+s=3D"s">mongodb://user:password@host:port/database</span>
+</pre></div></td></tr></tbody></table><br>Meu mongodb n=C3=A3o tem senha! <=
+br>Outra coisa =C3=A9 que so estou conseguindo rodar o mongod como root por=
+que como usuario normal na=C3=B5 funciona, mas n=C3=A3o sei se isto tem alg=
+o a ver com o problema.<br><br>Testei diversas combina=C3=A7=C3=B5es, ex:<b=
+r><br><pre><span class=3D"na">mongo_uri</span> <span class=3D"o">=3D</span>=
+ <span class=3D"s">mongodb://root:@127.0.0.1:27017/teste<br></span><span cl=
+ass=3D"na">mongo_uri</span> <span class=3D"o">=3D</span> <span class=3D"s">=
+mongodb://meuUsuario:senhaDoMeuUsuario@localhost:/teste<br></span><span cla=
+ss=3D"na">mongo_uri</span> <span class=3D"o">=3D</span> <span class=3D"s">m=
+ongodb://:@host:port/database<br></span><br><span class=3D"s"></span><span =
+class=3D"s"></span><span class=3D"s"></span>etc ....<br><br>E sempre recebo=
+ este erro aqui:<br><br>env1) freeb@debprod:~/Envs/env1/projectTestRepo$ ..=
+/bin/pserve development.ini<br>Traceback (most recent call last):<br>  File=
+ &quot;../bin/pserve&quot;, line 11, in &lt;module&gt;<br>    sys.exit(main=
+())<br>  File &quot;/home/freeb/Envs/env1/lib/python3.5/site-packages/pyram=
+id/scripts/pserve.py&quot;, line 32, in main<br>    return command.run()<br=
+>  File &quot;/home/freeb/Envs/env1/lib/python3.5/site-packages/pyramid/scr=
+ipts/pserve.py&quot;, line 229, in run<br>    app =3D loader.get_wsgi_app(a=
+pp_name, config_vars)<br>  File &quot;/home/freeb/Envs/env1/lib/python3.5/s=
+ite-packages/plaster_pastedeploy/__init__.py&quot;, line 131, in get_wsgi_a=
+pp<br>    global_conf=3Ddefaults)<br>  File &quot;/home/freeb/Envs/env1/lib=
+/python3.5/site-packages/paste/deploy/loadwsgi.py&quot;, line 247, in loada=
+pp<br>    return loadobj(APP, uri, name=3Dname, **kw)<br>  File &quot;/home=
+/freeb/Envs/env1/lib/python3.5/site-packages/paste/deploy/loadwsgi.py&quot;=
+, line 272, in loadobj<br>    return context.create()<br>  File &quot;/home=
+/freeb/Envs/env1/lib/python3.5/site-packages/paste/deploy/loadwsgi.py&quot;=
+, line 710, in create<br>    return self.object_type.invoke(self)<br>  File=
+ &quot;/home/freeb/Envs/env1/lib/python3.5/site-packages/paste/deploy/loadw=
+sgi.py&quot;, line 146, in invoke<br>    return fix_call(context.object, co=
+ntext.global_conf, **context.local_conf)<br>  File &quot;/home/freeb/Envs/e=
+nv1/lib/python3.5/site-packages/paste/deploy/util.py&quot;, line 55, in fix=
+_call<br>    val =3D callable(*args, **kw)<br>  File &quot;/home/freeb/Envs=
+/env1/projectTestRepo/projectTestRepo/__init__.py&quot;, line 21, in main<b=
+r>    db_url =3D urlparse(settings[&#39;mongo_uri&#39;]) <br>KeyError: &#39=
+;mongo_uri&#39;<br><br><br><br>#################### __init__.py ###########=
+##########################################<br><br></pre><div style=3D"color=
+: #000000;background-color: #ffffff;font-family: &#39;Droid Sans Mono&#39;,=
+ &#39;monospace&#39;, monospace, &#39;Droid Sans Fallback&#39;;font-weight:=
+ normal;font-size: 14px;line-height: 19px;white-space: pre;"><div><span sty=
+le=3D"color: #0000ff;">from</span><span style=3D"color: #000000;"> pyramid.=
+config </span><span style=3D"color: #0000ff;">import</span><span style=3D"c=
+olor: #000000;"> Configurator</span></div><br><div><span style=3D"color: #0=
+000ff;">try</span><span style=3D"color: #000000;">:</span></div><div><span =
+style=3D"color: #000000;">    </span><span style=3D"color: #008000;"># for =
+python 2</span></div><div><span style=3D"color: #000000;">    </span><span =
+style=3D"color: #0000ff;">from</span><span style=3D"color: #000000;"> urlpa=
+rse </span><span style=3D"color: #0000ff;">import</span><span style=3D"colo=
+r: #000000;"> urlparse</span></div><div><span style=3D"color: #0000ff;">exc=
+ept</span><span style=3D"color: #000000;"> ImportError:</span></div><div><s=
+pan style=3D"color: #000000;">    </span><span style=3D"color: #008000;"># =
+for python 3</span></div><div><span style=3D"color: #000000;">    </span><s=
+pan style=3D"color: #0000ff;">from</span><span style=3D"color: #000000;"> u=
+rllib.parse </span><span style=3D"color: #0000ff;">import</span><span style=
+=3D"color: #000000;"> urlparse</span></div><br><div><span style=3D"color: #=
+0000ff;">from</span><span style=3D"color: #000000;"> gridfs </span><span st=
+yle=3D"color: #0000ff;">import</span><span style=3D"color: #000000;"> GridF=
+S</span></div><div><span style=3D"color: #0000ff;">from</span><span style=
+=3D"color: #000000;"> pymongo </span><span style=3D"color: #0000ff;">import=
+</span><span style=3D"color: #000000;"> MongoClient</span></div><br><br><di=
+v><span style=3D"color: #0000ff;">def</span><span style=3D"color: #000000;"=
+> main(global_config, **settings):</span></div><div><span style=3D"color: #=
+000000;">    </span><span style=3D"color: #a31515;">&quot;&quot;&quot; This=
+ function returns a Pyramid WSGI application.</span></div><div><span style=
+=3D"color: #a31515;">    &quot;&quot;&quot;</span></div><div><span style=3D=
+"color: #000000;">    config </span><span style=3D"color: #000000;">=3D</sp=
+an><span style=3D"color: #000000;"> Configurator(settings</span><span style=
+=3D"color: #000000;">=3D</span><span style=3D"color: #000000;">settings)</s=
+pan></div><div><span style=3D"color: #000000;">    config.include(</span><s=
+pan style=3D"color: #a31515;">&#39;pyramid_jinja2&#39;</span><span style=3D=
+"color: #000000;">)</span></div><div><span style=3D"color: #000000;">    co=
+nfig.add_static_view(</span><span style=3D"color: #a31515;">&#39;static&#39=
+;</span><span style=3D"color: #000000;">, </span><span style=3D"color: #a31=
+515;">&#39;static&#39;</span><span style=3D"color: #000000;">, cache_max_ag=
+e</span><span style=3D"color: #000000;">=3D</span><span style=3D"color: #09=
+885a;">3600</span><span style=3D"color: #000000;">)</span></div><div><span =
+style=3D"color: #000000;">    </span></div><div><span style=3D"color: #0000=
+00;">    db_url </span><span style=3D"color: #000000;">=3D</span><span styl=
+e=3D"color: #000000;"> urlparse(settings[</span><span style=3D"color: #a315=
+15;">&#39;mongo_uri&#39;</span><span style=3D"color: #000000;">]) </span></=
+div><div><span style=3D"color: #000000;">    config.registry.db </span><spa=
+n style=3D"color: #000000;">=3D</span><span style=3D"color: #000000;"> Mong=
+oClient(</span></div><div><span style=3D"color: #000000;">        host</spa=
+n><span style=3D"color: #000000;">=3D</span><span style=3D"color: #000000;"=
+>db_url.hostname,</span></div><div><span style=3D"color: #000000;">        =
+port</span><span style=3D"color: #000000;">=3D</span><span style=3D"color: =
+#000000;">db_url.port,</span></div><div><span style=3D"color: #000000;">   =
+ )    </span></div><br><br><div><span style=3D"color: #000000;">    </span>=
+<span style=3D"color: #0000ff;">def</span><span style=3D"color: #000000;"> =
+add_db(request):</span></div><div><span style=3D"color: #000000;">        d=
+b </span><span style=3D"color: #000000;">=3D</span><span style=3D"color: #0=
+00000;"> config.registry.db[db_url.path[</span><span style=3D"color: #09885=
+a;">1</span><span style=3D"color: #000000;">:]]</span></div><div><span styl=
+e=3D"color: #000000;">        </span><span style=3D"color: #0000ff;">if</sp=
+an><span style=3D"color: #000000;"> db_url.username </span><span style=3D"c=
+olor: #0000ff;">and</span><span style=3D"color: #000000;"> db_url.password:=
+</span></div><div><span style=3D"color: #000000;">            db.authentica=
+te(db_url.username, db_url.password)</span></div><div><span style=3D"color:=
+ #000000;">        </span><span style=3D"color: #0000ff;">return</span><spa=
+n style=3D"color: #000000;"> db</span></div><br><div><span style=3D"color: =
+#000000;">    </span><span style=3D"color: #0000ff;">def</span><span style=
+=3D"color: #000000;"> add_fs(request):</span></div><div><span style=3D"colo=
+r: #000000;">        </span><span style=3D"color: #0000ff;">return</span><s=
+pan style=3D"color: #000000;"> GridFS(request.db)</span></div><div><span st=
+yle=3D"color: #000000;">   </span></div><div><span style=3D"color: #000000;=
+">   </span></div><div><span style=3D"color: #000000;">    config.add_reque=
+st_method(add_db, </span><span style=3D"color: #a31515;">&#39;db&#39;</span=
+><span style=3D"color: #000000;">, reify</span><span style=3D"color: #00000=
+0;">=3D</span><span style=3D"color: #0000ff;">True</span><span style=3D"col=
+or: #000000;">)</span></div><div><span style=3D"color: #000000;">    config=
+.add_request_method(add_fs, </span><span style=3D"color: #a31515;">&#39;fs&=
+#39;</span><span style=3D"color: #000000;">, reify</span><span style=3D"col=
+or: #000000;">=3D</span><span style=3D"color: #0000ff;">True</span><span st=
+yle=3D"color: #000000;">)</span></div><br><div><span style=3D"color: #00000=
+0;">    config.add_route(</span><span style=3D"color: #a31515;">&#39;home&#=
+39;</span><span style=3D"color: #000000;">, </span><span style=3D"color: #a=
+31515;">&#39;/&#39;</span><span style=3D"color: #000000;">)</span></div><di=
+v><span style=3D"color: #000000;">    config.scan()</span></div><div><span =
+style=3D"color: #000000;">    </span><span style=3D"color: #0000ff;">return=
+</span><span style=3D"color: #000000;"> config.make_wsgi_app()</span></div>=
+<br></div><pre><br><br><br>#################### views.py ##################=
+###################################<br><br></pre><div style=3D"color: #0000=
+00;background-color: #ffffff;font-family: &#39;Droid Sans Mono&#39;, &#39;m=
+onospace&#39;, monospace, &#39;Droid Sans Fallback&#39;;font-weight: normal=
+;font-size: 14px;line-height: 19px;white-space: pre;"><div><span style=3D"c=
+olor: #0000ff;">from</span><span style=3D"color: #000000;"> pyramid.view </=
+span><span style=3D"color: #0000ff;">import</span><span style=3D"color: #00=
+0000;"> view_config</span></div><br><br><div><span style=3D"color: #000000;=
+">@view_config(route_name</span><span style=3D"color: #000000;">=3D</span><=
+span style=3D"color: #a31515;">&#39;home&#39;</span><span style=3D"color: #=
+000000;">, renderer</span><span style=3D"color: #000000;">=3D</span><span s=
+tyle=3D"color: #a31515;">&#39;templates/mytemplate.jinja2&#39;</span><span =
+style=3D"color: #000000;">)</span></div><div><span style=3D"color: #0000ff;=
+">def</span><span style=3D"color: #000000;"> my_view(request):</span></div>=
+<div><span style=3D"color: #000000;">    </span><span style=3D"color: #0000=
+ff;">return</span><span style=3D"color: #000000;"> {</span><span style=3D"c=
+olor: #a31515;">&#39;project&#39;</span><span style=3D"color: #000000;">: <=
+/span><span style=3D"color: #a31515;">&#39;projectTest&#39;</span><span sty=
+le=3D"color: #000000;">}</span></div><br><div><span style=3D"color: #0000ff=
+;">def</span><span style=3D"color: #000000;"> dashboard(request):</span></d=
+iv><div><span style=3D"color: #000000;">    vendors </span><span style=3D"c=
+olor: #000000;">=3D</span><span style=3D"color: #000000;"> request.db[</spa=
+n><span style=3D"color: #a31515;">&#39;vendors&#39;</span><span style=3D"co=
+lor: #000000;">].find()</span></div><div><span style=3D"color: #000000;">  =
+  </span><span style=3D"color: #0000ff;">return</span><span style=3D"color:=
+ #000000;"> {</span><span style=3D"color: #a31515;">&#39;vendors&#39;</span=
+><span style=3D"color: #000000;">:vendors}</span></div><br><br></div><pre><=
+br><br>#################### development.py ################################=
+#####################<br><br><br></pre><div style=3D"color: #000000;backgro=
+und-color: #ffffff;font-family: &#39;Droid Sans Mono&#39;, &#39;monospace&#=
+39;, monospace, &#39;Droid Sans Fallback&#39;;font-weight: normal;font-size=
+: 14px;line-height: 19px;white-space: pre;"><div><span style=3D"color: #008=
+000;">###</span></div><div><span style=3D"color: #008000;"># app configurat=
+ion</span></div><div><span style=3D"color: #008000;"># https://docs.pylonsp=
+roject.org/projects/pyramid/en/latest/narr/environment.html</span></div><di=
+v><span style=3D"color: #008000;">###</span></div><br><br><div><span style=
+=3D"color: #000000;">[app:myapp]</span></div><div><span style=3D"color: #00=
+8000;"># ... other settings ...</span></div><div><span style=3D"color: #000=
+0ff;">mongo_uri</span><span style=3D"color: #000000;"> =3D mongodb://:@127.=
+0.0.1:27017/</span></div><br><br><div><span style=3D"color: #000000;">[app:=
+main]</span></div><div><span style=3D"color: #0000ff;">use</span><span styl=
+e=3D"color: #000000;"> =3D egg:projectTestRepo</span></div><br><div><span s=
+tyle=3D"color: #0000ff;">pyramid.reload_templates</span><span style=3D"colo=
+r: #000000;"> =3D true</span></div><div><span style=3D"color: #0000ff;">pyr=
+amid.debug_authorization</span><span style=3D"color: #000000;"> =3D false</=
+span></div><div><span style=3D"color: #0000ff;">pyramid.debug_notfound</spa=
+n><span style=3D"color: #000000;"> =3D false</span></div><div><span style=
+=3D"color: #0000ff;">pyramid.debug_routematch</span><span style=3D"color: #=
+000000;"> =3D false</span></div><div><span style=3D"color: #0000ff;">pyrami=
+d.default_locale_name</span><span style=3D"color: #000000;"> =3D en</span><=
+/div><div><span style=3D"color: #0000ff;">pyramid.includes</span><span styl=
+e=3D"color: #000000;"> =3D</span></div><div><span style=3D"color: #000000;"=
+>    pyramid_debugtoolbar</span></div><br><div><span style=3D"color: #00800=
+0;"># By default, the toolbar only appears for clients from IP addresses</s=
+pan></div><div><span style=3D"color: #008000;"># &#39;127.0.0.1&#39; and &#=
+39;::1&#39;.</span></div><div><span style=3D"color: #008000;"># debugtoolba=
+r.hosts =3D 127.0.0.1 ::1</span></div><br><div><span style=3D"color: #00800=
+0;">###</span></div><div><span style=3D"color: #008000;"># wsgi server conf=
+iguration</span></div><div><span style=3D"color: #008000;">###</span></div>=
+<br><div><span style=3D"color: #000000;">[server:main]</span></div><div><sp=
+an style=3D"color: #0000ff;">use</span><span style=3D"color: #000000;"> =3D=
+ egg:waitress</span><span style=3D"color: #008000;">#main</span></div><div>=
+<span style=3D"color: #0000ff;">listen</span><span style=3D"color: #000000;=
+"> =3D localhost:6543</span></div><br><div><span style=3D"color: #008000;">=
+###</span></div><div><span style=3D"color: #008000;"># logging configuratio=
+n</span></div><div><span style=3D"color: #008000;"># https://docs.pylonspro=
+ject.org/projects/pyramid/en/latest/narr/logging.html</span></div><div><spa=
+n style=3D"color: #008000;">###</span></div><br><div><span style=3D"color: =
+#000000;">[loggers]</span></div><div><span style=3D"color: #0000ff;">keys</=
+span><span style=3D"color: #000000;"> =3D root, projectTestRepo</span></div=
+><br><div><span style=3D"color: #000000;">[handlers]</span></div><div><span=
+ style=3D"color: #0000ff;">keys</span><span style=3D"color: #000000;"> =3D =
+console</span></div><br><div><span style=3D"color: #000000;">[formatters]</=
+span></div><div><span style=3D"color: #0000ff;">keys</span><span style=3D"c=
+olor: #000000;"> =3D generic</span></div><br><div><span style=3D"color: #00=
+0000;">[logger_root]</span></div><div><span style=3D"color: #0000ff;">level=
+</span><span style=3D"color: #000000;"> =3D INFO</span></div><div><span sty=
+le=3D"color: #0000ff;">handlers</span><span style=3D"color: #000000;"> =3D =
+console</span></div><br><div><span style=3D"color: #000000;">[logger_projec=
+tTestRepo]</span></div><div><span style=3D"color: #0000ff;">level</span><sp=
+an style=3D"color: #000000;"> =3D DEBUG</span></div><div><span style=3D"col=
+or: #0000ff;">handlers</span><span style=3D"color: #000000;"> =3D</span></d=
+iv><div><span style=3D"color: #0000ff;">qualname</span><span style=3D"color=
+: #000000;"> =3D projectTestRepo</span></div><br><div><span style=3D"color:=
+ #000000;">[handler_console]</span></div><div><span style=3D"color: #0000ff=
+;">class</span><span style=3D"color: #000000;"> =3D StreamHandler</span></d=
+iv><div><span style=3D"color: #0000ff;">args</span><span style=3D"color: #0=
+00000;"> =3D (sys.stderr,)</span></div><div><span style=3D"color: #0000ff;"=
+>level</span><span style=3D"color: #000000;"> =3D NOTSET</span></div><div><=
+span style=3D"color: #0000ff;">formatter</span><span style=3D"color: #00000=
+0;"> =3D generic</span></div><br><div><span style=3D"color: #000000;">[form=
+atter_generic]</span></div><div><span style=3D"color: #0000ff;">format</spa=
+n><span style=3D"color: #000000;"> =3D %(asctime)s %(levelname)-5.5s [%(nam=
+e)s:%(lineno)s][%(threadName)s] %(message)s</span></div><br><br><br><br><br=
+>Agrade=C3=A7o qualquer ajuda pessoal, <br><br><br>obrigado<br><br>Freeb<br=
+></div><pre><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br=
+><br><br><br><br><br><br><br><br><br></pre></div>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/e741688d-4006-4cdf-a68e-31069b7fa066%40googlegr=
+oups.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/=
+d/msgid/python-brasil/e741688d-4006-4cdf-a68e-31069b7fa066%40googlegroups.c=
+om</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+------=_Part_845_1244135795.1534518989291--
+
+------=_Part_844_1926357895.1534518989290--

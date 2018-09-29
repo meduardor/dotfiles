@@ -1,0 +1,453 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:5611:0:0:0:0:0 with SMTP id l17-v6csp3649566wrv;
+        Mon, 10 Sep 2018 09:49:08 -0700 (PDT)
+X-Received: by 2002:a37:a2c4:: with SMTP id l187-v6mr15972441qke.159.1536598148636;
+        Mon, 10 Sep 2018 09:49:08 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1536598148; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=yibyF/acsugKMvt3XPTF3+nvBVebWqsGy7LdwqqFnB8AXUXGf+Oy9Vutuz7Fgc90f3
+         n5ujD3u3b0v514AVGzZ0NUvNx4T9rGjKG5jqI3fmVXVZSCpUn/J6oz1G75H3JfwiYWFt
+         u9rJIm51j61hBbpuZl0WLmpq5G9+ao50ZntpQZBs6SlHvPX671sgLgDa6tRxts+UCOQy
+         mWT1poh+xZmEjWjHyFJjAO3DygUrjKewvTCfqc5O6CRTO2G0N5n4klbQghR+5nulWASS
+         2sV52xF7AG7T2FR2owvqUNGz7Ta3Gc/Z87A5L2V/8FcmfQaeeL4SkYGPEUCj7X8vEq3P
+         n/dQ==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:mime-version:to:from
+         :importance:in-reply-to:subject:date:savedfromemail:message-id
+         :sender:dkim-signature:dkim-signature;
+        bh=+RnaoS4yhfweqkmzL0ISg/IsshAPBjLEtK6X1ZAoRy4=;
+        b=eLwM1e8FOubiQvGnTKHRVKOqOMzBkgxT/AELlwFi+dbnWuehN4Lj7JSHTWqoK7P8yS
+         VsTkKcjM+RvjP3i6FjwFFs38OkgYRgyXKzTk40GYlF6VQ1L/mbWVBeHX90KBZ93fAoA/
+         z4lt+rDeTmuClT6b4SPJf2NFyybSNnMUkvUand3MwyLdQ3fvl3aU/OUlCnROE6fFsZiQ
+         A+Qz4+J9lCqJQiopiD+ol4zch1ixsq5u8n8VQIHzpkGTih1oisNk8xpgTjbBRRrkN+1F
+         N/J9AaiTfK+EgVMNqZ4WHn4G9LwLNuimzvD9t9fke/p9ZuWarIw5EsLNMzpCxgPGZb4M
+         DMsA==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b="G6COEL/m";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SbAixAF+;
+       arc=pass (i=2 spf=pass spfdomain=gmail.com dkim=pass dkdomain=gmail.com dmarc=pass fromdomain=gmail.com);
+       spf=pass (google.com: domain of python-brasil+bncbcdorkvcqairb7wa3loakgqekemhusy@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCDORKVCQAIRB7WA3LOAKGQEKEMHUSY@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBCDORKVCQAIRB7WA3LOAKGQEKEMHUSY@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id e24-v6sor5573094qkj.5.2018.09.10.09.49.08
+        (Google Transport Security);
+        Mon, 10 Sep 2018 09:49:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbcdorkvcqairb7wa3loakgqekemhusy@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b="G6COEL/m";
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SbAixAF+;
+       arc=pass (i=2 spf=pass spfdomain=gmail.com dkim=pass dkdomain=gmail.com dmarc=pass fromdomain=gmail.com);
+       spf=pass (google.com: domain of python-brasil+bncbcdorkvcqairb7wa3loakgqekemhusy@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCDORKVCQAIRB7WA3LOAKGQEKEMHUSY@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+ARC-Seal: i=2; a=rsa-sha256; t=1536598148; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=rhfHNeGvgRVIBusmbyvbpuDc/An+asx6ZwX2/ECGwa1MhGkqBerv2Z95ZNHA+2t0RA
+         eIVZMLBj3sHcOanP0HeLxnMEzLy97zyKekgMd97c3JCYFOL6CR9CmWNR2LvXU3Mbn+Ou
+         N0OPz/Z+aZyZ7uALPrFaRpacX05ttXyBbZPBxYsz6QE3aJYg390m0agIE8WHXkbc0Xa0
+         ZRNz8yXYV0HnnUTP3PlcrmvQiNvPQdWUQeEeK9bJyxaQaGAQ4ET5ewi6L8qMhE6sqzow
+         YLdsCdVsDE1m/4sbCO8bvdvMBbD8TJCjmBHQYqhT1xhppJbQSb1+WvQA7WTn50uoNuxe
+         R40w==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:mime-version:to:from
+         :importance:in-reply-to:subject:date:savedfromemail:message-id
+         :sender:dkim-signature:dkim-signature;
+        bh=+RnaoS4yhfweqkmzL0ISg/IsshAPBjLEtK6X1ZAoRy4=;
+        b=V0d5K4w1Xdk72amH8OajIjYcCUA4obUR4vhlfZu1zqfnhsByuWSGOEAI2DVkBKk3az
+         Yl8M2elzZEu4SWuw8Ex8CPmtioKRsUgIIl/42Cn/vX36rqaUAJldwd104k5cxKxSxtTl
+         SJtFkrwi3DaXjAq8omQIrl0Dgs+FXaq/TjwG+KjlhOK/UQBhDcHyJXUtnIy9ZNSipoXb
+         NKDOxGwFNntnqVDgADWdAHtLmmanckiWo8otrXHnSe7EgGXRzlscLux3G8cqsJwaAfrv
+         QsLs5Qserhs6ow5Nzez+tnQBMFCkS7bwRbvKnFZbBip4C+7l0rJ/MCRXnM0Xc94GSgba
+         AKLg==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uts3mqoV;
+       spf=pass (google.com: domain of pablo.mdi@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) smtp.mailfrom=pablo.mdi@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:message-id:savedfromemail:date:subject:in-reply-to
+         :importance:from:to:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:list-subscribe
+         :list-unsubscribe;
+        bh=+RnaoS4yhfweqkmzL0ISg/IsshAPBjLEtK6X1ZAoRy4=;
+        b=G6COEL/mPpoT5h5gbWdEMlbmtbwAy1aasOzBhEeJVoqoqvUehlI/mAAkv8kLV9Crj4
+         6mRoaXVTO3LtQVquU83ZLsOCsGwoDr8W3ohiRRKAcNQAu3WK0R6vJSyQ/kpZM+KR/ZfH
+         pFdh2kYhTf5GgjNYpu8bIoqdcZIMQoMjmKeC6AS1s3qIp9zoWkJGBcBOQrCvl4Woc+q/
+         NdKTBKlJ181CbIbZinSKH5w1MExUcx9f+hZrd1efkzUnf28fJn1R2tsAbQnkrZ21gZWr
+         FFKL4X/pecqMcbQpBS4vUjJOZqJVfMksKGOUrn6SkvPUdmh2a+oLE4YLjweL+1N5QuZM
+         eVow==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=message-id:savedfromemail:date:subject:in-reply-to:importance:from
+         :to:mime-version:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=+RnaoS4yhfweqkmzL0ISg/IsshAPBjLEtK6X1ZAoRy4=;
+        b=SbAixAF+zIIqBjZO7iZvKaDuwJ9lU/UgcP33qU6wdBSlJiyqBo16WCJtzYXaQrSkwp
+         OKmql8rzFb0jwVJLmfbenp8PkkkqfnPi6TA36LsCjDnLcr6kSjSWIGW+y8kzcPNQrpoB
+         uGQzLehVLvl2J8lC2kbOjB1VPQA+LQl4XbweIuqymPryODFgPDPT9ESOJm7RJe5uwpcB
+         3QrrC4e6QATACYdQ24XEZ/I1CkepoOlHVFrJD2p8pMNw8rY0w8nmc5QNOzaE/7FMk9WS
+         oaGxOTIl9y0v3phL/KH+N0JbpbjiKPIxl61xlJc+IfHqr2xW5UGsUbgxP54hqHP1RW6V
+         O7CA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:message-id:savedfromemail:date:subject
+         :in-reply-to:importance:from:to:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=+RnaoS4yhfweqkmzL0ISg/IsshAPBjLEtK6X1ZAoRy4=;
+        b=tpfvzcWBXR+812v96Dc6Kd8ctIaeC81cvNxV6MJ6w2o3AfGePBcEanWMHN4+6aNF7s
+         V7Hcil16WVp3RxJ55n8HpRVDvdXGhnrdyLGAJ/t19p+YDs1FVnQvAilpQa8EusMxKv8E
+         cAabX5I4yw1cI9qmO3rVn7uTbmla9EKt45WU3TLjiClexPLYQyPFRWiYTf1HayCVWAY2
+         J+GEegqUvysNyUL1H00B85VT30V5CuuiB52vZgLrvRwgFs+VEUD45fIq/Z7EK/4tfi7o
+         sxeWRfu4TPTmE1JrtJJJJQW3cF/Dpnc/caIlTST1J2v0vZ4zpxuFfy0BrBc4taXzGpOh
+         wJDA==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: APzg51Aa2lVJRgN2ENsWhy/3olIDiUOy8qBSYPTUsDWy8iNVmpcBR6bC
+	Mljv8cS404Cg4dtLYk7ystU=
+X-Google-Smtp-Source: ANB0VdaIrWPRzFUxTNNpczH0cDcm/UtVAWHdG9X3I9EM/Mj4umPEQiOHLoc7TPGHTX78xSPTk+ivdQ==
+X-Received: by 2002:a37:5c3:: with SMTP id 186-v6mr238028qkf.2.1536598148250;
+        Mon, 10 Sep 2018 09:49:08 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a0c:b486:: with SMTP id c6-v6ls5729852qve.10.gmail; Mon, 10
+ Sep 2018 09:49:01 -0700 (PDT)
+X-Received: by 2002:ad4:504b:: with SMTP id m11-v6mr7156635qvq.24.1536598141885;
+        Mon, 10 Sep 2018 09:49:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1536598141; cv=none;
+        d=google.com; s=arc-20160816;
+        b=V8dQwaJ7HjDnQ76aKuK9/F5fAz6bg6U5eMJ7QUqB73FM8nt0cR0mU1PwyZaQMZVzE8
+         eMF8GnvIDrEHsVg8EohyTn4/J/t7RATj5Z2x4buIMBZoyCYDigJbL5HE/uAyY4eLrPok
+         KXadLw43R7O2HUEAxVgCfvSYvtQltEouRDm6Pl0Ujtv8CBqgTkOkhmNgfH+bPsoB/naF
+         oUVoAD6RFRVALypNVd+XDE1uv0WfPuiqvf5qxG0XulTA+CciFgmDdNI4eObL9s6o2WM5
+         f2jOM1X2b8r9F75Ua3zVuhen9fkwLfD2XxCzGxvVRO7AJh5eXBuPT0hbXVa3CqpQwh8w
+         dphQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:to:from:importance:in-reply-to:subject:date
+         :savedfromemail:message-id:dkim-signature;
+        bh=1vq06YK1qIxeHc54dA5cpce4I/AZPeIJ2vUv98+dezw=;
+        b=pGhHabI+QCajEIkcMNyRmQmg5nFFMWHx66DPEUFgOVGI3LXeGJnf5zo2ki5wEYt+Fa
+         PDmxYIMMpNNv0hoeNJROKMTUAur9hoXv3NQcvS7lJ3dhSCmk7YmhdVSBls78t18ifXB3
+         uatvDN5l8LWmW4ygx8J8HXrncAy4bw8IbJxLzCIdaKI/gMIOA3/t5Yrq4H7O3JiehNKN
+         KHpmja9Z7uIaPbdzEcixcZLOUVFusNROm+PBQfVfPNeTNaJ3yXKf94dngs7bquKF4R79
+         GskrQWdS/pVLLeOD+YK1oDE4ZzQ1sUgCXSN3ju4iOZzCDpbclzC28xJ1Nhf5klYOsvYe
+         Kh0g==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uts3mqoV;
+       spf=pass (google.com: domain of pablo.mdi@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) smtp.mailfrom=pablo.mdi@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from mail-qt0-x242.google.com (mail-qt0-x242.google.com. [2607:f8b0:400d:c0d::242])
+        by gmr-mx.google.com with ESMTPS id z18-v6si637856qti.1.2018.09.10.09.49.01
+        for <python-brasil@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 10 Sep 2018 09:49:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pablo.mdi@gmail.com designates 2607:f8b0:400d:c0d::242 as permitted sender) client-ip=2607:f8b0:400d:c0d::242;
+Received: by mail-qt0-x242.google.com with SMTP id r37-v6so24961002qtc.0
+        for <python-brasil@googlegroups.com>; Mon, 10 Sep 2018 09:49:01 -0700 (PDT)
+X-Received: by 2002:a0c:eb06:: with SMTP id j6-v6mr15628956qvp.135.1536598140954;
+        Mon, 10 Sep 2018 09:49:00 -0700 (PDT)
+Received: from [10.23.152.29] ([201.39.147.27])
+        by smtp.gmail.com with ESMTPSA id v72-v6sm9396061qkb.84.2018.09.10.09.48.58
+        for <python-brasil@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 10 Sep 2018 09:48:59 -0700 (PDT)
+Message-ID: <5b96a07b.1c69fb81.30926.bb3e@mx.google.com>
+SavedFromEmail: pablo.mdi@gmail.com
+Date: Mon, 10 Sep 2018 13:48:52 -0300
+Subject: [python-brasil] coletar latitude e longitude do CEP
+In-Reply-To: <CAF+ADtJVhy2EpgJus2_5G08yCtgrXAa_HE8x1nTyb2UAC2vJ1A@mail.gmail.com>
+Importance: normal
+From: "pablo.mdi" <pablo.mdi@gmail.com>
+To: python-brasil@googlegroups.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="--_com.samsung.android.email_222117311683040"
+X-Original-Sender: pablo.mdi@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@gmail.com header.s=20161025 header.b=uts3mqoV;       spf=pass
+ (google.com: domain of pablo.mdi@gmail.com designates 2607:f8b0:400d:c0d::242
+ as permitted sender) smtp.mailfrom=pablo.mdi@gmail.com;       dmarc=pass
+ (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Spam-Checked-In-Group: python-brasil@googlegroups.com
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+----_com.samsung.android.email_222117311683040
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+
+Bom dia.
+H=C3=A1 apis do google, bing e openstreetmaps que te permitem extrair latit=
+ude e longitude a partir de um CEP. O problema a=C3=AD =C3=A9 que voc=C3=AA=
+ precisar=C3=A1 validar a resposta,=C2=A0 pois um CEP pode tanto te dar o c=
+odigo correto da rua, quanto o codigo de uma rodovia federal no Alaska ou o=
+ codigo de um endere=C3=A7o de alguma cidade no norte da Europa que tenha n=
+ome parecido, etc.
+
+Sent from my Samsung Galaxy smartphone.
+
+Senhores,
+estou=C2=A0buscando=C2=A0uma alternativa para coletar a latitude e longitud=
+e a partir do CEP.Conseguem=C2=A0me ajudar?
+
+--=20
+Vinicius Brito Rocha.
+Estat=C3=ADstico e Atu=C3=A1rio=C2=A0
+M.Sc. Engenharia de Produ=C3=A7=C3=A3o/POPh.D. Estudante Sistemas Computaci=
+onais
+
+
+
+
+
+
+--=20
+
+--=20
+
+------------------------------------
+
+Grupo Python-Brasil
+
+https://wiki.python.org.br/AntesDePerguntar
+
+=C2=A0
+
+<*> Para visitar o site do grupo na web, acesse:
+
+    http://groups.google.com/group/python-brasil
+
+=C2=A0
+
+<*> Para sair deste grupo, envie um e-mail para:
+
+    python-brasil+unsubscribe@googlegroups.com
+
+---=20
+
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo "Python =
+Brasil" dos Grupos do Google.
+
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+
+Para postar nesse grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+
+Para ver essa discuss=C3=A3o na Web, acesse https://groups.google.com/d/msg=
+id/python-brasil/CAJSzTee%2BcRkY1aMS9Ny_O0qpDuGCdzcY1U9Auk%2Bf191%3DG3bDYw%=
+40mail.gmail.com.
+
+Para mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout.
+
+
+
+--=20
+----------------------
+Andre Fonseca
+http://andrefonseca.net
+
+
+
+--=20
+
+--=20
+
+------------------------------------
+
+Grupo Python-Brasil
+
+https://wiki.python.org.br/AntesDePerguntar
+
+=C2=A0
+
+<*> Para visitar o site do grupo na web, acesse:
+
+    http://groups.google.com/group/python-brasil
+
+=C2=A0
+
+<*> Para sair deste grupo, envie um e-mail para:
+
+    python-brasil+unsubscribe@googlegroups.com
+
+---=20
+
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo "Python =
+Brasil" dos Grupos do Google.
+
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+
+Para postar nesse grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+
+Para ver essa discuss=C3=A3o na Web, acesse https://groups.google.com/d/msg=
+id/python-brasil/CAF%2BADtJVhy2EpgJus2_5G08yCtgrXAa_HE8x1nTyb2UAC2vJ1A%40ma=
+il.gmail.com.
+
+Para mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout.
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/5b96a07b.1c69fb81.30926.bb3e%40mx.google.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+----_com.samsung.android.email_222117311683040
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3DUTF-8"></head><body><div><br></div><div><div>Bom dia.</div><div><br></di=
+v><div>H=C3=A1 apis do google, bing e openstreetmaps que te permitem extrai=
+r latitude e longitude a partir de um CEP. O problema a=C3=AD =C3=A9 que vo=
+c=C3=AA precisar=C3=A1 validar a resposta,&nbsp; pois um CEP pode tanto te =
+dar o codigo correto da rua, quanto o codigo de uma rodovia federal no Alas=
+ka ou o codigo de um endere=C3=A7o de alguma cidade no norte da Europa que =
+tenha nome parecido, etc.</div></div><div><br></div><div><br></div><div id=
+=3D"composer_signature"><div style=3D"font-size:85%;color:#575757" dir=3D"a=
+uto">Sent from my Samsung Galaxy smartphone.</div></div><div><br></div><div=
+ style=3D"font-size:100%;color:#000000"><!-- originalMessage --><div><br></=
+div></div><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" styl=
+e=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div di=
+r=3D"ltr">Senhores,<div><br></div><div>estou&nbsp;buscando&nbsp;uma alterna=
+tiva para coletar a latitude e longitude a partir do CEP.</div><div>Consegu=
+em&nbsp;me ajudar?<br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr" =
+class=3D"m_1003798888102489958gmail_signature" data-smartmail=3D"gmail_sign=
+ature"><div dir=3D"ltr"><i><b>Vinicius Brito Rocha.</b></i><br><i>Estat=C3=
+=ADstico e Atu=C3=A1rio&nbsp;</i><i><br>M.Sc. Engenharia de Produ=C3=A7=C3=
+=A3o/PO</i><div><i>Ph.D. Estudante Sistemas Computacionais<br></i><br><br><=
+/div></div></div></div></div>
+
+<p></p>
+
+-- <br>
+-- <br>
+------------------------------------<br>
+Grupo Python-Brasil<br>
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar" target=3D"_blank">h=
+ttps://wiki.python.org.br/AntesDePerguntar</a><br>
+&nbsp;<br>
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br>
+    <a href=3D"http://groups.google.com/group/python-brasil" target=3D"_bla=
+nk">http://groups.google.com/group/python-brasil</a><br>
+&nbsp;<br>
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br>
+    <a href=3D"mailto:python-brasil%2Bunsubscribe@googlegroups.com" target=
+=3D"_blank">python-brasil+unsubscribe@googlegroups.com</a><br>
+--- <br>
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo "Python =
+Brasil" dos Grupos do Google.<br>
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com" target=3D"_blank">python-brasil+unsubscribe@googlegroups.com</a=
+>.<br>
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com" target=3D"_blank">python-brasil@googlegroups.com</a>.<=
+br>
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/CAJSzTee%2BcRkY1aMS9Ny_O0qpDuGCdzcY1U9Auk%2Bf19=
+1%3DG3bDYw%40mail.gmail.com?utm_medium=3Demail&amp;utm_source=3Dfooter" tar=
+get=3D"_blank">https://groups.google.com/d/msgid/python-brasil/CAJSzTee%2Bc=
+RkY1aMS9Ny_O0qpDuGCdzcY1U9Auk%2Bf191%3DG3bDYw%40mail.gmail.com</a>.<br>
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout" target=3D"_blank">https://groups.google.com/d/optout</a>.<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr">-------=
+---------------<br>Andre Fonseca<br><a href=3D"http://andrefonseca.net" tar=
+get=3D"_blank">http://andrefonseca.net</a></div></div>
+
+<p></p>
+
+-- <br>
+-- <br>
+------------------------------------<br>
+Grupo Python-Brasil<br>
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br>
+&nbsp;<br>
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br>
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br>
+&nbsp;<br>
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br>
+    python-brasil+unsubscribe@googlegroups.com<br>
+--- <br>
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo "Python =
+Brasil" dos Grupos do Google.<br>
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br>
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br>
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/CAF%2BADtJVhy2EpgJus2_5G08yCtgrXAa_HE8x1nTyb2UA=
+C2vJ1A%40mail.gmail.com?utm_medium=3Demail&amp;utm_source=3Dfooter">https:/=
+/groups.google.com/d/msgid/python-brasil/CAF%2BADtJVhy2EpgJus2_5G08yCtgrXAa=
+_HE8x1nTyb2UAC2vJ1A%40mail.gmail.com</a>.<br>
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br>
+</body></html>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/5b96a07b.1c69fb81.30926.bb3e%40mx.google.com?ut=
+m_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/d/msgid/pyt=
+hon-brasil/5b96a07b.1c69fb81.30926.bb3e%40mx.google.com</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+----_com.samsung.android.email_222117311683040--
+

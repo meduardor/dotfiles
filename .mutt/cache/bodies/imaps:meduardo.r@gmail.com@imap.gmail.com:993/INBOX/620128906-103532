@@ -1,0 +1,409 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:5611:0:0:0:0:0 with SMTP id l17-v6csp1095581wrv;
+        Wed, 29 Aug 2018 14:13:58 -0700 (PDT)
+X-Received: by 2002:a63:5358:: with SMTP id t24-v6mr6916777pgl.208.1535577238306;
+        Wed, 29 Aug 2018 14:13:58 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1535577238; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=NmrtDK7WeeIYzxrd0DAf5SEM7g2EosCLQ9N0hTk46weVdnhVM11ChmzRro+lhGMj8c
+         +9GjUIDTA7RgrlThn2Y3KJP8n/CNNpd5q/Nh0VN9dJjffINlbt7NKISqYGCC38CGpQ3b
+         9tVvB4CoZQmLs0KUqjrxNjn72w6qoca4Qg8qDLjnSXsu5PcdNK5hPbGi1J5IL/cFOCtw
+         f9EAloBnPSgLD5g1f9KfZp1XS2c9eNt7Oq2nEOd8oXndifq4gEo0NUQGOS64pQpp3CU2
+         NE1ZKAvD1Y5JJLSVcDpR/H47bI+BR74hLeVzR7T8AYSs+p4RZLVihuU3Nv6FdZQ7PlET
+         Sfyg==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:to:subject:message-id:date
+         :from:mime-version:arc-authentication-results:arc-message-signature
+         :sender:dkim-signature:arc-authentication-results
+         :arc-message-signature:arc-authentication-results;
+        bh=P0WOJpXLSWVYHTJtPTYJVQF76cdqFkcaxqc6YVNlU2o=;
+        b=fFTYBxPegldunIAUB9yRNSIIlA+v0uhZMdeicgTse6fC3Lb4tXYfvhcJw62A4b7jva
+         2+6Hh7KecjwnhX6DMjSJct62mCUhQpFoPidmYxXRcriQIvyw05jxoV3gLjdgF8u+izk5
+         ScGKh3xycfU5oZMPZP63jgoy5DvUaQPErH85EbCcgWpbV2y0PZrkY6W4IBVnT7n0dsl9
+         9DsOB60mvWAppRrYdh69AwOzmKtpypfIwPl3LT8L6NQ2fjJBFea4ejDm6DbGQZ3uBtZq
+         T0zOgx/JGWBaJkMlfj5PCeG+uuQxqGj3W0dTGpsjXVSlnJFRQfhwj5xtRjEgZGX5mEl4
+         2OCg==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b="mkA/+tdl";
+       arc=pass (i=2 dkim=pass dkdomain=beblue-com-br.20150623.gappssmtp.com);
+       spf=pass (google.com: domain of python-brasil+bncbc7k5q4m44cbbd4zttoakgqegk2wk2y@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBC7K5Q4M44CBBD4ZTTOAKGQEGK2WK2Y@googlegroups.com
+Return-Path: <python-brasil+bncBC7K5Q4M44CBBD4ZTTOAKGQEGK2WK2Y@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id bj3-v6sor1318020plb.7.2018.08.29.14.13.57
+        (Google Transport Security);
+        Wed, 29 Aug 2018 14:13:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbc7k5q4m44cbbd4zttoakgqegk2wk2y@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b="mkA/+tdl";
+       arc=pass (i=2 dkim=pass dkdomain=beblue-com-br.20150623.gappssmtp.com);
+       spf=pass (google.com: domain of python-brasil+bncbc7k5q4m44cbbd4zttoakgqegk2wk2y@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBC7K5Q4M44CBBD4ZTTOAKGQEGK2WK2Y@googlegroups.com
+ARC-Seal: i=2; a=rsa-sha256; t=1535577237; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=rJTIWIhXvCeJ2sD7+HWCl35llMNCCIp2nXV935gmD+ebCDA0qTew5Is9giYLhBlc/d
+         NRDxkkTCrF5vnFaN3M/OE8YgqkeLps4CsMlge7JBVOK6l8jezRnobleEpLrrhQVj4IdU
+         he3dwJN1iJjv57PHzXzUBQm139SVkCcNRXurd518HV7T13c7dqEldGjWwVagkY/6TXIk
+         vZcImo+PMzTPSVyq6T4QSSWj+IfGzBb0jRteRv2uxZkkonYatcwK6f2oyJolH1vffpV7
+         v1AQIM61PrJmXAkWpFaj8+8llfTxd9D83DurpN8aeVrQzKuzqEQm+UKLFTVKBRtSaCNQ
+         i4Eg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:to:subject:message-id:date
+         :from:mime-version:arc-authentication-results:arc-message-signature
+         :sender:dkim-signature:arc-authentication-results;
+        bh=P0WOJpXLSWVYHTJtPTYJVQF76cdqFkcaxqc6YVNlU2o=;
+        b=D5iskHDFDFP1IEi0OZQmR0gJ/arToQy4G0cpu9F+vtWveMVjA2y/tj8mMFElS/OXV4
+         E9fRAK8UGzFG3/lgUtWQLtdTppCvNBuHykF1jcaBhlFo1rVmnzRc9L2MPm/F1dtya5mw
+         dMu6MW1hGxpcqojwJ1if2t/K1yKh58l/eATANV7N6p2HM/NNWjaRWWHK+1wLvwmEhoj0
+         lkllE6d2AKgo/PjqUlJU3hm3ZXcyGp0k9mUmN4V6Pry4RfVXWR6Upu8gnnd/vgPABjZr
+         d/dM6BCcXGb+HyZy+NM8n2tzxtySBCPKPjs/VyAofTuLR6kOExON6pO0mIqsPIEuY+jU
+         VC5Q==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@beblue-com-br.20150623.gappssmtp.com header.s=20150623 header.b=kDXkh0iD;
+       spf=neutral (google.com: 2607:f8b0:400d:c0d::22c is neither permitted nor denied by best guess record for domain of tatiane.lima@beblue.com.br) smtp.mailfrom=tatiane.lima@beblue.com.br
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:mime-version:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=P0WOJpXLSWVYHTJtPTYJVQF76cdqFkcaxqc6YVNlU2o=;
+        b=mkA/+tdl6UP8j3pLcbc/M4FEBShlNT86lgLxw1HzPSW9lpeY77DnGHLvTmLu6ql7bG
+         7YRhzr0P8pe/mYr6tnboQ2ThHP7m+16S6+6qi5ALBkcapXPDKyXu4ejNsQW/gTBlPnQu
+         hehVAmKvOFhgwnmyt5+wlx+Xwe3NPoL1D/93Cj0CGiAk2P9dZ0TAslAr3ZWO0b2w6o40
+         gTSCU9sUnIczm2waszuVDpt7hX6Pm/yjCQ0Q8+EjL6rhcrgQRA1eSqbbtD/3YnwHn8jW
+         Wc6lMzR/Hdo4C+D/p9XGhl7Nd7WvXGfTqdRohW3r+T7gMJoN5K9an6nNg6y6Xjt5jWmI
+         GpmA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:mime-version:from:date:message-id:subject
+         :to:x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=P0WOJpXLSWVYHTJtPTYJVQF76cdqFkcaxqc6YVNlU2o=;
+        b=nsamatBSVWB+nFtZflmISiosuUZv5g7qxvo9hdrid1juasc6FSoxETr7vuqZhO3lXi
+         iB8FS1rjnBPdAej48Pm2uNlEzUzkTwDPGxwvi434WN9kppSWG+ivLDcVg8SYgDLRKiI5
+         Xzev7ZDfWCF2RkeCg9a9Mx/lNmouDCXKFoO8WZ2LXRijyGDFFDfOKo4LOBGrG98BKmNx
+         e5675MATWjumDqp2np4sbsmuttTecZuLzeaMEiG5gdhh9qQaHG47aOqVHKfxdSNMO/03
+         eZ8eqcfJGQ06kkXoYIEcxkDcdJuDiJILNUFvYUkgdKoOrK8J2xt2WhuOfjrnP0Hcoo7t
+         HZNA==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: APzg51CjsG1x12K3rSMF/JLAL3mbNFUn+CoC8Mrxd/P6gR6NJFb7hwZT
+	T5MmnW4O/+JtVdbJ5BvemAQ=
+X-Google-Smtp-Source: ANB0Vdb+Vnz9bcGodFzsJKl0ArpoVWY6Dk89u2Zo0GRNNipDDDsELK20ttgip1bt5s1NgaZJbahN1w==
+X-Received: by 2002:a17:902:7881:: with SMTP id q1-v6mr29846pll.4.1535577237684;
+        Wed, 29 Aug 2018 14:13:57 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a17:902:7618:: with SMTP id k24-v6ls1914083pll.12.gmail;
+ Wed, 29 Aug 2018 14:13:51 -0700 (PDT)
+X-Received: by 2002:a17:902:501:: with SMTP id 1-v6mr2223606plf.57.1535577231044;
+        Wed, 29 Aug 2018 14:13:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535577231; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ppk8DuReKvgbB1Fou5Sb0yFuQzvlT+L4cred94g33I/UHjFGyGYygO1mN7DZkafdwb
+         lMwsGgiCaTAkWBoiNFhRuqq3hnnSSwZBypSuw3RkM/ETRf8ssQvoNCOfDkLHYTelH4mI
+         fiLVLhKz6Q+KG5ITzEYn4400bKwkGUDCrxuKq/h3oQ8aHiuLAVSi+25AJNdpE9ME9eZe
+         qEW2cF22lC8aB4uKdi04Xfgo17tHvrvOLFTDdBipb2a9ui8BFRDnGnS0D0rYYM4ODpFE
+         H4tO3Wq6m5JT3sPMXmZH9/VQBUGILknxRxht0PLdlWYa0m4I02Q/5jmmYVdZVIm/ZDS6
+         IHVg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=uhc/5nQ4S+6Ij6gaEqz2axXQabVXSgxpEeh80GBV/kk=;
+        b=NFDxrgRzYxKH0MyZ40F4OMODMd5XPp+KCgIDoQC23EphInHK4G88GN/23GoYGLAhNA
+         xn1XDaQ0uRg+e9ezdzNt370ROEfJ7XwF3hXBSiknXKSrNh553mI4vWaHSgCWtWiMFKgA
+         huxodU+ZGXty8Qg/hxAop3nvt3n3pA27PN8SRMDgHC+gVuwxE4mhFjayDZZ7NP7uaemv
+         T24JrbwHguoRxjAutfTkgNvpfjsVcrqHh1a5VWcq6AXUbGjZmgalh78IRtQbTqX/rSnY
+         gh6Pi47hfU3jnMEZL5IQHLTi06HguZKOEx/vW3dP6Jc2G1MPBQ5XnmuKVuNfGzDqFQsu
+         APjQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@beblue-com-br.20150623.gappssmtp.com header.s=20150623 header.b=kDXkh0iD;
+       spf=neutral (google.com: 2607:f8b0:400d:c0d::22c is neither permitted nor denied by best guess record for domain of tatiane.lima@beblue.com.br) smtp.mailfrom=tatiane.lima@beblue.com.br
+Received: from mail-qt0-x22c.google.com (mail-qt0-x22c.google.com. [2607:f8b0:400d:c0d::22c])
+        by gmr-mx.google.com with ESMTPS id y7-v6si168904pfe.1.2018.08.29.14.13.50
+        for <python-brasil@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 29 Aug 2018 14:13:50 -0700 (PDT)
+Received-SPF: neutral (google.com: 2607:f8b0:400d:c0d::22c is neither permitted nor denied by best guess record for domain of tatiane.lima@beblue.com.br) client-ip=2607:f8b0:400d:c0d::22c;
+Received: by mail-qt0-x22c.google.com with SMTP id t5-v6so7513081qtn.3
+        for <python-brasil@googlegroups.com>; Wed, 29 Aug 2018 14:13:50 -0700 (PDT)
+X-Received: by 2002:a0c:e885:: with SMTP id b5-v6mr8511924qvo.52.1535577229952;
+ Wed, 29 Aug 2018 14:13:49 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 2002:ac8:ac7:0:0:0:0:0 with HTTP; Wed, 29 Aug 2018 14:13:49 -0700 (PDT)
+From: Tatiane Lima <tatiane.lima@beblue.com.br>
+Date: Wed, 29 Aug 2018 18:13:49 -0300
+Message-ID: <CAPvd6=OYSW_rzYKK_Dz2tFtYUsxoRWxGRpH76Wvmrs6Sr70JfQ@mail.gmail.com>
+Subject: =?UTF-8?Q?=5Bpython=2Dbrasil=5D_Oportunidade_=2D_Desenvolvedor_Python_?=
+	=?UTF-8?Q?=2D_Ribeir=C3=A3o_Preto=2FSP?=
+To: python-brasil@googlegroups.com
+Content-Type: multipart/alternative; boundary="000000000000511d6d0574996ff3"
+X-Original-Sender: tatiane.lima@beblue.com.br
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@beblue-com-br.20150623.gappssmtp.com header.s=20150623
+ header.b=kDXkh0iD;       spf=neutral (google.com: 2607:f8b0:400d:c0d::22c is
+ neither permitted nor denied by best guess record for domain of
+ tatiane.lima@beblue.com.br) smtp.mailfrom=tatiane.lima@beblue.com.br
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Spam-Checked-In-Group: python-brasil@googlegroups.com
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+--000000000000511d6d0574996ff3
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+*Desenvolvedor Python Pleno*
+
+
+*Requisitos:*
+
+
+Ter experi=C3=AAncia como desenvolvedor Python
+Ser=C3=A1 um diferencial ter atuado com Flask
+Banco de dados SQL
+Arquitetura Rest
+Conhecimentos em micro servi=C3=A7os
+Ser=C3=A1 um diferencial ter experi=C3=AAncia com Docker e AWS
+
+*Sobre a empresa: *
+*BEBLUE - **O Beblue =C3=A9 um aplicativo de cashback. E o que =C3=A9 cashb=
+ack? =C3=89 o
+seu dinheiro de volta!*
+
+Somos uma das maiores Fintechs do Brasil. Sendo uma plataforma de pagamento
+e fideliza=C3=A7=C3=A3o em constante crescimento e uma oportunidade incr=C3=
+=ADvel para
+profissionais de produto, design e tecnologia justamente porque utilizamos
+tecnologias mais avan=C3=A7adas e um processo de descoberta e melhoria cont=
+=C3=ADnua.
+
+*Cidade: *Ribeir=C3=A3o Preto/SP - Necess=C3=A1rio residir na regi=C3=A3o o=
+u ter
+disponibilidade para mudan=C3=A7a.
+
+*Para se candidatar, por gentileza encaminhar cv para: *
+tatiane.lima@beblue.com.br e mencionar no assunto o t=C3=ADtulo da vaga.
+
+Obrigada!
+
+--=20
+
+*Tatiane Lima *
+Analista de Recrutamento & Sele=C3=A7=C3=A3o
+
+Contato: 11  - 99301-4965 / Skype: Tatiane_selecao
+
+E-mail: tatiane.lima@beblue.com.br <lilian.tavares@beblue.com.br>
+Cidade: S=C3=A3o Paulo - SP
+
+Beblue Brasil
+Seu dinheiro de volta!
+
+Rua dos Pinheiros, 870 - 3=C2=B0 andar - SP
+beblue.com.br <http://www.beblue.com.br/>
+
+--=20
+*Aviso Legal: Esta mensagem e seu conte=C3=BAdo s=C3=A3o dedicados exclusiv=
+amente=20
+para seu(s) destinat=C3=A1rio(s), podendo conter informa=C3=A7=C3=B5es conf=
+idenciais e/ou=20
+legalmente privilegiadas. Qualquer modifica=C3=A7=C3=A3o, retransmiss=C3=A3=
+o,=20
+dissemina=C3=A7=C3=A3o, impress=C3=A3o ou utiliza=C3=A7=C3=A3o n=C3=A3o aut=
+orizada fica estritamente=20
+proibida. Se voc=C3=AA recebeu esta mensagem por engano, por favor, informe=
+ o=20
+remetente e delete o material e as c=C3=B3pias de seu equipamento.*
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/CAPvd6%3DOYSW_rzYKK_Dz2tFtYUsxoRWxGRpH76Wvmrs6Sr70JfQ%40ma=
+il.gmail.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+--000000000000511d6d0574996ff3
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_default" style=3D"font-family:verdana,=
+sans-serif">
+
+<div class=3D"gmail_default" style=3D"font-size:12.8px;background-color:rgb=
+(255,255,255);text-decoration-style:initial;text-decoration-color:initial">=
+<div class=3D"gmail_default" style=3D"font-family:arial,sans-serif;font-siz=
+e:small;text-decoration-style:initial;text-decoration-color:initial"><font =
+face=3D"arial, helvetica, sans-serif"><b>Desenvolvedor Python Pleno<br styl=
+e=3D"background-color:rgb(255,255,255);text-decoration-style:initial;text-d=
+ecoration-color:initial"></b></font><p class=3D"MsoNormal" style=3D"margin:=
+0cm 0cm 0.0001pt;text-align:justify;line-height:14.95px"><br></p><p class=
+=3D"MsoNormal" style=3D"margin:0cm 0cm 0.0001pt;line-height:14.95px"><b><sp=
+an style=3D"line-height:14.95px"><font face=3D"arial, helvetica, sans-serif=
+">Requisitos:</font></span></b></p><ol start=3D"1" type=3D"1" style=3D"marg=
+in-top:0cm;margin-bottom:0cm"></ol><div class=3D"gmail_default"><font face=
+=3D"arial, helvetica, sans-serif">Ter experi=C3=AAncia como desenvolvedor P=
+ython</font></div><div class=3D"gmail_default"><font face=3D"arial, helveti=
+ca, sans-serif">Ser=C3=A1 um diferencial ter atuado com Flask=C2=A0</font><=
+/div><div class=3D"gmail_default"><font face=3D"arial, helvetica, sans-seri=
+f">Banco de dados SQL=C2=A0</font></div><div class=3D"gmail_default"><font =
+face=3D"arial, helvetica, sans-serif">Arquitetura Rest</font></div><div cla=
+ss=3D"gmail_default"><font face=3D"arial, helvetica, sans-serif">Conhecimen=
+tos em micro servi=C3=A7os</font></div><div class=3D"gmail_default"><font f=
+ace=3D"arial, helvetica, sans-serif">Ser=C3=A1 um diferencial ter experi=C3=
+=AAncia com Docker e AWS</font></div><div class=3D"gmail_default"><b><font =
+face=3D"arial, helvetica, sans-serif"><br></font></b></div></div><div class=
+=3D"gmail_default" style=3D"font-family:arial,sans-serif;font-size:small;te=
+xt-decoration-style:initial;text-decoration-color:initial"><b><font face=3D=
+"arial, helvetica, sans-serif">Sobre a empresa:=C2=A0</font></b></div><div =
+class=3D"gmail_default" style=3D"font-family:arial,sans-serif;font-size:sma=
+ll;text-decoration-style:initial;text-decoration-color:initial"><font face=
+=3D"arial, helvetica, sans-serif"><b>BEBLUE -=C2=A0</b><b style=3D"color:rg=
+b(0,0,0);text-align:justify"><span style=3D"color:rgb(0,32,96)">O=C2=A0<spa=
+n class=3D"gmail-m_-4032134255574750730gmail-il">Beblue</span>=C2=A0=C3=A9 =
+um aplicativo de cashback.=C2=A0E o que =C3=A9 cashback? =C3=89 o seu dinhe=
+iro de volta!</span></b></font><p class=3D"gmail-m_-4032134255574750730gmai=
+l-m_-8727825720906574735gmail-m_3456466417571555125gmail-m_1112715938320136=
+134gmail-m_-3814893447927811961m_643458203087559219x_MsoNormal" style=3D"ba=
+ckground:white;text-decoration-style:initial;text-decoration-color:initial;=
+color:rgb(0,0,0);margin:0cm 0cm 0.0001pt;text-align:justify;line-height:nor=
+mal"><span style=3D"color:rgb(0,32,96)"><font face=3D"arial, helvetica, san=
+s-serif">Somos uma das maiores Fintechs do Brasil. Sendo uma plataforma de =
+pagamento e fideliza=C3=A7=C3=A3o em constante crescimento e uma oportunida=
+de incr=C3=ADvel para profissionais de produto, design e tecnologia justame=
+nte porque utilizamos tecnologias mais avan=C3=A7adas e um processo de desc=
+oberta e melhoria cont=C3=ADnua.</font></span></p></div><div class=3D"gmail=
+_default" style=3D"font-family:arial,sans-serif;font-size:small;text-decora=
+tion-style:initial;text-decoration-color:initial"><font face=3D"arial, helv=
+etica, sans-serif"><br></font></div><div class=3D"gmail_default" style=3D"f=
+ont-family:arial,sans-serif;font-size:small;text-decoration-style:initial;t=
+ext-decoration-color:initial"><font face=3D"arial, helvetica, sans-serif"><=
+b>Cidade:<span>=C2=A0</span></b>Ribeir=C3=A3o Preto/SP - Necess=C3=A1rio re=
+sidir na regi=C3=A3o ou ter disponibilidade para mudan=C3=A7a.=C2=A0<br sty=
+le=3D"background-color:rgb(255,255,255);text-decoration-style:initial;text-=
+decoration-color:initial"><br clear=3D"all"></font></div><div class=3D"gmai=
+l_default" style=3D"font-family:arial,sans-serif;font-size:small;text-decor=
+ation-style:initial;text-decoration-color:initial"><font face=3D"arial, hel=
+vetica, sans-serif"><b>Para se candidatar, por gentileza encaminhar cv para=
+:<span>=C2=A0</span></b><a href=3D"mailto:tatiane.lima@beblue.com.br" targe=
+t=3D"_blank" style=3D"color:rgb(17,85,204)">tatiane.lima@beblue.com.br</a><=
+span>=C2=A0</span>e mencionar no assunto o t=C3=ADtulo da vaga.</font></div=
+><div class=3D"gmail_default" style=3D"font-family:arial,sans-serif;font-si=
+ze:small;text-decoration-style:initial;text-decoration-color:initial"><font=
+ face=3D"arial, helvetica, sans-serif"><br></font></div><div class=3D"gmail=
+_default" style=3D"font-family:arial,sans-serif;font-size:small;text-decora=
+tion-style:initial;text-decoration-color:initial"><font face=3D"arial, helv=
+etica, sans-serif">Obrigada!</font></div><div class=3D"gmail_default" style=
+=3D"font-family:arial,sans-serif;font-size:small;text-decoration-style:init=
+ial;text-decoration-color:initial"><font face=3D"arial, helvetica, sans-ser=
+if"><br></font></div></div></div>-- <br><div class=3D"gmail_signature" data=
+-smartmail=3D"gmail_signature"><div dir=3D"ltr"><div><div dir=3D"ltr"><div =
+style=3D"font-size:12.8px;padding-bottom:4px"><p style=3D"margin:0cm 0cm 0.=
+0001pt;line-height:12.75pt;background-image:initial;background-position:ini=
+tial;background-repeat:initial"><b><span style=3D"font-size:10.5pt;font-fam=
+ily:&quot;Arial&quot;,sans-serif;color:#1f68c1">Tatiane
+Lima=C2=A0</span></b><span style=3D"font-size:9.5pt;font-family:Arial,sans-=
+serif"><br>
+</span><span style=3D"font-size:9.0pt;font-family:&quot;Arial&quot;,sans-se=
+rif;color:#7b8994">Analista
+de Recrutamento &amp; Sele=C3=A7=C3=A3o</span></p><p style=3D"margin:0cm 0c=
+m 0.0001pt;line-height:12.75pt;background-image:initial;background-position=
+:initial;background-repeat:initial"><span style=3D"font-size:9.0pt;font-fam=
+ily:&quot;Arial&quot;,sans-serif;color:#7b8994">Contato:
+11=C2=A0 - 99301-4965 / Skype: Tatiane_selecao</span><span style=3D"font-si=
+ze:9.5pt;font-family:Arial,sans-serif"></span></p><p style=3D"font-family:s=
+ans-serif;line-height:17px">
+
+
+
+</p><p style=3D"margin:0cm 0cm 0.0001pt;line-height:12.75pt;background-imag=
+e:initial;background-position:initial;background-repeat:initial"><span styl=
+e=3D"font-size:9.0pt;font-family:&quot;Arial&quot;,sans-serif;color:#7b8994=
+">E-mail:=C2=A0</span><span style=3D"font-size:9.0pt;font-family:&quot;Aria=
+l&quot;,sans-serif;color:#008cff"><a href=3D"mailto:lilian.tavares@beblue.c=
+om.br" target=3D"_blank"><span style=3D"color:#1155cc">tatiane.lima@beblue.=
+com.br</span></a></span><span style=3D"font-size:9.5pt;font-family:Arial,sa=
+ns-serif"><br>
+</span><span style=3D"font-size:9.0pt;font-family:&quot;Arial&quot;,sans-se=
+rif;color:#7b8994">Cidade:
+S=C3=A3o Paulo - SP</span><span style=3D"font-size:9.5pt;font-family:Arial,=
+sans-serif"></span></p></div><div style=3D"font-size:medium;font-family:&qu=
+ot;Times New Roman&quot;;color:rgb(0,0,0)"><div style=3D"float:left;width:1=
+00px;height:auto"><img src=3D"https://beblue.com.br/img/logo_email.png" wid=
+th=3D"80" height=3D"80"></div><div style=3D"vertical-align:top"><p style=3D=
+"font-family:sans-serif;font-size:12px;color:rgb(123,137,148);line-height:1=
+6px"><span style=3D"font-size:14px;color:rgb(31,104,193);font-weight:bold">=
+Beblue Brasil</span><br>Seu dinheiro de volta!<br><br>Rua dos Pinheiros, 87=
+0 - 3=C2=B0 andar - SP<br><a href=3D"http://www.beblue.com.br/" style=3D"co=
+lor:rgb(0,140,255)" target=3D"_blank">beblue.com.br</a></p></div></div></di=
+v></div></div></div>
+</div>
+
+<br>
+<span style=3D"color:rgb(34,34,34);font-family:arial,sans-serif"><span styl=
+e=3D"font-family:Arial,sans-serif;color:gray"><font size=3D"1"><i>Aviso Leg=
+al: Esta mensagem e seu conte=C3=BAdo s=C3=A3o dedicados exclusivamente par=
+a seu(s) destinat=C3=A1rio(s), podendo conter informa=C3=A7=C3=B5es confide=
+nciais e/ou legalmente privilegiadas. Qualquer modifica=C3=A7=C3=A3o, retra=
+nsmiss=C3=A3o, dissemina=C3=A7=C3=A3o, impress=C3=A3o ou utiliza=C3=A7=C3=
+=A3o n=C3=A3o autorizada fica estritamente proibida. Se voc=C3=AA recebeu e=
+sta mensagem por engano, por favor, informe o remetente e delete o material=
+ e as c=C3=B3pias de seu equipamento.</i></font></span></span>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/CAPvd6%3DOYSW_rzYKK_Dz2tFtYUsxoRWxGRpH76Wvmrs6S=
+r70JfQ%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://gro=
+ups.google.com/d/msgid/python-brasil/CAPvd6%3DOYSW_rzYKK_Dz2tFtYUsxoRWxGRpH=
+76Wvmrs6Sr70JfQ%40mail.gmail.com</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+--000000000000511d6d0574996ff3--

@@ -1,0 +1,68 @@
+## Nome do Usuario 
+
+set from = "meduardo.r@gmail.com"
+set realname = "Marco Eduardo"
+set imap_user = "meduardo.r@gmail.com"
+set imap_pass = "Marco#@!" 
+
+## Grupos
+
+#alternates -group me meduardo.r@gmail.com meduardo.r@outlook.com
+
+
+## Alias
+
+alias tayG taynaferreira1991@gmail.com
+alias tayO anyatferreira@outlook.com
+
+alias monG podernassuasmaos@gmail.com
+alias monH podernassuasmaos@hotmail.com
+
+
+## Editor
+
+set editor = 'vim'
+
+
+## Remote Folders
+
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Google Mail]/Drafts"
+set trash = "+[Google Mail]/Trash"
+
+## SMTP
+
+set smtp_url = "smtp://meduardo.r@smtp.gmail.com:587/"
+set smtp_pass = "Marco#@!"
+
+## Local Folders
+
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates 
+
+
+## Segurança
+
+set move = no
+set imap_keepalive = 500
+
+## Sort 
+
+set sort = reverse-threads
+set sort_aux = last-date-received
+
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+## Colors
+
+#source ~/.mutt/.colors
+source ~/.mutt/.colors_solarized
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:5611:0:0:0:0:0 with SMTP id l17-v6csp1350015wrv;
+        Wed, 29 Aug 2018 20:19:05 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdZQrYgmUPWW9o+EyU2UtoE4EG+pXE4pJ0v6yAE0OCL7QvxGL6P5cuqR9Y9+QSIOC307Jvfw
+X-Received: by 2002:a17:902:6f10:: with SMTP id w16-v6mr8299512plk.216.1535599145877;
+        Wed, 29 Aug 2018 20:19:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535599145; cv=none;
+        d=google.com; s=arc-20160816;
+        b=o2+0gho7mWo8790EZAZtDGBjqxYtrbdQ6Vk+oiHBi4A4oHb+DQzvaTMCRFeJ4MXJmM
+         ANtyOaNrnIA7BcN3DoyVgfroWt4v2N9joId0nEAgx0oaj/pBuC70v58dogtxlMJrHwWS
+         aiCpClMinBxqYw52V2U4P6ZOH0//cvC63LusmwJk1SsZw7DobHxYEuEAFDOihxg8oE2k
+         sJLbAHf76RTkK6DE3OSt7ArOHlS/K+mTlMlKYbHjoox7hGOhz/Cv7LwdIYZKJxOQT+KE
+         BAGmZmahKeS4Uix7ZZzJVyq3BLzZ688jUqST1bYcgbLHGJZDx0I4j5vyLp1JhvqdLUx3
+         N7PQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:subject:message-id:to
+         :reply-to:from:date:dkim-signature:arc-authentication-results;
+        bh=HnlAzIloRLmfmlYqkLdsP/K1fJILGBBhCutpbECJd3s=;
+        b=EZfp5K40tJu5RRDYd2WPEoIM+WRXAWOP3FOi9E6tf9fPeosTzskUgWIHuDLH8BYohW
+         7E3GOWzSocJ/L0n0CvPlJln7BsWo2vdqmHZjC8QTtbLiPg2D/CAnGLG1xdzbnpdhbcgh
+         ZfjnsjARVevqOWJzqznHQgC0gXuZY6rpiDczH0NSF4HMmxhnVdXixewCueEoRtoelwjm
+         SSot1zPa1iaG+FaqhZQb5Ff53lTX+lssJVNoN4dR52p+VNOx8VzkyQJ7poSPBg4pLwDH
+         lecjxU1EZqkJ1xHbhIKHp2NVEGiSGibAKkdJf8cPad59NHcO/qh3m92iyrSTMEKaTjwB
+         wEpw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@diasporabr.com.br header.s=diasporabr.com.br header.b=shzInNx6;
+       spf=neutral (google.com: 64.90.62.162 is neither permitted nor denied by best guess record for domain of admin@diasporabr.com.br) smtp.mailfrom=admin@diasporabr.com.br
+Return-Path: <admin@diasporabr.com.br>
+Received: from pdx1-sub0-mail-a17.g.dreamhost.com (pop.dreamhost.com. [64.90.62.162])
+        by mx.google.com with ESMTPS id m39-v6si5343028plg.486.2018.08.29.20.19.05
+        for <meduardo.r@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 29 Aug 2018 20:19:05 -0700 (PDT)
+Received-SPF: neutral (google.com: 64.90.62.162 is neither permitted nor denied by best guess record for domain of admin@diasporabr.com.br) client-ip=64.90.62.162;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@diasporabr.com.br header.s=diasporabr.com.br header.b=shzInNx6;
+       spf=neutral (google.com: 64.90.62.162 is neither permitted nor denied by best guess record for domain of admin@diasporabr.com.br) smtp.mailfrom=admin@diasporabr.com.br
+Received: from pdx1-sub0-mail-a17.g.dreamhost.com (localhost [127.0.0.1])
+	by pdx1-sub0-mail-a17.g.dreamhost.com (Postfix) with ESMTP id E103D7FADC
+	for <meduardo.r@gmail.com>; Wed, 29 Aug 2018 20:19:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed; d=diasporabr.com.br; h=date
+	:from:reply-to:to:message-id:subject:mime-version:content-type
+	:content-transfer-encoding; s=diasporabr.com.br; bh=fZX5L7OOHaJp
+	ChxDZxZSiZ9nN2c=; b=shzInNx6jekpJxjO15f7uq0ftlbmVPS/ilhstJdWO3Ar
+	1t7xStFEwTK6l5DkYN9qXErR82/+wFZPc0/Rfly1hSFHv1e4PTwxgIPqNHs+a8Me
+	xWbXUb+1BxgrDYmZ4hFNXnhNYUTZm36fBo28VucRxQlS4BtMNOHBXAiLcSkVhoQ=
+Received: from mail.diasporabr.com.br (unknown [187.86.14.230])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	(Authenticated sender: admin@diasporabr.com.br)
+	by pdx1-sub0-mail-a17.g.dreamhost.com (Postfix) with ESMTPSA id 530AF7F965
+	for <meduardo.r@gmail.com>; Wed, 29 Aug 2018 20:19:04 -0700 (PDT)
+Date: Thu, 30 Aug 2018 00:19:02 -0300
+From: DiasporaBR <admin@diasporabr.com.br>
+Reply-To: admin@diasporabr.com.br
+To: meduardo.r@gmail.com
+Message-ID: <5b8762266c81f_62e83fd558ad30001960c3@diasporabr.mail>
+Subject: Reset password instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello meduardo.r@gmail.com!</p>
+
+<p>Someone has requested a link to change your password. If it was you, you can do this through the link below.</p>
+
+<p><a href="https://diasporabr.com.br/users/password/edit?reset_password_token=6ixMRzZVpne1xQ2Xwubr">Change my password</a></p>
+
+<p>Your password won&#39;t change until you access the link above and create a new one.</p>
+
+<p>If you didn&#39;t request this, please ignore this email.</p>

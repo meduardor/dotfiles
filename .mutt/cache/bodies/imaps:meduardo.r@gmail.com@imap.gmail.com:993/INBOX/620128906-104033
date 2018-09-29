@@ -1,0 +1,633 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:5611:0:0:0:0:0 with SMTP id l17-v6csp1000118wrv;
+        Wed, 19 Sep 2018 12:03:20 -0700 (PDT)
+X-Received: by 2002:a1c:91cd:: with SMTP id t196-v6mr20050948wmd.100.1537383800120;
+        Wed, 19 Sep 2018 12:03:20 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1537383800; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=T1qKO8Gvvc/GePI2btoL7RXP/a4sHrX6lehd+9pe9FuvZUQjA2nzIMPqLjJfJDc6rM
+         rxwYcz3kfs3QYk8FqwVBVtC+fvNKCm9DVX5Cd3T6oWHCGksK5zDdEM2D12LyoIqzVSto
+         PADauL066w0tuNQVVrG4mK1nKvOV4iXRMWiQYYHQKL1g2jzIWibXQySWl2iRXNOqpmw5
+         HIBHbHwCfqY8TLUMt0cMvcf7npX6miNumFIveY+JcmrM5Mo4bTOb43GVwcZ3Y0k8Dy5A
+         KZhaesPh1hWhy0ZJv/lnCHjDCrevTDFkHfW+N77otuy6zDuvfMTdBGSSo/icZMDho3Zz
+         dIvQ==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:sender:dkim-signature
+         :dkim-signature;
+        bh=4xrfntmAY0B0SGMja6Nk3Z7sHjgkauC1EcuCeMe8SY4=;
+        b=LK1Duo8iwPOQxJmTiqiPMtnIKkSoxA1CZieDj/k85fddG+wDQbEnQ/0HjJMzpPUQy3
+         u7+91T7KFpSoIr5zLZeh7rXQwxu7zrZFo0rKb1xo1Guk59KyVq1il5fvkDEeg/6RyaxR
+         s2V3fw7ReOvKmiyqeVUbVtM6Aj1CWDdKr3tS39QjZAWk+vsJUYvXGJeU+d8FptV+L5+U
+         a3Pov61u55DbVikg9UWwcVjVa4SLg97n7l2uW2ikfbEWrn4y3c5zSVLbJUklRQ904H+o
+         bpNdmKrGrycrst+DSsrXXU09zI8vedyBmoDkpvaptOq8p81EZbdkCC+E6WOzCsk7/yhW
+         SO5w==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=MZxj2Xl1;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ynt1wkp2;
+       arc=pass (i=2 spf=pass spfdomain=gmail.com dkim=pass dkdomain=gmail.com dmarc=pass fromdomain=gmail.com);
+       spf=pass (google.com: domain of python-brasil+bncbdwpjtpqraebb3v2rloqkgqegmxezca@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBDWPJTPQRAEBB3V2RLOQKGQEGMXEZCA@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBDWPJTPQRAEBB3V2RLOQKGQEGMXEZCA@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id o126-v6sor10573624wma.17.2018.09.19.12.03.19
+        (Google Transport Security);
+        Wed, 19 Sep 2018 12:03:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbdwpjtpqraebb3v2rloqkgqegmxezca@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=MZxj2Xl1;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ynt1wkp2;
+       arc=pass (i=2 spf=pass spfdomain=gmail.com dkim=pass dkdomain=gmail.com dmarc=pass fromdomain=gmail.com);
+       spf=pass (google.com: domain of python-brasil+bncbdwpjtpqraebb3v2rloqkgqegmxezca@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBDWPJTPQRAEBB3V2RLOQKGQEGMXEZCA@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+ARC-Seal: i=2; a=rsa-sha256; t=1537383799; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=AaHofbXQvZ43pwAPuCpjvpaJs8p42yIXRVVEjLaeChPTa2Jo7UeT/hZqQ/M7/b1g2o
+         NjOL/1Rj4J8gyixmRIcmGB9wQp9DTFTiaz0bJ1ggGVJ3t6sDkY9YUB2LJC4n/T425r7g
+         eMKFX/hM0zOOFZKtEbk78mT1kN+tcAcEcQzbdC4BH1sN5/K4Evg/lJs0iXuVpDckZP8S
+         V95QY48SLEwJBHcc0aParcsCyGaGYeQsHdLgwUKpSAd9aJo1DFwPI7Yn1ADppzmZ6s2N
+         zGsOaS06XOaqiy9WjjMhODob72ZrAi1d0d0NbEd1/Xs6+2wAlXvscNp4AA0RV8oKu585
+         FIVg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:sender:dkim-signature
+         :dkim-signature;
+        bh=4xrfntmAY0B0SGMja6Nk3Z7sHjgkauC1EcuCeMe8SY4=;
+        b=sacQRIwtGzb9RNgRmSdxK1ylxHIBvg4jVUGr96l4VO3Gj96zUFdiawAE+heVP26osw
+         76jak4HQGYmEYTYGY6x+1U5nQxLDlUVxmMpz1DqHLQC97P5wmf12DMgoXY7uBtVCOmhW
+         kb+ff7PQ5lZP6AylTsKXYZn8TYDcQ7j8B9y917QPmvgrjQ6GnpYzNM4YVhthSw9+/jGL
+         0GTlV0xy69ODnCGI9GcfI6ETTs9Zlufm2yj9PUhOaCOUAttHaqJCMV232/u0JaMr5K0K
+         xdR/UNxF27TsDupfD3m1a29BtnmeoiW3/DYFMnyuZJytaRozg3uSF1s8T+0a6cg/PXvU
+         yuig==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tV2SA9es;
+       spf=pass (google.com: domain of weltonvaz@gmail.com designates 2a00:1450:4864:20::532 as permitted sender) smtp.mailfrom=weltonvaz@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:mime-version:references:in-reply-to:from:date:message-id
+         :subject:to:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=4xrfntmAY0B0SGMja6Nk3Z7sHjgkauC1EcuCeMe8SY4=;
+        b=MZxj2Xl1HFrxuWqjM5rVrNRexpMyHVRRoL5MUEO1pP98XF88hwQHQ2fbccSzw96+1I
+         dBCLadVoZEV8OXSbs27s2NnuRP32ftOBN28I85rvl3RI7mV4oW1132dubzT20YdGkucy
+         ppIaD9BMbWzMkAKyi5ESQU72Bkicy1sxCGXAtLNC/Cx3YlN518K058e+1NZnarV09pat
+         lJDHP6FksfIywEBkBffQlGg94bUlFEViKDDSfsvNq90xm6s7UsiQXoY/f21pZIc7lnTA
+         19rjB0A0LgtcmGdsyGAQ9cujlUvj8M7oe1fp/SyhtWG1kKQ+2rBY/I/nvNfg1Uerq1zW
+         Y15w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=4xrfntmAY0B0SGMja6Nk3Z7sHjgkauC1EcuCeMe8SY4=;
+        b=Ynt1wkp2P5B8mCI0qFu7rHyCqomJlqFaspZag1Lwvp9RayiK3k+9pLA+lQn7oXrfAI
+         jtZq/PCoeHEw+tARhf7EJy082tggtRwJxMh119MlhAt9Ce7pBxdc7nja/NAiOvQ+TVaN
+         qSGB/wUwDWMLtXAsgFTmnZelX46cOGemMz4zrkoI+DSrDvGwlSvC6ILXQT8+2EOB6RXg
+         s5zwZnI5FSI4V4NU34422Km79IcA86De4f/O+fotqMSZkuZhspbLu1Mv2F4tATCAyHS1
+         TLdDEH5m5KmrPBLPBv0cLt8NwrkT+CUEw7lQilArLmmLDw37B75FNbMhq7b79HTmks49
+         O6Kg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
+         :date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=4xrfntmAY0B0SGMja6Nk3Z7sHjgkauC1EcuCeMe8SY4=;
+        b=AQB/fQ/OPjaHJjj7KVirlVrjcxTJ0ltnDtO65pBMoLb7g61v/DuNx1wqZH2VNZtDm7
+         lYGTAMKajEkbwYiKFemijA1lrUWWkgFKJHUsYRBnbmL9pHFeLbTfO82MPkxGKnPc2rxv
+         wjxcj31Ecyy3JRJ/7ZefydwSWj5dg9m5Al0O41/Uw55+xePJtKeDCs/KC6n9ELITTo7v
+         yplK9AKrfxN5+EbZBDjLh4+JEzTh1gzPeSCXS/LYsrq8ldnVScPr3cDambWzenlmaE7p
+         0akJ2puqB4aAGbMGDSTazL9qEGbcCwBMmYEaRsscpG6oyDBGLWA2VgDsIIRzWOHHgIdL
+         aUTw==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: APzg51Dsuc6ycdxSBSKTJwVuJMl3VA90iXsj/YRytCdXEfShd7nJGgaj
+	hL4Zxx1Q9WF70l3KdurhPpM=
+X-Google-Smtp-Source: ANB0Vda/2Bv3/gI4AtE5qI/D/YbDZbzHHG4tZOiwaZ7X/v+hCTLCAd72aDlSS3YUX+EMtdpD560jmQ==
+X-Received: by 2002:a1c:cc0b:: with SMTP id h11-v6mr106882wmb.0.1537383799218;
+        Wed, 19 Sep 2018 12:03:19 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:adf:afda:: with SMTP id y26-v6ls9209666wrd.3.gmail; Wed, 19
+ Sep 2018 12:03:10 -0700 (PDT)
+X-Received: by 2002:adf:dd8e:: with SMTP id x14-v6mr3720244wrl.19.1537383790602;
+        Wed, 19 Sep 2018 12:03:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537383790; cv=none;
+        d=google.com; s=arc-20160816;
+        b=GFvioJ0OgJfedqKvwkv0ODz6HH61BtnjzT2rHmwV4MRLEF0auonQmsAsmeUP4wAi4I
+         VM+RmbO74lPzuidtDnzYwhjCJhbAfpuz7cSNUugBW9nd1gnEjFkio42JmV7QyJbEQvwM
+         midKeguKpo7kw6zqWnVB1PopUW6MSeavVN/7Hagyxp0i1YkV5HPc8eJ5bvj+s/pyzoyZ
+         mR2re3RrI/fDQMdMOaglaHXSEioRzgxD7odQ35TdZhtv5cbAnSkF1wspkCXgeQPFQsto
+         P7RmVSnRMJdoZ4BLfiSJXAE3OEAUhE3velw72Xw01Qs5BVDS9BDpQD/3BCZj42T8cDU6
+         /CFg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=o3KlZZnp2fVbS2xIKLTbifh/5aaa7VReeLkq8UfnPvE=;
+        b=SPD20bHjvviZ8XMNiX427zkSLFd613GwD7/efOMeOLuCdtZSS+aOXfcdEUsiulJy6h
+         4HfDTKTWfdfFSVXqL2K8ctiCFRSY9HuZHfM6ulrOHOvBIfB0xQjxAoYooENJ/JsCybSQ
+         gNwe5du4TTIKMhiwsDleVhUPzsVTdgySxUZNZDpDnAXJuSn71f7qHhfwMh9r6lzmZXr8
+         kn12TJlanFsmgaTH40tomVyihTILweKWBUWSzYPtMbT69uJejSsUsQGsS+QC6kAQhKGD
+         lDHqIKRfcJ1july0nE+98/siIxJCtfQ1gndpQfCzv6pcreOdO0fRXU+gbfgmNTiIoVJU
+         8Deg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tV2SA9es;
+       spf=pass (google.com: domain of weltonvaz@gmail.com designates 2a00:1450:4864:20::532 as permitted sender) smtp.mailfrom=weltonvaz@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from mail-ed1-x532.google.com (mail-ed1-x532.google.com. [2a00:1450:4864:20::532])
+        by gmr-mx.google.com with ESMTPS id 20-v6si646749wrb.5.2018.09.19.12.03.10
+        for <python-brasil@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 19 Sep 2018 12:03:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of weltonvaz@gmail.com designates 2a00:1450:4864:20::532 as permitted sender) client-ip=2a00:1450:4864:20::532;
+Received: by mail-ed1-x532.google.com with SMTP id y20-v6so5814336edq.2
+        for <python-brasil@googlegroups.com>; Wed, 19 Sep 2018 12:03:10 -0700 (PDT)
+X-Received: by 2002:a50:fc03:: with SMTP id i3-v6mr58246981edr.85.1537383790040;
+ Wed, 19 Sep 2018 12:03:10 -0700 (PDT)
+MIME-Version: 1.0
+References: <CANwDpS5fT3ZEFgNmvDtKQo+ea+euDT1Ch5=FTBZ=_qvCHcJuAA@mail.gmail.com>
+ <CALUnrAcmVM8e_ExdU3QRg_AD+1Knbpd2hB2yUmNv=6F=xXW1pw@mail.gmail.com> <CANwDpS4n9OFjS89=gTU+TASUcXT81QQUsF=g-w3RpMoWrg7Dag@mail.gmail.com>
+In-Reply-To: <CANwDpS4n9OFjS89=gTU+TASUcXT81QQUsF=g-w3RpMoWrg7Dag@mail.gmail.com>
+From: Welton Vaz <weltonvaz@gmail.com>
+Date: Wed, 19 Sep 2018 16:02:58 -0300
+Message-ID: <CALUnrAchwZmUS65nqMkfy4sY-gkRzCb55czC4Lv7ENjgQ=ZY2w@mail.gmail.com>
+Subject: =?UTF-8?Q?Re=3A_=5Bpython=2Dbrasil=5D_N=C3=A3o_consigo_encontra_IDLE_pro_U?=
+	=?UTF-8?Q?buntu?=
+To: python-brasil@googlegroups.com
+Content-Type: multipart/alternative; boundary="000000000000b05e3105763e0e27"
+X-Original-Sender: weltonvaz@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@gmail.com header.s=20161025 header.b=tV2SA9es;       spf=pass
+ (google.com: domain of weltonvaz@gmail.com designates 2a00:1450:4864:20::532
+ as permitted sender) smtp.mailfrom=weltonvaz@gmail.com;       dmarc=pass
+ (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Spam-Checked-In-Group: python-brasil@googlegroups.com
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+--000000000000b05e3105763e0e27
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Amigo,
+
+Estamos aqui para ajudar, se precisar de algo fique a vontade!
+Se quiser dicas acesse esta pagina com dicas, cursos sobre Python:
+Lista dos melhores cursos gratuitos online de Python:
+1) https://github.com/weltonvaz/cursos
+
+
+Em ter, 18 de set de 2018 =C3=A0s 18:39, Sillas Pereira <
+sillaspereira73@gmail.com> escreveu:
+
+> Muito obrigado!!! Voc=C3=AA me ajudou muito.
+>
+> Em 18 de setembro de 2018 18:07, Welton Vaz <weltonvaz@gmail.com>
+> escreveu:
+>
+>> Silas,
+>>
+>> Duas IDE=C2=B4s boas para usar =C3=A9 no Ubuntu, e o Geany e Thonny. S=
+=C3=A3o boas =C3=A9
+>> funcionam
+>> em maquinas com poucas memoria e 32bits.
+>>
+>> OBS: como administrador:
+>>
+>> apt-get install geany
+>>
+>> obs: Este crie este tutorial instala=C3=A7=C3=A3o e configura=C3=A7=C3=
+=A3o do GEANY, e antigo
+>> mas ainda funciona:
+>> https://www.vivaolinux.com.br/dica/Editor-GeanyIDE-Python3
+>>
+>> Ou ainda:
+>>
+>> pip install thonny
+>>
+>> OBS: Eu prefiro hoje o Thonny, ele funciona no python3, como vc n=C3=A3o=
+ falou
+>> a sua vers=C3=A3o do Python! F=C3=A1cil de come=C3=A7ar e usar. Thonny v=
+em com o Python
+>> 3.6 embutido, ent=C3=A3o apenas com um simples instalador o necess=C3=A1=
+rio j=C3=A1
+>> instalado e voc=C3=AA est=C3=A1 pronto para aprender programa=C3=A7=C3=
+=A3o. (Voc=C3=AA tamb=C3=A9m pode
+>> usar uma instala=C3=A7=C3=A3o separada do Python, se necess=C3=A1rio.) A=
+ interface de
+>> usu=C3=A1rio inicial =C3=A9 despojada de todos os recursos que podem dis=
+trair os
+>> iniciantes.
+>>
+>>
+>>
+>> Em ter, 18 de set de 2018 =C3=A0s 17:19, Sillas Pereira <
+>> sillaspereira73@gmail.com> escreveu:
+>>
+>>> Eu usei o IDLE Spyder3, por=C3=A9m eu n=C3=A3o gostei muito e eu n=C3=
+=A3o consigo
+>>> encontrar outras alternativas de IDLE que d=C3=AA para instalar no Ubun=
+tu 32
+>>> bits. Quais s=C3=A3o as IDLEs alternativas de 32 bits que eu possa inst=
+alar no
+>>> meu sistema operacional Ubuntu. Eu j=C3=A1 pesquisei IDLEs no google, m=
+as eu n=C3=A3o
+>>> consegui encontrar nada que eu possa usar no meu Ubuntu de 32 bits.
+>>>
+>>> --
+>>> --
+>>> ------------------------------------
+>>> Grupo Python-Brasil
+>>> https://wiki.python.org.br/AntesDePerguntar
+>>>
+>>> <*> Para visitar o site do grupo na web, acesse:
+>>> http://groups.google.com/group/python-brasil
+>>>
+>>> <*> Para sair deste grupo, envie um e-mail para:
+>>> python-brasil+unsubscribe@googlegroups.com
+>>> ---
+>>> Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo "Pyt=
+hon Brasil"
+>>> dos Grupos do Google.
+>>> Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mail=
+s dele,
+>>> envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+>>> Para postar nesse grupo, envie um e-mail para
+>>> python-brasil@googlegroups.com.
+>>> Para ver essa discuss=C3=A3o na Web, acesse
+>>> https://groups.google.com/d/msgid/python-brasil/CANwDpS5fT3ZEFgNmvDtKQo=
+%2Bea%2BeuDT1Ch5%3DFTBZ%3D_qvCHcJuAA%40mail.gmail.com
+>>> <https://groups.google.com/d/msgid/python-brasil/CANwDpS5fT3ZEFgNmvDtKQ=
+o%2Bea%2BeuDT1Ch5%3DFTBZ%3D_qvCHcJuAA%40mail.gmail.com?utm_medium=3Demail&u=
+tm_source=3Dfooter>
+>>> .
+>>> Para mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout.
+>>>
+>>
+>>
+>> --
+>>
+>> Welton Vaz de Souza
+>> Cel: (31)98862-3904
+>> ***********************************************************
+>>
+>>  =C2=B0v=C2=B0 N=C3=83O USE DROGAS,
+>> /(_)\ USE GNU/LINUX
+>>  ^ ^
+>>
+>>
+>>
+>>
+>> --
+>> --
+>> ------------------------------------
+>> Grupo Python-Brasil
+>> https://wiki.python.org.br/AntesDePerguntar
+>>
+>> <*> Para visitar o site do grupo na web, acesse:
+>> http://groups.google.com/group/python-brasil
+>>
+>> <*> Para sair deste grupo, envie um e-mail para:
+>> python-brasil+unsubscribe@googlegroups.com
+>> ---
+>> Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo "Pyth=
+on Brasil"
+>> dos Grupos do Google.
+>> Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails=
+ dele,
+>> envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+>> Para postar nesse grupo, envie um e-mail para
+>> python-brasil@googlegroups.com.
+>> Para ver essa discuss=C3=A3o na Web, acesse
+>> https://groups.google.com/d/msgid/python-brasil/CALUnrAcmVM8e_ExdU3QRg_A=
+D%2B1Knbpd2hB2yUmNv%3D6F%3DxXW1pw%40mail.gmail.com
+>> <https://groups.google.com/d/msgid/python-brasil/CALUnrAcmVM8e_ExdU3QRg_=
+AD%2B1Knbpd2hB2yUmNv%3D6F%3DxXW1pw%40mail.gmail.com?utm_medium=3Demail&utm_=
+source=3Dfooter>
+>> .
+>> Para mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout.
+>>
+>
+> --
+> --
+> ------------------------------------
+> Grupo Python-Brasil
+> https://wiki.python.org.br/AntesDePerguntar
+>
+> <*> Para visitar o site do grupo na web, acesse:
+> http://groups.google.com/group/python-brasil
+>
+> <*> Para sair deste grupo, envie um e-mail para:
+> python-brasil+unsubscribe@googlegroups.com
+> ---
+> Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo "Pytho=
+n Brasil"
+> dos Grupos do Google.
+> Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails =
+dele, envie
+> um e-mail para python-brasil+unsubscribe@googlegroups.com.
+> Para postar nesse grupo, envie um e-mail para
+> python-brasil@googlegroups.com.
+> Para ver essa discuss=C3=A3o na Web, acesse
+> https://groups.google.com/d/msgid/python-brasil/CANwDpS4n9OFjS89%3DgTU%2B=
+TASUcXT81QQUsF%3Dg-w3RpMoWrg7Dag%40mail.gmail.com
+> <https://groups.google.com/d/msgid/python-brasil/CANwDpS4n9OFjS89%3DgTU%2=
+BTASUcXT81QQUsF%3Dg-w3RpMoWrg7Dag%40mail.gmail.com?utm_medium=3Demail&utm_s=
+ource=3Dfooter>
+> .
+> Para mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout.
+>
+
+
+--=20
+
+Welton Vaz de Souza
+Cel: (31)98862-3904
+***********************************************************
+
+ =C2=B0v=C2=B0 N=C3=83O USE DROGAS,
+/(_)\ USE GNU/LINUX
+ ^ ^
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/CALUnrAchwZmUS65nqMkfy4sY-gkRzCb55czC4Lv7ENjgQ%3DZY2w%40ma=
+il.gmail.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+--000000000000b05e3105763e0e27
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr">Amigo,<div><br></div><di=
+v>Estamos aqui para ajudar, se precisar de algo fique a vontade!</div><div>=
+Se quiser dicas acesse esta pagina com dicas, cursos sobre Python:</div><di=
+v>Lista dos melhores cursos gratuitos online de Python:</div><div>1) <a hre=
+f=3D"https://github.com/weltonvaz/cursos">https://github.com/weltonvaz/curs=
+os</a><br></div><div><br></div></div></div></div><br><div class=3D"gmail_qu=
+ote"><div dir=3D"ltr">Em ter, 18 de set de 2018 =C3=A0s 18:39, Sillas Perei=
+ra &lt;<a href=3D"mailto:sillaspereira73@gmail.com">sillaspereira73@gmail.c=
+om</a>&gt; escreveu:<br></div><blockquote class=3D"gmail_quote" style=3D"ma=
+rgin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><div dir=3D"lt=
+r">Muito obrigado!!! Voc=C3=AA me ajudou muito.</div><div class=3D"gmail_ex=
+tra"><br><div class=3D"gmail_quote">Em 18 de setembro de 2018 18:07, Welton=
+ Vaz <span dir=3D"ltr">&lt;<a href=3D"mailto:weltonvaz@gmail.com" target=3D=
+"_blank">weltonvaz@gmail.com</a>&gt;</span> escreveu:<br><blockquote class=
+=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
+ing-left:1ex"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=
+=3D"ltr" class=3D"m_1314217724315631362m_9148809656058751305gmail-inserted"=
+>Silas,<div><br></div><div>Duas IDE=C2=B4s boas para usar =C3=A9 no Ubuntu,=
+ e o Geany e Thonny. S=C3=A3o boas =C3=A9 funcionam</div><div>em maquinas c=
+om poucas memoria e 32bits.</div><div><br></div><div class=3D"m_13142177243=
+15631362m_9148809656058751305gmail-inserted">OBS: como administrador:</div>=
+<div class=3D"m_1314217724315631362m_9148809656058751305gmail-inserted"><br=
+></div><div class=3D"m_1314217724315631362m_9148809656058751305gmail-insert=
+ed">apt-get install geany</div><div class=3D"m_1314217724315631362m_9148809=
+656058751305gmail-inserted"><br></div><div class=3D"m_1314217724315631362m_=
+9148809656058751305gmail-inserted">obs: Este crie este tutorial instala=C3=
+=A7=C3=A3o e configura=C3=A7=C3=A3o do GEANY, e antigo mas ainda funciona:=
+=C2=A0<a href=3D"https://www.vivaolinux.com.br/dica/Editor-GeanyIDE-Python3=
+" target=3D"_blank">https://www.vivaolinux.com.br/dica/Editor-GeanyIDE-Pyth=
+on3</a></div><div class=3D"m_1314217724315631362m_9148809656058751305gmail-=
+inserted"><br></div><div class=3D"m_1314217724315631362m_914880965605875130=
+5gmail-inserted">Ou ainda:</div><div class=3D"m_1314217724315631362m_914880=
+9656058751305gmail-inserted"><br></div><div class=3D"m_1314217724315631362m=
+_9148809656058751305gmail-inserted">pip install thonny</div><div class=3D"m=
+_1314217724315631362m_9148809656058751305gmail-inserted"><br></div><div cla=
+ss=3D"m_1314217724315631362m_9148809656058751305gmail-inserted">OBS: Eu pre=
+firo hoje o Thonny, ele funciona no python3, como vc n=C3=A3o falou a sua v=
+ers=C3=A3o do Python! F=C3=A1cil de come=C3=A7ar e usar. Thonny vem com o P=
+ython 3.6 embutido, ent=C3=A3o apenas com um simples instalador o necess=C3=
+=A1rio j=C3=A1 instalado e voc=C3=AA est=C3=A1 pronto para aprender program=
+a=C3=A7=C3=A3o. (Voc=C3=AA tamb=C3=A9m pode usar uma instala=C3=A7=C3=A3o s=
+eparada do Python, se necess=C3=A1rio.) A interface de usu=C3=A1rio inicial=
+ =C3=A9 despojada de todos os recursos que podem distrair os iniciantes.</d=
+iv><div class=3D"m_1314217724315631362m_9148809656058751305gmail-inserted">=
+<br></div><div><br></div></div></div></div></div><br><div class=3D"gmail_qu=
+ote"><span><div dir=3D"ltr">Em ter, 18 de set de 2018 =C3=A0s 17:19, Sillas=
+ Pereira &lt;<a href=3D"mailto:sillaspereira73@gmail.com" target=3D"_blank"=
+>sillaspereira73@gmail.com</a>&gt; escreveu:<br></div></span><blockquote cl=
+ass=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;p=
+adding-left:1ex"><span><div dir=3D"ltr">Eu usei o IDLE Spyder3, por=C3=A9m =
+eu n=C3=A3o gostei muito e eu n=C3=A3o consigo encontrar outras alternativa=
+s de IDLE que d=C3=AA para instalar no Ubuntu 32 bits. Quais s=C3=A3o as ID=
+LEs alternativas de 32 bits que eu possa instalar no meu sistema operaciona=
+l Ubuntu. Eu j=C3=A1 pesquisei IDLEs no google, mas eu n=C3=A3o consegui en=
+contrar nada que eu possa usar no meu Ubuntu de 32 bits.</div>
+
+<p></p></span>
+
+-- <br>
+-- <br>
+------------------------------------<br>
+Grupo Python-Brasil<br>
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar" target=3D"_blank">h=
+ttps://wiki.python.org.br/AntesDePerguntar</a><br>
+=C2=A0<br>
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br>
+    <a href=3D"http://groups.google.com/group/python-brasil" target=3D"_bla=
+nk">http://groups.google.com/group/python-brasil</a><br>
+=C2=A0<br>
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br>
+    <a href=3D"mailto:python-brasil%2Bunsubscribe@googlegroups.com" target=
+=3D"_blank">python-brasil+unsubscribe@googlegroups.com</a><br>
+--- <br>
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br>
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com" target=3D"_blank">python-brasil+unsubscribe@googlegroups.com</a=
+>.<br>
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com" target=3D"_blank">python-brasil@googlegroups.com</a>.<=
+br>
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/CANwDpS5fT3ZEFgNmvDtKQo%2Bea%2BeuDT1Ch5%3DFTBZ%=
+3D_qvCHcJuAA%40mail.gmail.com?utm_medium=3Demail&amp;utm_source=3Dfooter" t=
+arget=3D"_blank">https://groups.google.com/d/msgid/python-brasil/CANwDpS5fT=
+3ZEFgNmvDtKQo%2Bea%2BeuDT1Ch5%3DFTBZ%3D_qvCHcJuAA%40mail.gmail.com</a>.<br>
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout" target=3D"_blank">https://groups.google.com/d/optout</a>.<br>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"m_1314217724315631362m_9148809656058751305gmail_signature" data-s=
+martmail=3D"gmail_signature"><div dir=3D"ltr"><div><div dir=3D"ltr"><div><d=
+iv dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D=
+"ltr"><br>Welton Vaz de Souza<br><div>Cel: (31)98862-3904<br>**************=
+*********************************************</div><div><br></div><div><spa=
+n style=3D"color:rgb(84,84,84);font-family:Verdana,Helvetica,Arial,sans-ser=
+if;font-size:12px;line-height:14.5919990539551px">=C2=A0=C2=B0v=C2=B0 N=C3=
+=83O USE DROGAS,</span><br style=3D"color:rgb(84,84,84);font-family:Verdana=
+,Helvetica,Arial,sans-serif;font-size:12px;line-height:14.5919990539551px">=
+<span style=3D"color:rgb(84,84,84);font-family:Verdana,Helvetica,Arial,sans=
+-serif;font-size:12px;line-height:14.5919990539551px">/(_)\ USE GNU/LINUX</=
+span><br style=3D"color:rgb(84,84,84);font-family:Verdana,Helvetica,Arial,s=
+ans-serif;font-size:12px;line-height:14.5919990539551px"><span style=3D"col=
+or:rgb(84,84,84);font-family:Verdana,Helvetica,Arial,sans-serif;font-size:1=
+2px;line-height:14.5919990539551px">=C2=A0^ ^</span><br></div><div><span st=
+yle=3D"color:rgb(84,84,84);font-family:Verdana,Helvetica,Arial,sans-serif;f=
+ont-size:12px;line-height:14.5919990539551px"><img src=3D"https://www.linux=
+counter.net/cert/584381.png"><br></span></div><div><span style=3D"color:rgb=
+(84,84,84);font-family:Verdana,Helvetica,Arial,sans-serif;font-size:12px;li=
+ne-height:14.5919990539551px"><br></span></div><div><span style=3D"color:rg=
+b(0,0,0);font-family:Verdana,Arial;font-size:12px">=C2=A0</span><span style=
+=3D"color:rgb(84,84,84);font-family:Verdana,Helvetica,Arial,sans-serif;font=
+-size:12px;line-height:14.5919990539551px"><br></span></div></div></div></d=
+iv></div></div></div></div></div></div></div></div></div>
+
+<p></p>
+
+-- <br>
+-- <br>
+------------------------------------<br>
+Grupo Python-Brasil<br>
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar" target=3D"_blank">h=
+ttps://wiki.python.org.br/AntesDePerguntar</a><br>
+=C2=A0<br>
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br>
+    <a href=3D"http://groups.google.com/group/python-brasil" target=3D"_bla=
+nk">http://groups.google.com/group/python-brasil</a><br>
+=C2=A0<br>
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br>
+    <a href=3D"mailto:python-brasil%2Bunsubscribe@googlegroups.com" target=
+=3D"_blank">python-brasil+unsubscribe@googlegroups.com</a><br>
+--- <br>
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br>
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com" target=3D"_blank">python-brasil+unsubscribe@googlegroups.com</a=
+>.<br>
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com" target=3D"_blank">python-brasil@googlegroups.com</a>.<=
+br>
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/CALUnrAcmVM8e_ExdU3QRg_AD%2B1Knbpd2hB2yUmNv%3D6=
+F%3DxXW1pw%40mail.gmail.com?utm_medium=3Demail&amp;utm_source=3Dfooter" tar=
+get=3D"_blank">https://groups.google.com/d/msgid/python-brasil/CALUnrAcmVM8=
+e_ExdU3QRg_AD%2B1Knbpd2hB2yUmNv%3D6F%3DxXW1pw%40mail.gmail.com</a>.<br>
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout" target=3D"_blank">https://groups.google.com/d/optout</a>.<br>
+</blockquote></div><br></div>
+
+<p></p>
+
+-- <br>
+-- <br>
+------------------------------------<br>
+Grupo Python-Brasil<br>
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar" target=3D"_blank">h=
+ttps://wiki.python.org.br/AntesDePerguntar</a><br>
+=C2=A0<br>
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br>
+    <a href=3D"http://groups.google.com/group/python-brasil" target=3D"_bla=
+nk">http://groups.google.com/group/python-brasil</a><br>
+=C2=A0<br>
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br>
+    <a href=3D"mailto:python-brasil%2Bunsubscribe@googlegroups.com" target=
+=3D"_blank">python-brasil+unsubscribe@googlegroups.com</a><br>
+--- <br>
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br>
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com" target=3D"_blank">python-brasil+unsubscribe@googlegroups.com</a=
+>.<br>
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com" target=3D"_blank">python-brasil@googlegroups.com</a>.<=
+br>
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/CANwDpS4n9OFjS89%3DgTU%2BTASUcXT81QQUsF%3Dg-w3R=
+pMoWrg7Dag%40mail.gmail.com?utm_medium=3Demail&amp;utm_source=3Dfooter" tar=
+get=3D"_blank">https://groups.google.com/d/msgid/python-brasil/CANwDpS4n9OF=
+jS89%3DgTU%2BTASUcXT81QQUsF%3Dg-w3RpMoWrg7Dag%40mail.gmail.com</a>.<br>
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout" target=3D"_blank">https://groups.google.com/d/optout</a>.<br>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"gmail_signature" data-smartmail=3D"gmail_signature"><div dir=3D"l=
+tr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div>=
+<div dir=3D"ltr"><div><div dir=3D"ltr"><br>Welton Vaz de Souza<br><div>Cel:=
+ (31)98862-3904<br>********************************************************=
+***</div><div><br></div><div><span style=3D"color:rgb(84,84,84);font-family=
+:Verdana,Helvetica,Arial,sans-serif;font-size:12px;line-height:14.591999053=
+9551px">=C2=A0=C2=B0v=C2=B0 N=C3=83O USE DROGAS,</span><br style=3D"color:r=
+gb(84,84,84);font-family:Verdana,Helvetica,Arial,sans-serif;font-size:12px;=
+line-height:14.5919990539551px"><span style=3D"color:rgb(84,84,84);font-fam=
+ily:Verdana,Helvetica,Arial,sans-serif;font-size:12px;line-height:14.591999=
+0539551px">/(_)\ USE GNU/LINUX</span><br style=3D"color:rgb(84,84,84);font-=
+family:Verdana,Helvetica,Arial,sans-serif;font-size:12px;line-height:14.591=
+9990539551px"><span style=3D"color:rgb(84,84,84);font-family:Verdana,Helvet=
+ica,Arial,sans-serif;font-size:12px;line-height:14.5919990539551px">=C2=A0^=
+ ^</span><br></div><div><span style=3D"color:rgb(84,84,84);font-family:Verd=
+ana,Helvetica,Arial,sans-serif;font-size:12px;line-height:14.5919990539551p=
+x"><img src=3D"https://www.linuxcounter.net/cert/584381.png"><br></span></d=
+iv><div><span style=3D"color:rgb(84,84,84);font-family:Verdana,Helvetica,Ar=
+ial,sans-serif;font-size:12px;line-height:14.5919990539551px"><br></span></=
+div><div><span style=3D"color:rgb(0,0,0);font-family:Verdana,Arial;font-siz=
+e:12px">=C2=A0</span><span style=3D"color:rgb(84,84,84);font-family:Verdana=
+,Helvetica,Arial,sans-serif;font-size:12px;line-height:14.5919990539551px">=
+<br></span></div></div></div></div></div></div></div></div></div></div></di=
+v></div></div>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/CALUnrAchwZmUS65nqMkfy4sY-gkRzCb55czC4Lv7ENjgQ%=
+3DZY2w%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://gro=
+ups.google.com/d/msgid/python-brasil/CALUnrAchwZmUS65nqMkfy4sY-gkRzCb55czC4=
+Lv7ENjgQ%3DZY2w%40mail.gmail.com</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+--000000000000b05e3105763e0e27--

@@ -1,0 +1,223 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:5611:0:0:0:0:0 with SMTP id l17-v6csp3644766wrv;
+        Mon, 10 Sep 2018 09:45:16 -0700 (PDT)
+X-Received: by 2002:a25:d08:: with SMTP id 8-v6mr10900233ybn.103.1536597916418;
+        Mon, 10 Sep 2018 09:45:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1536597916; cv=none;
+        d=google.com; s=arc-20160816;
+        b=rZqv7jn7l6Gebk+ImFMfctkJn8CiyOiWlU5XggpuFyM5EBXs54KTOxGAgtQiIxveI/
+         fDI7v9jmHXY0CPesO4qMgOwUiX/qxVRBXPTk2l21oCtgHnnb11Mm1xxn7czZE9W5VB4d
+         vKqk3Ye9RN0uIYUZ/XIZnXLkXJ2X86ORUXU5WqbMxGOvvmNAVXvyr23fH61IF+OS6leW
+         dvIC1RDOdNTFAGWMWzLXEaOeuxJr9Ni9MY8csLkGi93PEBQzUgBiTnOQBDcE/DgakK0d
+         gRh4noksU5n1IWv+MyQKzBP5Vq6mcNmoSjlGrt3hmIK8vcXjnpGEkSON2AT7kAruH+xe
+         0fcw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:mime-version:subject
+         :references:in-reply-to:message-id:to:from:date:sender
+         :dkim-signature:dkim-signature;
+        bh=q53GFmvkC55exe2iJzHjlmzFQ2CHaEOit4LMgNIhPR4=;
+        b=WqAdDzIMYNrNRgwCIdSUPPGs0Rpd4Kr+PXN/baJvu4Ctqhw+x0F7LTajCnNufmWVM6
+         ft3ebMPFfIo36uxv8XgjUkvnO35m3i8PORIZLJxmnc9j883rycMr0baEGt81SAxkWKjD
+         9/0f6BmRV+JBruTCxiGwAyLxPIwFmehMVQr56/hLO1LcNZt8bCLCWM+sI+6sUTzPGxdz
+         QoEpaBpX8mIybsCVKAFtXH9NRUOViNV1jV/XBYumf+T6lPfjutWq8nhtbHeYLg0Zzp6+
+         3Uobu9ufAxsgrq+D5uEPILtvYXT+D2jp+3tnTyCsmJ66hrIMXUwBHnlLehNZJpgsXbIx
+         7MLQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=h28JrmZY;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ihr2lr7E;
+       spf=pass (google.com: domain of python-brasil+bncbdf6pueawijbbe573loakgqeg4uqwni@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBDF6PUEAWIJBBE573LOAKGQEG4UQWNI@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBDF6PUEAWIJBBE573LOAKGQEG4UQWNI@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id h188-v6sor3421076ywd.283.2018.09.10.09.45.14
+        (Google Transport Security);
+        Mon, 10 Sep 2018 09:45:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbdf6pueawijbbe573loakgqeg4uqwni@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=h28JrmZY;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ihr2lr7E;
+       spf=pass (google.com: domain of python-brasil+bncbdf6pueawijbbe573loakgqeg4uqwni@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBDF6PUEAWIJBBE573LOAKGQEG4UQWNI@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:list-subscribe
+         :list-unsubscribe;
+        bh=q53GFmvkC55exe2iJzHjlmzFQ2CHaEOit4LMgNIhPR4=;
+        b=h28JrmZYMWgliVDTsQRo8msusMRhGmlrxgmuJScjIQo9YiRiUisqX85xYW4LekiUnW
+         cfnl+xaRAJpcS92Jkch5+W4kI5mXFdPQ4pS/tJc2fCTxhBBbHeYqc3iHGQnzIM+qN6BF
+         nrl7r20SFbpvkt8B4I5MbMLmUiqbsG0Ap/OVSJ4/WCwWcKqXo5Of7uc6VeYU+h4GCQnT
+         8Qn3kMnY4v1+eQaqGoYwlUnjwyLK+4iXo2EDShIa1iCchykLCK2wbp3hblisQKcnxPT9
+         Qif/N5XnxAQ4gJtUlsIXT4t0nYAEEQSc1sNUUL+lqzS/3cTk5kBnx2sS56vVBIpfnyhk
+         f0+Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:message-id:in-reply-to:references:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=q53GFmvkC55exe2iJzHjlmzFQ2CHaEOit4LMgNIhPR4=;
+        b=ihr2lr7ELX+IV7m0QdD2GsKXy97gMxEIv2YYK4JMIzdcXNWxaVkT6bDl0PISyTQ/J1
+         epIS1d0rOdtP4ryvN5gj9X0l0WTXr89Lsbuc6ld1P15TCgTx9+vfhnWI2TTjoaXkUCh9
+         /w3QGv/5jzWsQHkWr6no8jF8fskX4igdaOek+ENAx+EY8irB+TlPoEaJVggJfccP+V2d
+         ppb7ZJ1Il+w09IufLLK0zyDvzbI8TUdqMs9vHjXtxD1n4pa88guhYZZPf9LPt6prkODT
+         4SC26GIY5RLmPlP5EvrmGz079gQey19B/WcXJMSdbCLbFHfS37OX2eY6woAT6MuOPzFG
+         o9lw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:date:from:to:message-id:in-reply-to
+         :references:subject:mime-version:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=q53GFmvkC55exe2iJzHjlmzFQ2CHaEOit4LMgNIhPR4=;
+        b=Q3+ApuPqF+gMGwqUzKTfASNtt2HabFmT44hrrSkdw7H99NiwD3SiDxcMgyED7H7tJq
+         CZ0nx7lANT54pSrago6M24HvzH6zIMlEvCMgkLwGE5PgcWP1iMP5RkG2w0SOAkNeTcif
+         dFl7bHDN52Pw921wMAPnpBqWOyONAwVGn/GGeWOOz/YYju0klA9Kn5jm4ekZsoAFpokS
+         aCkBpuNPKW7xnncIqbLs7Ij3t+cmiM+vY7KnVtTD4QTtCtvDivBh5OqBytpU33O2QvWE
+         HgHos//fBHda8PZ3HetShwM7bVaqqXjjFFF9+An9aZY0xSxjCAZkBmZLljA2obtT3SmI
+         SYkQ==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: APzg51CUiB+aiCZsK8g6EHTWtGkiuQKdB/7+lCsAs4fQfLBe7Tq1Z13o
+	jpx72xNNjf6ynszgP4tZyM4=
+X-Google-Smtp-Source: ANB0VdbvmHDc1v8eXD8z38+leMRrumGyG47gVway03TST0cunihzKZ9O/aGSaHONLUWdz22vGQfPRg==
+X-Received: by 2002:a81:78c6:: with SMTP id t189-v6mr214854ywc.7.1536597914296;
+        Mon, 10 Sep 2018 09:45:14 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a25:6d44:: with SMTP id i65-v6ls1013420ybc.8.gmail; Mon, 10
+ Sep 2018 09:45:07 -0700 (PDT)
+X-Received: by 2002:a25:c5c4:: with SMTP id v187-v6mr199120ybe.1.1536597906695;
+        Mon, 10 Sep 2018 09:45:06 -0700 (PDT)
+Date: Mon, 10 Sep 2018 09:45:05 -0700 (PDT)
+From: Willie <willielawrence1@gmail.com>
+To: Python Brasil <python-brasil@googlegroups.com>
+Message-Id: <9d1158ec-cf4c-4183-85ef-37fe01e76835@googlegroups.com>
+In-Reply-To: <CAJSzTee+cRkY1aMS9Ny_O0qpDuGCdzcY1U9Auk+f191=G3bDYw@mail.gmail.com>
+References: <CAJSzTee+cRkY1aMS9Ny_O0qpDuGCdzcY1U9Auk+f191=G3bDYw@mail.gmail.com>
+Subject: [python-brasil] Re: coletar latitude e longitude do CEP
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1122_1835581825.1536597906039"
+X-Original-Sender: willielawrence1@gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Spam-Checked-In-Group: python-brasil@googlegroups.com
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+------=_Part_1122_1835581825.1536597906039
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1123_136189246.1536597906039"
+
+------=_Part_1123_136189246.1536597906039
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Pode usar a api do google? tem um exemplo de uso dessa api=20
+aqui: https://stackoverflow.com/a/5586056
+basicamente =C3=A9:
+http://maps.googleapis.com/maps/api/geocode/json?address=3D<CEP_AQUI>
+ele retorna um json com latitude e longitude
+
+Em segunda-feira, 10 de setembro de 2018 11:03:51 UTC-3, Vinicius Brito=20
+Rocha escreveu:
+>
+> Senhores,
+>
+> estou buscando uma alternativa para coletar a latitude e longitude a=20
+> partir do CEP.
+> Conseguem me ajudar?
+>
+> --=20
+> *Vinicius Brito Rocha.*
+> *Estat=C3=ADstico e Atu=C3=A1rio *
+> *M.Sc. Engenharia de Produ=C3=A7=C3=A3o/PO*
+>
+> *Ph.D. Estudante Sistemas Computacionais*
+>
+>
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/9d1158ec-cf4c-4183-85ef-37fe01e76835%40googlegroups.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+------=_Part_1123_136189246.1536597906039
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Pode usar a api do google? tem um exemplo de uso dess=
+a api aqui:=C2=A0https://stackoverflow.com/a/5586056</div><div>basicamente =
+=C3=A9:</div>http://maps.googleapis.com/maps/api/geocode/json?address=3D&lt=
+;CEP_AQUI&gt;<div>ele retorna um json com latitude e longitude<br><br>Em se=
+gunda-feira, 10 de setembro de 2018 11:03:51 UTC-3, Vinicius Brito Rocha  e=
+screveu:<blockquote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0=
+.8ex;border-left: 1px #ccc solid;padding-left: 1ex;"><div dir=3D"ltr">Senho=
+res,<div><br></div><div>estou=C2=A0buscando=C2=A0uma alternativa para colet=
+ar a latitude e longitude a partir do CEP.</div><div>Conseguem=C2=A0me ajud=
+ar?<br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"><div dir=3D"ltr=
+"><i><b>Vinicius Brito Rocha.</b></i><br><i>Estat=C3=ADstico e Atu=C3=A1rio=
+=C2=A0</i><i><br>M.Sc. Engenharia de Produ=C3=A7=C3=A3o/PO</i><div><i>Ph.D.=
+ Estudante Sistemas Computacionais<br></i><br><br></div></div></div></div><=
+/div>
+</blockquote></div></div>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/9d1158ec-cf4c-4183-85ef-37fe01e76835%40googlegr=
+oups.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/=
+d/msgid/python-brasil/9d1158ec-cf4c-4183-85ef-37fe01e76835%40googlegroups.c=
+om</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+------=_Part_1123_136189246.1536597906039--
+
+------=_Part_1122_1835581825.1536597906039--

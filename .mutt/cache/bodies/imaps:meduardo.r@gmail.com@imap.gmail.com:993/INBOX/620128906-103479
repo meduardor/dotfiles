@@ -1,0 +1,320 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:5611:0:0:0:0:0 with SMTP id l17-v6csp5349503wrv;
+        Mon, 27 Aug 2018 06:07:58 -0700 (PDT)
+X-Received: by 2002:a81:78d4:: with SMTP id t203-v6mr6754352ywc.331.1535375278359;
+        Mon, 27 Aug 2018 06:07:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535375278; cv=none;
+        d=google.com; s=arc-20160816;
+        b=K7IVwF2H1iBgKRyuz7J+kOkrUjD4fBSuTys4phGSxSz+QkLQkKTwthjBiW1bkeQ5fN
+         EFqJkoM/rSz/BZp+ew0EASE089o+SgdakxzklxUqR12cmhb2Htxwtu0GuQvZTUL5zD6d
+         3AxhLWiJKZ6Moii9jqcefrO4qftukBsjwp0nKZqpxKSMbvcdEdpMCF/TdFqecXvZYme1
+         o8LBqr5A6FcTFS8yfu385NAhHkIdfWuFQCzI7ztf04ghZ8WsbvfzK0zGT75jK30nv0Dn
+         3I+MgFawscl6Xo1t6Q4xroh2TdIs9k7BS48Do5fjpZzdaH29BoDT6oGjVbTZofBrjWQ4
+         4DDg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:mime-version:subject
+         :message-id:to:from:date:sender:dkim-signature
+         :arc-authentication-results;
+        bh=mmcbQdWsFrJDbp0oxv3kNVFbhy723KozUG634VyzJh8=;
+        b=DME/tfWwkjy9Zy/U2NtBKNQxW37y5O6tixI0mJZsmXfzzEgUKNPYYyiWWyg7TBYmIz
+         jK/YjPddFIQM94GkdUKfxJRSR0sDv1Xlj0//CXNw25tCefmRTD4aHP0hyRNdeWnchcpp
+         4Ba63XFdPU8kKNjZaFNFy/55YrohpGRCt/W1qFyhFvO9Td0N2DK5zgaeKzzMO1oePdjf
+         0cq3vX4KPLe8j3HUB/+nl2cTphINAgwrH2Pk5vjEDzbuAx95pBtpR/9BZfHTpJY+Lg9p
+         b4w2aiubz9icm0Z+uVj3gDZaFLXWf8H1grsOYZ6p8lbGBEi1murqOG+QMvjK07xCad41
+         pFEQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=fObbHywY;
+       spf=pass (google.com: domain of python-brasil+bncbci37lpatenbbi7pr7oakgqegxqvd2a@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCI37LPATENBBI7PR7OAKGQEGXQVD2A@googlegroups.com;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBCI37LPATENBBI7PR7OAKGQEGXQVD2A@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id r5-v6sor3360032ywf.142.2018.08.27.06.07.57
+        (Google Transport Security);
+        Mon, 27 Aug 2018 06:07:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbci37lpatenbbi7pr7oakgqegxqvd2a@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=fObbHywY;
+       spf=pass (google.com: domain of python-brasil+bncbci37lpatenbbi7pr7oakgqegxqvd2a@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCI37LPATENBBI7PR7OAKGQEGXQVD2A@googlegroups.com;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=mmcbQdWsFrJDbp0oxv3kNVFbhy723KozUG634VyzJh8=;
+        b=fObbHywYfDyA+mf+ct2BR80EiUhC835ZRVQ2pzQqhW0HeSQ75uOLeLR4zO5HC8VDOR
+         pwwyzoXpP+BYkeALwjnPrM2obypOFD95Ulymh3JGDm57R7/T3s6lKIYpapdRkbSgz56R
+         JkaR+kDI5VWFsRq1/+Mlv0fLQOYG0ZCu192D+W7Vk6P5MEaMvDbyVcdZrXvy1rzZ8ScC
+         UlVNFdqw+Bm3HFrcTP+lxU6MfwfGAa5bcakNF6jCkcKYS9CtntvdE6M37pEPvV4wr12Q
+         Ph2DWcVijCFfZrByvW02JG2Bl1FesWzXD7bB2VRtoyDOrsujolIx9pagMy45NjgDqPIC
+         Pw8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:date:from:to:message-id:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:list-subscribe
+         :list-unsubscribe;
+        bh=mmcbQdWsFrJDbp0oxv3kNVFbhy723KozUG634VyzJh8=;
+        b=ufTiwEfOo24EyaQeANOwspD0Vg2vGYqZnrqz5vdHeHiJJTcMP8k6IjXSqx2CKNwFmR
+         dqESK9mDC79mDjbVm5OkDbfGGNaetUbT+wxG9SagXqJEnLtTvaoPi4Gqa727NmCpHXrt
+         P96eHdvO3iC8RKFp/586WHbsUKZR3NupjhOMZRlL+yglCqDd9qKrFW0VIENaDjrIGpQ1
+         z2qJ4+APBISVYCoEdgZAUpkw32tufopXL1JnH7Pc+gYz6OyPMtHWFe/oPmrAbTs9aX7j
+         Y60S+E560QFAp+/5E8dH5HBfL9RMVQrC3cGDMI7+3e93UcTu2xu+L20z0013nnZcDvfU
+         FnIg==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: APzg51CplpvVuztml/cctsEIjQ65t8AvELFe+9gtkA9E2UPoWN9TsNXt
+	/waw6WTXR1ySQyXrAWu9SS8=
+X-Google-Smtp-Source: ANB0VdZpynRpwNupnGCnhzirq4Aid751Qz85x5JWLEJojslD4lKa6G5qWVMwkW16atiEQbvvKfTk8g==
+X-Received: by 2002:a0d:de01:: with SMTP id h1-v6mr175981ywe.3.1535375277657;
+        Mon, 27 Aug 2018 06:07:57 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a25:1fc1:: with SMTP id f184-v6ls3147668ybf.14.gmail; Mon,
+ 27 Aug 2018 06:07:47 -0700 (PDT)
+X-Received: by 2002:a25:6192:: with SMTP id v140-v6mr3781192ybb.5.1535375267763;
+        Mon, 27 Aug 2018 06:07:47 -0700 (PDT)
+Received: by 2002:a81:31d8:0:0:0:0:0 with SMTP id x207-v6msywx;
+        Sun, 26 Aug 2018 19:24:00 -0700 (PDT)
+X-Received: by 2002:a25:3989:: with SMTP id g131-v6mr4510yba.0.1535336640231;
+        Sun, 26 Aug 2018 19:24:00 -0700 (PDT)
+Date: Sun, 26 Aug 2018 19:24:00 -0700 (PDT)
+From: Suzuya Juuzo <joavictor.ms1997@gmail.com>
+To: Python Brasil <python-brasil@googlegroups.com>
+Message-Id: <d090b180-ea66-4f2b-9b55-e30dda1738d5@googlegroups.com>
+Subject: =?UTF-8?Q?=5Bpython=2Dbrasil=5D_Problema_na_Instala=C3=A7=C3=A3o_do_Python_3?=
+	=?UTF-8?Q?=2E5_em_diante?=
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_706_392523061.1535336640055"
+X-Original-Sender: joavictor.ms1997@gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+------=_Part_706_392523061.1535336640055
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_707_1526612363.1535336640055"
+
+------=_Part_707_1526612363.1535336640055
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+j=C3=A1 venho ha um tempo estudando e programando em Python, a minha vers=
+=C3=A3o era=20
+3.4, por=C3=A9m estou aprendendo a programar na framework Kivy, =C3=A9 esse=
+ Framework=20
+n=C3=A3o suporta Python 3.4 pelo que andei pesquisando, ent=C3=A3o resolvi =
+atualizar=20
+a vers=C3=A3o do Python. Meu Sistema Operacional =C3=A9 o Windows 7 64Bits =
+e o=20
+seguinte erro ap=C3=B3s "instalado" =C3=A9 o seguinte:
+
+[image: Sem t=C3=ADtulo3.png] <about:invalid#zClosurez>
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/d090b180-ea66-4f2b-9b55-e30dda1738d5%40googlegroups.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+------=_Part_707_1526612363.1535336640055
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">j=C3=A1 venho ha um tempo estudando e programando em Pytho=
+n, a minha vers=C3=A3o era 3.4, por=C3=A9m estou aprendendo a programar na =
+framework Kivy, =C3=A9 esse Framework n=C3=A3o suporta Python 3.4 pelo que =
+andei pesquisando, ent=C3=A3o resolvi atualizar a vers=C3=A3o do Python. Me=
+u Sistema Operacional =C3=A9 o Windows 7 64Bits e o seguinte erro ap=C3=B3s=
+ &quot;instalado&quot; =C3=A9 o seguinte:<br><p class=3D"separator" style=
+=3D"text-align: center; clear: both;"><a imageanchor=3D"1" href=3D"about:in=
+valid#zClosurez" style=3D"clear: left; margin-bottom: 1em; float: left; mar=
+gin-right: 1em;"><img src=3D"cid:c8460f03-162d-4b2d-90d2-13ec7a490c11" bord=
+er=3D"0" alt=3D"Sem t=C3=ADtulo3.png" style=3D"" width=3D"320" height=3D"11=
+8"></a></p><div><br></div></div>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/d090b180-ea66-4f2b-9b55-e30dda1738d5%40googlegr=
+oups.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/=
+d/msgid/python-brasil/d090b180-ea66-4f2b-9b55-e30dda1738d5%40googlegroups.c=
+om</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+------=_Part_707_1526612363.1535336640055--
+
+------=_Part_706_392523061.1535336640055
+Content-Type: image/png; name="=?UTF-8?B?U2VtIHTDrXR1bG8zLnBuZw==?="
+Content-Transfer-Encoding: base64
+Content-Disposition: inline; filename="=?UTF-8?B?U2VtIHTDrXR1bG8zLnBuZw==?="
+X-Attachment-Id: c8460f03-162d-4b2d-90d2-13ec7a490c11
+Content-ID: <c8460f03-162d-4b2d-90d2-13ec7a490c11>
+
+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
+d+3xTxPWPpCvNlj23oZ+sVe1cfWt4uLwKJs3Py8vNja2Q1tXtmVLzeLF1b7eGh+fkrlz6z/6qL+n
+hyxAVuPx48ePnj9/0NRc/P77VxctItqtbWqqqqwsKyujtNvXF7to0WGlMnbixOiJE49OnJg4y/Ve
+RUVcXBzp3PRFXXOullAqNJ6j9PUQ/gUT0TOYtZiwK/0S/M+A3NpUv8TlArkXkshzmexEsFESTdIM
+F2fELzrxP2IqpG+0HGK1QeQJZPYAvznryCs4l9zYO83ExkrdbCd1hU3ekuJ7knWSyGyUeRUMyWoD
++1mkj6YgcWVtk9Gz3Gttoi8BQflpmOewNkC8pA/z9vcnJiSo1eqmS5llgWsrvb1venmVenkVe3jk
+OM/U/PnPjzs7n/b39/b23u/ubn/w4M7Nm9WZmZq6OuLcwhs3mtvaHvb2Rru7/6BUxjk4HHdwOEZH
+/JQpmqioq1evks7H5l0+L+StS2DsY3U3xY7hVR9l84aHhdXV1VVFRpX4+5d7eJZ6LCxcuLDA3T1/
+wbuZTk7FGzd2t7V1P3p0p63t1q1b2oYGjVZbUlJSUFDQxGjXy4tku/H29jEODtF0EP/GOjqqt2wh
+3ZLOISmYFwyvwKzqrljzT3FrW+1RNu/XO3eSfLZo965i70WMcwvc51+fP/+am5t6wYL0N6ZeW778
+VlFRQ2NjdXW15ubN0pKSGzduNDU39/X2xvn4MNplgqS9JIiCY156Kdl3MemWdA5JwbwAWCGjbN5t
+oaHPnj3L+uCDwnffJdq9/s471+bNU7u5Zbm5qd5447yd3Ul7+yx//8rq6gqNhsl2c65f7+7uvrBp
+0w9KJXn0hD7i9f/GOzic+OMfSbekcxxgAADMK2LeX3/99WpICJXnEufOnZs1b94VV9eLjo5JdnYJ
+9vYXXnut/NSpEo2muLiY0m5OztVr17KvXy9KSbno4kI8m0BHIjuIeWfPfvr0KcwLAIB5xasNnR2d
++V//PXv+/CyiXbd5KmfnZDu7M7R2z0+ZUp6SUlxTU1RUVJCfn0PMm5d3NTs7MzPzSm5uqUqV+uab
+ZDGyMNH0OX0kK5Xnli3r7uoagWoDAACMffOGh4XV1GorDh++PH/+FTe39JkziUMT6aLBuSlTys6f
+L6quLiouzs/Pb2ptvd/VlX7mzBWS82ZlqdXqvLKyqqtXVX/4AzFvCh0XSdjapr70UnZoKPXVONNX
+2IQ3oAx5yMcRQnxAS9nb0UZoHczdK6NePra+0TsBsBLzJiYkZGVlNVy+lL7AXTVrFqPdEySNffXV
+sqQkot3CoqK8vDyi3Z7792Pmz4+dNk11+oy6oICkwCUlJdqmpqbCgivTpxPhZtjaXrK1vWxre/ql
+iVWxMUTNJu4q45mKGVrROi83SQ5oybklc4TXe6DXh63GvJZoBcCYMm9+Xl50THRrTfUFd/ekyZMT
+6Gz3lKNj2enTlHYLC4l2G2ntMjeQESmfdnLKTkkpra2tra5ubGzs/vlxd0WFesprWTY22TY2ahub
+U69Pba/SxMXFyn6TQur2GCt84cl80Zk18taI3zQz0D0D8wJgreZlvj3c1tKSsnRpwiuvEO1GOzgk
+Tp1amJlZUF6em5vb1NLS0919zNPzB1q7zMW0ZBeXErW6uaOjs7PzyX/+c7+7O9PJ6bqNTb6d7fWJ
+E4u+PdDV2bln9265bw9LukpuGBHWd5lMfmVI0LnoeH3yQ/xJrir3m/sHpVwhPvyj6GCDhoEKRQZL
+5DYSGQJQfAsH8+yidSDhcbL60TsBsG7z9tMj5mRnZ1dFRp6YMiVGqTzu4HDEweHkvHlZqam379wh
+2o1auPB7+r7dE7R2k+zsku3sUn//+1ulpc/6+3vv37/k53fF1rbE3r7UweH0pEmN6qxstakRcyS/
+0iL6BX/ZoRElRmOR+QK+cbw+uSH+ZFaVPViPzCtfdPhH0S2VGapRdI5wc8SHLBCOdmD2s8sMxije
+iTWN3gmA1ZvXMErk+SVL4n/zm0gHh8NK5SGlMnbOnPKMjEj3BRFKZYyDAzHvSXv70yThpS+jpdva
+Xps1q/ns2ewVK7JsbCocHDRKZbHjK+f9/AY7SqTEK1B0zCpzB+UTyeDkv0EvojyTOW+a1CtfYkRE
+2aEvhdmtSG/CzTF3WCxTzy62ySJjTFn76J0AWL15+/Ujo98rLIybPuO4oyPJcCPo+Bf97zH6a8HM
+rbtJ9D0MKltbkuSqbWzIv7k2NsS5NRMmVEyefPL11ztLSi5lZJgeGd10nXdw5pV4AZovJhETma7z
+Slz9kh/+UWywQZFHpcwrNxyi5EaZGOrQPPOOgdE7ARgL5jX8GpA2ISH+9dcjHR3/TTuXKPgwy7yJ
++oT3Mq3dPHv7Yjs7ot3aCRM0jo4Jv/vdraSzlZWVZv0aUL/gFyL59zbIVxu4w+OZHi/RzPH6JEwk
+OaAl96dXxH7MiG8K+cEG5T6Xy48lKP8LEeaM3yhTbZAYT9jqRu/E1Tkwpszbz/oFzLqEhOg33oh6
+9dV/T5gQwTLvCfobE4aEN8fW9oZSWa5UVk+YUObomDht2q1z5wbyC5iCT838u7NEPiBzLmYZPqWG
+hJgeL7Hf3PH6JF+94gNa8j9lC70iGP5RfrBBscESRSu/IlsqNWZjv3njN0odGuGjVjt6J8wLxpp5
++1m/+n6vsDDZd/Hh3/42atKkH5TKSK55L9naZtvYFNg5lE6YUDxp0rmXX07xX95ZVjbgX30fDOPq
+B3fHEFAegHmHlvlGRERkqFQ9XV231err23dET50WOXly/MsvJyiVZ+ztL9rbZ9jbZ02YcH7ixBOT
+JqnWrm1IOksWJk1IwwFkuzAvzAsAzGugs7MzOTk5PDw8MzOzs729Xav9KTW15Lvv0td/kLDgnfiZ
+Luf9l1/97LOa2Jh7Gk1nR0d2VhZZmDQxq7YL88K8AMC8Umi12lOJibt37YqNjVWr1XV1dfe7u5/R
+kAnyJ5lJHiILkMVM3EAGAAAwr/mQlDc/Ly8xISE8LOzrnTu3hYaSIBPkTzKTPGTiNy4BAADmBQAA
+APMCAADMCwAAMC/MCwAAMC8AAMC8AAAAYF4AAIB5AQAAwLwAAADzAgAAzAvzAgAAzAsAADAvAAAA
+mBcAAGBeAAAAMC8AAMC8AAAA88K8AAAA8wIAAMwL8wIAAMwLAAAwLwAAAJgXAABgXgAAgHlhXgAA
+gHkBAADmFZgXAADAEIF5AQAA5gUAAJgX5gUAAJgXAABgXgAAADAvAADAvAAAAGBeAACAeQEAAOaF
+eQEAAOYFAACYFwAARPkI0AzCvBdgXgDAoM07zkcjIxodlHlrw2BeAMBQzNsyXmE0CvMCAEbHvONz
+84dgXlQbAAAwr4XNW4srbAAAmNfiOS/MCwCAeWFeAADMC/MCAIC1mPf0hwo9bgdKWXMNf5UecFMo
+PjwN8wIAYN7h0i7HsPo/jOZlOxjmBQDAvEOEUi0nlzXO0PlWsATMCwCAeYdVvPQsJsGlzXvAguku
+zAsAGC/m5YvVIGNd9deC+S7MCwBAzkvS3dOswi/MCwCAeUdEvYI6L537Wi7xhXkBAC+8eXliZd/o
+YLyjodSCiS/MCwAYB+Z9wLmfl5Xccu4l49x7BvMCAGDeFwmYFwAA88K8AACYF+aFeQEAMC/MCwCA
+eWFemBcAAPPCvACAMWHe6HEMzAsAGAXzbh73wLwAAEubF8C8AABgXcC8AAAA8wIAAMwL8wIAAMwL
+AAAwLwAAAJgXAADGnnm1Wi3MCwAAFjXv06fPYF4AALCoeZ88eQLzAgCARc37C8wLAAAWNu/jX36B
+eQEAwLLmffxY1LwAAACGHZ15H/38M8wLAAAWNe/Dhw9hXgAAsKh5+2BeAACwsHl7e3thXgAAsKh5
+Hzx4QMwbDQAAwFI/3abo6enBzygBAIAlUXSD0Uab/M3WI7nceblHtn6TrGUvYviTNS3S0tCQ3US4
+rFQn7Ocl04b5/N7M7lD0IdIzG37PIwPvSQnMSrI2mbOVhvm8fcKfyTQyNuVuPnsnih1ZMx8CFMwX
+bu/evUume1iQD+7MvwZ6e3v7+vo6OjpqWvt40d71MCAg4Olo8//qoBKPuG4FPgAAAABJRU5ErkJg
+gg==
+------=_Part_706_392523061.1535336640055--

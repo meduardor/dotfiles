@@ -1,0 +1,247 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:5611:0:0:0:0:0 with SMTP id l17-v6csp2159028wrv;
+        Thu, 20 Sep 2018 09:59:32 -0700 (PDT)
+X-Received: by 2002:a0d:db54:: with SMTP id d81-v6mr18432218ywe.491.1537462772260;
+        Thu, 20 Sep 2018 09:59:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537462772; cv=none;
+        d=google.com; s=arc-20160816;
+        b=mOPaTsIkrG6xf99XBxGzKC901H6paekac11jTCWwzXWNW2OzRpkEdAgi07Ktr/3eTL
+         OF9tkNDomljJW3QfsBAv6JVZM9hjt1qak7vCCrM248BbX6jg0r5c0WlIx6B3hCjhgRzZ
+         J6BvwLvtxVMjVYxkg6zBvWDpAQgCvC3LFA7sjdFgNtJsZoj8nXX9mmCjfG0g5Pr3/JX0
+         t++5Hvt5FvSFo3ZfHFds3z0wCv9BWfT7YT+Ah7geOw/BH5yI2RH5exFlG7YhRvfj8UFV
+         VGP7ySF204tNS+mx2VwhWmVyizWAAsd5cnaIiWGTOE1kJLEP2UoukFU/kDrbhyInXr4U
+         2rpw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:mime-version:subject
+         :message-id:to:from:date:sender:dkim-signature:dkim-signature;
+        bh=Z9rH59YNaHvdGOl//Nu6pPf0fWbrNZx9TKiecFBUG70=;
+        b=rDiqvgu/TzxyOyOk8EDFICz4qcUxTcpLaUWHMIQjzrFafutXNioNB7nkgiGc01KKVY
+         b1hbZkCSwcQDzxqudYevIwidHYwKzjGnYoZixwjmiC9fG1xrPyHZtV3XMw2gsz66geAW
+         352rsYrgo6RsbQ9X/9qDm/LDBseleYbJIT3fCIjHI9dWZFwPS/wver3UEUY4yXmRW0U/
+         1COwL7UhZjzE84iijtNIY9X2AfqLBgyz02CX8a2asfQd6yfgVGFoNtcJQ4lH13JETCtu
+         2sjjRynfdPyZDDyo9TLDN/Buslrts8P1+seOt+pI8CTPgwcHcF8GnbD2QkWRk4GC787h
+         dwzg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=CRGjSibf;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WpXpC956;
+       spf=pass (google.com: domain of python-brasil+bncbdwlhmvp6ajbb2vdr7oqkgqe64bwj3a@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBDWLHMVP6AJBB2VDR7OQKGQE64BWJ3A@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBDWLHMVP6AJBB2VDR7OQKGQE64BWJ3A@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id j202-v6sor112687ywg.311.2018.09.20.09.59.31
+        (Google Transport Security);
+        Thu, 20 Sep 2018 09:59:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbdwlhmvp6ajbb2vdr7oqkgqe64bwj3a@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=CRGjSibf;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WpXpC956;
+       spf=pass (google.com: domain of python-brasil+bncbdwlhmvp6ajbb2vdr7oqkgqe64bwj3a@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBDWLHMVP6AJBB2VDR7OQKGQE64BWJ3A@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=Z9rH59YNaHvdGOl//Nu6pPf0fWbrNZx9TKiecFBUG70=;
+        b=CRGjSibf00HxG0JJ1kXBisnoZHmxKcUAfc+98TPopfuECfoSb5vrKiJK6GDFWQn/qA
+         I6TnOPEdG3Kb+ZV+mGYnyl87kWRV7XZlOJYoFWm1mpUFEgOLTN/OsSWfgqgynn1b3CHS
+         9BpXcAcZ9G5CcDrYB9ePYJ26vFKJhYQ3cYD7PVD0382dQwT2ExIMPuwvZvk/qBQ7fNbl
+         X1EXKwLO58nk7NWBaAkleh9vuMopYIQfELBw91WpT85C5yMwfh1CEhZHxcWN4bP1BHuZ
+         4drMvz0JKLaxhL5wtMTmZBkI2hNUQCARhawbh1IrHfevS8n2VUk5qzdC71IG9SwQ9wua
+         R29Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=Z9rH59YNaHvdGOl//Nu6pPf0fWbrNZx9TKiecFBUG70=;
+        b=WpXpC956D2/oRm7JVDL57TiJB7DP8DM6pE2tUWwd6QgV7nXqLmnZbKD+igHk8bzkL2
+         TlyDfbR8k1FZsvjcsEkBHh6RVx6j+U+Za5PDcQchNW/6NSDC/oKpCMgxop3TCC7c6RgJ
+         YdaP/5QXTD9A+1QloblTIZCXzSwfKmUT+/PAeqGz4+v7AAMgnLq/u68BFFXi6mzpklee
+         5YGn+aMMKt3NuiN+uS1TCi5ledUOLjRUwHlBHPGzcO9Z/8egjqhlsYrxAADJGAFf3d36
+         ghChG9XDy/PXc+MJhyQlkeA7B9jwdRhpOhm6TCD+H9AWJGgWPRcUFCVLifHsMj7b9Kbk
+         EKkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:date:from:to:message-id:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=Z9rH59YNaHvdGOl//Nu6pPf0fWbrNZx9TKiecFBUG70=;
+        b=tMh76kMCwtUkiYnW5xKPS8feMETc0mZBYrS0fsdxXTVNjC0U6V7y6o1tTnhYDZQc03
+         Ps8FlH+joH6heuMBsf4J/aqhVaLsdj7CKFjZuMaMDZ51GvAARVPEfI2hqiWXJ46Ejl+T
+         S1zaa0zm5pHw41Kp+w9k+EvNjuXXxoURAfSILXCnTvtbkpIxMpjrNHZcc7RFqwe1T3bq
+         AnE3dtBJErXYAb7dK/uJ++8auP9dGnGCL4rQUg+AdnLWquBdaSYLNTgUnrVJnxTepnIA
+         4D1CFVM6MrX8kLLqE/dtnunGGaWbo+m9BMBUrX67bo8wYeoHmJh2Atv3oLXzxpVDGlqk
+         Tt4A==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: APzg51CwrrsUt0OYS9Dr1DS7WOvETyjjjG+VKyJxZYklMzDKmuzD+nYn
+	LjAqbTcIo51JG2rt+SuGavU=
+X-Google-Smtp-Source: ANB0Vda/BYU1z8y+mKllJ9vRZCiyPmS7ypOw3eFwEVfeIElyhRdFVvbukNUGchnZZmiwttQhYMG+nQ==
+X-Received: by 2002:a81:5089:: with SMTP id e131-v6mr383466ywb.3.1537462771435;
+        Thu, 20 Sep 2018 09:59:31 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a81:fd7:: with SMTP id 206-v6ls3491200ywp.5.gmail; Thu, 20
+ Sep 2018 09:59:22 -0700 (PDT)
+X-Received: by 2002:a81:6d13:: with SMTP id i19-v6mr26001ywc.2.1537462761958;
+        Thu, 20 Sep 2018 09:59:21 -0700 (PDT)
+Date: Thu, 20 Sep 2018 09:59:21 -0700 (PDT)
+From: victorjabur <victorjabur@gmail.com>
+To: Python Brasil <python-brasil@googlegroups.com>
+Message-Id: <f75a096b-fd1b-46d6-8c20-2fd50121e1ab@googlegroups.com>
+Subject: [python-brasil] Repassando, vaga de Python ...
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_535_506756649.1537462761403"
+X-Original-Sender: victorjabur@gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Spam-Checked-In-Group: python-brasil@googlegroups.com
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+------=_Part_535_506756649.1537462761403
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_536_34920045.1537462761403"
+
+------=_Part_536_34920045.1537462761403
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Prezados
+=20
+Boa tarde
+
+Por favor, se tiverem algu=C3=A9m para indicar ou puderem ajudar a=20
+divulgar...Obrigada!!!
+
+DESENVOLVEDORES PYTHON
+
+N=C3=8DVEL PLENO
+
+VAGAS PARA REGI=C3=83O DA BERRINI =E2=80=93 SP CAPITAL
+
+Etapas do processo seletivo:
+
+- Envio do curr=C3=ADculo para o cliente
+
+- Caso o CV seja aprovado tecnicamente pelo cliente, agendaremos uma=20
+entrevista no RH da Talentfour Consulting =E2=80=93 atrav=C3=A9s do SKYPE o=
+u presencial
+
+- Realiza=C3=A7=C3=A3o de entrevista no cliente, somente presencial. Ok?
+
+SP
+
+SKYPE:  elisa.hamada
+
+Desde j=C3=A1 agrade=C3=A7o a sua participa=C3=A7=C3=A3o no processo da Tal=
+entfour
+
+Desde j=C3=A1 agrade=C3=A7o a sua participa=C3=A7=C3=A3o no processo da Tal=
+entfour
+
+Qualquer d=C3=BAvida, estou =C3=A0 disposi=C3=A7=C3=A3o
+
+Atenciosamente,
+
+Elisa Hamada
+Recrutamento e Sele=C3=A7=C3=A3o
+Fone: +55 11 3848-4444 - Ramal: 456
+Mobile: +55 11 97338-4756=20
+elisa.hamada@talentfour.com.br
+
+Rua Helena, 235 - 10=C2=BA andar
+04552-050 - Vila Ol=C3=ADmpia - S=C3=A3o Paulo =E2=80=93 SP
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/f75a096b-fd1b-46d6-8c20-2fd50121e1ab%40googlegroups.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+------=_Part_536_34920045.1537462761403
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Prezados</div><div>=C2=A0</div><div>Boa tarde</div><d=
+iv><br></div><div>Por favor, se tiverem algu=C3=A9m para indicar ou puderem=
+ ajudar a divulgar...Obrigada!!!</div><div><br></div><div>DESENVOLVEDORES P=
+YTHON</div><div><br></div><div>N=C3=8DVEL PLENO</div><div><br></div><div>VA=
+GAS PARA REGI=C3=83O DA BERRINI =E2=80=93 SP CAPITAL</div><div><br></div><d=
+iv>Etapas do processo seletivo:</div><div><br></div><div>- Envio do curr=C3=
+=ADculo para o cliente</div><div><br></div><div>- Caso o CV seja aprovado t=
+ecnicamente pelo cliente, agendaremos uma entrevista no RH da Talentfour Co=
+nsulting =E2=80=93 atrav=C3=A9s do SKYPE ou presencial</div><div><br></div>=
+<div>- Realiza=C3=A7=C3=A3o de entrevista no cliente, somente presencial. O=
+k?</div><div><br></div><div>SP</div><div><br></div><div>SKYPE:=C2=A0 elisa.=
+hamada</div><div><br></div><div>Desde j=C3=A1 agrade=C3=A7o a sua participa=
+=C3=A7=C3=A3o no processo da Talentfour</div><div><br></div><div>Desde j=C3=
+=A1 agrade=C3=A7o a sua participa=C3=A7=C3=A3o no processo da Talentfour</d=
+iv><div><br></div><div>Qualquer d=C3=BAvida, estou =C3=A0 disposi=C3=A7=C3=
+=A3o</div><div><br></div><div>Atenciosamente,</div><div><br></div><div>Elis=
+a Hamada</div><div>Recrutamento e Sele=C3=A7=C3=A3o</div><div>Fone: +55 11 =
+3848-4444 - Ramal: 456</div><div>Mobile: +55 11 97338-4756=C2=A0</div><div>=
+elisa.hamada@talentfour.com.br</div><div><br></div><div>Rua Helena, 235 - 1=
+0=C2=BA andar</div><div>04552-050 - Vila Ol=C3=ADmpia - S=C3=A3o Paulo =E2=
+=80=93 SP</div></div>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/f75a096b-fd1b-46d6-8c20-2fd50121e1ab%40googlegr=
+oups.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/=
+d/msgid/python-brasil/f75a096b-fd1b-46d6-8c20-2fd50121e1ab%40googlegroups.c=
+om</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+------=_Part_536_34920045.1537462761403--
+
+------=_Part_535_506756649.1537462761403--

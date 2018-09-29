@@ -1,0 +1,322 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:560c:0:0:0:0:0 with SMTP id l12-v6csp531110wrv;
+        Tue, 25 Sep 2018 03:48:19 -0700 (PDT)
+X-Received: by 2002:a0d:cd46:: with SMTP id p67-v6mr179915ywd.44.1537872499612;
+        Tue, 25 Sep 2018 03:48:19 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1537872499; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=yFLOrT25dcjTHTGvrk5iy3HcWcD0TE7n3U7E0v7f1r1vNyyVQmhnK5z0DbyR+88j+p
+         uN2r9uXpGCtHVBYVVJmc2ogfX/PBnS/z8xPSBRDbllD5GMs1rBOzMDjHClB1hHmNgw/+
+         9gqVzM0OqppDX+dTEMUvHZ5xrJVoYUtaNucD3ll23wQqCID4KodCx26vla3Wv8fDQLiX
+         GwNfPQYYj4w75coZQt33bwVN/Rb46Id5BfCObIpu1p85Nb+qMf9yZpkXWIPg3HExtsDz
+         SuHBPGSCZ8BYgcOSjTmUMrp3dHQVlmEF/TeMzNhrbZOFpw/rvweuqaHj1tePuttc1FYT
+         UW3w==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:references:mime-version
+         :subject:message-id:to:from:date:dkim-signature;
+        bh=M6isjoY81wOOO9SjoEWOYNoRcQRaARBfv6Y1eBoYG1g=;
+        b=E6GEowr/1oKOFKz4za+iiw/cLrZw49QpWO515lveSGWYqlsLTpjBB1x9gepxPDk7CI
+         qFWR+j8RPd8agpRTiLLGQjF1xKcmvYng43k01qiA7YcXCNmiwSFuvrZagRNISMVSTJpy
+         +VPY9HbbQDa+lpempqbTQ9RwkA276O2Hc5ldwva0zyen2lTEdmGAwQm+4qTfo4oaiIoL
+         y3g6X7v4xPp2RCy7W1w/ltEUbTUF2V1gA2kZmYUaQgNkYhnM59cEosa0VEbEhvgsdrb8
+         eURqsHHw2Fvq/vHvRecrf+OKuRjPscR51sO8zL/kP2ApziHqolae3n9HNgAOgCiC0OWV
+         nwpA==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=JbVGOkq6;
+       arc=pass (i=2 spf=pass spfdomain=yahoo.com.br dkim=pass dkdomain=yahoo.com.br dmarc=pass fromdomain=yahoo.com.br);
+       spf=pass (google.com: domain of python-brasil+bncbdt3366t6uorb3vevdoqkgqej2kcgmq@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBDT3366T6UORB3VEVDOQKGQEJ2KCGMQ@googlegroups.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=googlegroups.com
+Return-Path: <python-brasil+bncBDT3366T6UORB3VEVDOQKGQEJ2KCGMQ@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id m62-v6sor106203ywf.197.2018.09.25.03.48.19
+        (Google Transport Security);
+        Tue, 25 Sep 2018 03:48:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbdt3366t6uorb3vevdoqkgqej2kcgmq@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=JbVGOkq6;
+       arc=pass (i=2 spf=pass spfdomain=yahoo.com.br dkim=pass dkdomain=yahoo.com.br dmarc=pass fromdomain=yahoo.com.br);
+       spf=pass (google.com: domain of python-brasil+bncbdt3366t6uorb3vevdoqkgqej2kcgmq@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBDT3366T6UORB3VEVDOQKGQEJ2KCGMQ@googlegroups.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=googlegroups.com
+ARC-Seal: i=2; a=rsa-sha256; t=1537872499; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=SNzvmrKunen8+ywEWeJ+9k6almigkiAR2R2hndwdCQ3f2Y8eum99H6MMvdQ2dzmK7R
+         3gMiHfv67Qj/x7fm7uX3rRMzpiV7bgDEtw5cmMoCNMIS0gAlHVbUPnlIzj5tevmG9xV4
+         03fVF0ghqITzVg7BJrrxDGgJo8sQezG0UJkH5Htm5ppchC6hPQyoXsNesUcZ1ThbVnwJ
+         0MDrJHSf6gBQwwEeNLQS4sb1z8hfdP+3V5HbNAcdP+5ILQA2wGXZ+8tH71lpiHgqOpFo
+         9RTgRd3+9kxdTV5hTyt0zNXGMQc4ooOUPCsQ2flUUrRVDDBORO1CVtgpG/wAP/nbMnUT
+         ewoA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:references:mime-version
+         :subject:message-id:to:from:date:dkim-signature;
+        bh=M6isjoY81wOOO9SjoEWOYNoRcQRaARBfv6Y1eBoYG1g=;
+        b=jC2ItIjILjqR20CgnO22+adqGUNZ/vzyfxkBIGYYdBvsuR4RA1cGxansO8CrXOQQ2T
+         Z9jn9iQislT0JGEVxStYxPG+gApH6x1APtU7xvRvx0MvgUUBHq1ZYPzL5lvsQElrBEgS
+         bDkZCCos+bNhzsb4FLC6GOPQcNm++MRyILA49In9mjiD53fLsbk897/PgMX+kaAh8FXz
+         H99u+7kZLfwgWewu4wYd/xeSbGDtAObzq3eeXnN4HszCLg13lbFG+//IqwMuoUmu/nL+
+         oTC5I4OT3tV5/mhzJQCwSiJ9e+hig8tXilRul7N6TVrlstUv9MN+uCxq6ef+O92qV4p3
+         VGBQ==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@yahoo.com.br header.s=s2048 header.b=XAhk2qlF;
+       spf=pass (google.com: domain of marcosptf@yahoo.com.br designates 74.6.129.123 as permitted sender) smtp.mailfrom=marcosptf@yahoo.com.br;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com.br
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=date:from:to:message-id:subject:mime-version:references
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=M6isjoY81wOOO9SjoEWOYNoRcQRaARBfv6Y1eBoYG1g=;
+        b=JbVGOkq68Zu9iD++vCTmDe8jaZ5i2Z1xn20aaiTdLhEX/FDxk36Tfqb+2fihpxnF7I
+         irMqdd3iW0TGuB7DQTggLd1usqfcd/vtWnZ5oCnT3zR2tYhJejka0e2HaBYqfDYcrzNf
+         6XGI6ioFaQbKjTez2k+6z4Qy9kjZobNlc015tSEBoOycUkSATcApOh8wyrTbyCuFEcOu
+         rh54njVtC9vq1mw67ADLDRkryBiidjDrWrxzQJ7l3KTquRiQe/qKzro0x3G/hgmM0Z6O
+         Df6H0SWXtjJEDVtfa3XR2eS+sk0Yz72YC8lMayhYMZMZSPyjk4pUHwGAxHaM1EPYtTMC
+         7xrQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:message-id:subject:mime-version
+         :references:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-spam-checked-in-group
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=M6isjoY81wOOO9SjoEWOYNoRcQRaARBfv6Y1eBoYG1g=;
+        b=PExubgopoCjkiUl8x17Jh1pvgwCErSJsk6kdUJVtGLqh1ELV8jjmGYxKfvlMYgAGhF
+         AeZz+auRKegpLmqG4N2wiyM4s3wTIeEQBxerYLfS8Cs1EWttElGGDW8jsJbb7EOU90d4
+         e2gsuVGKOfTOCaAK7MeDJMMQJAVrm2eq9see/60/LcutOh2iHp04F9Zzh1iu0Y6Iv3R+
+         tBPmfrbxV8bUld7M2yWxpiFIoXM/tacVVIMpjdBfFEe7i9r9xop/gpwZEWhftVsbL2+C
+         PhC9103/EBtvDA5tw1rxvIMUsbPl6T8qvemj2wWTZApmC6n6EVvP3qVdcPMCEoeHqrFA
+         lMTQ==
+X-Gm-Message-State: ABuFfoiG2yo6fRfoxTPBnyQtujLLKx7Vpc+seE89GDgYrfjRNDpk2Bgl
+	5KK5Gv8Yd1NWwHFTBS4IXcs=
+X-Google-Smtp-Source: ACcGV630clXRJQ152I814sxg1hcQRJJ4ZybJI4D5R2NrhaEvmhIEANUU11RkAuROeVBk/VK7ILRmcg==
+X-Received: by 2002:a81:63d5:: with SMTP id x204-v6mr6236ywb.5.1537872499354;
+        Tue, 25 Sep 2018 03:48:19 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a0d:d50a:: with SMTP id x10-v6ls1672859ywd.13.gmail; Tue, 25
+ Sep 2018 03:48:14 -0700 (PDT)
+X-Received: by 2002:a81:a38f:: with SMTP id a137-v6mr20491ywh.176.1537872494394;
+        Tue, 25 Sep 2018 03:48:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537872494; cv=none;
+        d=google.com; s=arc-20160816;
+        b=vjCPUZDPWg8+PGM31MQhtifZ2oinwdxbao0HIXfuk2fOqGJyA6mz+Bl3HUyIjDNAgJ
+         ZX0pOjPU8YdWk3X1WNTVOOkk+XD/tKO3M+0IBToaNrXS8SxFNzMgOhljUDbzwxABXp6J
+         0+lTOooyGDMauXhKBV0ZtoAXpweUrZyuwQUG4/xbXI8TczbWOAxBa/IDmhgjEuKxjOTt
+         sSK5G4KWaqAQ6AS+g5eY4BA5XbaaWkEsCNmJpZArwUv29Szf/w0zZqmoWxSNBjzJNk/V
+         1UIB6XByKeQsbaaremNcKbAm95zpdjjcebO7dca75Zv81eOBCiH+SpWnuasSnP3/JNBf
+         ep3A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=references:mime-version:subject:message-id:to:from:date
+         :dkim-signature;
+        bh=5oDnaUoyVzL2m62Nw4yaS9ID1RFKbHv48hxTXAhy22o=;
+        b=Z3Z/yxl9Jsa2buXJgFkiH4CbChFpK3ODSgicMw6AsUAb0u2hwKfxHABqhZpKO8zEHn
+         +vQTFn12fIMpH4UPLS0jBVyCVlj1hXWUnSDNhH8MPrv9PcQSH53Hw5As8Zrt1NUZeU2R
+         FAZX4YMXF3udQcnN+T/qvmSjvAuTruOkrkFyCi6Xc2i3h/qB3gyoHUHASLoPDU2+z3zm
+         E5M2tOPGyiMqLRu95s4F2tNriVr6jxbA98SWsNkLxwntOFVAMXSTxLd6T3yVuloJMRRi
+         9+eBKuHeKdhNUJIkHir5qrYAlsAlAvn89FFT118S4GRxE//S+br+xeyHgnxKr6anT1xJ
+         UCtQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@yahoo.com.br header.s=s2048 header.b=XAhk2qlF;
+       spf=pass (google.com: domain of marcosptf@yahoo.com.br designates 74.6.129.123 as permitted sender) smtp.mailfrom=marcosptf@yahoo.com.br;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com.br
+Received: from sonic309-13.consmr.mail.bf2.yahoo.com (sonic309-13.consmr.mail.bf2.yahoo.com. [74.6.129.123])
+        by gmr-mx.google.com with ESMTPS id p4-v6si73541ywm.4.2018.09.25.03.48.14
+        for <python-brasil@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 25 Sep 2018 03:48:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of marcosptf@yahoo.com.br designates 74.6.129.123 as permitted sender) client-ip=74.6.129.123;
+X-YMail-OSG: K.JMbAUVM1lptZy2_33JONlCtRSiQ2co6NGKESCIP2UuXRLHkmDTqTM2OTyOjq3
+ vyz.SBs.PvLt20_vrPcB6OAqjMJ.zG_vsQm9MUVtnjoGFHPEDZPoJtFSGmEH1A.6kgvhLL7Ywx5u
+ R6nLdGiHGn6jzdpxcdWa6s1NGJX9Lo3V_.NIiQZo9vYXTaEJFCSBy9w_kJfd8vTvM15hMNthi4kf
+ Y_y_Rxi8mTpnro.IKqDPbQR2Hmm.QAz.VcO5N30Apb1HHZDvQisKdF2orB0hrFBR.vY4.ISPpllg
+ hiaoerK12.23xGkGofltEi6If2HKTgTu8_BZ3G4zxudb7AajQScoLD1QCUcy75hKrm0AHvRZ7rsg
+ vXDTPQLwUMpZXQxURpEe7t9WZ_WrF_bI1TNw.n5X7.hTklDt49GdEeP3g2ZO8dyUX1MspQup9lUR
+ p6qMtqtK_90p.b9J53.xq7Af3sNBJHnHyh_KrLKm.a64_DGSU7vFalypvQL.2ZyBev4VYMFL7hU8
+ MUDpNUnZgym60SzVi9Do212uuN2lkHmBXEhjVl0PfNNxZV5ApQPzC_d7SMYEasvDJPj9mfJGbiR5
+ KABAcye2sxyTrcpTHCs83wH2WV.o7CqlmQJiAWRfd6RUliBTXffOqDYcHy7hLZ1CIKE19GJCgE0r
+ doUXWBq8FAkuSx12cK.v8MoeNOXZtcs13n_x4buKq9A0w9iUTAJ5nLrlcScwWgbZhZx2Kx8cBrh8
+ UwVM71yUUHOLfEDFnWkPYKEHBtT8_RstXQmH.fc9ef03C_.3nD.zEtTu4VXBA.fAoWS7lcLeGnDM
+ 1N12ErO5MOwChy2n0T.YLhDLT_LRy85sHz6nT8fH2b8abof0JivrHIWfwzVyScXNw00LWCle5ZYK
+ pNwDrQlRlBmWgPzLCsoTuXMpoCxxovyuWBOhdURB8wOJpU4q0PZmH9aIY3gaTTFb1UaZM7muWZjB
+ FfEaZ07gpdRdsrz1bymZ5c6pV_2uMomk6IQvxQLk-
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic309.consmr.mail.bf2.yahoo.com with HTTP; Tue, 25 Sep 2018 10:48:13 +0000
+Date: Tue, 25 Sep 2018 10:48:12 +0000 (UTC)
+From: "'marcos paulo' via Python Brasil" <python-brasil@googlegroups.com>
+To: Python Brasil <python-brasil@googlegroups.com>
+Message-ID: <597456764.2097825.1537872492981@mail.yahoo.com>
+Subject: [python-brasil] Evento Grupy-SP na Locaweb
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2097824_1923317561.1537872492979"
+References: <597456764.2097825.1537872492981.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.12487 YMailNorrin Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0
+Content-Length: 4864
+X-Original-Sender: marcosptf@yahoo.com.br
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@yahoo.com.br header.s=s2048 header.b=XAhk2qlF;       spf=pass
+ (google.com: domain of marcosptf@yahoo.com.br designates 74.6.129.123 as
+ permitted sender) smtp.mailfrom=marcosptf@yahoo.com.br;       dmarc=pass
+ (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com.br
+X-Original-From: marcos paulo <marcosptf@yahoo.com.br>
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Spam-Checked-In-Group: python-brasil@googlegroups.com
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+------=_Part_2097824_1923317561.1537872492979
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Pessoal bora palestrar na Locaweb?
+
+Ser=C3=A1 s=C3=A1bado, 27 de outubro de 2018 isso mesmo!
+Speakerfight: Speakerfight - Grupy-SP na Locaweb
+
+|=20
+|=20
+|  |=20
+Speakerfight - Grupy-SP na Locaweb
+
+
+ |
+
+ |
+
+ |
+
+
+
+
+Ah, como ser=C3=A1 depois da PyBR deste ano, convido quem tiver ido na PyBR=
+ palestrar e nos contar como foi sua experi=C3=AAncia l=C3=A1.
+Pode ser qualquer coisa: pode repetir sua palestra, contar como foi passear=
+ em Natal, se voc=C3=AA teve que correr no aeroporto pra n=C3=A3o perder o =
+voo. Fique a vontade.
+
+ultimos dias para enviar sua proposta de palestra, corre lah que da tempo!!=
+!!
+
+
+Att,
+Marcos Paulo - Grupy-SP
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/597456764.2097825.1537872492981%40mail.yahoo.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+------=_Part_2097824_1923317561.1537872492979
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-microso=
+ft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office"><head><!--[=
+if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>=
+96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]--></head><bo=
+dy><div class=3D"ydp8818a5a3yahoo-style-wrap" style=3D"font-family: Helveti=
+ca, Arial, sans-serif; font-size: 16px;"><div><span>Pessoal bora palestrar =
+na Locaweb?</span></div><div><br><span></span><br></div><span>Ser=C3=A1 s=
+=C3=A1bado, 27 de outubro de 2018 isso mesmo!<br></span><div><span>Speakerf=
+ight: <a class=3D"ydp5eca59b6link enhancr_card_8728885845" href=3D"https://=
+speakerfight.com/events/grupy-sp-na-locaweb/" title=3D"https://speakerfight=
+.com/events/grupy-sp-na-locaweb/" rel=3D"nofollow" target=3D"_blank">Speake=
+rfight -       Grupy-SP na Locaweb</a></span><div><br></div><div id=3D"ydpe=
+2b685a3enhancr_card_8728885845" class=3D"ydpe2b685a3yahoo-link-enhancr-card=
+ ydpe2b685a3yahoo-link-enhancr-not-allow-cover ydpe2b685a3ymail-preserve-cl=
+ass ydpe2b685a3ymail-preserve-style" style=3D"max-width:400px;font-family:&=
+quot;Helvetica Neue&quot;, &quot;Segoe UI&quot;, Helvetica, Arial, sans-ser=
+if" data-url=3D"https://speakerfight.com/events/grupy-sp-na-locaweb/" data-=
+type=3D"YENHANCER" data-size=3D"MEDIUM" contenteditable=3D"false"><a href=
+=3D"https://speakerfight.com/events/grupy-sp-na-locaweb/" style=3D"text-dec=
+oration:none !important;color:#000 !important" class=3D"ydpe2b685a3yahoo-en=
+hancr-cardlink" rel=3D"nofollow" target=3D"_blank"><table class=3D"ydpe2b68=
+5a3card-wrapper ydpe2b685a3yahoo-ignore-table" style=3D"max-width:400px" ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0"><tbody><tr><td width=3D"400"=
+><table class=3D"ydpe2b685a3card ydpe2b685a3yahoo-ignore-table" style=3D"ma=
+x-width:400px;border-width:1px;border-style:solid;border-color:rgb(224, 228=
+, 233);border-radius:2px" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" =
+width=3D"100%"><tbody><tr><td><table class=3D"ydpe2b685a3card-info ydpe2b68=
+5a3yahoo-ignore-table" style=3D"background-color: rgb(255, 255, 255); backg=
+round-repeat: repeat; background-attachment: scroll; background-image: none=
+; background-size: auto auto; position: relative; z-index: 2; width: 100%; =
+max-width: 400px; border-radius: 0px 0px 2px 2px; border-top: 1px solid rgb=
+(224, 228, 233);" cellspacing=3D"0" cellpadding=3D"0" border=3D"0"><tbody><=
+tr><td style=3D"background-color:#ffffff;padding:16px 0 16px 12px;vertical-=
+align:top;border-radius:0 0 0 2px"></td><td style=3D"vertical-align:middle;=
+padding:12px 24px 16px 12px;width:99%;font-family:&quot;Helvetica Neue&quot=
+;, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif;border-radius:0 0 2px=
+ 0"><h2 class=3D"ydpe2b685a3card-title" style=3D"font-size:14px;line-height=
+:19px;margin:0 0 6px 0;font-family:&quot;Helvetica Neue&quot;, &quot;Segoe =
+UI&quot;, Helvetica, Arial, sans-serif;word-break:break-word;color:#26282a"=
+>Speakerfight -       Grupy-SP na Locaweb</h2><p class=3D"ydpe2b685a3card-d=
+escription" style=3D"font-size:12px;line-height:16px;margin:0;color:#979ba7=
+;word-break:break-word"></p></td></tr></tbody></table></td></tr></tbody></t=
+able></td></tr></tbody></table></a></div><div><br></div><div><br></div></di=
+v><div><br></div><span>Ah, como ser=C3=A1 depois da PyBR deste ano, convido=
+ quem tiver ido na PyBR palestrar e nos contar como foi sua experi=C3=AAnci=
+a l=C3=A1.<br></span><div><span>Pode
+ ser qualquer coisa: pode repetir sua palestra, contar como foi passear=20
+em Natal, se voc=C3=AA teve que correr no aeroporto pra n=C3=A3o perder o v=
+oo.=20
+Fique a vontade.<br></span><span></span><div><br><div>ultimos dias para env=
+iar sua proposta de palestra, corre lah que da tempo!!!!<br><div><br><div><=
+br><div>Att,<br>Marcos Paulo - Grupy-SP<br></div></div></div></div></div></=
+div></div></body></html>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/597456764.2097825.1537872492981%40mail.yahoo.co=
+m?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/d/msgid=
+/python-brasil/597456764.2097825.1537872492981%40mail.yahoo.com</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+------=_Part_2097824_1923317561.1537872492979--

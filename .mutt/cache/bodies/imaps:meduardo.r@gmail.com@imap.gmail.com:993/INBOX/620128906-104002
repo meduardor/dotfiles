@@ -1,0 +1,487 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:5611:0:0:0:0:0 with SMTP id l17-v6csp5273768wrv;
+        Tue, 18 Sep 2018 10:40:21 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdZ0NCHETyDX6DeupEfjnxhS2UQLCQdPi20IAjcBksIA10O7ez3lGBQU7ZXgQVQx4Kzg4x4f
+X-Received: by 2002:a37:bd02:: with SMTP id n2-v6mr21509443qkf.336.1537292420964;
+        Tue, 18 Sep 2018 10:40:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537292420; cv=none;
+        d=google.com; s=arc-20160816;
+        b=FRiUG4kn9yHxkSq13K7mG5IM7RJPLFpzTpcfUPItKVPrnsnst7ElcyGFYio8qdzCyM
+         k8F7MhDU7QZ8KkqyXm86GnUrdBQkrkPV7X90PO1vAt4ULZvBVQ8CbsUOeT71HYJinGBb
+         n3TPdgBPdOrwlR7cxpU/ATHrnFRxasb5vBTXx5009kE6hh44cMzlPfA9nW6XKh87i2/7
+         1DSCVla5Cf3iflqCSMwuwVEA7YF1e2GhBNFNNefTtrvmg6gBN4ZRGUKSULr+r3RnVpUM
+         3X9On0Bu0GGAU9pD9rDs4bHmiM6CFfvgGJkggz6iMBaR97EdHRmeo9CQ4CCliXnwXPHR
+         itwA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=date:message-id:mime-version:sender:subject:from:to:dkim-signature;
+        bh=Uiv2FibUbFyiG0/wggrdO3Es6O/K0IYiFgMhpOnAmH4=;
+        b=KQK2QN9NqWNyEXPySsVD4iGB0H55BNkMqxCKsDT6MFDrG3SCZ4Sg5PFkd78PI+bZpY
+         YB5zNpTUwUC4yodgL96dbjTri+xyE0ZH9qyCmWJa1U+fzYm7WxHo/6CF1poWO857EPWd
+         q3kjER7NO9m5PMzAb65u86Y/u9lvVXh+/VLoR3Wr5FdJHccdaZERowghZ4hLXh5zI5an
+         PNG90vMtaJDTqStWsRTjFLHQDGuinuLdEtxPBmJZpWLgcvqPLawMlgV6VP5htfrpuQ9m
+         ePpw/B3iWApZKTHn3RFY2OSS7kD1WDfXvdBKBmaGpTm8HT+kxUJxpMo4B5nhhXMHSqtE
+         PJKA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@olx.com.br header.s=default header.b=bAlwc7Ty;
+       spf=pass (google.com: domain of noreply@olx.com.br designates 54.233.153.247 as permitted sender) smtp.mailfrom=noreply@olx.com.br
+Return-Path: <noreply@olx.com.br>
+Received: from mxc01.olx.com.br (mxc01.olx.com.br. [54.233.153.247])
+        by mx.google.com with ESMTPS id q17-v6si9559306qtp.4.2018.09.18.10.40.20
+        for <meduardo.r@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 18 Sep 2018 10:40:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply@olx.com.br designates 54.233.153.247 as permitted sender) client-ip=54.233.153.247;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@olx.com.br header.s=default header.b=bAlwc7Ty;
+       spf=pass (google.com: domain of noreply@olx.com.br designates 54.233.153.247 as permitted sender) smtp.mailfrom=noreply@olx.com.br
+Received: from trans-05477224bdb3b5aad.localdomain (unknown [10.39.41.248])
+	by mxc01.olx.com.br (Postfix) with ESMTP id E042B10439E
+	for <meduardo.r@gmail.com>; Tue, 18 Sep 2018 14:40:14 -0300 (BRT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=olx.com.br;
+	s=default; t=1537292414;
+	bh=sImutFkATkN8vxizuVYARfk4RVtPlppo1YMz3WOas/o=; h=To:From:Subject;
+	b=bAlwc7Tya57+s3Cqd9S5jOMrqGpPNBBpAPjU2FTKr51yVmzgonFgkp8k+k6y9IknF
+	 PqXfl/LFoelJQvfcC2hd4kpEcfW8dLbMk2bS78yngjxEULVL8qoDN7Ti59JpTvq9Xw
+	 ekCymz/ZoVlCpCf97yGXjLD9kuet4JBOEvrtVjj0=
+Received: by trans-05477224bdb3b5aad.localdomain (Postfix, from userid 504)
+	id 9B9C080BB8; Tue, 18 Sep 2018 14:40:37 -0300 (-03)
+To: <meduardo.r@gmail.com>
+From: =?ISO-8859-1?Q?olx.com.br?= <noreply-chat@olx.com.br>
+Subject: =?ISO-8859-1?Q?Oba!_Tem_mensagem_nova_para_voc=EA_sobre=3A_Xiaom?=
+ =?ISO-8859-1?Q?i_Mi5c?=
+Sender: olx.com.br <noreply-chat@olx.com.br>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="=_c13d1ca3e53fa7599447d19231f3e959"
+Message-Id: <20180918174037.9B9C080BB8@trans-05477224bdb3b5aad.localdomain>
+Date: Tue, 18 Sep 2018 14:40:37 -0300 (-03)
+
+--=_c13d1ca3e53fa7599447d19231f3e959
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+
+Mensagem Recebida
+
+Oi meduardo.r, chegou mensagem pra voc=EA!
+lucaspsilva.lps te enviou uma mensagem por causa do item "<product-name>"=
+.
+
+Para responder, cole o link no seu navegador: https://www.olx.com.br/chat=
+/chat_redir.html?chat_id=3D38AA4B26C68EA2A43A163A8C66C6D382080896B30D4767=
+3A19BD?xtor=3DEPR-78
+Est=E3o esperando seu contato, responda r=E1pido e com carinho :D
+
+Para visualizar essa mensagem, clique em "Responder" e entre na sua conta=
+ da OLX.
+
+
+---------------------------------------------------------------------
+Obrigado,
+Equipe OLX
+
+
+Use o chat pelo app da OLX e nunca perca um neg=F3cio.
+- Google Play: https://play.google.com/store/apps/details?id=3Dcom.schibs=
+ted.bomnegocio.androidApp&hl=3Dpt_BR
+- App Store: https://itunes.apple.com/br/app/apple-store/id692808319
+
+Precisa de ajuda?
+https://olxbrasil.zendesk.com/hc/pt-br?xtor=3DEPR-78
+
+Para garantir recebimento dos nossos e-mails, adicione noreply-chat@olx.c=
+om.br aos seus contatos.
+
+- Facebook: https://www.facebook.com/olxbrasil
+- YouTube: https://www.youtube.com/user/OLXBrasil
+- Google Plus: https://plus.google.com/+olxbrasil
+- Twitter: https://twitter.com/olx_Brasil
+- Instagram: http://instagram.com/olxbrasil
+
+
+
+--=_c13d1ca3e53fa7599447d19231f3e959
+Content-Type: multipart/related;
+	boundary="e1fd2200a802d36161eedc696cf4d68f";
+	type="text/html"
+
+--e1fd2200a802d36161eedc696cf4d68f
+Content-Type: text/html; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://ww=
+w.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" lang=3D"pt-br">
+<head>
+	<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-88=
+59-1">
+	<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D=
+1.0">
+	<title>OLX - O Maior Site de Compra e Venda do Brasil</title>
+</head>
+<body bgcolor=3D"#efefef" topmargin=3D"0" leftmargin=3D"0" marginheight=3D=
+"0" marginwidth=3D"0" style=3D"height:auto;padding:0;margin:0;-webkit-tex=
+t-size-adjust:none;-ms-text-size-adjust:100%;">
+
+	<!-- [BEGIN] body table -->
+	<table bgcolor=3D"#efefef" cellspacing=3D"0" cellpadding=3D"0" border=3D=
+"0" align=3D"center" width=3D"100%" height=3D"100%" style=3D"font-family:=
+Arial, sans-serif; font-size:14px; color:#333333; border:5px solid #efefe=
+f;">
+		<tr>
+			<td align=3D"center" valign=3D"middle">
+				<!-- [BEGIN] email container -->
+				<table bgcolor=3D"#efefef" cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" align=3D"center" width=3D"100%" height=3D"100%" style=3D"max-width=
+:600px;width:100%;">
+					<tr>
+						<td bgcolor=3D"#efefef" height=3D"5"></td>
+					</tr>
+					<!-- [BEGIN] email header -->
+					<tr>
+						<td align=3D"center" valign=3D"middle">
+							<table bgcolor=3D"#ffffff" cellspacing=3D"0" cellpadding=3D"0" bor=
+der=3D"0" align=3D"center" width=3D"100%" height=3D"100%" style=3D"margin=
+:0 auto;padding:0;border-radius:3px;border:1px solid #e2e2e2;">
+								<tr>
+									<td bgcolor=3D"#ffffff" height=3D"10"></td>
+								</tr>
+								<tr>
+									<td>
+									<table bgcolor=3D"#ffffff" cellspacing=3D"0" cellpadding=3D"0" b=
+order=3D"0" align=3D"left" height=3D"100%">
+											<tr>
+												<td width=3D"10">&nbsp;</td>
+												 <td valign=3D"middle">
+													<img src=3D"https://static.bn-static.com/img-48726/email/log=
+o_olx_50x50.png" width=3D"50" height=3D"50" border=3D"0" alt=3D"OLX" styl=
+e=3D"display:block;">
+												</td>
+												<td width=3D"10">&nbsp;</td>
+												<td valign=3D"middle" style=3D"font-family:Arial, sans-serif;=
+ font-size:22px; font-weight:bold; color:#ff7700;">Mensagem recebida</td>=
+
+												<td width=3D"10">&nbsp;</td>
+											</tr>
+										</table>
+									
+									</td>
+								</tr>
+								<tr>
+									<td bgcolor=3D"#ffffff" height=3D"5"></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<!-- [END] email header -->
+					<tr>
+						<td bgcolor=3D"#efefef" height=3D"5"></td>
+					</tr>
+					<!-- [BEGIN] email body -->
+					<tr>
+						<td align=3D"center" valign=3D"middle">
+							<table bgcolor=3D"#ffffff" cellspacing=3D"0" cellpadding=3D"0" bor=
+der=3D"0" align=3D"center" width=3D"100%" height=3D"100%" style=3D"margin=
+:0 auto;padding:0;border-radius:3px;border:1px solid #e2e2e2;">
+								<tr>
+									<td bgcolor=3D"#ffffff" height=3D"20"></td>
+									<td bgcolor=3D"#ffffff" height=3D"20"></td>
+									<td bgcolor=3D"#ffffff" height=3D"20"></td>
+								</tr>
+								<tr>
+									<td width=3D"10">&nbsp;</td>
+									<td>
+										<table bgcolor=3D"#ffffff" cellspacing=3D"0" cellpadding=3D"0" =
+border=3D"0" align=3D"left" height=3D"100%" width=3D"100%">
+
+
+						<tr>
+							<td align=3D"center" style=3D"font-family:Arial, sans-serif;color:=
+#333333;font-weight:bold;font-size:18px;">
+								meduardo.r, chegou mensagem pra voc&ecirc;!
+							</td>
+						</tr>
+						<tr>
+							<td height=3D"20"></td>
+						</tr>
+						<tr>
+							<td align=3D"center" style=3D"font-family:Arial, sans-serif;color:=
+#333333;font-size:14px;">
+								<strong>lucaspsilva.lps</strong> te enviou uma mensagem por causa=
+ do item &quot;Xiaomi Mi5c&quot;.
+							</td>
+						</tr>
+						<tr>
+							<td height=3D"20"></td>
+						</tr>
+
+						<!-- [BEGIN] ad-info table -->
+						<tr>
+							<td>
+								<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"=
+center">
+									<tr>
+										<td style=3D"padding:10px;text-align:center;">
+											<a href=3D"https://www.olx.com.br/vi/520931958.htm?xtor=3DEPR-=
+78" style=3D"text-decoration:none;color:#23507D;" target=3D"_blank">
+												
+												<img id=3D"with_photo" src=3D"https://img.olx.com.br/thumbs/6=
+6/668823038700987.jpg" border=3D"0" style=3D"display:inline;" />
+												
+											</a>
+										</td>
+									</tr>
+
+									<tr>
+										<td align=3D"center" style=3D"color:#333333;font-size:18px;">Xi=
+aomi Mi5c</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<!-- [BEGIN] ad-info table -->
+						<tr>
+							<td height=3D"15"></td>
+						</tr>
+						<tr>
+							<td>
+								<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"=
+border-radius:3px; background-color:#ff7700; width:100%;">
+								    <tr>
+								        <td align=3D"center" valign=3D"middle" style=3D"padding-t=
+op:8px; padding-right:30px; padding-bottom:8px; padding-left:30px;">
+								            <a href=3D"https://www.olx.com.br/chat/chat_redir.htm=
+l?chat_id=3D38AA4B26C68EA2A43A163A8C66C6D382080896B30D47673A19BD&xtor=3DE=
+PR-78" target=3D"_blank" title=3D"Responder" style=3D"font-family:Arial, =
+sans-serif; color:#FFFFFF; font-size:18px; display:block; text-decoration=
+:none;">
+								            	Responder
+								            </a>
+								        </td>
+								    </tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td height=3D"10"></td>
+						</tr>
+
+						<tr>
+							<td align=3D"center">
+								<img src=3D"https://static.bn-static.com/img-48726/email/text_ans=
+wer-quick_246x57.png" alt=3D"Responda r&aacute;pido e com carinho :D" bor=
+der=3D"0" style=3D"display:block;" width=3D"246" height=3D"57">
+							</td>
+						</tr>
+
+						<tr>
+							<td height=3D"30"></td>
+						</tr>
+
+						<tr>
+							<td>
+								<table align=3D"center">
+									<tr>
+										<td>
+											<img src=3D"https://static.bn-static.com/img-48726/email/icon_=
+info-15x15.png" width=3D"15" height=3D"15" border=3D"0" alt=3D"&Iacute;co=
+ne Info" style=3D"display:block;">
+										</td>
+										<td style=3D"text-align:center;font-family:Arial, sans-serif;fo=
+nt-size:14px;color:#424242;">Para visualizar essa mensagem, clique em &qu=
+ot;Responder&quot; e entre na sua conta da OLX.</td>
+									</tr>
+
+								</table>
+							</td>
+						</tr>
+
+						<tr>
+							<td height=3D"40"></td>
+						</tr>
+					</table>
+				</td>
+				<td width=3D"10"></td>
+			</tr>
+
+		</table>
+	</td>
+</tr>
+<!-- [END] email body -->
+<tr>
+	<td height=3D"20"></td>
+</tr>
+					<!-- [BEGIN] chat footer -->
+					<!-- [BEGIN] app mobile -->
+					<tr>
+						<td align=3D"center" valign=3D"middle">
+							<table bgcolor=3D"#efefef" cellspacing=3D"0" cellpadding=3D"0" bor=
+der=3D"0" align=3D"center" width=3D"100%" height=3D"100%" style=3D"margin=
+:0 auto;padding:0;">
+								<tr>
+									<td align=3D"center" style=3D"font-family:Arial, sans-serif;">Us=
+e o chat pelo app da OLX e nunca perca um neg&oacute;cio.</td>
+								</tr>
+
+								<tr>
+									<td height=3D"10"></td>
+								</tr>
+
+								<tr>
+									<td align=3D"center">
+										<table bgcolor=3D"#efefef" cellspacing=3D"0" cellpadding=3D"0" =
+border=3D"0" align=3D"center" height=3D"100%">
+											<tr>
+												<td>
+													<a href=3D"https://play.google.com/store/apps/details?id=3Dc=
+om.schibsted.bomnegocio.androidApp&hl=3Dpt_BR" target=3D"_blank" style=3D=
+"text-decoration:none;">
+														<img src=3D"https://static.bn-static.com/img-48726/email/bu=
+tton_google-play_128x42.png" alt=3D"Google Play" border=3D"0" style=3D"di=
+splay:block;" width=3D"128" height=3D"42">
+													</a>
+												</td>
+												<td width=3D"25">&nbsp;</td>
+												<td>
+													<a href=3D"https://itunes.apple.com/br/app/apple-store/id692=
+808319" target=3D"_blank" style=3D"text-decoration:none;">
+														<img src=3D"https://static.bn-static.com/img-48726/email/bu=
+tton_app-store_128x42.png" alt=3D"Apple Store" border=3D"0" style=3D"disp=
+lay:block;" width=3D"128" height=3D"42">
+													</a>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+
+								<tr>
+									<td height=3D"40"></td>
+								</tr>
+
+								<tr>
+									<td>
+										<hr style=3D"width:100%;height:1px;border:none;background-color=
+:#cccccc;margin:0;">
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<!-- [END] app mobile -->
+
+					<tr>
+						<td height=3D"20"></td>
+					</tr>
+
+					<!-- [BEGIN] help -->
+					<tr>
+						<td>
+							<table>
+								<tr>
+									<td>
+										<img src=3D"https://static.bn-static.com/img-48726/email/icon_h=
+elp.png" width=3D"19" height=3D"19" border=3D"0" alt=3D"=CDcone Ajuda" st=
+yle=3D"display:block;">
+									</td>
+									<td style=3D"font-family:Arial, sans-serif;">
+										<span>Precisa de ajuda? <a href=3D"https://olxbrasil.zendesk.co=
+m/hc/pt-br?xtor=3DEPR-78" title=3D"Precisa de ajuda?" target=3D"_blank" s=
+tyle=3D"font-family:Arial;font-weight:bold;color:#3388bb;font-size:12px;t=
+ext-decoration:none;">Clique aqui</a></span>
+									</td>
+								</tr>
+
+							</table>
+						</td>
+					</tr>
+
+					<tr>
+						<td height=3D"10"></td>
+					</tr>
+
+					<tr>
+						<td style=3D"font-family:Arial, sans-serif; font-size:12px; color:#=
+424242;">Caso n&atilde;o visualize as imagens, clique no bot&atilde;o &qu=
+ot;Mostrar imagens&rdquo;.</td>
+					</tr>
+					<tr>
+						<td style=3D"font-family:Arial, sans-serif; font-size:12px; color:#=
+424242;">Para garantir recebimento dos nossos e-mails, adicione <strong>n=
+oreply-chat@olx.com.br</strong> aos seus contatos.</td>
+					</tr>
+					<tr>
+						<td height=3D"20"></td>
+					</tr>
+					<!-- [END] help -->
+
+					<tr>
+						<td height=3D"20"></td>
+					</tr>
+
+					<!-- [BEGIN] social media icons -->
+					<tr>
+						<td align=3D"center" valign=3D"middle">
+							<table bgcolor=3D"#efefef" cellspacing=3D"0" cellpadding=3D"0" bor=
+der=3D"0" align=3D"center" width=3D"100%" height=3D"100%" style=3D"margin=
+:0 auto;padding:0;">
+								<tr>
+									<td align=3D"center">
+										<table bgcolor=3D"#efefef" cellspacing=3D"0" cellpadding=3D"0" =
+border=3D"0" align=3D"center" height=3D"100%">
+											<tr>
+												<td><a href=3D"https://www.facebook.com/olxbrasil" style=3D"d=
+isplay:inline-block;text-decoration:none;" target=3D"_blank"><img src=3D"=
+https://static.bn-static.com/img-48726/email/icon_facebook_21x21.png" wid=
+th=3D"21" height=3D"21" alt=3D"Facebook" title=3D"Facebook" border=3D"0">=
+</a></td>
+												<td bgcolor=3D"#efefef" width=3D"15"></td>
+												<td><a href=3D"https://www.youtube.com/user/OLXBrasil" style=
+=3D"display:inline-block;text-decoration:none;" target=3D"_blank"><img sr=
+c=3D"https://static.bn-static.com/img-48726/email/icon_youtube_21x21.png"=
+ width=3D"21" height=3D"21" alt=3D"YouTube" title=3D"YouTube" border=3D"0=
+"></a></td>
+												<td bgcolor=3D"#efefef" width=3D"15"></td>
+												<td><a href=3D"https://plus.google.com/+olxbrasil" style=3D"d=
+isplay:inline-block;text-decoration:none;" target=3D"_blank"><img src=3D"=
+https://static.bn-static.com/img-48726/email/icon_google-plus_21x21.png" =
+width=3D"21" height=3D"21" alt=3D"Google Plus" title=3D"Google Plus" bord=
+er=3D"0"></a></td>
+												<td bgcolor=3D"#efefef" width=3D"15"></td>
+												<td><a href=3D"https://twitter.com/olx_Brasil" style=3D"displ=
+ay:inline-block;text-decoration:none;" target=3D"_blank"><img src=3D"http=
+s://static.bn-static.com/img-48726/email/icon_twitter_21x21.png" width=3D=
+"21" height=3D"21" alt=3D"Twitter" title=3D"Twitter" border=3D"0"></a></t=
+d>
+												<td bgcolor=3D"#efefef" width=3D"15"></td>
+												<td><a href=3D"http://instagram.com/olxbrasil" style=3D"displ=
+ay:inline-block;text-decoration:none;" target=3D"_blank"><img src=3D"http=
+s://static.bn-static.com/img-48726/email/icon_instagram_21x21.png" width=
+=3D"21" height=3D"21" alt=3D"Instagram" title=3D"Instagram" border=3D"0">=
+</a></td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<!-- [BEGIN] social media icons -->
+
+					<!-- [END] chat footer -->
+					<tr>
+						<td height=3D"20"></td>
+					</tr>
+
+				</table>
+				<!-- [END] email container -->
+			</td>
+		</tr>
+	</table>
+	<!-- [END] body table -->
+	
+</body>
+</html>
+
+

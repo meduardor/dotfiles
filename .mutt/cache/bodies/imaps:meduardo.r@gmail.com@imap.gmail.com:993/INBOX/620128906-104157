@@ -1,0 +1,288 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:560c:0:0:0:0:0 with SMTP id l12-v6csp854543wrv;
+        Wed, 26 Sep 2018 09:29:57 -0700 (PDT)
+X-Received: by 2002:a25:3585:: with SMTP id c127-v6mr3525379yba.194.1537979397015;
+        Wed, 26 Sep 2018 09:29:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537979396; cv=none;
+        d=google.com; s=arc-20160816;
+        b=axfwaizVZ5dVt81fHV9ukozrmaJOkP4OIb0Rj0m2sOnUYbquqndvCBnPsjSYIpMjoZ
+         Z2JygF+fcrEPgAvHMxteqaCu1DHMVv/fc2INcf45odkfSY/KavJdv4o3QwKYvhwQfHcL
+         5Ajr8Azf25h4ADn3RfID59tXY9Cc+tgtgH9No/QbTCiHzwKUY0WgZOstiaxOBSo6/sLD
+         PdkEPQJImn6c9g0LPYCy2/wGHShfkQQO0jTH1G086Lp9oqN28Zd24hemVWd28wo7OZCJ
+         B3sUxRKV3kCnOpAF+s0sjkfka9xWCpOr/wMM39xo0Gd9LGLrwqeZanP42Ux9eDXi+/Ef
+         z2cA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:mime-version:subject
+         :message-id:to:from:date:sender:dkim-signature;
+        bh=+8fMOu6eLUi/i+xI10DgSvDohpOrVt5XY52Tq2cwNbI=;
+        b=dwWJxVAwq+F2IDwFBT+zXMqtzPkY0E4rXGsqgajJUbye+mNDLJIL2ol/k87dzDBjSa
+         rw0ghq+3uclI4a/8P7P7mLLi0r2QNIF7Z/EGtUfABs444KPVrerhOeBgG2kQAfkXtosw
+         +jUVrKEusXw7F0SAPbvSRUdPSfZ3IgPZZdBRfwADMMeu8ng2bh2/H1JYcIxarpR6bnnt
+         BqNkW9X/JAYPWoiz4yY4NXX7thzw6ro/xNbUzHB+uc+s/N8AP6HS/BujuPCREFulQ4wQ
+         gihLo/2g22weJYjKsEsdGIwRzZg/28RhzFbVcuEFCUrEO3zg0af/HEgGKL6HLhNfg1ff
+         w3fw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=iOwqpYiS;
+       spf=pass (google.com: domain of python-brasil+bncbchml66n3ukbb7phv3oqkgqe2rtba6q@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCHML66N3UKBB7PHV3OQKGQE2RTBA6Q@googlegroups.com;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBCHML66N3UKBB7PHV3OQKGQE2RTBA6Q@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id i13-v6sor736227ybl.206.2018.09.26.09.29.56
+        (Google Transport Security);
+        Wed, 26 Sep 2018 09:29:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbchml66n3ukbb7phv3oqkgqe2rtba6q@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=iOwqpYiS;
+       spf=pass (google.com: domain of python-brasil+bncbchml66n3ukbb7phv3oqkgqe2rtba6q@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCHML66N3UKBB7PHV3OQKGQE2RTBA6Q@googlegroups.com;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=+8fMOu6eLUi/i+xI10DgSvDohpOrVt5XY52Tq2cwNbI=;
+        b=iOwqpYiSOF74OaadZsE7Mkz5/y/VY7r4pjkSIqQ+NPInr185ngf380wPgc6btHbQYr
+         MVjhbnK5WlYkkBZ0X04zA1fXmhfXSRUequt2RUR/tFNwY/nZGMWqJMJjWe7mrOIOrVH0
+         seySzZofHEfwoc80OzaM3XNmjbFLxkaDDE4B/BaHLNNNzNxvK1v/fqpbg+kUZT8LEYgm
+         iy16zTVZN6M2WFnyRepXctBqRp5K2dOofcaOVTXO0lZZsRT1CPRm0ORyXvM/6NyTsT0n
+         oLNJmAUbB9qjO0kAbqxjlf1U4NgTPTOHEIptMNnybciZ6ljNNVHCPAuW4SFqHxMyb17m
+         U2DA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:date:from:to:message-id:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:list-subscribe
+         :list-unsubscribe;
+        bh=+8fMOu6eLUi/i+xI10DgSvDohpOrVt5XY52Tq2cwNbI=;
+        b=ZqCdDASaMdWw8TJ9kM7Jo4Ao6J8n2WFXlhu7HP71XyluC5d6MPXu7zLnKBQG2a3tdy
+         xaM/z7DqVsJBKLoS26/V1zreVF3qQ4ybKOyEj5ntfk5/XqzLFa3q5FOLOg5mTWIkiCQU
+         DlwqCOJqzp8E2iNF0qHn9j6Z/rCxlfgQG8pb49AzEczyw/jeVMdc+1VEinmUhQoLdeRc
+         69MDP7WPAHla8zYM33L536bKv+l1+k+nDk9VLqnZALTCP08Axg16EI2rcgiiH7TYnVw9
+         p7MmtetRx8PmjiE5Qy25Z3RpsdECZFZnxzC04heGPaOXD9S7btribKyVAlKcgfqBUsT6
+         pwSg==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: ABuFfoiQTVi1ZjOYgLOd43ttqvDf3PwkXHi0WKaERg89iIZz1SQxx6aK
+	zs09DtvZdwIQjNbVOejD07s=
+X-Google-Smtp-Source: ACcGV63UX4JZEspMx+6dlgTTLlEz6sERfAmN05c26PD6uiStLNnhtsZOHiu6z/G0U7thy5ue/FQyzQ==
+X-Received: by 2002:a25:2f97:: with SMTP id v145-v6mr85769ybv.2.1537979396397;
+        Wed, 26 Sep 2018 09:29:56 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a25:4296:: with SMTP id p144-v6ls598503yba.9.gmail; Wed, 26
+ Sep 2018 09:29:49 -0700 (PDT)
+X-Received: by 2002:a25:d00a:: with SMTP id h10-v6mr346931ybg.73.1537979389648;
+        Wed, 26 Sep 2018 09:29:49 -0700 (PDT)
+Received: by 2002:a81:6cc6:0:0:0:0:0 with SMTP id h189-v6msywc;
+        Tue, 25 Sep 2018 08:44:32 -0700 (PDT)
+X-Received: by 2002:a25:50c7:: with SMTP id e190-v6mr21438ybb.1.1537890272040;
+        Tue, 25 Sep 2018 08:44:32 -0700 (PDT)
+Date: Tue, 25 Sep 2018 08:44:31 -0700 (PDT)
+From: Natasha Costa <taxote@gmail.com>
+To: Python Brasil <python-brasil@googlegroups.com>
+Message-Id: <7e178217-5e1f-47e1-87c2-74c529482aec@googlegroups.com>
+Subject: [python-brasil] Oportunidades na Stefanini - Desenvolvedor Python
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_2445_885717858.1537890271831"
+X-Original-Sender: taxote@gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+------=_Part_2445_885717858.1537890271831
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2446_143784267.1537890271831"
+
+------=_Part_2446_143784267.1537890271831
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Ol=C3=A1, pessoal!
+
+Temos oportunidades com foco em Python, num projeto mega importante da=20
+companhia, de Intelig=C3=AAncia Artificial. Os profissionais ficar=C3=A3o n=
+o nosso=20
+pr=C3=A9dio do Butant=C3=A3 (600m da esta=C3=A7=C3=A3o Butant=C3=A3, linha =
+amarela). Buscamos=20
+profissionais entre os n=C3=ADveis PL e SR. S=C3=A3o 5 vagas (4 PL e 1 SR).
+
+Abaixo um pouco dos pr=C3=A9-requisitos:
+
+*Desenvolvedor Python S=C3=AAnior*
+Forma=C3=A7=C3=A3o: Superior Completo na =C3=A1rea de Computa=C3=A7=C3=A3o =
+ou Engenharia #=20
+Experi=C3=AAncia em desenvolvimento de aplicativos com perfil Python
+ # Experi=C3=AAncia em desenvolvimento de servi=C3=A7os/aplica=C3=A7=C3=B5e=
+s (FrontEnd e=20
+BackEnd) # Experi=C3=AAncia com os Sistemas Operacionais Windows e Linux #=
+=20
+Conhecimentos em Banco de Dados Relacionais e N=C3=A3o Relacionais # Experi=
+=C3=AAncia=20
+em Configura=C3=A7=C3=A3o de Ambientes (Cloud Computing) # Experi=C3=AAncia=
+ em Machine=20
+Learning, Processamento de Imagens ou Processamento de Linguagem Natural=20
+utilizando Python # Idioma:  Ingl=C3=AAs avan=C3=A7ado
+
+*Desenvolvedor Python Pleno*
+# Experi=C3=AAncia principal em desenvolvimento de aplicativos e/ou sistema=
+s em=20
+Python=20
+# Experi=C3=AAncia com desenvolvimento de aplicativos/sistemas Java e/ou C+=
++ e=20
+Javascript
+# Experi=C3=AAncia com os Sistemas Operacionais Linux
+# Experi=C3=AAncia com Banco de Dados Relacional e NoSQL
+# Conhecimento de Data lake e Data Warehouse
+# Conhecimento em an=C3=A1lise de sistemas e modelagem de banco de dados
+# Considerado um diferencial - Experi=C3=AAncia em desenvolvimento de Data=
+=20
+Crawler, Bot, Selenium e Beautiful Soup
+Idioma: Ingl=C3=AAs intermedi=C3=A1rio (Interpreta=C3=A7=C3=A3o de document=
+os t=C3=A9cnicos)
+
+
+>>> Caso algu=C3=A9m se interesse ou tenha indica=C3=A7=C3=B5es, segue meus=
+ contatos:
+
+*nacosta@stefanini.com*
+*(11) 3094-6135*
+
+Estou dispon=C3=ADvel para maiores informa=C3=A7=C3=B5es.
+
+Muito obrigada!
+
+Natasha Costa
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/7e178217-5e1f-47e1-87c2-74c529482aec%40googlegroups.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+------=_Part_2446_143784267.1537890271831
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><font face=3D"arial, sans-serif" size=3D"2" color=3D"#0000=
+00"><span style=3D"white-space: pre-line;">Ol=C3=A1, pessoal!</span><br></f=
+ont><div><span style=3D"white-space: pre-line;"><font face=3D"arial, sans-s=
+erif" size=3D"2" color=3D"#000000"><br></font></span></div><div><font face=
+=3D"arial, sans-serif" size=3D"2" color=3D"#000000"><span style=3D"white-sp=
+ace: pre-line;">Temos oportunidades com foco em Python, num projeto mega im=
+portante da companhia, de Intelig=C3=AAncia Artificial. Os profissionais fi=
+car=C3=A3o no nosso pr=C3=A9dio do Butant=C3=A3 (600m da esta=C3=A7=C3=A3o =
+Butant=C3=A3, linha amarela).
+
+Buscamos profissionais entre os n=C3=ADveis PL e SR. S=C3=A3o 5 vagas (4 PL=
+ e 1 SR).</span><span style=3D"white-space: pre-line;"><br></span></font></=
+div><div><span style=3D"white-space: pre-line;"><font face=3D"arial, sans-s=
+erif" size=3D"2" color=3D"#000000"><br></font></span></div><div><span style=
+=3D"white-space: pre-line;"><font face=3D"arial, sans-serif" size=3D"2" col=
+or=3D"#000000">Abaixo um pouco dos pr=C3=A9-requisitos:</font></span></div>=
+<div><span style=3D"white-space: pre-line;"><font face=3D"arial, sans-serif=
+" size=3D"2" color=3D"#000000"><br></font></span></div><div><span style=3D"=
+white-space: pre-line;"><font face=3D"arial, sans-serif" size=3D"2" color=
+=3D"#000000"><b><u>Desenvolvedor Python S=C3=AAnior</u></b></font></span></=
+div><div><font face=3D"arial, sans-serif" size=3D"2" color=3D"#000000"><spa=
+n style=3D"white-space: pre-line;">Forma=C3=A7=C3=A3o: Superior Completo na=
+ =C3=A1rea de Computa=C3=A7=C3=A3o ou Engenharia=20
+# Experi=C3=AAncia em desenvolvimento de aplicativos com perfil Python</spa=
+n></font></div><div><font face=3D"arial, sans-serif" size=3D"2" color=3D"#0=
+00000"><span style=3D"white-space: pre-line;">=C2=A0# Experi=C3=AAncia em d=
+esenvolvimento de servi=C3=A7os/aplica=C3=A7=C3=B5es (FrontEnd e BackEnd)
+# Experi=C3=AAncia com os Sistemas Operacionais Windows e Linux
+# Conhecimentos em Banco de Dados Relacionais e N=C3=A3o Relacionais
+# Experi=C3=AAncia em Configura=C3=A7=C3=A3o de Ambientes (Cloud Computing)
+# Experi=C3=AAncia em Machine Learning, Processamento de Imagens ou Process=
+amento de Linguagem Natural utilizando Python
+# Idioma:=C2=A0 Ingl=C3=AAs avan=C3=A7ado</span><br></font></div><div><font=
+ face=3D"arial, sans-serif" size=3D"2" color=3D"#000000"><span style=3D"whi=
+te-space: pre-line;"><br></span></font></div><div><font face=3D"arial, sans=
+-serif" size=3D"2" color=3D"#000000"><span style=3D"white-space: pre-line;"=
+><b><u>Desenvolvedor Python Pleno</u></b></span></font></div><div><font fac=
+e=3D"arial, sans-serif" size=3D"2" color=3D"#000000"><span style=3D"white-s=
+pace: pre-line;"><div style=3D""># Experi=C3=AAncia principal em desenvolvi=
+mento de aplicativos e/ou sistemas em Python=C2=A0</div><div style=3D""># E=
+xperi=C3=AAncia com desenvolvimento de aplicativos/sistemas Java e/ou C++ e=
+ Javascript</div><div style=3D""># Experi=C3=AAncia com os Sistemas Operaci=
+onais Linux</div><div style=3D""># Experi=C3=AAncia com Banco de Dados Rela=
+cional e NoSQL</div><div style=3D""># Conhecimento de Data lake e Data Ware=
+house</div><div style=3D""># Conhecimento em an=C3=A1lise de sistemas e mod=
+elagem de banco de dados</div><div style=3D""># Considerado um diferencial =
+- Experi=C3=AAncia em desenvolvimento de Data Crawler, Bot, Selenium e Beau=
+tiful Soup</div><div style=3D"">Idioma: Ingl=C3=AAs intermedi=C3=A1rio (Int=
+erpreta=C3=A7=C3=A3o de documentos t=C3=A9cnicos)</div><div style=3D""><br>=
+</div><div style=3D""><br></div><div style=3D"">&gt;&gt;&gt; Caso algu=C3=
+=A9m se interesse ou tenha indica=C3=A7=C3=B5es, segue meus contatos:<br></=
+div><div style=3D""><br></div><div style=3D""><b>nacosta@stefanini.com</b><=
+/div><div style=3D""><b>(11) 3094-6135</b></div><div style=3D""><br></div><=
+div style=3D"">Estou dispon=C3=ADvel para maiores informa=C3=A7=C3=B5es.</d=
+iv><div style=3D""><br></div><div style=3D"">Muito obrigada!</div><div styl=
+e=3D""><br></div><div style=3D"">Natasha Costa</div></span></font></div><di=
+v><span style=3D"white-space: pre-line; font-size: 14px; font-family: -appl=
+e-system, system-ui, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quo=
+t;Helvetica Neue&quot;, &quot;Fira Sans&quot;, Ubuntu, Oxygen, &quot;Oxygen=
+ Sans&quot;, Cantarell, &quot;Droid Sans&quot;, &quot;Apple Color Emoji&quo=
+t;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI =
+Symbol&quot;, &quot;Lucida Grande&quot;, Helvetica, Arial, sans-serif; colo=
+r: rgba(0, 0, 0, 0.9);"><br></span></div></div>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/7e178217-5e1f-47e1-87c2-74c529482aec%40googlegr=
+oups.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/=
+d/msgid/python-brasil/7e178217-5e1f-47e1-87c2-74c529482aec%40googlegroups.c=
+om</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+------=_Part_2446_143784267.1537890271831--
+
+------=_Part_2445_885717858.1537890271831--

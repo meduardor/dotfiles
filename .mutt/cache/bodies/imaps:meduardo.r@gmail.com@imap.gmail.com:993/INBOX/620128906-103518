@@ -1,0 +1,213 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:5611:0:0:0:0:0 with SMTP id l17-v6csp694614wrv;
+        Wed, 29 Aug 2018 07:17:29 -0700 (PDT)
+X-Received: by 2002:a5b:1c5:: with SMTP id f5-v6mr3477153ybp.173.1535552249328;
+        Wed, 29 Aug 2018 07:17:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535552249; cv=none;
+        d=google.com; s=arc-20160816;
+        b=lwO/Veen45noU3FYo6Yh5GTxX1YxaYIBRg+9cJuKFAwbmDr/qHZNlus5Yxb9xgWVtq
+         s3zMFEpq9dKbarRpTa998uN03UFiG6IkEOvGaK5HwDtxU3fUyN0hKzyS4lD+5g6nLHmD
+         B8SZVytSIdIb4cVH1YqVVpvs6t1dbimgfjUBeUYFm5DvNcukRxZyFAp0c7iQ7D+7Ywkx
+         2QjOJ8NAHGd2gAsA09cRg5OrJMjENXGi8j3xKWKci/eSf9DWm8u7iWHeZZILqA6eKMQO
+         Tyr22SWM+LJvEj+M5NMQokcY3dyKmUkNJzjjcqybzLXklQqG7L/soQ7DrCTPQk1mo2ji
+         2aeQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:mime-version:subject
+         :references:in-reply-to:message-id:to:from:date:sender
+         :dkim-signature:arc-authentication-results;
+        bh=r/XMiGSbo04zaimArkmNcQV0B0PJwTuiF9wQZ7+U1/A=;
+        b=C2lgCt129D6UGtY57Jo4p1mTL8Fp9EB8lgIsoLcWpypMsmq9ittoK1I74Ai1aftM5i
+         y431X2AQMHX3WaDwLfPmmNubqnYByxo30aYiIjp2KA/qM3aft9Ho8K2N7eJ8NBVRIjlT
+         GLslIbRoyG6f+I/ALEgWxe2ZXvnejIiBXyrG/B2WZuqE9ozWf5/lEvb/Yv1F5sdAIx58
+         opQvH0vc2hRzVvbbMkJe5qjEgOXYNVklYK1MDQyJ6mTvdI5B2n4qOpX9KTJAp+GiQDuP
+         ZEV+Kb0S6fIIGxytGJ+uvH3kVuIl4U+krjJzt/Qe+zdLNlgro2M182w9Y1tgfA1ijDVX
+         /qBg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=WjJrRMkF;
+       spf=pass (google.com: domain of python-brasil+bncbdl3t4pke4io5vm23qcrubd7ymhgy@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBDL3T4PKE4IO5VM23QCRUBD7YMHGY@googlegroups.com;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBDL3T4PKE4IO5VM23QCRUBD7YMHGY@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id b62-v6sor992371ybc.48.2018.08.29.07.17.28
+        (Google Transport Security);
+        Wed, 29 Aug 2018 07:17:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbdl3t4pke4io5vm23qcrubd7ymhgy@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=WjJrRMkF;
+       spf=pass (google.com: domain of python-brasil+bncbdl3t4pke4io5vm23qcrubd7ymhgy@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBDL3T4PKE4IO5VM23QCRUBD7YMHGY@googlegroups.com;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:list-subscribe
+         :list-unsubscribe;
+        bh=r/XMiGSbo04zaimArkmNcQV0B0PJwTuiF9wQZ7+U1/A=;
+        b=WjJrRMkFYVF5fuYOh7MMhMtzKLzwXNNosbb5TwL1KJ4gmNFHKcpjbP9bimgCb/XYoQ
+         pWu4sVuvEe86W5g2zHnceVtLrAAbVdUFsu2azLt+GC1wzdjy3aushjCnZzJMovGRSL6+
+         fElPlq7+KKDb1+/wkEahp78ze0haw3rUWJnvdnlbfb2x24272/pKuDzTJ+cUBbuHiPaQ
+         yNTBegrqbxXuVYyVb/tpHIxqw/pcIz48QDokCgm1F7OSO4cmjk+WuTsd4Mlrt+IYYHkv
+         3lRE7qMaqK+fdrf2AYPPYdse7K1sadxiS6UhklaxMOKUyVtaeFszyWVDsAYyl0ah8L6t
+         Rk0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:date:from:to:message-id:in-reply-to
+         :references:subject:mime-version:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=r/XMiGSbo04zaimArkmNcQV0B0PJwTuiF9wQZ7+U1/A=;
+        b=tkN+VdbzdxmcClWVp58lkisub8i9dfQgod2BKYUSmvWXcBDpPvJa24VMzhslLdQZjz
+         5xAUQWnGF/doVqLXlSToO0lFAgVxo0Y4XDWrPjV7zaRwo4UZ3GxRU8Cg4l4AEdjAIsN8
+         4ah6gyQlgFGERp9S8jKf6F63+mya/6l4PHswAZAXrxkv9oWeOnFzKQg4jpDpvEMjt8/w
+         SJ3yV4Nm6NwbCej1Jj16fAp1nSl/s2TGvUuP4Gqddgl8niCvEFo3lVIpmRP7U/4DD2pF
+         US8D8N/d6LrI3HKLP+xpZw+L6jkVlWGXRmQAu9H84FBrndp4rtwxkfoEBlhCo5yvZDzK
+         AQtg==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: APzg51DT49t4Th3/n/pPFDJqQQci3KEOlwyUOQ/jAPTJm/EuBBJ+IxJd
+	7DLXpDa1IIT/9/guPujTm4M=
+X-Google-Smtp-Source: ANB0VdZOI4dxZR9a2fCdOgG2ggoT2QM6DyZIcz50TKKD2CDmCClMEMsxr51yot+OMlcOkps5ou0/Jg==
+X-Received: by 2002:a25:3989:: with SMTP id g131-v6mr93114yba.0.1535552248697;
+        Wed, 29 Aug 2018 07:17:28 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a81:7ac6:: with SMTP id v189-v6ls686209ywc.19.gmail; Wed, 29
+ Aug 2018 07:17:18 -0700 (PDT)
+X-Received: by 2002:a81:58a:: with SMTP id 132-v6mr2000491ywf.109.1535552238286;
+        Wed, 29 Aug 2018 07:17:18 -0700 (PDT)
+Received: by 2002:a81:38c5:0:0:0:0:0 with SMTP id f188-v6msywa;
+        Wed, 29 Aug 2018 06:51:17 -0700 (PDT)
+X-Received: by 2002:a81:63d5:: with SMTP id x204-v6mr86391ywb.5.1535550676950;
+        Wed, 29 Aug 2018 06:51:16 -0700 (PDT)
+Date: Wed, 29 Aug 2018 06:51:16 -0700 (PDT)
+From: Ricardo Pouza <ricardopouza@gmail.com>
+To: Python Brasil <python-brasil@googlegroups.com>
+Message-Id: <614e755a-6b62-42ee-94db-021257db9ab1@googlegroups.com>
+In-Reply-To: <d090b180-ea66-4f2b-9b55-e30dda1738d5@googlegroups.com>
+References: <d090b180-ea66-4f2b-9b55-e30dda1738d5@googlegroups.com>
+Subject: =?UTF-8?Q?=5Bpython=2Dbrasil=5D_Re=3A_Problema_na_Instala=C3=A7=C3=A3o_do_Pyth?=
+	=?UTF-8?Q?on_3=2E5_em_diante?=
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_1993_1418864117.1535550676783"
+X-Original-Sender: ricardopouza@gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+------=_Part_1993_1418864117.1535550676783
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1994_1640074923.1535550676783"
+
+------=_Part_1994_1640074923.1535550676783
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Pelo pouco que seu. Eu fiz toda minha instala=C3=A7=C3=A3o do python via pi=
+p install=20
+e n=C3=A3o tive problemas aconselho a vc desisntalar tudo e instalar usando=
+ o=20
+prompt dos.
+
+Em segunda-feira, 27 de agosto de 2018 10:07:59 UTC-3, Suzuya Juuzo=20
+escreveu:
+>
+> j=C3=A1 venho ha um tempo estudando e programando em Python, a minha vers=
+=C3=A3o era=20
+> 3.4, por=C3=A9m estou aprendendo a programar na framework Kivy, =C3=A9 es=
+se Framework=20
+> n=C3=A3o suporta Python 3.4 pelo que andei pesquisando, ent=C3=A3o resolv=
+i atualizar=20
+> a vers=C3=A3o do Python. Meu Sistema Operacional =C3=A9 o Windows 7 64Bit=
+s e o=20
+> seguinte erro ap=C3=B3s "instalado" =C3=A9 o seguinte:
+>
+> [image: Sem t=C3=ADtulo3.png]
+>
+>
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/614e755a-6b62-42ee-94db-021257db9ab1%40googlegroups.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+------=_Part_1994_1640074923.1535550676783
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Pelo pouco que seu. Eu fiz toda minha instala=C3=A7=C3=A3o=
+ do python via pip install e n=C3=A3o tive problemas aconselho a vc desisnt=
+alar tudo e instalar usando o prompt dos.<br><br>Em segunda-feira, 27 de ag=
+osto de 2018 10:07:59 UTC-3, Suzuya Juuzo  escreveu:<blockquote class=3D"gm=
+ail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-left: 1px #ccc soli=
+d;padding-left: 1ex;"><div dir=3D"ltr">j=C3=A1 venho ha um tempo estudando =
+e programando em Python, a minha vers=C3=A3o era 3.4, por=C3=A9m estou apre=
+ndendo a programar na framework Kivy, =C3=A9 esse Framework n=C3=A3o suport=
+a Python 3.4 pelo que andei pesquisando, ent=C3=A3o resolvi atualizar a ver=
+s=C3=A3o do Python. Meu Sistema Operacional =C3=A9 o Windows 7 64Bits e o s=
+eguinte erro ap=C3=B3s &quot;instalado&quot; =C3=A9 o seguinte:<br><p style=
+=3D"text-align:center;clear:both"><a style=3D"clear:left;margin-bottom:1em;=
+float:left;margin-right:1em"><img src=3D"https://groups.google.com/group/py=
+thon-brasil/attach/1d94a772ab141/Sem%20t%C3%ADtulo3.png?part=3D0.1&amp;auth=
+user=3D0" border=3D"0" alt=3D"Sem t=C3=ADtulo3.png" width=3D"320" height=3D=
+"118"></a></p><div><br></div></div></blockquote></div>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/614e755a-6b62-42ee-94db-021257db9ab1%40googlegr=
+oups.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/=
+d/msgid/python-brasil/614e755a-6b62-42ee-94db-021257db9ab1%40googlegroups.c=
+om</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+------=_Part_1994_1640074923.1535550676783--
+
+------=_Part_1993_1418864117.1535550676783--

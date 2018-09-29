@@ -1,0 +1,519 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:5611:0:0:0:0:0 with SMTP id l17-v6csp7066604wrv;
+        Tue, 28 Aug 2018 15:30:10 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdZ3dR9aeKrBEqPH0KB49F98SIAiRIhJ5ne6NmuoOWEdS0t6kgcnHTvJt3ChWryrGj+1QI6D
+X-Received: by 2002:a17:902:740a:: with SMTP id g10-v6mr3433870pll.22.1535495410766;
+        Tue, 28 Aug 2018 15:30:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535495410; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PzPyNrSgZCsMRqtc2Moe8QdbDxF1b0MJfpBD8SlJUDr9VeDbblLDLZGzGRVWTeErJ2
+         pHF66L5/yzv4V6+GlO1dtGEFZRgpFIMr6/tEoXlsz2aORmYKiJWMPllzO9xX+Oh2S6tF
+         NXx2X8Mm1TRxwsLLrf1UE3LRqoJt5CnbhdE4hFFX/YqKb0mM6A4qmxsfAfEnKqrMpB3V
+         46O8uPn+aJKWzn7t8ZO/z/yvRsXFBqzKO8W5EPt6FvFC4eHFB2L5SZn9HMqZNqW+nizA
+         eoXyUeDUvtrEH+uczAUeBo4mR6DM0lnV+WjuwXp9IQsvRogW50RIwyLCmEXnZfFgiiDO
+         WVuw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:from:subject:date:list-unsubscribe:reply-to
+         :mime-version:to:dkim-signature:arc-authentication-results;
+        bh=aMATiuaU/C1DhHSGq1UXUTX8//7qta7M3LccD28aDfU=;
+        b=RK5KJ9w56Lu55rqd3Htiw/4F4jfXScdsBh9Bu/vWENHRySCroMTYhgPAMh3wOzcIcm
+         o6CIKQgZRs1g9ZbhQ5YXXKgp9ajOracCiSHaKFeZoZnT73I0x8CfSzzeUqT6fyylCHIK
+         kO3q09vk5zhQfQphVuVCFReDbVjdwsHWR2dBdKcvl4IvrbWKyrcpPfd9bI+52VCy24J8
+         x17CSyDWQxofQyvMvpwWAmZfCH8i/Ngq9Pc30Yv6WjM7Ba5OqkW/HWbuQHTLzsg0MsU5
+         BbVUipX8OsP8BEWIe4CEj6GhcyCZNT/jxwB1wng5gSZgCCXzL3BP0iB6FdbQ4Q4IhVQ0
+         d27Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@medium.com header.s=intercom header.b=VEJ1frSs;
+       spf=pass (google.com: domain of bounces+18224311643@spe.intercom-mail.com designates 52.27.255.226 as permitted sender) smtp.mailfrom=bounces+18224311643@spe.intercom-mail.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=medium.com
+Return-Path: <bounces+18224311643@spe.intercom-mail.com>
+Received: from mta1b6.spe.intercom-mail.com (mta1b6.spe.intercom-mail.com. [52.27.255.226])
+        by mx.google.com with ESMTPS id s12-v6si2105913plr.120.2018.08.28.15.30.10
+        for <meduardo.r@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 28 Aug 2018 15:30:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+18224311643@spe.intercom-mail.com designates 52.27.255.226 as permitted sender) client-ip=52.27.255.226;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@medium.com header.s=intercom header.b=VEJ1frSs;
+       spf=pass (google.com: domain of bounces+18224311643@spe.intercom-mail.com designates 52.27.255.226 as permitted sender) smtp.mailfrom=bounces+18224311643@spe.intercom-mail.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=medium.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=medium.com;
+	s=intercom; t=1535495410; i=@medium.com;
+	bh=aMATiuaU/C1DhHSGq1UXUTX8//7qta7M3LccD28aDfU=;
+	h=To:Content-Type:Date:Subject:From:Message-ID;
+	b=VEJ1frSs8g/MHMf6vwUNu1RlptLfxAIRWOUdKg7kFIudQD9rtUiOLJuswxEYHkNlH
+	 6RKDFhHfQRzwnNHkFkUvMB4guAPltwAr4p7Er7xnlBQJnDaCox51CVlsu4Q50iYTfe
+	 C6SRxh0BBwbrz/KUDt60kOpIhe4sgrTi0ex4dm3A=
+X-MSFBL: n1fYr6MFNk/Mq25CrIHfBpZTt43ZLXSFP5alErcfA98=|eyJjdXN0b21lcl9pZCI
+	6IjEiLCJzdWJhY2NvdW50X2lkIjoiNTg4MyIsIm1lc3NhZ2VfaWQiOiIwMDAzZjJ
+	jYzg1NWIwYTIzZDhjMyIsInIiOiJtZWR1YXJkby5yQGdtYWlsLmNvbSIsInRlbmF
+	udF9pZCI6ImludGVyY29tIn0=
+To: meduardo.r@gmail.com
+Content-Type: multipart/alternative; boundary="_----LxsBhI4M+ld4pCrec3pncw===_0D/3C-08970-2FCC58B5"
+MIME-Version: 1.0
+Reply-To: Medium <yourfriends@medium.com>
+List-Unsubscribe: <mailto:unsubscribe+MS1X39bF2cCQqLBJfcGGUIkfvl--JKshu1-CYOz7oKQqEz-V6cA=@medium-a7e301761373.mail-d-inter.com>, <https://medium-a7e301761373.mail-d-inter.com/subscriptions/unsubscribe?app_id=zp3ii0g5&conversation_id=18224311643&user_id=5983d97df336a321e0f467b5>
+Date: Tue, 28 Aug 2018 22:30:10 +0000
+Subject: Free spirit
+X-Mailgun-Tag: user-custom
+X-Intercom-App-Id: zp3ii0g5
+X-Intercom-Bin: 500
+From: "Medium" <editors-picks@medium.com>
+Message-ID: <8f8cf234-7a039000-1535495410-18224311643@intercom-mail.com>
+X-Mailgun-Track-Clicks: no
+X-Mailgun-Track-Opens: no
+X-Auto-Response-Suppress: OOF, AutoReply
+X-Mailgun-Variables: {"app_id":"zp3ii0g5","conversation_id":"18224311643","intercom_message_id":247028908,"user_id":"5983d97df336a321e0f467b5"}
+Feedback-ID: 247028908:zp3ii0g5:intercom
+
+--_----LxsBhI4M+ld4pCrec3pncw===_0D/3C-08970-2FCC58B5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Higher ground =0A=0A[Image "1*B9fo88geANBz1yho3__9vQ.jpeg"]=0A Our monthly =
+magazine for August Maybe you=E2=80=99ve been escaping too much. Maybe your=
+ escapist habits have been wrecking your life. But then again, you could be=
+ onto something...maybe they=E2=80=99re helping you find your truth. And, h=
+onestly =E2=80=94 what=E2=80=99s the difference=3F This week=E2=80=99s Grea=
+t Escape stories explore what it means to exit hell and enter the void: =0A=
+ Read the stories =0A Racing through war So, you=E2=80=99re stationed in Ka=
+bul in the age of ISIS. Naturally, from time to time you=E2=80=99ll need es=
+cape the path you=E2=80=99ve chosen there. But a marathon=E2=80=99s too eas=
+y. A home in the Alps is not breathtaking enough.=C2=A0 =0A For crisis-zone=
+ U.N. lawyer Stephanie Case, the only way out of her head is through 100 mi=
+les or more of jagged terrain and steep summits. In =E2=80=9CRelentless For=
+ward Motion,=E2=80=9D journalist Joseph Bien-Kahn writes about the talented=
+ ultra-runner who, in order to distress from a full-time career fighting fo=
+r vulnerable people in the midst of violent conflict, inflicts a kind of tr=
+auma on her own body: the pure, savage bliss of running for days.=C2=A0 =0A=
+ =0A=0A[Image "01.jpg"]=0A=0A Risen from the dead What if you=E2=80=99ve pr=
+epared to die, and then don=E2=80=99t=3F =0A Photographer Talia Herman=E2=
+=80=99s grew up in Guerneville, a biker town that turned into a gay haven r=
+ight before the AIDS crisis struck. Her strange and beautiful photographs d=
+epict Guerneville=E2=80=99s present day: Those who survived formed the Sist=
+ers of Perpetual Indulgence, an order of drag nuns who act as social worker=
+s, philanthropists, and resident artists for the remote northern California=
+ community. =C2=A0 =0A =0A=0A[Image "02.jpg"]=0A=0A Wild, wild country Jour=
+nalists have spent the last two years trying to understand Trump supporters=
+. But what if we kind of already do=3F=C2=A0 =0A Author Douglas Rushkoff sp=
+ent years studying cults and even helped get a family member out of one. He=
+ says that =E2=80=9Clying for the leader=E2=80=8A=E2=80=94=E2=80=8Aor, rath=
+er, doing what feels like lying until you later accept the error of your wa=
+ys and transcend your deeply distorted view of the world=E2=80=8A=E2=80=94=
+=E2=80=8Ais the path to earning his respect and, ultimately, expressing his=
+ greater truth.=E2=80=9D Sound familiar=3F =0A =0A=0A[Image "03.jpg"]=0A=0A=
+ Into the woods It=E2=80=99s ok =E2=80=94 cancel all your plans. A cabin in=
+ Vermont awaits.=C2=A0 =0A Sometimes you don=E2=80=99t choose a life alone;=
+ it chooses you. But one of the greatest projects you might ever take on is=
+ living in your own world, untethered from expectations of romance and nucl=
+ear family, even if just for the time being. And as Emily J. Smith argues, =
+it doesn=E2=80=99t have to be a sacrifice: =E2=80=9Cwhile on most fronts I =
+find myself deviating from the path I=E2=80=99d always imagined, in some se=
+nse, I did find love.=E2=80=9D =0A =0A=0A[Image "04.jpg"]=0A=0A Transcenden=
+ce, at your fingertips. =0A Upgrade for unlimited reading=0A=0A
+--_----LxsBhI4M+ld4pCrec3pncw===_0D/3C-08970-2FCC58B5
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
+w3.org/TR/html4/loose.dtd">=0A<html>=0A<head>=0A    <meta http-equiv=3D"Con=
+tent-Type" content=3D"text/html; charset=3DUTF-8">=0A    <meta name=3D"view=
+port" content=3D"width=3Ddevice-width, initial-scale=3D1, maximum-scale=3D1=
+">=0A    <style type=3D"text/css" data-premailer=3D"ignore">=0A      #outlo=
+ok a{=0A        padding: 0;=0A      }=0A      body{=0A        -webkit-text-=
+size-adjust: none;=0A        -ms-text-size-adjust: none;=0A        font-wei=
+ght: 400;=0A        margin: 0;=0A        padding: 0;=0A      }=0A      .Rea=
+dMsgBody{=0A        width: 100%;=0A      }=0A      .ExternalClass{=0A      =
+  width: 100%;=0A      }=0A      img {=0A        border: 0;=0A        max-w=
+idth: 100%;=0A        height: auto;=0A        outline: none;=0A        disp=
+lay: inline-block;=0A        margin: 0;=0A        padding: 0;=0A        tex=
+t-decoration: none;=0A        line-height: 100%;=0A      }=0A      #backgro=
+undTable{=0A        height: 100% !important;=0A        margin: 0;=0A       =
+ padding: 0;=0A        width: 100% !important;=0A      }=0A    </style>=0A =
+   <style type=3D"text/css">=0A      body {=0A        margin: 0;=0A        =
+font-family: Georgia, Cambria, 'Times New Roman', Times, serif;=0A        c=
+olor: rgba(0, 0, 0, 1);=0A        font-size: 16px;=0A      }=0A      h1 {fo=
+nt-family: Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 38=
+px; font-weight: normal;}=0A      h2 {font-size: 22px; font-weight: bold; c=
+olor: #292929; line-height: }=0A      p {line-height: 1.55em; margin: 0; fo=
+nt-size: 16px;}=0A      a {color: #fe0000; text-decoration: none;}=0A      =
+ol li {margin-bottom: 24px;}=0A      .container {margin: 0 auto; width: 600=
+px;}=0A      .email-sansSerif {font-family: Georgia, Cambria, 'Times New Ro=
+man', Times, serif; }=0A      .email-bold {font-weight: bold;}=0A      .ema=
+il-title {=0A        font-size: 42px;=0A        color: #294254;=0A        f=
+ont-weight: bold;=0A        line-height: 1em;=0A      }=0A      .email-medi=
+umLogo {=0A        width: 82px;=0A        height: 16px;=0A        margin: 0=
+ auto;=0A      }=0A      .email-imageCaption {=0A        color: #9b9b9b;=0A=
+        font-size: 14px;=0A        font-family: Arial, sans-serif;=0A      =
+  margin-top: 3px;=0A      }=0A      .email-subHeading {=0A        font-siz=
+e: 24px;=0A        font-family: Georgia, serif;=0A        font-weight: 500;=
+=0A      }=0A      .email-storyList {=0A        border-top: 1px solid #8F91=
+91;=0A        background: #F8FFFB;=0A        padding: 0;=0A      }=0A      =
+.email-storyList li {=0A        padding: 25px 10px;=0A        border-botto=
+m: 1px solid #8F9191;=0A        list-style: none;=0A        position: relat=
+ive;=0A        margin-left: 0;=0A      }=0A      .email-storyListArrow {=0A=
+        font-size: 30px;=0A        color: #02B875;=0A        vertical-align=
+: middle;=0A        text-align: right;=0A      }=0A      .email-numberDot {=
+=0A        width: 36px;=0A        height: 36px;=0A        border-radius: 18=
+px;=0A        background-color: #000000;=0A        color: #FFFFFF;=0A      =
+  font-size: 22px;=0A        line-height: 36px;=0A        text-align: cente=
+r;=0A      }=0A      .email-button, .intercom-h2b-button {=0A        displa=
+y: inline-block;=0A        position: relative;=0A        height: 38px;=0A  =
+      line-height: 38px;=0A        padding: 0 55px;=0A        border: 0;=0A=
+        outline: 0;=0A        color: #ffffff;=0A        background-color: #=
+000000;=0A        font-size: 14px;=0A        font-style: normal;=0A        =
+font-weight: 400;=0A        text-align: center;=0A        text-decoration: =
+none;=0A        cursor: pointer;=0A        white-space: nowrap;=0A        =
+=0A        border-radius: 4px;=0A      }=0A      .email-icon {display: inli=
+ne-block; vertical-align: middle;}=0A      .email-icon--20px {width: 20px;}=
+=0A      .email-backgroundMintGreen {background-color: rgb(210, 253, 221);}=
+=0A      .email-backgroundLightSalmon {background-color: rgb(252, 231, 221)=
+;}=0A      .email-backgroundLightSand {background-color: rgb(246, 241, 228)=
+;}=0A      .email-backgroundLightSage {background-color: rgb(232, 243, 236)=
+;}=0A      .email-backgroundLightSky {background-color: rgb(226, 239, 248);=
+}=0A      .email-backgroundGreen {background-color: rgb(0, 181, 149);}=0A  =
+    .email-textColorGreen {color: rgb(0, 181, 149) !important;}=0A      .em=
+ail-divider {border: none; height: 4px; border-top: 4px solid #02B875;}=0A =
+     .email-grayDivider {border: none; height: 1px; border-top: 1px solid #=
+8F9191;}=0A      .email-block {display: block;}=0A      .email-inlineBlock =
+{display: inline-block;}=0A      .email-top {vertical-align: top;}=0A      =
+.email-middle {vertical-align: middle;}=0A      .email-bottom {vertical-al=
+ign: bottom;}=0A      .email-left {text-align: left;}=0A      .email-right =
+{text-align: right;}=0A      .email-center {text-align: center;}=0A      .e=
+mail-marginAuto {margin-left: auto; margin-right: auto;}=0A      .email-mar=
+ginLeft10 {margin-left: 10px;}=0A      .email-marginLeft12 {margin-left: 12=
+px;}=0A      .email-marginRight8 {margin-right: 8px;}=0A      .email-margin=
+Right10 {margin-right: 10px;}=0A      .email-marginRight16 {margin-right: 1=
+6px;}=0A      .email-marginRight20 {margin-right: 20px;}=0A      .email-mar=
+ginTop30 {margin-top: 30px;}=0A      .email-marginTop50 {margin-top: 50px;}=
+=0A      .email-marginBottom0 {margin-bottom: 0px;}=0A      .email-marginBo=
+ttom20 {margin-bottom: 20px;}=0A      .email-marginBottom30 {margin-bottom:=
+ 30px;}=0A      .email-paddingLeft13 {padding-left: 13px;}=0A      .email-p=
+addingLeft20 {padding-left: 20px;}=0A      .email-paddingLeft35 {padding-le=
+ft: 35px;}=0A      .email-paddingLeft45 {padding-left: 45px;}=0A      .emai=
+l-paddingRight20 {padding-right: 20px;}=0A      .email-paddingRight35 {padd=
+ing-right: 35px;}=0A      .email-paddingRight45 {padding-right: 45px;}=0A  =
+    .email-paddingTop20 {padding-top: 20px;}=0A      .email-paddingTop40 {p=
+adding-top: 40px;}=0A      .email-paddingTop50 {padding-top: 50px;}=0A     =
+ .email-paddingTop60 {padding-top: 60px;}=0A      .email-paddingBottom0 {pa=
+dding-bottom: 0;}=0A      .email-paddingBottom20 {padding-bottom: 20px;}=0A=
+      .email-paddingBottom50 {padding-bottom: 50px;}=0A      .email-padding=
+20 {padding: 20px;}=0A      .email-padding25 {padding: 25px;}=0A      .emai=
+l-padding30 {padding: 30px;}=0A      .email-padding40 {padding: 40px;}=0A  =
+    .email-width45 {width: 45px;}=0A      .email-width75 {width: 75px;}=0A =
+     .email-width100 {width: 100px;}=0A      .email-width150 {width: 150px;=
+}=0A      .email-width30pct {width: 30%;}=0A      .email-width33pct {width:=
+ 33%;}=0A      .email-width70pct {width: 70%;}=0A      .email-width85pct {w=
+idth: 85%;}=0A      .email-fullWidth {width: 100%;}=0A      .email-fontSize=
+14 {font-size: 14px;}=0A      .email-fontSize19 {font-size: 19px;}=0A      =
+.email-borderLeft4Green {border-left: 4px solid #02B875;}=0A      .email-b=
+order0 {border: 0; border-spacing: 0 !important;}=0A      .email-separator4=
+0 {width: 40px; height: 2px; background-color: rgb(74, 74, 74);}=0A    </st=
+yle>=0A    <style type=3D"text/css" data-premailer=3D"ignore">=0A        @m=
+edia all and (max-width: 595px) {=0A          .container, table {width: 100=
+% !important;}=0A          .block-image {width: 100% !important;}=0A       =
+   .email-xs-marginRight0 {margin-right: 0;}=0A          .email-xs-paddingL=
+eft10 {padding-left: 10px;}=0A          .email-xs-paddingRight10 {padding-r=
+ight: 10px;}=0A          .email-xs-block {display: block;}=0A          .ema=
+il-xs-width40pct {width: 40%;}=0A          .email-xs-width60pct {width: 60%=
+;}=0A          .email-xs-fullWidth {width: 100%;}=0A          .intercom-h2b=
+-button {=0A            padding: 0 40px;=0A          }=0A        }=0A    </=
+style>=0A<style>.intercom-align-right {=0A  text-align: right !important;=
+=0A}=0A.intercom-align-center {=0A  text-align: center !important;=0A}=0A.i=
+ntercom-align-left {=0A  text-align: left !important;=0A}=0A/* Over-ride fo=
+r RTL */=0A.right-to-left .intercom-align-right{=0A  text-align: left !impo=
+rtant;=0A}=0A.right-to-left .intercom-align-left{=0A  text-align: right !im=
+portant;=0A}=0A.right-to-left .intercom-align-left {=0A  text-align:right !=
+important;=0A}=0A.right-to-left li {=0A  text-align:right !important;=0A  d=
+irection: rtl;=0A}=0A.right-to-left .intercom-align-left img,=0A.right-to-l=
+eft .intercom-align-left .intercom-h2b-button {=0A  margin-left: 0 !importa=
+nt;=0A}=0A.intercom-attachment,=0A.intercom-attachments,=0A.intercom-attach=
+ments td,=0A.intercom-attachments th,=0A.intercom-attachments tr,=0A.interc=
+om-attachments tbody,=0A.intercom-attachments .icon,=0A.intercom-attachment=
+s .icon img {=0A  border: none !important;=0A  box-shadow: none !important;=
+=0A  padding: 0 !important;=0A  margin: 0 !important;=0A}=0A.intercom-attac=
+hments {=0A  margin: 10px 0 !important;=0A}=0A.intercom-attachments .icon,=
+=0A.intercom-attachments .icon img {=0A  width: 16px !important;=0A  height=
+: 16px !important;=0A}=0A.intercom-attachments .icon {=0A  padding-right: 5=
+px !important;=0A}=0A.intercom-attachment {=0A  display: inline-block !impo=
+rtant;=0A  margin-bottom: 5px !important;=0A}=0A=0A.intercom-interblocks-co=
+ntent-card {=0A  width: 334px !important;=0A  max-height: 136px !important;=
+=0A  max-width: 100% !important;=0A  overflow: hidden !important;=0A  borde=
+r-radius: 20px !important;=0A  font-size: 16px !important;=0A  border: 1px =
+solid #e0e0e0 !important;=0A}=0A=0A.intercom-interblocks-link,=0A.intercom-=
+interblocks-article-card {=0A  text-decoration: none !important;=0A}=0A=0A.=
+intercom-interblocks-article-icon {=0A  width: 22.5% !important;=0A  height=
+: 136px !important;=0A  float: left !important;=0A  background-color: #fafa=
+fa !important;=0A  background-image: url('https://static.intercom-mail-500.=
+com/assets/article_book-1a595be287f73c0d02f548f513bfc831.png') !important;=
+=0A  background-repeat: no-repeat !important;=0A  background-size: 32px !im=
+portant;=0A  background-position: center !important;=0A}=0A=0A.intercom-int=
+erblocks-article-text {=0A  width: 77.5% !important;=0A  float: right !impo=
+rtant;=0A  background-color: #fff !important;=0A}=0A=0A.intercom-interblock=
+s-link-title,=0A.intercom-interblocks-article-title {=0A  color: #519dd4 !i=
+mportant;=0A  font-size: 15px !important;=0A  margin: 16px 18px 12px !impor=
+tant;=0A  line-height: 1.3em !important;=0A  overflow: hidden !important;=
+=0A}=0A=0A.intercom-interblocks-link-description,=0A.intercom-interblocks-a=
+rticle-body {=0A  margin: 0 18px 12px !important;=0A  font-size: 14px !impo=
+rtant;=0A  color: #65757c !important;=0A  line-height: 1.3em !important;=0A=
+}=0A=0A.intercom-interblocks-link-author,=0A.intercom-interblocks-article-a=
+uthor {=0A  margin: 10px 15px !important;=0A  height: 24px !important;=0A  =
+line-height: normal !important;=0A}=0A=0A.intercom-interblocks-link-author-=
+avatar,=0A.intercom-interblocks-article-author-avatar {=0A  width: 16px !im=
+portant;=0A  height: 16px !important;=0A  display: inline-block !important;=
+=0A  vertical-align: middle !important;=0A  float: left;=0A  margin-right: =
+5px;=0A}=0A=0A.intercom-interblocks-link-author-avatar-image,=0A.intercom-i=
+nterblocks-article-author-avatar-image {=0A  width: 16px !important;=0A  he=
+ight: 16px !important;=0A  border-radius: 50% !important;=0A  margin: 0 !im=
+portant;=0A  vertical-align: top !important;=0A  font-size: 12px !important=
+;=0A}=0A=0A.intercom-interblocks-link-author-name,=0A.intercom-interblocks-=
+article-author-name {=0A  color: #74848b !important;=0A  margin: 0 0 0 5px =
+!important;=0A  font-size: 12px !important;=0A  font-weight: 500 !important=
+;=0A  overflow: hidden !important;=0A}=0A=0A.intercom-interblocks-article-w=
+ritten-by {=0A  color: #8897a4 !important;=0A  margin: 1px 0 0 5px !importa=
+nt;=0A  font-size: 12px !important;=0A  overflow: hidden !important;=0A  ve=
+rtical-align: middle !important;=0A  float: left !important;=0A}=0A</style>=
+=0A</head>=0A<body style=3D"color: rgba(0, 0, 0, 1); font-family: Georgia, =
+Cambria, 'Times New Roman', Times, serif; font-size: 16px; margin: 0">=0A<s=
+tyle type=3D"text/css">=0Abody {=0Amargin: 0; font-family: Georgia, Cambria=
+, 'Times New Roman', Times, serif; color: rgba(0, 0, 0, 1); font-size: 16px=
+;=0A}=0A</style>=0A<table border=3D"0" width=3D"100%" height=3D"100%" cellp=
+adding=3D"0" cellspacing=3D"0" style=3D"margin-top: 40px">=0A  <tbody>=0A<t=
+r>=0A    <td>=0A      <table cellpadding=3D"0" cellspacing=3D"0" border=3D"=
+0" bgcolor=3D"#ffffff" class=3D"container" style=3D"margin: 0 auto; width: =
+600px">=0A<tbody><tr>=0A<td class=3D"email-center" style=3D"text-align: cen=
+ter" align=3D"center"><img class=3D"email-mediumLogo" src=3D"https://cdn-im=
+ages-1.medium.com/max/1600/1*5y0Oo8wdbrHu7z6o8FJcRQ.png" style=3D"height: 1=
+6px; margin: 0 auto; width: 82px"></td>=0A        </tr></tbody>=0A<tbody>=
+=0A        </tbody>=0A<tbody>=0A<tr>=0A          <td bgcolor=3D"#ffffff" st=
+yle=3D"background-color: #ffffff; padding-left: 20px; padding-right: 20px">=
+=0A=0A            <h1 class=3D"intercom-align-center" style=3D"font-family:=
+ Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 38px; font-w=
+eight: normal; text-align: center !important" align=3D"center">Higher groun=
+d</h1>=0A<a href=3D"https://via.intercom-mail-500.com/e=3Fob=3Dsj6liTBfY9gJ=
+brR%2BTHT35TTGQTyp94OkEtgwiBfFAm2yxvH21SdD69C8iADq03KBkACFRdETC1Nt2lyyzeGuB=
+A%3D%3D&h=3D0da8b15ebe0e7c9376b4c6abc1f14c583f1a7d61-18224311643" target=3D=
+"_blank" style=3D"color: #fe0000; text-decoration: none">=0A<img class=3D"b=
+lock-image" src=3D"https://cdn-images-1.medium.com/max/1600/1*B9fo88geANBz1=
+yho3__9vQ.jpeg" width=3D"600" alt=3D"">=0A</a><div class=3D"email-width85pc=
+t email-marginAuto" style=3D"margin-left: auto; margin-right: auto; width: =
+85%"><p class=3D"email-imageCaption email-center" style=3D"color: #9b9b9b; =
+font-family: Arial, sans-serif; font-size: 14px; line-height: 1.55em; margi=
+n: 3px 0 0; text-align: center" align=3D"center">Our monthly magazine for A=
+ugust</p></div>=0A<br><p class=3D"intercom-align-left" style=3D"font-size: =
+16px; line-height: 1.55em; margin: 0; text-align: left !important" align=3D=
+"left">Maybe you=E2=80=99ve been escaping <i>too</i> much. Maybe <a href=3D=
+"https://via.intercom-mail-500.com/e=3Fob=3D3iMRCulOoswq0okC21Oln7RTA9mebmk=
+71IXoRtmAUvcEdDjrumefqVd27deNo%2Bx5gKligEki1y%2FBt8Uqhny%2BPsKWW0uTLa3ALSa4=
+KSWc1xChXyJh8W4FtAHN%2BiWSwy6iAcJNPpWDfd%2B4JtM%2BAGv%2Bf1czmid%2BvwYnO%2Bc=
+PEEKacbg%3D&h=3Df4f18ee210f45ad88d7e1ae9bb245282190cf54d-18224311643" targe=
+t=3D"_blank" style=3D"color: #fe0000; text-decoration: none">your escapist =
+habits have been wrecking your life</a>. But then again, you could be onto =
+something...maybe they=E2=80=99re helping you find your truth. And, honestl=
+y =E2=80=94 what=E2=80=99s the difference=3F This week=E2=80=99s <a href=3D=
+"https://via.intercom-mail-500.com/e=3Fob=3Dsj6liTBfY9gJbrR%2BTHT35TTGQTyp9=
+4OkEtgwiBfFAm2yxvH21SdD69C8iADq03KBkACFRdETC1Nt2lyyzeGuBA%3D%3D&h=3D0da8b15=
+ebe0e7c9376b4c6abc1f14c583f1a7d61-18224311643" target=3D"_blank" style=3D"c=
+olor: #fe0000; text-decoration: none">Great Escape</a> stories explore what=
+ it means to exit hell and enter the void:</p>=0A<br><div class=3D"intercom=
+-container intercom-align-center" style=3D"text-align: center !important" a=
+lign=3D"center"><a class=3D"intercom-h2b-button" target=3D"_blank" href=3D"=
+https://via.intercom-mail-500.com/e=3Fob=3Dsj6liTBfY9gJbrR%2BTHT35TTGQTyp94=
+OkEtgwiBfFAm2yxvH21SdD69C8iADq03KBkACFRdETC1Nt2lyyzeGuBA%3D%3D&h=3D0da8b15e=
+be0e7c9376b4c6abc1f14c583f1a7d61-18224311643" style=3D"background-color: #0=
+00000; border: 0; border-radius: 4px; color: #ffffff; cursor: pointer; disp=
+lay: inline-block; font-size: 14px; font-style: normal; font-weight: 400; h=
+eight: 38px; line-height: 38px; outline: 0; padding: 0 55px; position: rela=
+tive; text-align: center; text-decoration: none; white-space: nowrap">Read =
+the stories</a></div>=0A<br><br><br><p class=3D"email-subHeading email-cent=
+er" style=3D"font-family: Georgia, serif; font-size: 24px; font-weight: 500=
+; line-height: 1.55em; margin: 0; text-align: center" align=3D"center">Raci=
+ng through war</p>=0A<br><p class=3D"intercom-align-left" style=3D"font-siz=
+e: 16px; line-height: 1.55em; margin: 0; text-align: left !important" align=
+=3D"left">So, you=E2=80=99re stationed in Kabul in the age of ISIS. Natural=
+ly, from time to time you=E2=80=99ll need escape the path you=E2=80=99ve ch=
+osen there. But a marathon=E2=80=99s too easy. A home in the Alps is not br=
+eathtaking enough.=C2=A0</p>=0A<br><p class=3D"intercom-align-left" style=
+=3D"font-size: 16px; line-height: 1.55em; margin: 0; text-align: left !impo=
+rtant" align=3D"left">For crisis-zone U.N. lawyer Stephanie Case, the only =
+way out of her head is through 100 miles or more of jagged terrain and stee=
+p summits. In =E2=80=9C<a href=3D"https://via.intercom-mail-500.com/e=3Fob=
+=3DSBH%2Bhr9msl8aSFjgAVTLX1wfNHe5PVfXcns9Ss4HW%2F01ct0%2FTUb5og2YQQMdQHyiPo=
+7LpB9%2FxvBs7JjtzQu84N0u4THxVzlkvaPtZeN7bKXVbgORguxLkNROmEkuf0c8&h=3Da5f27a=
+1511858d387e3279a7cc0fb27ed6986b3f-18224311643" target=3D"_blank" style=3D"=
+color: #fe0000; text-decoration: none">Relentless Forward Motion</a>,=E2=80=
+=9D journalist Joseph Bien-Kahn writes about the talented ultra-runner who,=
+ in order to distress from a full-time career fighting for vulnerable peopl=
+e in the midst of violent conflict, inflicts a kind of trauma on her own bo=
+dy: the pure, savage bliss of running for days.=C2=A0</p>=0A<div class=3D"i=
+ntercom-container intercom-align-left" style=3D"text-align: left !important=
+" align=3D"left">=0A<a target=3D"_blank" href=3D"https://via.intercom-mail-=
+500.com/e=3Fob=3DSBH%2Bhr9msl8aSFjgAVTLX1wfNHe5PVfXcns9Ss4HW%2F01ct0%2FTUb5=
+og2YQQMdQHyiPo7LpB9%2FxvBs7JjtzQu84N0u4THxVzlkvaPtZeN7bKXVbgORguxLkNROmEkuf=
+0c8&h=3Da5f27a1511858d387e3279a7cc0fb27ed6986b3f-18224311643" style=3D"colo=
+r: #fe0000; text-decoration: none">=0A<img src=3D"https://downloads.interco=
+mcdn.com/i/o/73085539/fa66c461450c8ba562941c8c/01.jpg">=0A</a>=0A</div>=0A<=
+br><br><p class=3D"email-subHeading email-center" style=3D"font-family: Geo=
+rgia, serif; font-size: 24px; font-weight: 500; line-height: 1.55em; margin=
+: 0; text-align: center" align=3D"center">Risen from the dead</p>=0A<br><p =
+class=3D"intercom-align-left" style=3D"font-size: 16px; line-height: 1.55em=
+; margin: 0; text-align: left !important" align=3D"left">What if you=E2=80=
+=99ve prepared to die, and then don=E2=80=99t=3F</p>=0A<br><p class=3D"inte=
+rcom-align-left" style=3D"font-size: 16px; line-height: 1.55em; margin: 0; =
+text-align: left !important" align=3D"left">Photographer Talia Herman=E2=80=
+=99s grew up in Guerneville, a biker town that turned into a gay haven righ=
+t before the AIDS crisis struck. Her <a href=3D"https://via.intercom-mail-5=
+00.com/e=3Fob=3Diwv7h1lprBkNmbnj6fA1TXUN9trxTQWPVzkQolwjbQlc74p4SIR3RxVRP43=
+ig2cVrFsm4scKu%2BmByzmdbYHsziY0PEm2tWJ0wkrARezuSsmh8FT8Gg%2F9ABczzyWEFEliMV=
+yb9ByqpaZffVldjprucRe7ssovGPyE2%2F%2FbRES8taYNgLhXlAeiV4I2xBSIOzos&h=3D94a0=
+bce3c03b5fa0dc218de86d6deb617ddc1beb-18224311643" target=3D"_blank" style=
+=3D"color: #fe0000; text-decoration: none">strange and beautiful photograph=
+s</a> depict Guerneville=E2=80=99s present day: Those who survived formed t=
+he Sisters of Perpetual Indulgence, an order of drag nuns who act as social=
+ workers, philanthropists, and resident artists for the remote northern Cal=
+ifornia community. =C2=A0</p>=0A<div class=3D"intercom-container intercom-a=
+lign-left" style=3D"text-align: left !important" align=3D"left">=0A<a targe=
+t=3D"_blank" href=3D"https://via.intercom-mail-500.com/e=3Fob=3Diwv7h1lprBk=
+Nmbnj6fA1TXUN9trxTQWPVzkQolwjbQlc74p4SIR3RxVRP43ig2cVrFsm4scKu%2BmByzmdbYHs=
+ziY0PEm2tWJ0wkrARezuSsmh8FT8Gg%2F9ABczzyWEFEliMVyb9ByqpaZffVldjprucRe7ssovG=
+PyE2%2F%2FbRES8taYNgLhXlAeiV4I2xBSIOzos&h=3D94a0bce3c03b5fa0dc218de86d6deb6=
+17ddc1beb-18224311643" style=3D"color: #fe0000; text-decoration: none">=0A<=
+img src=3D"https://downloads.intercomcdn.com/i/o/73086395/0f751954e780ba2b1=
+1674716/02.jpg">=0A</a>=0A</div>=0A<br><br><p class=3D"email-subHeading ema=
+il-center" style=3D"font-family: Georgia, serif; font-size: 24px; font-weig=
+ht: 500; line-height: 1.55em; margin: 0; text-align: center" align=3D"cente=
+r">Wild, wild country</p>=0A<br><p class=3D"intercom-align-left" style=3D"f=
+ont-size: 16px; line-height: 1.55em; margin: 0; text-align: left !important=
+" align=3D"left">Journalists have spent the last two years trying to unders=
+tand Trump supporters. <a href=3D"https://via.intercom-mail-500.com/e=3Fob=
+=3DyyLuchlcRB8%2B6SESFmqu09N8HyuZHYYJL9beUm4uhlMiqVzBdHwW5HeTWk94QWbCcvitN6=
+3y92wRJJb7vKNSg0Lid1QbQkJKLbq1ScXIMGSVFF%2B78NyC7%2FEYgwpf961r&h=3D4f839424=
+f47e76694b523cd88cbeb2d3c027910d-18224311643" target=3D"_blank" style=3D"co=
+lor: #fe0000; text-decoration: none">But what if we kind of already do=3F</=
+a>=C2=A0</p>=0A<br><p class=3D"intercom-align-left" style=3D"font-size: 16p=
+x; line-height: 1.55em; margin: 0; text-align: left !important" align=3D"le=
+ft">Author Douglas Rushkoff spent years studying cults and even helped get =
+a family member out of one. He says that =E2=80=9Clying for the leader=E2=
+=80=8A=E2=80=94=E2=80=8Aor, rather, doing what feels like lying until you l=
+ater accept the error of your ways and transcend your deeply distorted view=
+ of the world=E2=80=8A=E2=80=94=E2=80=8Ais the path to earning his respect =
+and, ultimately, expressing his greater truth.=E2=80=9D Sound familiar=3F</=
+p>=0A<div class=3D"intercom-container intercom-align-left" style=3D"text-al=
+ign: left !important" align=3D"left">=0A<a target=3D"_blank" href=3D"https:=
+//via.intercom-mail-500.com/e=3Fob=3DyyLuchlcRB8%2B6SESFmqu09N8HyuZHYYJL9be=
+Um4uhlMiqVzBdHwW5HeTWk94QWbCcvitN63y92wRJJb7vKNSg0Lid1QbQkJKLbq1ScXIMGSVFF%=
+2B78NyC7%2FEYgwpf961r&h=3D4f839424f47e76694b523cd88cbeb2d3c027910d-18224311=
+643" style=3D"color: #fe0000; text-decoration: none">=0A<img src=3D"https:/=
+/downloads.intercomcdn.com/i/o/73088275/e4aff4cbbe5b0ff67891170f/03.jpg">=
+=0A</a>=0A</div>=0A<br><br><p class=3D"email-subHeading email-center" style=
+=3D"font-family: Georgia, serif; font-size: 24px; font-weight: 500; line-he=
+ight: 1.55em; margin: 0; text-align: center" align=3D"center">Into the wood=
+s</p>=0A<br><p class=3D"intercom-align-left" style=3D"font-size: 16px; line=
+-height: 1.55em; margin: 0; text-align: left !important" align=3D"left">It=
+=E2=80=99s ok =E2=80=94 cancel all your plans. <a href=3D"https://via.inter=
+com-mail-500.com/e=3Fob=3DNPMzmajNK6BzIpeCmzVuqHS9g6KlxNi5pxNYtLWO74nHt9QVX=
+rlGAJRb8VxBfgdhYfqsrL0WdmANxdXlEyu%2BZEPsf%2BjlGs8Rd%2FZgkLLWqjPp61CIKEzQmG=
+gXxAf5hMunIbfJOwYvU1dMXLfVnYmyqg%3D%3D&h=3De4f2a36635a7c4ae7471add4538ec1fb=
+112abfce-18224311643" target=3D"_blank" style=3D"color: #fe0000; text-decor=
+ation: none">A cabin in Vermont awaits</a>.=C2=A0</p>=0A<br><p class=3D"int=
+ercom-align-left" style=3D"font-size: 16px; line-height: 1.55em; margin: 0;=
+ text-align: left !important" align=3D"left">Sometimes you don=E2=80=99t ch=
+oose a life alone; it chooses you. But one of the greatest projects you mig=
+ht ever take on is living in your own world, untethered from expectations o=
+f romance and nuclear family, even if just for the time being. And as Emily=
+ J. Smith argues, it doesn=E2=80=99t have to be a sacrifice: =E2=80=9Cwhile=
+ on most fronts I find myself deviating from the path I=E2=80=99d always im=
+agined, in some sense, I did find love.=E2=80=9D</p>=0A<div class=3D"interc=
+om-container intercom-align-left" style=3D"text-align: left !important" ali=
+gn=3D"left">=0A<a target=3D"_blank" href=3D"https://via.intercom-mail-500.c=
+om/e=3Fob=3DNPMzmajNK6BzIpeCmzVuqHS9g6KlxNi5pxNYtLWO74nHt9QVXrlGAJRb8VxBfgd=
+hYfqsrL0WdmANxdXlEyu%2BZEPsf%2BjlGs8Rd%2FZgkLLWqjPp61CIKEzQmGgXxAf5hMunIbfJ=
+OwYvU1dMXLfVnYmyqg%3D%3D&h=3De4f2a36635a7c4ae7471add4538ec1fb112abfce-18224=
+311643" style=3D"color: #fe0000; text-decoration: none">=0A<img src=3D"http=
+s://downloads.intercomcdn.com/i/o/73088547/3133ee0bc9038eebaa3341b1/04.jpg"=
+>=0A</a>=0A</div>=0A<br><br><h1 class=3D"intercom-align-center" style=3D"fo=
+nt-family: Georgia, Cambria, 'Times New Roman', Times, serif; font-size: 38=
+px; font-weight: normal; text-align: center !important" align=3D"center">Tr=
+anscendence, at your fingertips.</h1>=0A<br><div class=3D"intercom-containe=
+r intercom-align-center" style=3D"text-align: center !important" align=3D"c=
+enter"><a class=3D"intercom-h2b-button" target=3D"_blank" href=3D"https://v=
+ia.intercom-mail-500.com/e=3Fob=3D3T%2B1dnAHWzePjhQtifi3O%2B526TEHwskUaMDYI=
+RED3s%2Bk7zJlY69QYo1OZqZK8oi5p9DrNdScDn39w5QHbpn5FQ%3D%3D&h=3D975e5855fb708=
+a00084724337cb6304488e08d83-18224311643" style=3D"background-color: #000000=
+; border: 0; border-radius: 4px; color: #ffffff; cursor: pointer; display: =
+inline-block; font-size: 14px; font-style: normal; font-weight: 400; height=
+: 38px; line-height: 38px; outline: 0; padding: 0 55px; position: relative;=
+ text-align: center; text-decoration: none; white-space: nowrap">Upgrade fo=
+r unlimited reading</a></div>=0A<br><br>=0A            =0A          </td>=
+=0A        </tr>=0A        <tr>=0A          <td>=0A            <div class=
+=3D"email-marginAuto email-center email-marginTop50" style=3D"margin-left: =
+auto; margin-right: auto; margin-top: 50px; text-align: center" align=3D"ce=
+nter">=0A              <a href=3D"https://via.intercom-mail-500.com/e=3Fob=
+=3DDqoMlVoHfmONaOm%2BYwe%2BRDoQQi29BP0GeJYDNyJPcZc%3D&h=3D2365d6ad01679e5a5=
+225dab60a23aa7e4863c3ff-18224311643" class=3D"email-marginRight10" style=3D=
+"color: #fe0000; margin-right: 10px; text-decoration: none">=0A            =
+    <img class=3D"email-icon email-icon--20px" src=3D"https://cdn-images-1.=
+medium.com/proxy/1*EklpI6d0gorlAVREGuSwUw.png" style=3D"display: inline-blo=
+ck; vertical-align: middle; width: 20px">=0A              </a>=0A          =
+    <a href=3D"https://via.intercom-mail-500.com/e=3Fob=3DFcqO%2B4FnSuetzYk=
+6dKuR%2F1C9EXTxekgbxAY9%2F%2B1XXfk%3D&h=3D51e84b21b8a880fcdc8e2514f29adee2d=
+603d5f2-18224311643" class=3D"email-marginLeft10 email-marginRight10" style=
+=3D"color: #fe0000; margin-left: 10px; margin-right: 10px; text-decoration:=
+ none">=0A                <img class=3D"email-icon email-icon--20px" src=3D=
+"https://cdn-images-1.medium.com/proxy/1*T6VH5OOqucDL3h1T6IEGhQ.png" style=
+=3D"display: inline-block; vertical-align: middle; width: 20px">=0A        =
+      </a>=0A              <a href=3D"https://via.intercom-mail-500.com/e=
+=3Fob=3DpKVcIqtXSvG6CqhYO3k3k%2FzVAwkTRFqMuuIzUDM3luYy0TFcRfgKwxBhJWt3Fi3G&=
+h=3D7fccec2c44518bded55f23449d7264cf8f3ed054-18224311643" class=3D"email-ma=
+rginLeft10 email-marginRight10" style=3D"color: #fe0000; margin-left: 10px;=
+ margin-right: 10px; text-decoration: none">=0A                <img class=
+=3D"email-icon email-icon--20px" src=3D"https://cdn-images-1.medium.com/pro=
+xy/1*L5NZBG568D0sdfGlId5VvQ.png" style=3D"display: inline-block; vertical-a=
+lign: middle; width: 20px">=0A              </a>=0A              <a href=3D=
+"https://via.intercom-mail-500.com/e=3Fob=3DJICb5hHfRCajk6xxb%2BDxLW6cF2MzA=
+U1ECViIjH99a7YU1RCq0HEJsD7qKg68pkwX&h=3D737eb3f75c179b63011e9981a73d2cdec95=
+be6d4-18224311643" class=3D"email-marginLeft10" style=3D"color: #fe0000; ma=
+rgin-left: 10px; text-decoration: none">=0A                <img class=3D"em=
+ail-icon email-icon--20px" src=3D"https://cdn-images-1.medium.com/proxy/1*P=
+9ab2Rr9cQbuTATC1sJWmw.png" style=3D"display: inline-block; vertical-align: =
+middle; width: 20px">=0A              </a>=0A            </div>=0A=0A      =
+      <div style=3D"color: #b3b3b1; font-family: -apple-system, BlinkMacSys=
+temFont, 'Segoe UI', 'Roboto', 'Ubuntu', 'Open Sans', 'Helvetica Neue', san=
+s-serif; font-size: 12px; margin-top: 30px; padding: 15px 0 0; text-align: =
+center" align=3D"center">=0A              Sent by <a href=3D"https://via.in=
+tercom-mail-500.com/e=3Fob=3Dc5g6A0sCF1bpS2BTurLRJzEfcjny36XtQkUL%2BrOPDnip=
+WhyOgslQ1lFpRYTVXweQg0rMvCHoHZtZs84uSc8bvmaKsKznNeA7fEgU1R0wKwE%3D&h=3D1c12=
+9e30edfa6523517eecb34afb2b5ac86c20e3-18224311643" style=3D"color: #8e8e8e; =
+text-decoration: underline">Medium</a>=0A               =C2=B7 =0A         =
+     799 Market Street, 5th floor, San Francisco, CA 94103=0A              =
+<div>=0A                <a href=3D"https://via.intercom-mail-500.com/e=3Fob=
+=3Dlq7VvgSGPLqTpE5vkU4QHXcV5cO4TzEWxP2IcBDCLEOSRXzlXuf5j0iwmuvKC1ITCIJNtt66=
+h8ND3mUdCj87lLsIjBcFTPV6NoSExO2987FVzTokYR0vImynlTwetDRJNat9T1Yi5dfPiQq8g98=
+GZU4oBQcWhlzbgRqZCOm%2BEMJ3yJkYaDvcZK8K2Tvq4gs%2F7Jnd4hZbP76yRWMWR5Z76Q%3D%=
+3D&h=3Dbfbb25cad888112792a04515ee6a89d7e864fa98-18224311643" style=3D"color=
+: #8e8e8e; text-decoration: underline">Unsubscribe</a>=0A                 =
+=C2=B7 =0A                <a href=3D"https://via.intercom-mail-500.com/e=3F=
+ob=3DOvL8fOMlZ1mxjLkL9vAF0QsOCdkle9pW9vR59hUZMEU9gFQZZklwkUygSksAeNmebBsszO=
+BbLD2porODdE5vyiL7F7xdmtDJ7bdEK3fb81U%3D&h=3D4657350de90129b3f3cfe09aaa6c84=
+a1b145e839-18224311643" style=3D"color: #8e8e8e; text-decoration: underline=
+">Help center</a>=0A                 =C2=B7 =0A                <a href=3D"h=
+ttps://via.intercom-mail-500.com/e=3Fob=3DqVTUxWVeMbRKIY714RcQuYi7z2uCu%2F0=
+AvIJ6eM8fU0tU7FYi%2F81aQuwgmZq9n6tc%2FBW8Pkoy0PB55xoQEz5em0UOvp92bNZbbZ0jSK=
+Xgtim9lCkre7fxaQPHZp7ISJnv&h=3Db985777720cf4e83d9705dad505ff4b8aa34fe36-182=
+24311643" style=3D"color: #8e8e8e; text-decoration: underline">Privacy poli=
+cy</a>=0A              </div>=0A            </div>=0A          </td>=0A    =
+    </tr>=0A      </tbody>=0A</table>=0A    </td>=0A  </tr>=0A</tbody>=0A</=
+table>=0A<br>=0A<img src=3D"https://medium.com/_/stat=3Fevent=3Demail.opene=
+d&amp;source=3Demail-256cfe5d13e3--intercom.marketing" width=3D"1" height=
+=3D"1">=0A=0A<a href=3D"https://medium-a7e301761373.mail-d-inter.com/subscr=
+iptions/unsubscribe=3Fapp_id=3Dzp3ii0g5&conversation_id=3D18224311643&user_=
+id=3D5983d97df336a321e0f467b5" style=3D"color: #fe0000; text-decoration: no=
+ne"></a> =0A=0A=0A=0A=0A=0A=0A=0A<img src=3D"https://via.intercom-mail-500.=
+com/o=3Fh=3D1b0213eb402b8b54b7ab934469192e66a3bdc104-18224311643" width=3D"=
+1" height=3D"1" style=3D"display: block;" alt=3D"intercom">=0A=0D=0A<img bo=
+rder=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://spe.via.interco=
+m-mail.com/q/V6DNTeg1b_nmhzX-28kbVA~~/AAAAAQA~/RgRdaFHyPlcIaW50ZXJjb21CCgAD=
+8syFWwoj2MNSFG1lZHVhcmRvLnJAZ21haWwuY29tWAQAABb7">=0D=0A</body>=0A</html>=
+=0A
+--_----LxsBhI4M+ld4pCrec3pncw===_0D/3C-08970-2FCC58B5--
+

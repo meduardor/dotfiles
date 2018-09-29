@@ -1,0 +1,525 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:560c:0:0:0:0:0 with SMTP id l12-v6csp936474wrv;
+        Wed, 26 Sep 2018 10:53:09 -0700 (PDT)
+X-Received: by 2002:a9f:262b:: with SMTP id 40-v6mr2292597uag.53.1537984389849;
+        Wed, 26 Sep 2018 10:53:09 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1537984389; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=XFXyukiTQh5OjORxGk5DsFykX/txClEbO0zUXB+6G7gTfExuQwljc1rdlmreKYsw9q
+         mXcyZOPCh2kzmG67SrzX2Vvj7aCLJzqxUUfvx+NYfD/qSIA09yJehO/9jMM0SaIYL8wS
+         4GzjkeWiZAVo8X7my3rjW4bf5oDFa7sG28JHOcd4cUylYPmXBxm+Mb1UbixGW4k6P5yS
+         0B0lG3jZkZG6j8nsB3r0qpcOCTTRMjCop9tlSTdQzVjVQ2D7INSQp6vVHXOUQkW+HXeC
+         Lvyp3oZulvXBmnqfCq38GUQTU/E05vpb3xQaeYBVhG3k47K/3DiA6YXCO8XuwDESBWEr
+         CVhw==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:sender:dkim-signature
+         :dkim-signature;
+        bh=29WNJgW9/yG2MSgvRGkIkUmdA18YxTk3pCMpbgpJlSk=;
+        b=BtP8l0NkPtPgGzDCwUMahmnnwlX4jXebN+J7ZT9FfOHUJVyyVkmTEi2t1Lptn+lBRP
+         CmXBfqU4ljUgh3+Crp2+HPsj7up4RXJXOxYNSVYRKectq6F9T8rlUcW+VvaRAAzphLlo
+         /KMde1lgahf1a5+wnLPZC/Q/LU8b5/EKuJgaGoJzLRTsgGjQdbZC7EwXdk96yqyI2T2Q
+         WgwjjXi68FNi/6pD4C2871Tf3Bq74OtMTBeFpJZNWor4wjm1zMao7+8X5MePMqm38q/4
+         T3tsw/vV/amLggvcVgiv2oFyiam4gyD4V5eeveR3O9eYYZBaadTOjxIgRlePglOoeX8/
+         cBnA==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=k2tQAMGI;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=V+E9j2Em;
+       arc=pass (i=2 spf=pass spfdomain=gmail.com dkim=pass dkdomain=gmail.com dmarc=pass fromdomain=gmail.com);
+       spf=pass (google.com: domain of python-brasil+bncbcn5577ozifrb7uov7oqkgqes3yhdfa@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCN5577OZIFRB7UOV7OQKGQES3YHDFA@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBCN5577OZIFRB7UOV7OQKGQES3YHDFA@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id c14-v6sor2231013vso.101.2018.09.26.10.53.08
+        (Google Transport Security);
+        Wed, 26 Sep 2018 10:53:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbcn5577ozifrb7uov7oqkgqes3yhdfa@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=k2tQAMGI;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=V+E9j2Em;
+       arc=pass (i=2 spf=pass spfdomain=gmail.com dkim=pass dkdomain=gmail.com dmarc=pass fromdomain=gmail.com);
+       spf=pass (google.com: domain of python-brasil+bncbcn5577ozifrb7uov7oqkgqes3yhdfa@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCN5577OZIFRB7UOV7OQKGQES3YHDFA@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+ARC-Seal: i=2; a=rsa-sha256; t=1537984388; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=lqTI65jLO8E254g2N4i9C4YY56fGIFaMUQN3CezyrjiSYOBb9uRBf0Y/4Pk+c1fGtR
+         dbOS5js5C9/Xpp82FvGuA4PdZaR7YWoHsyR8fG569s1HrrTe0IuaA+f/o6YKhCJ1h7np
+         q7iO3QfnfrQdEwK+qeGgQJmTMxKB6WB+7Wh2btTdr8EA7Viu4rpLtIY3DWbfT7WVgkeN
+         mQlJTb0WMPkI1NTXwPJgD6mIhbQUJH/dtwneHygoWpOMq+Z+d/+MciC6LN844haHgW2x
+         Th6M5p4pCrGxwCsUSi3YukPJ+hBiY0Vc0e5rW7Knm1UrlFbq3QAxRMEwH5Wy3G6t9Qfw
+         nY2A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:sender:dkim-signature
+         :dkim-signature;
+        bh=29WNJgW9/yG2MSgvRGkIkUmdA18YxTk3pCMpbgpJlSk=;
+        b=RGZyVSn0FD/t2zyaZE1NUGK7T6b0j0AVHU3m/sQ7YSP5y8ydLbD8xVE/OhKTqcAf5j
+         YUeM0Zzo1ysKgIJrubGB1GZ7YGHgIBYub4vV6Ze7XUhhuC4VSHSwiifeSwDfvDbJ4a9k
+         UcXNXnhRNbW4CjCZ5klbG3gsmWzsm+9LOYOne8hPLUeyLdDcWWXPrVArqs4JwPFuqpxE
+         y8WcWNE6DSTf2TsmlG6k8NxEzPoQ17XjM0lOQ4bVBnfQthWJlzVPnNhPmoFvnkLUwsb6
+         1n08/8AsHAA3Vuf8rrmyu/a7h8RENiTlkO7xO+hxe8gErdzz7dhXLn8Hr3y4cTj+1p1D
+         fQjg==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Hr0+3EEn;
+       spf=pass (google.com: domain of mrangel@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) smtp.mailfrom=mrangel@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:mime-version:references:in-reply-to:from:date:message-id
+         :subject:to:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=29WNJgW9/yG2MSgvRGkIkUmdA18YxTk3pCMpbgpJlSk=;
+        b=k2tQAMGILsy6x5s5YpAWsnGn1iYsQj6UGxIpcxCo1TuCwoHgJmjVreU6XAkuxxP18Z
+         avfdt4A+cf9UcjYrleZmr3Eb7MKs6d97sySMGVhPOnAitgBpa2/3uQo8pEN7OnW2boOO
+         qiuKpfiMjyrINQpfhN/UulN5MEqCeG1/ZAovY4dRjakxm+QXKviJVbTfDcrKaCyOTzxU
+         dTXNq4FbAu5kfZSsii9s6rVqjxk9GhdGM1FqiLSjSPg9lG9AN4iGX11lL0TzPZfzILxy
+         iW8hU7mJ1GVqrsPYcVwaxUJ9RWqZJdmgVeoVxJ2zGq7wnzXsGCn37bz37ch6NCh868Qi
+         EKmA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=29WNJgW9/yG2MSgvRGkIkUmdA18YxTk3pCMpbgpJlSk=;
+        b=V+E9j2EmpBduOyCttHYn5rKq95/9FjalMO2OrfeImDkfUplZuE0HCE5D6HpfM4qH0o
+         qLm6UDMTWk2fwmZ9lAiXM5AF6gsGrLCl/L+SyaPdsO5n3pVh+mE5FY6BJYo8cPJPHprp
+         13cOEOrFILKHdxkKg9kHLNcYB/rrcK/grH0h4Lag2TdpT6hPUSzys+tp78H3lE8JoyZa
+         1gUcAfl+izqydfvyVBDd9My4GaKhrqxucz0S72S8z+F28ZdJd0f6dvO3Im4t2E+gtg3Q
+         s2JICVTe+Q3vNlZtDcpOTZjrCPvahtRMFnnhP5pxxFJjd3NGJOj+zgj0G24iYC4Qz707
+         GiNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
+         :date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=29WNJgW9/yG2MSgvRGkIkUmdA18YxTk3pCMpbgpJlSk=;
+        b=WfEvmbYJe81+pzEMUIXOyLk9UuGoZ7axdBHwmsoXBU2Rv4XpFkBgDQy4Lyyutf7dNu
+         qKPWxF7gR3Tz2fG8jS3IAOS/Tx5FnVCHvAGRL8EYvC3e21iaVqu611HhJalQM4hAkx6O
+         c08SygzlYppcLMZQPB/twNPOFLvBb1doc45N7LJKtf5rw7j87hPxgq1fs9DSwGgnhL5c
+         zFutYdoUq/44NJOtJDnts7umToeBOUO8YCeQAZNO8ZecCn2NyrKbGo+dCplmfFS2c569
+         mVGX9CVMt3dJl3m3zCSxvzPXpMvo/nbz+14Ka7wz67tKmZFKesVD7wRGneJMr1V9/g1t
+         +CrA==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: ABuFfohTteQAkDdILDCYP1OSaK7hEQgv7PptVE4wIEmYU8qUM+VREJB3
+	wGq4DKrl2R4U1VE7xd7KQlY=
+X-Google-Smtp-Source: ACcGV63HcwUnuQ/bRVrgbYGsgP+1DoeXIF5yY+tjAJNg11UnJrmkRm34jg1kgmvkrwySEEMh0oj40Q==
+X-Received: by 2002:a67:3f86:: with SMTP id q6-v6mr19785vsi.5.1537984388244;
+        Wed, 26 Sep 2018 10:53:08 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a1f:5f49:: with SMTP id t70-v6ls302582vkb.0.gmail; Wed, 26
+ Sep 2018 10:53:02 -0700 (PDT)
+X-Received: by 2002:a1f:3d01:: with SMTP id k1-v6mr2490378vka.11.1537984382288;
+        Wed, 26 Sep 2018 10:53:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1537984382; cv=none;
+        d=google.com; s=arc-20160816;
+        b=bFqBeFjdobtrvKK2mEVkAWXMoBh4tvZON9H7J1ld47CxQuygzcDkkx91Sgxg4g9pyc
+         d6W+4Gl4tQaDoSDMY5m6HW81vlPO3hjZg6OuOoPtvkWwqqeZi3N+NNIpjTDaz5wzN4US
+         v3HWZxj0dmKxAKf+0PqcPqMJxwmcA4Y8dUGycShmPWRU4ZeWN7p/siqVhvlJMKTBdiiI
+         O8sjlo8ZBUMT0VVbmiwQiRHu44luuHHguWegWFNWuLUnmtHHThcdIijYgpnYzUajNY+d
+         ymlDDg3mVNbr2x3zlnCuOx31MFyPc0qIkVt/7hEgERMQHBX0vYpRt+slenIwvMJTnmcr
+         eglw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=OHRIygXL76SPW4IW9+7+RRl0dV7lhfjkD+4bqrGxQTc=;
+        b=aBOTWxt1CiqPUFw3TwdYcO4gCvCG0mFZMgHMfT1i2+5Y51yuyDdAn5/69T3z87thPY
+         6ASLuC8iebjsgW5Z+WBaStV5NO8n4RxCRfmedbkQeF3BbD8+VzdvFNoCFA3xL6QtPrbW
+         8uH/t7z7JUZhyrQyZrw7NQBJXRLm4YxhbbXM/JcLO5xELEzzlE6kQ+n/Q4L7Qonlcyx5
+         a7y5mnulzYzBCtM6TktwzdIMw+9G20pkb/+5tJlk2SdUSf6AclQC7SiUeqHGpeg8oY3r
+         XwdDA7/uFfq6oE2H1HwPg7NpOuGrIPSmoYqc49LkdeM6Ho8XlhuVkFut94G+j/aXZbLE
+         Yl2Q==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Hr0+3EEn;
+       spf=pass (google.com: domain of mrangel@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) smtp.mailfrom=mrangel@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from mail-oi1-x241.google.com (mail-oi1-x241.google.com. [2607:f8b0:4864:20::241])
+        by gmr-mx.google.com with ESMTPS id i2-v6si80016vsk.2.2018.09.26.10.53.02
+        for <python-brasil@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 26 Sep 2018 10:53:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mrangel@gmail.com designates 2607:f8b0:4864:20::241 as permitted sender) client-ip=2607:f8b0:4864:20::241;
+Received: by mail-oi1-x241.google.com with SMTP id k64-v6so5152636oia.13
+        for <python-brasil@googlegroups.com>; Wed, 26 Sep 2018 10:53:02 -0700 (PDT)
+X-Received: by 2002:aca:4204:: with SMTP id p4-v6mr1363836oia.242.1537984381469;
+ Wed, 26 Sep 2018 10:53:01 -0700 (PDT)
+MIME-Version: 1.0
+References: <5ae42d3c-6f8f-4690-a627-771b40be0ec5@googlegroups.com> <CA+qC5nxL2ydyijneBx-Cfds83tBS9LsTy1gKerYZsMZC_Mm9yg@mail.gmail.com>
+In-Reply-To: <CA+qC5nxL2ydyijneBx-Cfds83tBS9LsTy1gKerYZsMZC_Mm9yg@mail.gmail.com>
+From: mrangel <mrangel@gmail.com>
+Date: Wed, 26 Sep 2018 14:53:08 -0300
+Message-ID: <CACgPQkWj=2ftknz0tXrDYrZJFx88=P+qzQWFGesV42qyJjxfWg@mail.gmail.com>
+Subject: Re: [python-brasil] Sistema Python para Desktop
+To: python-brasil@googlegroups.com
+Content-Type: multipart/alternative; boundary="000000000000ba4b260576c9e486"
+X-Original-Sender: mrangel@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@gmail.com header.s=20161025 header.b=Hr0+3EEn;       spf=pass
+ (google.com: domain of mrangel@gmail.com designates 2607:f8b0:4864:20::241 as
+ permitted sender) smtp.mailfrom=mrangel@gmail.com;       dmarc=pass (p=NONE
+ sp=QUARANTINE dis=NONE) header.from=gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Spam-Checked-In-Group: python-brasil@googlegroups.com
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+--000000000000ba4b260576c9e486
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Posso te passar minha experi=C3=AAncia. H=C3=A1 tempos atr=C3=A1s, minha eq=
+uipe e eu
+desenvolvemos um software para gest=C3=A3o de provedor. O backend =C3=A9 em=
+ PHP e o
+frontend esta no desktop em PyGTK.
+Ao passar dos anos, vimos que nosso maior gargalo acaba sendo esse
+frontend, pois a equipe =C3=A9 pequena e quando temos alguma
+altera=C3=A7=C3=A3o,precisamos modificar e recompilar enquanto se fosse Web=
+ seria
+muito mais simples.
+Se eu fosse voc=C3=AA manteria tudo Web,
+
+Att,
+
+
+On Wed, Sep 26, 2018 at 1:55 PM Arthur Endlein Correia <endarthur@gmail.com=
+>
+wrote:
+
+> Ol=C3=A1 Dioni,
+>
+> A minha experi=C3=AAncia com o PyQt tem sido muito positiva:
+> https://github.com/endarthur/os
+> http://openstereo.readthedocs.io
+> Com o Qt Designer d=C3=A1 pra desenhar layouts responsivos quase como se
+> estivesse fazendo um mock, e usar estes layouts no python se mostrou
+> simples tamb=C3=A9m. Eu tive que fazer algumas coisas mais "manualmente" =
+porque
+> =C3=A9 uma aplica=C3=A7=C3=A3o cient=C3=ADfica, mas pra maioria dos casos=
+ diria que d=C3=A1 pra
+> manter quase todo o trabalho de interface fora do seu c=C3=B3digo. O Qt L=
+inguist
+> tamb=C3=A9m ajuda se for o caso de internacionalizar sua aplica=C3=A7=C3=
+=A3o.
+>
+> Se precisar de uma licensa mais permissiva, =C3=A9 bem simples usar o PyS=
+ide no
+> lugar do PyQt. Eu comecei este projeto no PySide por causa disso, mas com=
+o
+> eu acabei trocando a licensa dele pra GPL mesmo pulei pro PyQt5.
+>
+>
+>
+> -------
+> Arthur Endlein Correia
+> arthur.correia@usp.br
+> endarthur@gmail.com
+> endarthur.github.io
+> 55 11 968 606 174
+> IGc, USP
+>
+> 2018-09-26 13:37 GMT-03:00 Dioni Alves de Oliveira <dionialves@gmail.com>=
+:
+>
+>> Boa Tarde aos colegas.
+>>
+>> Tenho um sistema completo em django, um Software de Gest=C3=A3o para pro=
+vedor.
+>> Feito todo em cima do django admin. O software evoluiu tanto que estou c=
+om
+>> dificuldades de implementar o que eu preciso devidos as customiza=C3=A7=
+=C3=B5es em
+>> cima do djago admin.
+>> Infelizmente n=C3=A3o tenho capacidade de desenvolver um layout do zero,
+>> devido a limita=C3=A7=C3=B5es pr=C3=B3prias, at=C3=A9 por esse motivo se=
+mpre usei o
+>> django-admin, pois supria essa minha dificuldade.
+>>
+>> Ent=C3=A3o estou procurando op=C3=A7=C3=B5es, e estava pensando em migra=
+r esse sistema
+>> para o Desktop, estava vendo algumas op=C3=A7=C3=B5es como o Tkinter ou =
+mesmo PyQt.
+>>
+>> O que os colegas pensam a respeito? Python seria uma boa op=C3=A7=C3=A3o=
+ para
+>> Desktop? Kivy, WxWidget, PyQt, Gtk+?
+>>
+>>
+>> Observa=C3=A7=C3=A3o: Porque n=C3=A3o consigo criar uma aplica=C3=A7=C3=
+=A3o web do zero? Devido a
+>> limita=C3=A7=C3=B5es de criatividade mesmo, estilizar um layout usando c=
+ores, estilos
+>> n=C3=A3o =C3=A9 para mim.
+>>
+>>
+>> --
+>> --
+>> ------------------------------------
+>> Grupo Python-Brasil
+>> https://wiki.python.org.br/AntesDePerguntar
+>>
+>> <*> Para visitar o site do grupo na web, acesse:
+>> http://groups.google.com/group/python-brasil
+>>
+>> <*> Para sair deste grupo, envie um e-mail para:
+>> python-brasil+unsubscribe@googlegroups.com
+>> ---
+>> Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo "Pyth=
+on Brasil"
+>> dos Grupos do Google.
+>> Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails=
+ dele,
+>> envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+>> Para postar nesse grupo, envie um e-mail para
+>> python-brasil@googlegroups.com.
+>> Para ver essa discuss=C3=A3o na Web, acesse
+>> https://groups.google.com/d/msgid/python-brasil/5ae42d3c-6f8f-4690-a627-=
+771b40be0ec5%40googlegroups.com
+>> <https://groups.google.com/d/msgid/python-brasil/5ae42d3c-6f8f-4690-a627=
+-771b40be0ec5%40googlegroups.com?utm_medium=3Demail&utm_source=3Dfooter>
+>> .
+>> Para mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout.
+>>
+>
+> --
+> --
+> ------------------------------------
+> Grupo Python-Brasil
+> https://wiki.python.org.br/AntesDePerguntar
+>
+> <*> Para visitar o site do grupo na web, acesse:
+> http://groups.google.com/group/python-brasil
+>
+> <*> Para sair deste grupo, envie um e-mail para:
+> python-brasil+unsubscribe@googlegroups.com
+> ---
+> Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo "Pytho=
+n Brasil"
+> dos Grupos do Google.
+> Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails =
+dele, envie
+> um e-mail para python-brasil+unsubscribe@googlegroups.com.
+> Para postar nesse grupo, envie um e-mail para
+> python-brasil@googlegroups.com.
+> Para ver essa discuss=C3=A3o na Web, acesse
+> https://groups.google.com/d/msgid/python-brasil/CA%2BqC5nxL2ydyijneBx-Cfd=
+s83tBS9LsTy1gKerYZsMZC_Mm9yg%40mail.gmail.com
+> <https://groups.google.com/d/msgid/python-brasil/CA%2BqC5nxL2ydyijneBx-Cf=
+ds83tBS9LsTy1gKerYZsMZC_Mm9yg%40mail.gmail.com?utm_medium=3Demail&utm_sourc=
+e=3Dfooter>
+> .
+> Para mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout.
+>
+
+
+--=20
+Marcos Rangel J=C3=BAnior
+
+Bacharel em Ci=C3=AAncia da Computa=C3=A7=C3=A3o - UCAM -Campos
+Graduado em Tecnologia de Automa=C3=A7=C3=A3o Industrial - CEFET-Campos
+Administrador da lista python-gamedev-brasil
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/CACgPQkWj%3D2ftknz0tXrDYrZJFx88%3DP%2BqzQWFGesV42qyJjxfWg%=
+40mail.gmail.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+--000000000000ba4b260576c9e486
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Posso te passar minha experi=C3=AAncia. H=C3=A1 tempos atr=
+=C3=A1s, minha equipe e eu desenvolvemos um software para gest=C3=A3o de pr=
+ovedor. O backend =C3=A9 em PHP e o frontend esta no desktop em PyGTK. <br>=
+Ao passar dos anos, vimos que nosso maior gargalo acaba sendo esse frontend=
+, pois a equipe =C3=A9 pequena e quando temos alguma altera=C3=A7=C3=A3o,pr=
+ecisamos modificar e recompilar enquanto se fosse Web seria muito mais simp=
+les.<div>Se eu fosse voc=C3=AA manteria tudo Web,</div><div><br></div><div>=
+Att,</div><div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"l=
+tr">On Wed, Sep 26, 2018 at 1:55 PM Arthur Endlein Correia &lt;<a href=3D"m=
+ailto:endarthur@gmail.com">endarthur@gmail.com</a>&gt; wrote:<br></div><blo=
+ckquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #c=
+cc solid;padding-left:1ex"><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"lt=
+r">Ol=C3=A1 Dioni,<div><br></div><div>A minha experi=C3=AAncia com o PyQt t=
+em sido muito positiva:</div><div><a href=3D"https://github.com/endarthur/o=
+s" target=3D"_blank">https://github.com/endarthur/os</a><br></div><div><a h=
+ref=3D"http://openstereo.readthedocs.io" target=3D"_blank">http://openstere=
+o.readthedocs.io</a><br></div><div>Com o Qt Designer d=C3=A1 pra desenhar l=
+ayouts responsivos quase como se estivesse fazendo um mock, e usar estes la=
+youts no python se mostrou simples tamb=C3=A9m. Eu tive que fazer algumas c=
+oisas mais &quot;manualmente&quot; porque =C3=A9 uma aplica=C3=A7=C3=A3o ci=
+ent=C3=ADfica, mas pra maioria dos casos diria que d=C3=A1 pra manter quase=
+ todo o trabalho de interface fora do seu c=C3=B3digo. O Qt Linguist tamb=
+=C3=A9m ajuda se for o caso de internacionalizar sua aplica=C3=A7=C3=A3o.</=
+div><div><br></div><div>Se precisar de uma licensa mais permissiva, =C3=A9 =
+bem simples usar o PySide no lugar do PyQt. Eu comecei este projeto no PySi=
+de por causa disso, mas como eu acabei trocando a licensa dele pra GPL mesm=
+o pulei pro PyQt5.</div></div></div></div><div class=3D"gmail_extra"><br cl=
+ear=3D"all"><div><div class=3D"m_7183410766245133966gmail_signature" data-s=
+martmail=3D"gmail_signature"><div dir=3D"ltr"><div><div dir=3D"ltr"><div><d=
+iv dir=3D"ltr"><div dir=3D"ltr"><div><div>=C2=A0</div><div>=C2=A0</div><div=
+>-------</div></div>Arthur Endlein Correia<br><a href=3D"mailto:arthur.corr=
+eia@usp.br" target=3D"_blank">arthur.correia@usp.br</a><div><a href=3D"mail=
+to:endarthur@gmail.com" target=3D"_blank">endarthur@gmail.com</a><br></div>=
+<div><a href=3D"http://endarthur.github.io" target=3D"_blank">endarthur.git=
+hub.io</a></div><div>55 11 968 606 174<br>IGc, USP<br></div></div></div></d=
+iv></div></div></div></div></div>
+<br><div class=3D"gmail_quote">2018-09-26 13:37 GMT-03:00 Dioni Alves de Ol=
+iveira <span dir=3D"ltr">&lt;<a href=3D"mailto:dionialves@gmail.com" target=
+=3D"_blank">dionialves@gmail.com</a>&gt;</span>:<br><blockquote class=3D"gm=
+ail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-le=
+ft:1ex"><div dir=3D"ltr">Boa Tarde aos colegas.<div><br></div><div>Tenho um=
+ sistema completo em django, um Software de Gest=C3=A3o para provedor. Feit=
+o todo em cima do django admin. O software evoluiu tanto que estou com difi=
+culdades de implementar o que eu preciso devidos as customiza=C3=A7=C3=B5es=
+ em cima do djago admin.</div><div>Infelizmente n=C3=A3o tenho capacidade d=
+e desenvolver um layout do zero, devido a limita=C3=A7=C3=B5es pr=C3=B3pria=
+s, at=C3=A9 por esse motivo sempre usei o django-admin, pois supria essa mi=
+nha dificuldade.</div><div><br></div><div>Ent=C3=A3o estou procurando op=C3=
+=A7=C3=B5es, e estava pensando em migrar esse sistema para o Desktop, estav=
+a vendo algumas op=C3=A7=C3=B5es como o Tkinter ou mesmo PyQt.</div><div><b=
+r></div><div>O que os colegas pensam a respeito? Python seria uma boa op=C3=
+=A7=C3=A3o para Desktop? Kivy, WxWidget, PyQt, Gtk+?<br><br><br>Observa=C3=
+=A7=C3=A3o: Porque n=C3=A3o consigo criar uma aplica=C3=A7=C3=A3o web do ze=
+ro? Devido a limita=C3=A7=C3=B5es de criatividade mesmo, estilizar um layou=
+t usando cores, estilos n=C3=A3o =C3=A9 para mim.</div><div><br></div><div>=
+<br></div></div>
+
+<p></p>
+
+-- <br>
+-- <br>
+------------------------------------<br>
+Grupo Python-Brasil<br>
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar" target=3D"_blank">h=
+ttps://wiki.python.org.br/AntesDePerguntar</a><br>
+=C2=A0<br>
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br>
+    <a href=3D"http://groups.google.com/group/python-brasil" target=3D"_bla=
+nk">http://groups.google.com/group/python-brasil</a><br>
+=C2=A0<br>
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br>
+    <a href=3D"mailto:python-brasil%2Bunsubscribe@googlegroups.com" target=
+=3D"_blank">python-brasil+unsubscribe@googlegroups.com</a><br>
+--- <br>
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br>
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com" target=3D"_blank">python-brasil+unsubscribe@googlegroups.com</a=
+>.<br>
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com" target=3D"_blank">python-brasil@googlegroups.com</a>.<=
+br>
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/5ae42d3c-6f8f-4690-a627-771b40be0ec5%40googlegr=
+oups.com?utm_medium=3Demail&amp;utm_source=3Dfooter" target=3D"_blank">http=
+s://groups.google.com/d/msgid/python-brasil/5ae42d3c-6f8f-4690-a627-771b40b=
+e0ec5%40googlegroups.com</a>.<br>
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout" target=3D"_blank">https://groups.google.com/d/optout</a>.<br>
+</blockquote></div><br></div>
+
+<p></p>
+
+-- <br>
+-- <br>
+------------------------------------<br>
+Grupo Python-Brasil<br>
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar" target=3D"_blank">h=
+ttps://wiki.python.org.br/AntesDePerguntar</a><br>
+=C2=A0<br>
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br>
+    <a href=3D"http://groups.google.com/group/python-brasil" target=3D"_bla=
+nk">http://groups.google.com/group/python-brasil</a><br>
+=C2=A0<br>
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br>
+    <a href=3D"mailto:python-brasil%2Bunsubscribe@googlegroups.com" target=
+=3D"_blank">python-brasil+unsubscribe@googlegroups.com</a><br>
+--- <br>
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br>
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com" target=3D"_blank">python-brasil+unsubscribe@googlegroups.com</a=
+>.<br>
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com" target=3D"_blank">python-brasil@googlegroups.com</a>.<=
+br>
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/CA%2BqC5nxL2ydyijneBx-Cfds83tBS9LsTy1gKerYZsMZC=
+_Mm9yg%40mail.gmail.com?utm_medium=3Demail&amp;utm_source=3Dfooter" target=
+=3D"_blank">https://groups.google.com/d/msgid/python-brasil/CA%2BqC5nxL2ydy=
+ijneBx-Cfds83tBS9LsTy1gKerYZsMZC_Mm9yg%40mail.gmail.com</a>.<br>
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout" target=3D"_blank">https://groups.google.com/d/optout</a>.<br>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"gmail_signature" data-smartmail=3D"gmail_signature">Marcos Rangel=
+ J=C3=BAnior<br><br>Bacharel em Ci=C3=AAncia da Computa=C3=A7=C3=A3o - UCAM=
+ -Campos<br>Graduado em Tecnologia de Automa=C3=A7=C3=A3o Industrial - CEFE=
+T-Campos<br>Administrador da lista python-gamedev-brasil</div>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/CACgPQkWj%3D2ftknz0tXrDYrZJFx88%3DP%2BqzQWFGesV=
+42qyJjxfWg%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https:/=
+/groups.google.com/d/msgid/python-brasil/CACgPQkWj%3D2ftknz0tXrDYrZJFx88%3D=
+P%2BqzQWFGesV42qyJjxfWg%40mail.gmail.com</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+--000000000000ba4b260576c9e486--

@@ -1,0 +1,209 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:5611:0:0:0:0:0 with SMTP id l17-v6csp611436wrv;
+        Fri, 31 Aug 2018 07:01:01 -0700 (PDT)
+X-Received: by 2002:a81:8602:: with SMTP id w2-v6mr8723090ywf.61.1535724061761;
+        Fri, 31 Aug 2018 07:01:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535724061; cv=none;
+        d=google.com; s=arc-20160816;
+        b=GahVR2o79HKLr5nQ6jZ+mRGTFpFubkcj3eRpRrV1DHafhTPbZa25XFv1e+8vJlTiXB
+         Qjlj2VnTZEDhh9HWOw+FIhktbXoWXXwtleulyq4ZAVQOF3AjhJ/7Crf/5lHdVX4a/aQk
+         9nrPXz2x0eG8sQVuLsWvm2V2kocMROrz77YT+rGU6hZUHEe1Bj/rh2VLONmxTgRhl5/y
+         gQWz6zbYtMhOGbVwJRt7dvn+1ZW/qvDqQu1MCFGJ72T6lGUbzpHUKcix8O3tRpPWg3wM
+         ovV7KzRNofcB/4GE76eu1F4ob7GRJqJxCB9sljnNcdsaqzpRlmNFB28HmVeuTUl8TO3I
+         p7YQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:mime-version:subject
+         :references:in-reply-to:message-id:to:from:date:sender
+         :dkim-signature:dkim-signature:arc-authentication-results;
+        bh=lCEFMRb0Pi8sNd1Dw+22SgUmEFqoOHWnZxMIcCN6ZH4=;
+        b=RuhPUftt3KpfjNZAB15HZK1pOI22YSp6N4glic/vLaZjs5+nH9BWHsXonij/Nkxj1X
+         yb2a55cLfLRRt5jjynv/RpLXiMGRPx1hYBKRRQ2miuZE9ndSbIAyumBVWZKdoGTABqKC
+         ujXpLjpRH8saLmpNjT6jAWTiJbIP3y3Ci0Syk9qBdwAXuG9wDS9yFFpNK9Apjm+mqtxy
+         6sd8gjxNQgR0iP+QAb/aZ5CG5x8sxVGWZyCJKJXAQYkQAp8pGburhmVTJfbCn/epDSqI
+         1Ww0ElOWs5gNjxV0ouyCRvG8kHdnT1xjGToauYtPbtrMyabNtviTUezZs5DL8WmVx7Nu
+         1kaA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=I2WyX8xT;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oQAW6CfY;
+       spf=pass (google.com: domain of python-brasil+bncbcop3q5xvycrbe4uuxoakgqeauldzqy@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCOP3Q5XVYCRBE4UUXOAKGQEAULDZQY@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBCOP3Q5XVYCRBE4UUXOAKGQEAULDZQY@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id y5-v6sor2156678ywe.292.2018.08.31.07.01.00
+        (Google Transport Security);
+        Fri, 31 Aug 2018 07:01:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbcop3q5xvycrbe4uuxoakgqeauldzqy@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=I2WyX8xT;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=oQAW6CfY;
+       spf=pass (google.com: domain of python-brasil+bncbcop3q5xvycrbe4uuxoakgqeauldzqy@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCOP3Q5XVYCRBE4UUXOAKGQEAULDZQY@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:list-subscribe
+         :list-unsubscribe;
+        bh=lCEFMRb0Pi8sNd1Dw+22SgUmEFqoOHWnZxMIcCN6ZH4=;
+        b=I2WyX8xTbjxSEljSxV/ISVD2Ood2RZwxIq2+njWbDie5AC4OS03zVOvzfew4UffAIy
+         kwIp/bI6jFYgmafLCVrsOz4BTjig6FfY5DD242hEmy/gwqbmF5mYvPUJXyzrsZ520lND
+         L9IvxOOcIGK1OoI5tb5E2OJTeMdJ2B2ABvoscRG2EdyATGk/SHIKCjV8EAvUwSmeCLbj
+         t8fp2p7V/7fiMQC+CdWtQCzOzckmAkl1Aaop6u78m0yyU39o/nEvKDp6luu7tQYXkS+a
+         Ekrv/luC9SdYfOGeXjYu5ZZbwI6Xl9H+vKlgAKNPgN9Jwt01if/RhmnyS7I1bVQGMdGN
+         RZ3A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:message-id:in-reply-to:references:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=lCEFMRb0Pi8sNd1Dw+22SgUmEFqoOHWnZxMIcCN6ZH4=;
+        b=oQAW6CfYk/0Wj5o4h+iJZcMg8J/41V2f/QdQ5tn1StGg5cuGtHe5KX/foIRM8VnVCS
+         zJK9v2tBCpzzbEgmkA/GFqQHdyaX/PrOZVCY0GHd43UL9R3dFYGR2YMzV0rAOsBiJkyv
+         1AozyWM1DRdZWxk7XyHTvEoBWguBnivXbEHN3dbKtM1P0SXvKM20YP9E3Y8ndiKnR7ZA
+         AAepsggkG8IzM3XQG47qOSkiB5VApRPhaQ9J+fK0jthPqbFlVtba+XNCgJ3FUfvJktZG
+         24eo5c8GheywPE9f69t8FFDXDP9z0A0Dtko7GoVjYBttfLncXaaFiZk0XG0kt/ua5gJx
+         v1TQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:date:from:to:message-id:in-reply-to
+         :references:subject:mime-version:x-original-sender:reply-to
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=lCEFMRb0Pi8sNd1Dw+22SgUmEFqoOHWnZxMIcCN6ZH4=;
+        b=feFK5wf0pC5RhzH1YQeAKlWtBCMBhlojpBme4Go627sC3FAR3lNRgCg6GZKyMOyiU+
+         p0vZZyUEfRYOT8aLxg/ymyuoQwY1NV3vt5NcAzaOIvGfIRN/avsUcgBJXyAuYZI1l0hm
+         zqG3I8z3oaL9p32g2yAOwv3aFcRtrR1L5jVdryGlU5aB/Mbn5DDOqLPAW4+q2netOW+D
+         mE7GobIKYIJHuYRtHDMLgylzAWXnLaniVChAgBy3aEp+nFWGAJfPcGex5IZOlhe5sE8d
+         Ze47YYMv3oKUBmV8SkXVCWrML6lYHS0i5C6+Fr609qkfiqvmbuKOa0CL4XZnj6MBqxcp
+         OkGA==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: APzg51Bock7MbMG6vmoLZrbb+vMrFS5q3kHPvvyHVZIxVACmGAtEMRFv
+	o53Xk19RQrsLGEhA44T9UI8=
+X-Google-Smtp-Source: ANB0VdaKuiQ7vC7PeZ9Ci+ebEo4kIgIchlOuHanqVg2eZdVbamVJWucuwzdMSmmYKUcz9wDrcDjgYw==
+X-Received: by 2002:a81:2b43:: with SMTP id r64-v6mr63940ywr.1.1535724060932;
+        Fri, 31 Aug 2018 07:01:00 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a81:918f:: with SMTP id i137-v6ls1587549ywg.23.gmail; Fri,
+ 31 Aug 2018 07:00:50 -0700 (PDT)
+X-Received: by 2002:a81:4c16:: with SMTP id z22-v6mr182477ywa.2.1535724050315;
+        Fri, 31 Aug 2018 07:00:50 -0700 (PDT)
+Date: Fri, 31 Aug 2018 07:00:49 -0700 (PDT)
+From: Luciano Martins <zicadopv@gmail.com>
+To: Python Brasil <python-brasil@googlegroups.com>
+Message-Id: <e8f872f0-9a75-4578-871e-9a1b7b76ad8b@googlegroups.com>
+In-Reply-To: <a6dc8321-1fd8-49ab-864a-71a6a63306d2@googlegroups.com>
+References: <a6dc8321-1fd8-49ab-864a-71a6a63306d2@googlegroups.com>
+Subject: [python-brasil] Re: Jupyter
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_691_719214971.1535724049797"
+X-Original-Sender: zicadopv@gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Spam-Checked-In-Group: python-brasil@googlegroups.com
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+------=_Part_691_719214971.1535724049797
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_692_475033183.1535724049797"
+
+------=_Part_692_475033183.1535724049797
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+na quarta fui apresentado tb ao jupyter do google: *google colab* que j=C3=
+=A1=20
+vem com algumas bibliotecas importadas e se vc precisar pode subir outras q=
+=20
+l=C3=A1 n=C3=A3o tenha.
+
+Em sexta-feira, 31 de agosto de 2018 09:25:35 UTC-3, alexreissilva96=20
+escreveu:
+>
+> Algu=C3=A9m sabe se o jupyter possui uma api? Meu objetivo =C3=A9 criar u=
+ma=20
+> interface que ao digitar c=C3=B3digo python o mesmo seja executado assim =
+como na=20
+> interface do jupyter.
+>
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/e8f872f0-9a75-4578-871e-9a1b7b76ad8b%40googlegroups.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+------=_Part_692_475033183.1535724049797
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">na quarta fui apresentado tb ao jupyter do google: <b><u>g=
+oogle colab</u></b> que j=C3=A1 vem com algumas bibliotecas importadas e se=
+ vc precisar pode subir outras q l=C3=A1 n=C3=A3o tenha.<br><br>Em sexta-fe=
+ira, 31 de agosto de 2018 09:25:35 UTC-3, alexreissilva96  escreveu:<blockq=
+uote class=3D"gmail_quote" style=3D"margin: 0;margin-left: 0.8ex;border-lef=
+t: 1px #ccc solid;padding-left: 1ex;"><div dir=3D"ltr">Algu=C3=A9m sabe se =
+o jupyter possui uma api? Meu objetivo =C3=A9 criar uma interface que ao di=
+gitar c=C3=B3digo python o mesmo seja executado assim como na interface do =
+jupyter.</div></blockquote></div>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/e8f872f0-9a75-4578-871e-9a1b7b76ad8b%40googlegr=
+oups.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/=
+d/msgid/python-brasil/e8f872f0-9a75-4578-871e-9a1b7b76ad8b%40googlegroups.c=
+om</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+------=_Part_692_475033183.1535724049797--
+
+------=_Part_691_719214971.1535724049797--

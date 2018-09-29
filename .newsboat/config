@@ -1,0 +1,55 @@
+
+# Configurações 
+
+auto-reload    yes
+max-items      100
+browser        qutebrowser
+player         mpv
+macro y set browser "mpv %u"; open-in-browser ; set browser "w3m %u"
+show-read-feeds yes
+download-path "~/Videos/"
+max-downloads  13
+notify-xterm   yes 
+podcast-auto-enqueue  yes 
+
+
+
+# Keys
+
+bind-key        ^R reload-all
+bind-key         M reload-urls
+
+# ColorScheme
+
+color background           red   default
+#color listnormal          default default
+#color listfocus           yellow  blue    bold
+#color listnormal_unread   red     default 
+color listfocus_unread    red     blue    bold
+#color info                yellow  blue    bold
+#color article             white     default  
+
+#highlight all "newsboat" red
+#highlight article "^(Feed|Title|Author|Link|Date):" default default underline
+#highlight feedlist "https://[^ ]+" yellow red bold
+
+
+highlight feedlist    "^ *[0-9]+ *N "  color166   default
+highlight articlelist "^ *[0-9]+ *N "  color166   default
+highlight article     "(^Kanál:.*)"    color81    default   bold
+highlight article     "(^Titulok:.*)"  color38    default   bold
+highlight article     "(^Autor:.*)"    color31    default   bold
+highlight article     "(^Dátum:.*)"    color94    default   bold
+highlight article     "(^Odkaz:.*)"    color30    default   bold
+highlight article     "(^Odkazy:.*)"   color30    default   bold
+highlight article     "(^Statistiky:.*)"   color1     default   bold
+highlight article     "\\[[0-9][0-9]*\\]"  color116   default   bold
+highlight article     "\\[obrázok [0-9][0-9]*\\]"         color175   default   bold
+highlight article     "\\[embedded flash: [0-9][0-9]*\\]" color230   default   bold
+highlight article     "(^Podcast Download URL:.*)"        color30    default   bold
+highlight article     ":.*\\(odkaz\\)$"          color30    default
+highlight article     ":.*\\(obrázok\\)$"        color175   default   bold
+highlight article     ":.*\\(embedded flash\\)$" color230   default   bold
+highlight article     "\\(typ:.*\\)"    color146   default   bold
+highlight article     "https?://[^ ]+"  color150   default   protect   bold
+highlight article     "http?://[^ ]+"   color150   default   protect   bold

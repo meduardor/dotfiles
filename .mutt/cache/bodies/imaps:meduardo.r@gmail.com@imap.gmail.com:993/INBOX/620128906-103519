@@ -1,0 +1,321 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:5611:0:0:0:0:0 with SMTP id l17-v6csp732691wrv;
+        Wed, 29 Aug 2018 07:55:07 -0700 (PDT)
+X-Received: by 2002:a0d:d142:: with SMTP id t63-v6mr3383466ywd.449.1535554507437;
+        Wed, 29 Aug 2018 07:55:07 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1535554507; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=gq2tEUbY6GbfzkT0x32GyxGHbs6yLc4GKJk8ZYQKEFhOWdw3xrtGivLiduMwuFvlJ+
+         3TOH/0FetI0olj7NZijeooEbRdkmSQhBV2RjG999YaljoQI0LHIuDsWlJx/yMmBA2kML
+         2mhFKEAmKX3x/5M9FUb5f0SUh8mGelGCtxXJiKHCzDh9qFf7E1iUkh12AIpPPiefdUg/
+         DVEt5bn1HZ0yC9EsP1+TiiVcrtCXGpNpdTD3Dp5/NUAQDzjqVq5zR1tDOBcWxaDv/cXf
+         HhfQF9hGtJDV328+leiypZsVT69LLi0yWVxhx3qwvLkA9Q5vKUZp862UKt/kKqDup5L/
+         8Nag==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:to:subject:message-id:date
+         :from:mime-version:arc-authentication-results:arc-message-signature
+         :sender:dkim-signature:dkim-signature:arc-authentication-results
+         :arc-message-signature:arc-authentication-results;
+        bh=WwgHywlo++bkZKEH9ZcbIil+GAjkyxKl08SO4CPJwyI=;
+        b=sMFm/lAmrS6bNtzeIwS/fjX6um85J0prc8bBFct97bjKraL/wx2GjsTXKR5nBbzqPV
+         AoBeDONSJM61THxvY1q7cAPwezPGZFZb4PG6zbFQNJg5IGya08Zs5skJauGtlDg8tCEn
+         0vUVVcTSy1n+MGaElJoIkqfFYpWjGRtgJMhKylQIwe1SxfRGcUibFu6i2NL8MHBu6BMX
+         rzL7q7UrDoog7aNfWPK0SjTqAl3cY7oPNCkk0QksNj1aKohlV/DC/AtZ1GCPtWKxvnvV
+         BtYuAkkUMrEwQpgaoCkmrWKAMWdrtG0AEEpN4Hm/TRgYLjrDxEBbQgJB7k75tOu97WGO
+         dYYw==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=LXY6qcSV;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Aca+hX8g;
+       arc=pass (i=2 spf=pass spfdomain=gmail.com dkim=pass dkdomain=gmail.com dmarc=pass fromdomain=gmail.com);
+       spf=pass (google.com: domain of python-brasil+bncbct6xtwnsenrbqphtloakgqe2fhizni@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCT6XTWNSENRBQPHTLOAKGQE2FHIZNI@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBCT6XTWNSENRBQPHTLOAKGQE2FHIZNI@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id m128-v6sor1109047ybb.100.2018.08.29.07.55.06
+        (Google Transport Security);
+        Wed, 29 Aug 2018 07:55:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbct6xtwnsenrbqphtloakgqe2fhizni@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=LXY6qcSV;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Aca+hX8g;
+       arc=pass (i=2 spf=pass spfdomain=gmail.com dkim=pass dkdomain=gmail.com dmarc=pass fromdomain=gmail.com);
+       spf=pass (google.com: domain of python-brasil+bncbct6xtwnsenrbqphtloakgqe2fhizni@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCT6XTWNSENRBQPHTLOAKGQE2FHIZNI@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+ARC-Seal: i=2; a=rsa-sha256; t=1535554506; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=QhNZvHRkqgoVemZTzet/0MA1vlv6pPSChaYAxM+lSOLn8ssgxlR2PZjh7qipzQ0EkG
+         hl6CeydwgwVz41/CG31LxOJ8BPkKl4qt3tvx7kasX5JJ37sYRc9fH0VdpgYlO3lDDpSe
+         iRbOGehFFx4LIo9hW9kdZbQXFXNINxL7YcIWDoy4BKaCuft3401hHg8oPfrrJfqT643F
+         lzA565pCvSAN1DLaQrd7OhdnUToHm//OUdqxyPHw3T2z4mS77AC3nC+Q597y94f1ZML/
+         bpvedd0h2CiKQztwJCLn2wqq4nHW3O7sKuMjcl2HbqSTQ8OjIo78jXj8MrXnzxpag+6k
+         kquA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:to:subject:message-id:date
+         :from:mime-version:arc-authentication-results:arc-message-signature
+         :sender:dkim-signature:dkim-signature:arc-authentication-results;
+        bh=WwgHywlo++bkZKEH9ZcbIil+GAjkyxKl08SO4CPJwyI=;
+        b=t0rTa5t0lovrImMFtfsFSNijzoSYfj8zYPR86I4NIkg5/Ycm+YITEeOd1XnGiuQV83
+         KiLhNeItVzr3AS7ZhybyFnqnw/kEKqOLslE4m8nwngPFoxrf8NTkwfPW5IZADJarmSsO
+         hyz1juwfhivhKBmj9d397ut8CRWmJKHw5jUL0XROLQW5BqujPEDPo7dHXbsqKUVa47um
+         5WMSCwWJpp5trp9oGJ825dMJIuL/Uu2wQfWjyf8mZA501F2GfxRZi13jMGA4x4r0rafZ
+         D8j2MphTji1+LFoCVsnGqvv3Acl0U++5n0j3VXHiRKJkTBy8bksLkRTi2hlYK/248UWW
+         /Xng==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sgrdyVU8;
+       spf=pass (google.com: domain of lariodiniz@gmail.com designates 2607:f8b0:4001:c0b::22e as permitted sender) smtp.mailfrom=lariodiniz@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:mime-version:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=WwgHywlo++bkZKEH9ZcbIil+GAjkyxKl08SO4CPJwyI=;
+        b=LXY6qcSVc7JEEeubzPf68HCn7USamCHhFx2y6juNbmT4D5FHaUuq/nSbgroo31OkvQ
+         8FzNT9gWPkZxM3dSv227J5vzvafbScHuyImuEIrZ23zuhF+2veCdj7BYrT0+nbh6hQhe
+         WSDSHgZzBMHLGHEAGUY/eHZdqtANgiVb9GqvOaXa+NO6idgUPgUATsJvYPmTd3Fkj2jg
+         EZWQM+ODvR859U70IwkeEleXtLwuUq5dAGtroYaaa//ir/COSoIjmsiEvvzDbJI44BH3
+         vA3WEUV+qjPT2DjnWdbSMj3C5q5LN3BdKw4YJvuNyuLFfWxkYZs7m7bIjNXhYNFbrc5F
+         MzTA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:from:date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:list-subscribe
+         :list-unsubscribe;
+        bh=WwgHywlo++bkZKEH9ZcbIil+GAjkyxKl08SO4CPJwyI=;
+        b=Aca+hX8g6wubCRilQFep9X/LW6jF/pcB4qB5vgN+drJlc3BIWuglAKWDgAO0JK24xH
+         2PFzOiZOla9zOyfkgWgntuqw/KCTzWb/HSB8HYL6D36O30yN7UIhU3eB6aDBlj9MqOF/
+         HQ2EHAYyaKDN7Gq0C2fMO9poL5i/Pi0Zl0w43plpL3mqPwlXeAYYTMDVC88TbPlAikq0
+         5AmeRp9axNoza22a1cc9XoYZ+t1j31OszW8lQ6kdtIo6ZSKWynLsqDtWxyWxIcBIjZnU
+         E9V1xlcawstHmhxH5gwfxUVoaCCYSyUBdRui4N/9PqdLeFq3/e7zUY9QQYr+q24b1yeI
+         l3PQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:mime-version:from:date:message-id:subject
+         :to:x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=WwgHywlo++bkZKEH9ZcbIil+GAjkyxKl08SO4CPJwyI=;
+        b=imv3B9EO5+gKDLPBzvPl89rjLGvB3rBH+2h6L8aosU9mYWvNJXh8fTku+a86i9h8hi
+         HBTeDX7AAWA/w9DK7TSK4iGCD6xOQPxocUHWWuwEkkYwxRec1emM5Sj4NcBsyR4Ckphk
+         9K2oUH6OtHAxo5mwy6sRXTHGg8YoiQE0v629AEZYf3JOI/lvvbk+1bnqs2lIr5fxQ1gF
+         4bEu5FjBr2BXEeVp3voVDeKxPQ0dDCLNk7foTi1Qn47URDuSnPy1F/TdTGE3NTOTRBSo
+         ex9VIPyDyMKS4NzvoACkFbwLpkM4fk+U0qXdDKeOZda6yhDtCPOZ/2C9iZLzJwRLu7kz
+         a7Rg==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: APzg51BgsfsqIiWNVVt9HwX/7ufxnp8vwH2hKwqNfYs+37qf5SI18U2D
+	nnG3iJ6jF49SLeDl/TgL/H0=
+X-Google-Smtp-Source: ANB0VdYf/tnZ5NWpeLBdlNheZZJwsaTEQeNFCCUfGq2HU2Dulj8D2aFerZUSTYZPARfccksE1ZGD6A==
+X-Received: by 2002:a25:2c2:: with SMTP id 185-v6mr95928ybc.2.1535554506757;
+        Wed, 29 Aug 2018 07:55:06 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a0d:dfd1:: with SMTP id i200-v6ls663464ywe.29.gmail; Wed, 29
+ Aug 2018 07:54:57 -0700 (PDT)
+X-Received: by 2002:a81:5204:: with SMTP id g4-v6mr2034569ywb.142.1535554497710;
+        Wed, 29 Aug 2018 07:54:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535554497; cv=none;
+        d=google.com; s=arc-20160816;
+        b=bbEXHYpS63i9IU42KcTrWQyo5ZDaCgvJplnPaZZpAaDuVKYdVqlON5Us4QdvgyIcvT
+         iTHx1QtEDA1vaSL8VM3dmkqOATbcV4lS3EiA5XNNV6wY6VkQYQlUizRtO+kWlqiXzz0J
+         2JSbQW/8MZRjpq1dLJcSVJzauvDegejUlT5pqPFxc7AYb5r472Fhd0T32kKpjC7mbHUm
+         8LVPEKBmxUaOCu7a1DMjDFp8n6Om/4FjjgQpogJDruXjVkLm99QjxPjkLdUu5qxuh/5f
+         2TLpziySDpucnNML7Ul00CCy4be+NrCCg1h7tKjWr/4MrlUwqyeNSHA91R0Nt++hTi76
+         8Lqg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature
+         :arc-authentication-results;
+        bh=VkhGNp5RSEe487eGiTzFDMdgmVMPzeAtKCgYqcI0PZA=;
+        b=bMixT+s5QriemZc4dVc/qbpEY6JDKkuPebEYar9Kh8x5O2tEwDU3vdRTRF4IPJWx/R
+         Kc0yuv8tpbDBxq1mu4JJQNMzPUKwS+ZpAFO7uddrEHOsAgri2gyHqh8LhnOEoIYTkUl6
+         Kr6HOFm4xiJSasReQ/9z7/Wh88rD2ngouXtMg4TyMwgxWd4b8Bra4wvXeLSXiCTgH9Qi
+         JDoHIfajrGUS650OULZukyOjZjUWP0/ClxOtdK/KPSZ91DpL/yChFwseZmVjqtoIVwDz
+         Wn1bak8g5G0L1e/MVU+qEMtqAAYKW+YlEx9zfaVW/IWzssthJbGdCfeX4BsRChAdPzz4
+         9ZdA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=sgrdyVU8;
+       spf=pass (google.com: domain of lariodiniz@gmail.com designates 2607:f8b0:4001:c0b::22e as permitted sender) smtp.mailfrom=lariodiniz@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from mail-it0-x22e.google.com (mail-it0-x22e.google.com. [2607:f8b0:4001:c0b::22e])
+        by gmr-mx.google.com with ESMTPS id u131-v6si218512ywf.0.2018.08.29.07.54.57
+        for <python-brasil@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 29 Aug 2018 07:54:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lariodiniz@gmail.com designates 2607:f8b0:4001:c0b::22e as permitted sender) client-ip=2607:f8b0:4001:c0b::22e;
+Received: by mail-it0-x22e.google.com with SMTP id h20-v6so7574165itf.2
+        for <python-brasil@googlegroups.com>; Wed, 29 Aug 2018 07:54:57 -0700 (PDT)
+X-Received: by 2002:a02:3b55:: with SMTP id i21-v6mr5663213jaf.118.1535554497132;
+ Wed, 29 Aug 2018 07:54:57 -0700 (PDT)
+MIME-Version: 1.0
+From: Lario dos Santos Diniz <lariodiniz@gmail.com>
+Date: Wed, 29 Aug 2018 11:54:47 -0300
+Message-ID: <CAN931aTjrLrAnJ7UmX8PeJyvWZ7+C-v54gm=UvuDVL6Ny8=iiw@mail.gmail.com>
+Subject: =?UTF-8?B?W3B5dGhvbi1icmFzaWxdIFtPRkYtVE9QSUNdIEFwbGljYcOnw6NvIEtpdnkgLSBWb2PDqg==?=
+	=?UTF-8?B?cyBwb2RlbSBtZSBkw6EgdW1hIG9waW5pw6NvPw==?=
+To: python-brasil@googlegroups.com
+Content-Type: multipart/alternative; boundary="00000000000055bb6f0574942457"
+X-Original-Sender: lariodiniz@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@gmail.com header.s=20161025 header.b=sgrdyVU8;       spf=pass
+ (google.com: domain of lariodiniz@gmail.com designates 2607:f8b0:4001:c0b::22e
+ as permitted sender) smtp.mailfrom=lariodiniz@gmail.com;       dmarc=pass
+ (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Spam-Checked-In-Group: python-brasil@googlegroups.com
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+--00000000000055bb6f0574942457
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Bom dia comunidade.
+
+Desenvolvi uma aplica=C3=A7=C3=A3o do calend=C3=A1rio Dekatrian [1] utiliza=
+ndo python 3.5
+e Kivy 1.9.1 e gostaria da opini=C3=A3o de voc=C3=AAs sobre a mesma:
+
+
+
+https://github.com/lariodiniz/Dekatrian
+
+
+
+No GitHub existe um instalador para Windows (Pyinstaller com SetupTools) e
+um apk para Android (buildozer), quem puder instalar e verificar se esta
+ocorrendo algum bug tamb=C3=A9m, seria de grande ajuda.
+
+
+
+[1] -
+http://www.deviante.com.br/noticias/dekatrian-um-calendario-minimamente-dec=
+ente/
+
+--=20
+
+*Programador**Tel: *(21) - 9 6548-2346
+http://lariodiniz.esy.es/
+*"Voc=C3=AA tem suas pr=C3=B3prias pernas para andar, Ent=C3=A3o levante-se=
+..."*
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/CAN931aTjrLrAnJ7UmX8PeJyvWZ7%2BC-v54gm%3DUvuDVL6Ny8%3Diiw%=
+40mail.gmail.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+--00000000000055bb6f0574942457
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><p class=3D"MsoNormal" style=3D"margin:0cm 0cm 8pt;line-he=
+ight:107%;font-size:11pt;font-family:Calibri,sans-serif">Bom dia comunidade=
+.</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0cm 0cm 8pt;line-height:107%;font-si=
+ze:11pt;font-family:Calibri,sans-serif">Desenvolvi uma aplica=C3=A7=C3=A3o =
+do calend=C3=A1rio Dekatrian [1]
+utilizando python 3.5 e Kivy 1.9.1 e gostaria da opini=C3=A3o de voc=C3=AAs=
+ sobre a mesma:</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0cm 0cm 8pt;line-height:107%;font-si=
+ze:11pt;font-family:Calibri,sans-serif">=C2=A0</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0cm 0cm 8pt;line-height:107%;font-si=
+ze:11pt;font-family:Calibri,sans-serif"><a href=3D"https://github.com/lario=
+diniz/Dekatrian" style=3D"color:rgb(5,99,193)">https://github.com/lariodini=
+z/Dekatrian</a></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0cm 0cm 8pt;line-height:107%;font-si=
+ze:11pt;font-family:Calibri,sans-serif">=C2=A0</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0cm 0cm 8pt;line-height:107%;font-si=
+ze:11pt;font-family:Calibri,sans-serif">No GitHub existe um instalador para=
+ Windows (Pyinstaller com
+SetupTools) e um apk para Android (buildozer), quem puder instalar e verifi=
+car
+se esta ocorrendo algum bug tamb=C3=A9m, seria de grande ajuda.</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0cm 0cm 8pt;line-height:107%;font-si=
+ze:11pt;font-family:Calibri,sans-serif">=C2=A0</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0cm 0cm 8pt;line-height:107%;font-si=
+ze:11pt;font-family:Calibri,sans-serif">[1] - <a href=3D"http://www.deviant=
+e.com.br/noticias/dekatrian-um-calendario-minimamente-decente/">http://www.=
+deviante.com.br/noticias/dekatrian-um-calendario-minimamente-decente/</a></=
+p><div><br></div>-- <br><div dir=3D"ltr" class=3D"gmail_signature" data-sma=
+rtmail=3D"gmail_signature"><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div=
+ dir=3D"ltr"><span><font color=3D"#888888"><span></span></font></span><b>Pr=
+ogramador<br></b><i>Tel: </i>(21) - 9 6548-2346<br><a href=3D"http://lariod=
+iniz.esy.es/" target=3D"_blank">http://lariodiniz.esy.es/</a><br><font size=
+=3D"1"><i>&quot;Voc=C3=AA tem suas pr=C3=B3prias pernas para andar, Ent=C3=
+=A3o levante-se...&quot;</i></font><span><table width=3D"490" height=3D"50"=
+ cellspacing=3D"0" cellpadding=3D"0" border=3D"0"><tbody><tr><td valign=3D"=
+top"></td></tr><tr><td valign=3D"top"><br></td><td valign=3D"top"><br></td>=
+</tr><tr><td valign=3D"top"></td></tr><tr><td valign=3D"top"></td>
+                  </tr>
+                </tbody>
+              </table>
+
+            <span></span></span></div></div></div></div></div></div></div>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/CAN931aTjrLrAnJ7UmX8PeJyvWZ7%2BC-v54gm%3DUvuDVL=
+6Ny8%3Diiw%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https:/=
+/groups.google.com/d/msgid/python-brasil/CAN931aTjrLrAnJ7UmX8PeJyvWZ7%2BC-v=
+54gm%3DUvuDVL6Ny8%3Diiw%40mail.gmail.com</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+--00000000000055bb6f0574942457--
