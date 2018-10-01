@@ -31,14 +31,16 @@ keys = [
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
-    Key([mod], "Return", lazy.spawn("kitty")),
-    Key([mod, "control"], "1", lazy.spawn("firefox")),
+    Key([mod], "Return", lazy.spawn("st")),
+    Key([mod, "control"], "1", lazy.spawn("basilisk")),
     Key([mod, "control"], "2", lazy.spawn("telegram-desktop")),
     Key([mod, "control"], "3", lazy.spawn("thunar")),
     Key([mod, "control"], "0", lazy.spawn("emacs")),
     Key([mod], "p", lazy.spawn("rofi -show run")),
-    Key([mod], "o", lazy.spawn("kitty -e ranger")),
-    # Toggle between different layouts as defined below
+    Key([mod], "o", lazy.spawn("st -e ranger")),
+    Key([mod], "i", lazy.spawn("st -e mutt")),
+    Key([mod], "u", lazy.spawn("st -e newsboat")),
+    # Toggle between different layouts as defined below	 
     Key([mod], "Tab", lazy.next_layout()),
     Key([mod], "w", lazy.window.kill()),
 
@@ -46,22 +48,22 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
     # Keys BSP layout
-    Key([mod], "j", lazy.layout.down()),
-    Key([mod], "k", lazy.layout.up()),
-    Key([mod], "h", lazy.layout.left()),
-    Key([mod], "l", lazy.layout.right()),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
-    Key([mod, "mod1"], "j", lazy.layout.flip_down()),
-    Key([mod, "mod1"], "k", lazy.layout.flip_up()),
-    Key([mod, "mod1"], "h", lazy.layout.flip_left()),
-    Key([mod, "mod1"], "l", lazy.layout.flip_right()),
-    Key([mod, "control"], "j", lazy.layout.grow_down()),
-    Key([mod, "control"], "k", lazy.layout.grow_up()),
-    Key([mod, "control"], "h", lazy.layout.grow_left()),
-    Key([mod, "control"], "l", lazy.layout.grow_right()),
+    Key([mod], "Down", lazy.layout.down()),
+    Key([mod], "Up", lazy.layout.up()),
+    Key([mod], "Left", lazy.layout.left()),
+    Key([mod], "Right", lazy.layout.right()),
+    Key([mod, "shift"], "Down", lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "Up", lazy.layout.shuffle_up()),
+    Key([mod, "shift"], "Left", lazy.layout.shuffle_left()),
+    Key([mod, "shift"], "Right", lazy.layout.shuffle_right()),
+    Key([mod, "mod1"], "Down", lazy.layout.flip_down()),
+    Key([mod, "mod1"], "Up", lazy.layout.flip_up()),
+    Key([mod, "mod1"], "Left", lazy.layout.flip_left()),
+    Key([mod, "mod1"], "Right", lazy.layout.flip_right()),
+    Key([mod, "control"], "Down", lazy.layout.grow_down()),
+    Key([mod, "control"], "Up", lazy.layout.grow_up()),
+    Key([mod, "control"], "Left", lazy.layout.grow_left()),
+    Key([mod, "control"], "Right", lazy.layout.grow_right()),
     Key([mod, "shift"], "n", lazy.layout.normalize()),
     Key([mod], "m", lazy.layout.toggle_split()),
     # Keys volume.
@@ -104,34 +106,34 @@ dgroups_app_rules = []
 
 layouts = [
     layout.Max(),
-    layout.Stack(
-        stacks=3,
-        border_focus="#ffffff",
-        border_normal="#282828",
-        border_width=3,
-        autosplit=True,
-    ),
+   # layout.Stack(
+   #     stacks=3,
+   #     border_focus="#ffffff",
+   #     border_normal="#282828",
+   #   border_width=3,
+   #    autosplit=True,
+   # ),
     layout.Bsp(
         border_normal="#282828",
         border_focus="#ffffff",
-        border_width=3,
-        margin=2,
+        border_width=2,
+        margin=5,
         fair=False,
         ratio=1.0,
     ),
-    layout.Floating(
-        border_normal="#282828",
-        border_focus="ffffff",
-        border_width=3,
-        padding=5,
-        margin=3,
-        ratio=1.5,
-    ),
+ #   layout.Floating(
+ #       border_normal="#282828",
+ #       border_focus="ffffff",
+ #       border_width=3,
+ #       padding=5,
+ #       margin=3,
+ #       ratio=1.5,
+ #   ),
 ]
 
 widget_defaults = dict(
-    font='Hack',
-    fontsize=12,
+    font='ProFont for Powerline',
+    fontsize=10,
     padding=2,
 )
 extension_defaults = widget_defaults.copy()
@@ -170,16 +172,16 @@ screens = [
                     padding=-5,
                 ),
                 widget.Prompt(
-                    fontsize=12,
+                    fontsize=10,
                     max_history=20,
                     record_history=True,
                     prompt='run: ',
-                    font='Hack',
+                    font='monofur for Powerline',
                 ),
                 widget.WindowName(
-                    fontsize=12,
+                    fontsize=10,
                     foreground="#e8dfd6",
-                    font='Hack',
+                    font='ProFont for Powerline',
                     padding=3,
                 ),
                 widget.TextBox(
@@ -191,7 +193,7 @@ screens = [
                 ),
                 widget.CurrentLayout(
                     padding=0,
-                    fontsize=12,
+                    fontsize=10,
                     background="#ffffff",
                     foreground="#282828",
                     font='Hack',
@@ -217,8 +219,8 @@ screens = [
                     discharge_char='',
                     low_percentage=0.2,
                     update_delay=60,
-                    fontsize=12,
-                    font='Inconsolata Nerd Fonts',
+                    fontsize=10,
+                    font='ProFont for Powerline',
                     background="#ffffff",
                     padding=5,
                     foreground="#282828"
@@ -246,18 +248,18 @@ screens = [
                 widget.Clock(
                     format='%a %d %b | %H:%M',
                     foreground="#282828",
-                    font="Hack",
-                    fontsize=12,
+                    font="ProFont for Powerline",
+                    fontsize=10,
                     padding=0,
                     background="#ffffff",
                 ),
                 widget.Systray(
-                    icon_size=15,
+                    icon_size=13,
                     background="#ffffff",
                 ),
             ],
             background="#000000",
-            size=16,
+            size=13,
         ),
     ),
 ]
@@ -282,6 +284,7 @@ floating_layout = layout.Floating(
     border_width=3,
     float_rules=[
         {'wmclass': 'confirm'},
+        {'wmclass': 'telegram-desktop'},
         {'wmclass': 'dialog'},
         {'wmclass': 'download'},
         {'wmclass': 'error'},
@@ -302,4 +305,5 @@ focus_on_window_activation = "smart"
 
 os.system("nitrogen --restore")
 os.system("compton -b -c -C")
+os.system("xrandr --output HDMI1 --primary --mode 1366x768 --pos 1366x0 --rotate normal --output VIRTUAL1 --off --output eDP1 --mode 1366x768 --pos 0x0 --rotate normal")
 wmname = "Qtile"
