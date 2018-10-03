@@ -24,9 +24,9 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/bar1]
-width = 80%
-height = 20
-offset-x = 10%
+width = 100%
+height = 16
+offset-x = 0%
 offset-y = 0%
 radius = 0.0
 fixed-center = true
@@ -37,8 +37,8 @@ foreground = #fbf1c7
 line-size = 2
 line-color = #f00
  
-border-size = 2
-border-color = #d5c4a1
+border-size = 1
+border-color = #282828
  
 padding-left = 1
 padding-right = 1
@@ -46,10 +46,10 @@ padding-right = 1
 module-margin-left = 1
 module-margin-right = 2
  
-font-0 = UbuntuMono Nerd Font:size=10;1
+font-0 = ProFont for Powerline:size=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
-font-3 = FontAwesome:pixelsize=12;1volu
+font-2 = Hack:pixelsize=10;1
+font-3 = Inconsolata Nerd Font:pixelsize=10;1volu
  
 modules-left = date xwindow 
 modules-center = workspaces 
@@ -83,107 +83,6 @@ click-right = exec pavucontrol &
 click-left = ~/scripts/pavuvolume.sh --mute
 scroll-up = ~/scripts/pavuvolume.sh --up
 scroll-down = ~/scripts/pavuvolume.sh --down
-
-[module/xkeyboard]
-#type = internal/xkeyboard
-#blacklist-0 = num lock
- 
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
- 
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
- 
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
- 
-[module/filesystem]
-type = internal/fs
-interval = 25
- 
-mount-0 = /
- 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %free% Rem.
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
- 
-[module/bspwm]
-type = internal/bspwm
-
-label-focused = %index%
-label-focused-background = ${colors.fg2}
-label-focused-underline= ${colors.red}
-label-focused-padding = 2
- 
-label-occupied = %index%
-label-occupied-padding = 2
- 
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
- 
-label-empty = %index%
-label-empty-foreground = ${colors.red}
-label-empty-padding = 2
- 
-$ws0 =  
-$ws1 =  
-$ws2 = 
-$ws3 = 
-$ws4 = 
-$ws5 = ♟
-
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-enable-scroll = true
-strip-wsnumbers = true
- 
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
- 
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
- 
-; focused = Active workspace on focused monitor
-label-focused = %index%
-label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
-label-focused-padding = ${module/bspwm.label-focused-padding}
- 
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
- 
-; visible = Active workspace on unfocused monitor
-label-visible = %index%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
- 
-; urgent = Workspace with urgency hint set
-label-urgent = %index%
-label-urgent-background = ${module/bspwm.label-urgent-background}
-label-urgent-padding = ${module/bspwm.label-urgent-padding}
- 
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
- 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
- 
-label-song-maxlen = 25
-label-song-ellipsis = true
  
 [module/xbacklight]
 type = internal/xbacklight
@@ -383,25 +282,6 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
- 
-[module/temperature]
-#type = internal/temperature
-#thermal-zone = 0
-#warn-temperature = 60
- 
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
- 
-label = %temperature%
-label-warn = %temperature%
-label-warn-foreground = ${colors.secondary}
- 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
  
 [module/powermenu]
 type = custom/menu
