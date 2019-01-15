@@ -1,0 +1,141 @@
+
+!! Transparency (0-255):
+*.alpha: 230
+!*.alpha: 150
+!*.alpha: 255
+!! Baskerville - count von count
+
+! special
+!*.foreground:   #919191
+*.background:   #000000
+
+! black
+!*.color0:       #303030
+!*.color8:       #5e5e5e
+
+! red
+!*.color1:       #c10023
+!*.color9:       #ff8781
+
+! green
+!*.color2:       #a83334
+!*.color10:      #ffa095
+
+! yellow
+!*.color3:       #b51d2c
+!*.color11:      #ff948b
+
+! blue
+!*.color4:       #8c4b46
+!*.color12:      #feb2aa
+
+! magenta
+!*.color5:       #7d534f
+!*.color13:      #ebbbb5
+
+! cyan
+!*.color6:       #9a413d
+!*.color14:      #ffaaa0
+
+! white
+!*.color7:       #c6c6c6
+!*.color15:      #ffffff
+
+!! DOOMICIDE darkocean
+
+! special
+!*.foreground:   #ffffff
+!*.background:   #000000
+
+! black
+!*.color0:       #000000
+!*.color8:       #38372c
+
+! red
+!*.color1:       #571dc2
+!*.color9:       #7c54b0
+
+! green
+!*.color2:       #14db49
+!*.color10:      #a2e655
+
+! yellow
+!*.color3:       #403d70
+!*.color11:      #9c6f59
+
+! blue
+!*.color4:       #385a70
+!*.color12:      #323f5c
+
+! magenta
+!*.color5:       #384894
+!*.color13:      #5e6c99
+
+! cyan
+!*.color6:       #4f3a5e
+!*.color14:      #667d77
+
+! white
+!*.color7:       #999999
+!*.color15:      #ffffff
+
+
+!! Dracula 
+!*.foreground: #F8F8F2
+!*.background: #282A36
+!*.color0:     #000000
+!*.color8:     #4D4D4D
+!*.color1:     #FF5555
+!*.color9:     #FF6E67
+!*.color2:     #50FA7B
+!*.color10:    #5AF78E
+!*.color3:     #F1FA8C
+!*.color11:    #F4F99D
+!*.color4:     #BD93F9
+!*.color12:    #CAA9FA
+!*.color5:     #FF79C6
+!*.color13:    #FF92D0
+!*.color6:     #8BE9FD
+!*.color14:    #9AEDFE
+!*.color7:     #BFBFBF
+!*.color15:    #E6E6E6
+
+!! Material
+
+! special
+ *.foreground:   #eceff1
+!*.background:   #263238
+
+!
+! ! black
+ *.color0:       #263238
+ *.color8:       #37474f
+!
+! ! red
+ *.color1:       #ff9800
+ *.color9:       #ffa74d
+!
+! ! green
+ *.color2:       #8bc34a
+ *.color10:      #9ccc65
+!
+! ! yellow
+ *.color3:       #ffc107
+ *.color11:      #ffa000
+!
+! ! blue
+ *.color4:       #03a9f4
+ *.color12:      #81d4fa
+!
+! ! magenta
+ *.color5:       #e91e63
+ *.color13:      #ad1457
+!
+! ! cyan
+ *.color6:       #009688
+ *.color14:      #26a69a
+!
+! ! white
+ *.color7:       #cfd8dc
+ *.color15:      #eceff1
+

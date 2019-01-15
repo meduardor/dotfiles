@@ -1,0 +1,207 @@
+﻿
+# bspwm hotkeys
+#
+
+# refresh or quit bspwm
+super + alt + Escape
+    bspc quit 
+
+# Close Windows
+super + w 
+	bspc node -c 
+
+# Kill windows
+super + shift + x 
+	bspc node -k 		
+
+# Toggle tiling mode of windows 
+super + shift + t 
+	bspc node -t {pseudo_tiled,tiled}
+super + t 
+	{bspc node -t floating && windows-placer $(bspc query -T -d | grep -o '"state":"floating"' | wc -l),bspc node -t tiled}
+
+# Force all windows of the desktop to tiled
+super + ctrl + t 
+	bspcp tile
+
+# Force all windows of the desktop to float and arrange them 
+super + ctrl + shift + t 
+	bspcp float
+
+# Toggle fullscreen 
+super + shift + f 
+	bspc node -t {fullscreen,tiled}
+
+# Try to keep size and position of the selected windows 
+super + o 
+	bspc node -g private 
+
+
+
+# Focus The Next/Previous Node
+super + {_,shift + }c
+	bspc node -f {next,prev}
+
+# Focus The  Node/Desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+#
+# Focus/Swap
+#
+
+# Focus The Node In The Given Direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+#super + {comma,period}
+#	bspc node -C {backward,forward}
+
+############## MY ####################
+super + {comma,period}
+	bspc node @/ -F {horizontal,vetical}
+
+super + {comma,period}
+	bspc node @/ -R {90,270}
+
+# Acerta janelas
+alt + b 
+	euclid_balancer
+
+# Focus or Send to the given desktop
+#super + {_,shift + }{ampersand,eacute,quotedbl,apostrophe,parenleft,minus}
+#	bspc {desktop -f,node -d} '^{1-6}'
+super + {_,shift + }{1,2,3,4,5,6}
+	bspc {desktop -f,node -d} '^{1-6}'
+
+
+
+# Minhas configurações   // Download -> ('xdo-git' Funcionamento do resize float windows)  
+
+#Selection Desktop
+super + {m,n}
+	bspc nobe -f {prev.occupied,next.occupied}
+
+# Different style move 
+super + shift +{Left,Down,Up,Right}
+	euclid_mover {west,south,north,east}
+
+
+# Focus windows by direction 
+super + {Left,Down,Up,Right}
+	focusmover {west,south,north,east}
+
+super + {a,s,w,d}
+	focusmover {west,south,north,east}
+
+super + {h,j,k,l}
+	focusmover {west,south,north,east}
+
+# Move tiled windows. Moving a tiled window to preselected one moves into preselection instead. 
+super + shift + {a,s,w,d}
+	windowgrabber {west,south,north,east}
+
+super + shift + {h,j,k,l}
+	windowgrabber {west,south,north,east}
+
+# Resize nodes
+super + ctrl + {a,s,w,d}
+	$HOME/scripts/bspwm_resize.sh {west,south,north,east}
+
+super + ctrl + {h,j,k,l}
+	$HOME/scripts/bspwm_resize.sh {west,south,north,east} 
+
+super + ctrl + {Left,Down,Up,Right}
+	$HOME/scripts/bspwm_resize.sh {west,south,north,east}
+
+alt + shift + {a,s,w,d}
+      bspc config pointer_follows_focus true; \
+      swapOrMoveIn.sh {left,down,up,right}; \
+      bspc config pointer_follows_focus false
+''
+####################################################
+alt + ctrl + {a,s,w,d}
+    bspc node -p ~{west,south,north,east}
+
+alt + ctrl + {h,j,k,l}
+    bspc node -p ~{west,south,north,east}
+
+alt + ctrl + {Left,Down,Up,Right}
+    bspc node -p ~{west,south,north,east}
+
+# Move Desktop
+
+super + {m,n}
+      bspc desktop -f {prev.occupied,next.occupied}
+
+# Mouse Bindings 
+
+~button1
+	bspc pointer -g focus
+
+super + button{1-3}
+	bspc pointer -g {move,resize_side,resize_corner}
+
+alt + !button{1-3}
+	bspc pointer -t %i %i
+
+ctrl + @button{1-3}
+	bspc pointer -u
+#########################################################
+
+# Resize nodes
+#alt + {a,f}
+#    S={+,-}; \
+#    bspc window -e left $\{S\}20 || \
+#    bspc window -e right $\{S\}20
+#alt + {s,d}
+#    S={+,-}; \
+#    bspc window -e down $\{S\}20 || \
+#    bspc window -e up $\{S\}20
+
+# Move floating windows (requires baskerville's xdo pacacur -S xdo-git)
+alt + {Left,Right,Up,Down}
+    xdo move {-x -20,-x +20,-y -20,-y +20}
+
+# Resize floating windows
+alt + shift + {Left,Right,Up,Down}
+    xdo resize {-w -20,-w +20,-h -20,-h +20} bspc window -e {left -10,down +10,up -10,right +10} || {right -10,up +10,down -10,left +10}         	
+
+# wm independent hotkeys
+#
+
+# Terminal Emulator
+super + Return
+	st
+
+# Program Launcher
+super + r
+   rofi -show run
+
+# dmenu_run -i -1 -3 -p dmenumon -fn TerminessTTF Nerd Font
+# Reload Funtions
+super + Escape
+   pkill -USR1 -x sxhkd
+
+alt + ctrl + 1
+    qutebrowser
+
+super + ctrl + {f,m,n}
+    st -e {ranger,mutt,newsboat}
+
+alt + ctrl + 2
+	telegram-desktop
+
+alt + ctrl + 3 
+	thunar
+
+alt + ctrl + 4
+    emacs
+
+super + 0
+      lxappearance
+
+Print
+	scrot
+
+

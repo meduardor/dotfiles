@@ -1,0 +1,207 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:560c:0:0:0:0:0 with SMTP id l12-v6csp1332926wrv;
+        Fri, 28 Sep 2018 16:18:17 -0700 (PDT)
+X-Received: by 2002:a0d:cd43:: with SMTP id p64-v6mr499283ywd.12.1538176697750;
+        Fri, 28 Sep 2018 16:18:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538176697; cv=none;
+        d=google.com; s=arc-20160816;
+        b=tOkrObo8xLhcgbeQdOLYLcZg9dGfDJcuXAfCkMsfbphv/3QS4MblN86G7x2FTkBQLy
+         P5b4kCQyczUqcnhS0lq+gyy4l+DeDmArzQSot62AI9czS5HiVPzIXyxECWk8KnHlkKSo
+         ELLXa6jBJuDpu2aPnxJlAFWavhqEFo9SaeQY7PuSkFNZ5vbQAj//wjyJ7qCDycCzbDED
+         2QlBj7iHzbndI5tJFy8VCCgoVYKNqK7GuAbw++Y803AuQW7yJDFcVA5+8dH1uMRzY02C
+         jFfHZFUWIhJ9o/dodebeum30bH7fcnqY5yIf2+4UhqdyEm8yfZBlhWl2ep5FOCFxLDR6
+         u5jQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:mime-version:subject
+         :message-id:to:from:date:sender:dkim-signature:dkim-signature;
+        bh=1ndbzFcFhLRq/h3Py4MLVPGHE0Iona3FrrOKfEGlq8c=;
+        b=VAqNVfosiDjktwpa9CslcovvrSdxHoe2scqNTgb6pAfCUX9ZJVNFq+pDU4uxMn/KKn
+         Sbe/mm1gkC2MTsZk/uUpnDiuReNXrArm6QKEkjhzO3O92nNuIpTEqyhbpPFbYWs5G3rE
+         Eguon/JjkYHrHTOpzEgQYUsvG3/Nf83RLfO9EdGP4rn6qwguFLZJ0yGK8HUnKsES405B
+         1eBzjQGVkpJuusHqRoU8Avh7eaVK+Mob5pDWEcHJgB8Fiz7VEn8dk9MQssqFFvxvZMc1
+         CliQ7s957qYJJX2bqIAtd9aLHR02oqd+P2Q9+Vpp2g117DwdbdF5lZirTxYsGBzQDMu4
+         l9yQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=nNj77DsK;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FFwlfEka;
+       spf=pass (google.com: domain of python-brasil+bncbcp2545xs4crbmhnxloqkgqewvdaseq@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCP2545XS4CRBMHNXLOQKGQEWVDASEQ@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBCP2545XS4CRBMHNXLOQKGQEWVDASEQ@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id c135-v6sor309457ywb.352.2018.09.28.16.18.17
+        (Google Transport Security);
+        Fri, 28 Sep 2018 16:18:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbcp2545xs4crbmhnxloqkgqewvdaseq@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=nNj77DsK;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FFwlfEka;
+       spf=pass (google.com: domain of python-brasil+bncbcp2545xs4crbmhnxloqkgqewvdaseq@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBCP2545XS4CRBMHNXLOQKGQEWVDASEQ@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=1ndbzFcFhLRq/h3Py4MLVPGHE0Iona3FrrOKfEGlq8c=;
+        b=nNj77DsKsKpH0JM2w3f/AnzdQNRklPsAT1GkXMS5Qo73cVjey5lVp2wPYH1m5MrZu8
+         K4He0TSPzUbiC9sUX7xXgPaah1Qrs2czkf74wonNfGZ3DAMEZBd9hbSoJZiG/9RPz+02
+         hs7Z3Rf2d8ObaEHwsXnqVYoROEVmESXanf34FoSw+W8q7Yxb381jp66t6ofTY/+aSUxH
+         9NFYc3vN7Y/8mbqrxzeVICdH0r1EP2M3DliuV4aMsrjgo44t6we635ogMDV9bq6syyIJ
+         htQ+OZ8idt59jtaomlM8wxaaEYIbuqLTWYgQ6dFFwy6UA8T46huP1ecIgabJP4EmacrW
+         UcIQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=1ndbzFcFhLRq/h3Py4MLVPGHE0Iona3FrrOKfEGlq8c=;
+        b=FFwlfEka+HqJG7GOt/ZitCkq3pRUxd24Y0fuwBxVvyhv+93ctwW5Lr0IBPgZSwBr9r
+         RLFgT4VQWPo3rVXZuZQ2JrLuRUQzDcaQHXK+M3roZvFjdIYfNUMJx70T9+BOkbTD4kBm
+         eE9wnxzg4pBKO+BXer7+sszBl2Z2LjtBKjy2Io/VKyU86Qj4K5LWjnxDrB89ERRnNkbc
+         Fh5GOFSFRnrJXYotS7rVFSpwn1SMcp2NyQlZ7Jt91xsPOHB+nZvI66Y8wBaO3k91Tdv5
+         +5suungjvB2U8Dis0C+69j3AXqtCyuysUKZ1zv475XgoORTSxYNxgZzSA25pcW2kkZ0t
+         75PQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:date:from:to:message-id:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=1ndbzFcFhLRq/h3Py4MLVPGHE0Iona3FrrOKfEGlq8c=;
+        b=BAEUdEuCVMVCCrSEvVZcJ46rHgKscSaIElmwwdfxjWSArMQmW2fWTYKR7Ll76nrDJB
+         en+RhpB9NxAxzZXgx9puvPflqAN9aDwawrCt3LwTfLM+vOQ1Pxa++v2Y6FbmeH1wpBWn
+         /OvUSKEMY4tegrD1i+7akt91WdPRcXqmG5umDEa8y/tvsUQFvTZGtn6LyhFGd9/Erxcd
+         bMABCODU3HccLrg1WkLp4J0bs9514L9WrUKb7cDiulCUBZg+qfSPbB1566BtnIlEQAuF
+         7lYHQaP1foD2LQGMK4MMdOyeYcuSjOC1PtDJezFU1J2PSNMPvGI+0hR4lhbIbLmRkp/1
+         SyBw==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: ABuFfog2HrkLL5/4nFNta8NSpVnEqTsQyx7+HnuncLCKgYHLEu0VWD33
+	bCfbI6ZI1/r2mY0k5vCmQd0=
+X-Google-Smtp-Source: ACcGV60ZZovH6RhTro+mwbL2OF8QL2+/jYwW3okSgBHWfqzlX8LByu6ILFlMoyDt2hJaxA/fBXZnAg==
+X-Received: by 2002:a81:57cd:: with SMTP id l196-v6mr5771ywb.4.1538176697058;
+        Fri, 28 Sep 2018 16:18:17 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a25:d2ce:: with SMTP id j197-v6ls2080141ybg.23.gmail; Fri,
+ 28 Sep 2018 16:18:07 -0700 (PDT)
+X-Received: by 2002:a25:b29c:: with SMTP id k28-v6mr5639ybj.3.1538176687685;
+        Fri, 28 Sep 2018 16:18:07 -0700 (PDT)
+Date: Fri, 28 Sep 2018 16:18:06 -0700 (PDT)
+From: Marcelo Augusto <maraugustto@gmail.com>
+To: Python Brasil <python-brasil@googlegroups.com>
+Message-Id: <9ad8962a-2b7f-460e-b652-63cd56157676@googlegroups.com>
+Subject: [python-brasil] form django com abas do bootstrap
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_589_341200189.1538176686964"
+X-Original-Sender: maraugustto@gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Spam-Checked-In-Group: python-brasil@googlegroups.com
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+------=_Part_589_341200189.1538176686964
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_590_1585662476.1538176686964"
+
+------=_Part_590_1585662476.1538176686964
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Sauda=C3=A7=C3=B5es colegas
+
+tenho um projeto django onde fa=C3=A7o um crud em uma unica tabela, entao p=
+asso=20
+um dicionario que =C3=A9 renderizado no template do django, ate ai normal.
+
+agora o meu crud envolve 3 tabelas e muitos campos ent=C3=A3o resolvi usar =
+o=20
+componente de abas do bootstrap(nav nav-tabs)
+
+n=C3=A3o estou entendendo como posso distribuir os campos do form de inclus=
+=C3=A3o ao=20
+longo das abas e dar um post s=C3=B3 no preenchimento dos =C3=BAltimos camp=
+os, da=20
+ultima aba
+
+agrade=C3=A7o a ajuda dos colegas.
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/9ad8962a-2b7f-460e-b652-63cd56157676%40googlegroups.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+------=_Part_590_1585662476.1538176686964
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Sauda=C3=A7=C3=B5es colegas<div><br></div><div> tenho um p=
+rojeto django onde fa=C3=A7o um crud em uma unica tabela, entao passo um di=
+cionario que =C3=A9 renderizado no template do django, ate ai normal.</div>=
+<div><br></div><div>agora o meu crud envolve 3 tabelas e muitos campos ent=
+=C3=A3o resolvi usar o componente de abas do bootstrap(nav nav-tabs)</div><=
+div><br></div><div>n=C3=A3o estou entendendo como posso distribuir os campo=
+s do form de inclus=C3=A3o ao longo das abas e dar um post s=C3=B3 no preen=
+chimento dos =C3=BAltimos campos, da ultima aba</div><div><br></div><div>ag=
+rade=C3=A7o a ajuda dos colegas.</div></div>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/9ad8962a-2b7f-460e-b652-63cd56157676%40googlegr=
+oups.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/=
+d/msgid/python-brasil/9ad8962a-2b7f-460e-b652-63cd56157676%40googlegroups.c=
+om</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+------=_Part_590_1585662476.1538176686964--
+
+------=_Part_589_341200189.1538176686964--

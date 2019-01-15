@@ -1,0 +1,409 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:adf:fb89:0:0:0:0:0 with SMTP id a9csp6713191wrr;
+        Thu, 27 Dec 2018 09:06:42 -0800 (PST)
+X-Received: by 2002:a5d:4ec1:: with SMTP id s1mr20063343wrv.225.1545930402619;
+        Thu, 27 Dec 2018 09:06:42 -0800 (PST)
+ARC-Seal: i=3; a=rsa-sha256; t=1545930402; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=WrUhvOPwYAGSqBEPaab+XG/3byYrN0ELu/PlNweHzLKkfpUl16xWgVR2EtzJQfr0xX
+         NDEBcTrj6hyYakHPmpGv6bDpHCkK2NpfdLvbibrZo5PiZ5rKsotsX3mFd5OhMh9mCBER
+         PLTomOwOB94Vse0joe7V0r+cjP2jiBjJSKiFTmb0q1wT7qnVEJ2mhHXeTj1hs36AkyRP
+         8lE4ZD6/tNcq8k61SNuXQtvgpwbJg87s24uVb7SSYPf85BYLVJ0gmaNRCAqtn0nUa3YT
+         PN/7GPbMPQ6z5eV8ttEHaQza7U9EbalLt6hpxmY98fgC4FakllHSHM9dMBX39+8ASJ/O
+         Qrug==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:sender:dkim-signature
+         :dkim-signature;
+        bh=x1Ag0U2XR02sdaISrwVNOVXecvbKwiV3i6a6cdStS0U=;
+        b=i6Aa6a3bMMgdMn1pEwfYJVkSXHOHCu4ORLB7zYk60FDCh8zmyoLZBkWij50DYTmrkl
+         CrxMXAQ3AcCAZwYIIpCV+CgC8Gls1qHnIwmofqtTD3XL2RILtp7ag96YP9HkYq+Gh45S
+         +Lrkq8pI4VWN3jx5KHoTz+6+5DB6259qvkYu78jZGBEuvZHwdezvEAVtazAISPwh9kG5
+         q8xotuGT4ZdzKyQmKijEjiGI6rxPw1l17cJ5TDsYJw93un1s2pzPSrqfsK+pqLe7YxTg
+         a1B/e/wlnFp8ofYYdT2GqZ3uGfx9gT6KeDalZbk7dRgyoa/b4baX6KRvDyrfqbhJFWrl
+         iNKg==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=Z8aQNufl;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FYNq6CiQ;
+       arc=pass (i=2 spf=pass spfdomain=gmail.com dkim=pass dkdomain=gmail.com dmarc=pass fromdomain=gmail.com);
+       spf=pass (google.com: domain of python-brasil+bncbd2nrkfp6ebrbhenstqqkgqewjnubsa@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBD2NRKFP6EBRBHENSTQQKGQEWJNUBSA@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBD2NRKFP6EBRBHENSTQQKGQEWJNUBSA@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id p1sor18605737wrw.17.2018.12.27.09.06.42
+        (Google Transport Security);
+        Thu, 27 Dec 2018 09:06:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of python-brasil+bncbd2nrkfp6ebrbhenstqqkgqewjnubsa@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=Z8aQNufl;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FYNq6CiQ;
+       arc=pass (i=2 spf=pass spfdomain=gmail.com dkim=pass dkdomain=gmail.com dmarc=pass fromdomain=gmail.com);
+       spf=pass (google.com: domain of python-brasil+bncbd2nrkfp6ebrbhenstqqkgqewjnubsa@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBD2NRKFP6EBRBHENSTQQKGQEWJNUBSA@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+ARC-Seal: i=2; a=rsa-sha256; t=1545930402; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=abT14OkdwAabSM3D8Q55p+UrOL9gpnmjWIIXfS0R0wrFjGJDoEjYcn8ajZs+WnMgyH
+         JaaCbXyjresJjNVMM7RM5brQHhesqLQWyjkh+geGvJdKS3KzcD3ZW+0++A51I62pscvT
+         m9MJxZXcvnvuKuFHZGAMjQpy/dzNpl4JOWPris2So4kKzjTzflA/Hh3OpJigLUviEZno
+         cuOJ8ni1wwbj2f0A6lSFrRk7L/GVHVph/nz0a9hCLTpgKwKj05QX+oQkBX681bROWXLr
+         x5P90/B/GSTYPOyJVp4yt1s2Wp5KSkvC2EaAZoJjIMeHnuAiQzezFXFqzLRjSNLCO/we
+         4UtQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:sender:dkim-signature
+         :dkim-signature;
+        bh=x1Ag0U2XR02sdaISrwVNOVXecvbKwiV3i6a6cdStS0U=;
+        b=Q1zBkyxGEx0H6ZfXbzmPcnwnBdkWcNKei5SFjrhslbVxDioMmjG0D5qvPJgsXHfnyt
+         ONpJUYamxUwaN4eqVLlxumwqcitm6L7M6H0IgcACQ0VhWxGNusjFKqdUVzPcEzkjT8oo
+         khs2cAKhCygZBDocSCuDOWkrmcpvleNkOjUjGQqrol2kORtEBwI6vMzt/39dUKKsOID7
+         qUKaBFAt9kI+vw/EI70lOiB+5eII/2W9E5KC/OqHo1vgamfKYcHqJZaoGWiiqEMpLhlp
+         LKUe9omGPXjG5juCLVcwkhIAOc7g3elrGfZim6QwdVGJVSjswyy5pCNawIYaLzzmadah
+         4Hvw==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HlmYS80l;
+       spf=pass (google.com: domain of mvallebr@gmail.com designates 2a00:1450:4864:20::531 as permitted sender) smtp.mailfrom=mvallebr@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:mime-version:references:in-reply-to:from:date:message-id
+         :subject:to:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=x1Ag0U2XR02sdaISrwVNOVXecvbKwiV3i6a6cdStS0U=;
+        b=Z8aQNuflXn2bxp7oBYmz0+U0QwuTHrETBy/6bbaoUNPjAiNu6/qfeyd/+gRJdOIHws
+         2mdDi1Ex1dITM9xmDYCYdi4ToJjNEBuUNgzGOyHyOwBya4G5V9qgMgEBWwGat6WwY9wG
+         A/dLOuAP4QiuyEPFSkA+inpZm+AobycopFxZ5Lllcji3z27hS54adfeeOR5sv1vQ3ZIQ
+         62rZLKjbXueNIZW5kZVDZ2k7YU/eh6DGZImkgmmUoKvEgyJfo72wSRVq/lCVYsYMP4Oj
+         XXEx9c7rf4eoiig/cOTQ3goYBp+HjI8t9mmq/lxal5jOKLJe488sNBewudWOb0UqvjZ9
+         j/lA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=x1Ag0U2XR02sdaISrwVNOVXecvbKwiV3i6a6cdStS0U=;
+        b=FYNq6CiQVlWbAoleA9vVqaf1l4zPor5fKfe8U0b/VeSU6nbiiYDVHsTl6dsbK0/qVi
+         ls7xCU5NmmzQmBMaJYjwoNBnSfEIproXFcH8LNk9GBIqRh5Hvu9qvyJFaG1CXH7QfPF9
+         btl9DjGY7Q9GE+9Go8ZCZUgzHzi9UC+fD6JFo3f02xZoT4ahKXHWUbFiZ29PUESSA5F2
+         YTeBKsbZVPt6DrhgH4SdEak+qmRvASDg9lN9YlLr6QUoJQzPvXzH5hguoJOp1TFfU5TG
+         C0wyBsLYmrJNbHgvghvTC0+P1xmtpNJYWpzpatgndGjvJ8aH5wDdd5jVZUk1HklCklea
+         ot1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
+         :date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=x1Ag0U2XR02sdaISrwVNOVXecvbKwiV3i6a6cdStS0U=;
+        b=iddPY9T+YeC5higu0MVz+DePipQwbzbVQx2EMrqtacYFYGqPNqSl/U8aTfRreNU+u6
+         MQE7lETma08ILzI6xF6X79r9XrA3Ev+QYhyAkEV3P2b6FKYG66+cjTgf2Tx6B2euwW8n
+         uNUjzmUrUwUGu+e5h86NUSEcIHiwfoHA6jUFLDQbSQ6mz6g20qucfvqmDH9NuAqxHgTU
+         5rs70zyyo78CwBssG4AE/nG5Z+tMbB81275wO6mEKi9ZYPGx5w/GYlrjXDFzdDcwp+p/
+         /EA13GA5oCQZYaRP9akj2DO66QqqGD/g7I2cczUCcHvm0pR3F76mOJFn4bDHhUdFKLlp
+         nhgw==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: AJcUukcGBm34XAOttDn/W3EdjXWQrzm+Cwt1+UkErveoeHrzNprmOBka
+	bs21SrrxN7xS34fz6hs/r84=
+X-Google-Smtp-Source: ALg8bN5FIz0tVi8TX5NM5CRIeQvoQN+ahRlLiv9nciBXqXYTNsc8KUfUQ+0xIXl8KWmTraeV/OuyFg==
+X-Received: by 2002:adf:8247:: with SMTP id 65mr265205wrb.3.1545930402031;
+        Thu, 27 Dec 2018 09:06:42 -0800 (PST)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a1c:8f06:: with SMTP id r6ls2629439wmd.0.gmail; Thu, 27 Dec
+ 2018 09:06:36 -0800 (PST)
+X-Received: by 2002:a1c:2d07:: with SMTP id t7mr1935054wmt.17.1545930396054;
+        Thu, 27 Dec 2018 09:06:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1545930396; cv=none;
+        d=google.com; s=arc-20160816;
+        b=LVwA7fSLLJPGbhLWYjmYNMfQsqj74edn/cd6EsZBX2Z6+NP9jzEjmHaka1Q/jvyOqH
+         nkr1C0okgCs6Q/HDkcoiYtaHPRgUcJRxhq5LOW+vz3K/ZqQ6Ig8FXdrRbH8SAF5RoTKI
+         lrQ71ScgXSWk0OEjJczMHYgoQum4lCFT++Wc8Erns85T0nLTNzvuXmjOR8Dn5V7tXToz
+         kmJjl489qWEHuOWvIN/v4pGct+gDiCwJpKThmJ05ZNewJMrMNYxWr+xV3G0bY9vCzim5
+         yzDSZ3PCf63UMKW5t8Fw0xK7VWW1fLnXrqvAZb1PdkPCYkKkFOnfPIpRM3iPH8EdB9G5
+         AqSg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=UR97h/NGlp9SXKBVPKPjX1cDY/pHn+iM/DdN8Y7rWWI=;
+        b=DuQctJWsJkQROL8jwQSgoP16jbX2kgct30qG5MPEukSaxeNm7lGiSdKM2vwrI2z1il
+         VYJMVaT4SHHpjRI+Rx2/K/tbifIAQQGHOiLjJK2DcOY1OqtYUBt95swKGx1qSVcN3anm
+         t1Ke3IQsGtItBcntqmXoIYP2d4z40XwhSrfYDYQR4XikwJ6RitLpkXywaFzQ4Dqpx4AE
+         qk3xH3mZ7TdIDyg7Yj1onlktGfyYOJjC0aNIeFX7obLFdDUx2FMKtqOHdAU3DEnDBstd
+         74betLYxG+fDfJRrYtN5vh47Rwwawq+pq/IfZDu6PVAN7uK5yVt1rndD1cYKf12X42uS
+         7Pvw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HlmYS80l;
+       spf=pass (google.com: domain of mvallebr@gmail.com designates 2a00:1450:4864:20::531 as permitted sender) smtp.mailfrom=mvallebr@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from mail-ed1-x531.google.com (mail-ed1-x531.google.com. [2a00:1450:4864:20::531])
+        by gmr-mx.google.com with ESMTPS id f136si1331696wmd.1.2018.12.27.09.06.36
+        for <python-brasil@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 27 Dec 2018 09:06:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of mvallebr@gmail.com designates 2a00:1450:4864:20::531 as permitted sender) client-ip=2a00:1450:4864:20::531;
+Received: by mail-ed1-x531.google.com with SMTP id a20so8934172edc.8
+        for <python-brasil@googlegroups.com>; Thu, 27 Dec 2018 09:06:36 -0800 (PST)
+X-Received: by 2002:a50:d5dc:: with SMTP id g28mr19076626edj.226.1545930395320;
+ Thu, 27 Dec 2018 09:06:35 -0800 (PST)
+MIME-Version: 1.0
+References: <64d097d8-1ca1-4d81-88e1-20db4c4e3497@googlegroups.com> <ff9d1dc2-d112-4fe8-8200-8a9423bf1d16@googlegroups.com>
+In-Reply-To: <ff9d1dc2-d112-4fe8-8200-8a9423bf1d16@googlegroups.com>
+From: Marcelo Valle <mvallebr@gmail.com>
+Date: Thu, 27 Dec 2018 17:06:23 +0000
+Message-ID: <CABKQidsiPuxjuhEcVBrmDEizysnNm23c=Jmn_5tmhZYJBVCn9g@mail.gmail.com>
+Subject: =?UTF-8?Q?Re=3A_=5Bpython=2Dbrasil=5D_Re=3A_Converter_String_em_N=C3=BAmeros?=
+To: Python Brasil <python-brasil@googlegroups.com>
+Content-Type: multipart/alternative; boundary="0000000000000f8765057e03f866"
+X-Original-Sender: mvallebr@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@gmail.com header.s=20161025 header.b=HlmYS80l;       spf=pass
+ (google.com: domain of mvallebr@gmail.com designates 2a00:1450:4864:20::531
+ as permitted sender) smtp.mailfrom=mvallebr@gmail.com;       dmarc=pass
+ (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Spam-Checked-In-Group: python-brasil@googlegroups.com
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+--0000000000000f8765057e03f866
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Embora eu ache legal a resposta do Romilson, verifique as funcoes built-in
+do python: chr, unichr, ord e unicode.
+Elas provavelmente fazem o que voce precisa.
+
+https://docs.python.org/2/library/functions.html
+
+On Thu, 27 Dec 2018 at 16:50, Romilson Lemes <romilsonlemes@gmail.com>
+wrote:
+
+> Boa tarde Carlos Henrique, vc esta querendo embaralhar a string?
+>
+> Seria uma forma de criptografar o nome da pessoa no exemplo que vc passou=
+?
+>
+> Eu sinceramente n=C3=A3o conhe=C3=A7o uma fun=C3=A7=C3=A3o do python espe=
+c=C3=ADfica para isso.
+> Vale a dica.
+>
+> Se eu estiver certo do que vc esta querendo, acredito que voc=C3=AA possa
+> desenvolver uma fun=C3=A7=C3=A3o DEF(sua) a qual vc passe a string e o py=
+thon possa
+> retornar uma outra string toda embaralhada com a sua pr=C3=B3pria l=C3=B3=
+gica.
+>
+> EXEMPLO:
+>
+>    Nesta fun=C3=A7=C3=A3o vc pode pegar toda a string recebida.
+> Vc pode pegar cada caracter da string. Pegue este caracter, encontre o
+> c=C3=B3digo asc dele, fa=C3=A7a um calculo dele e no final retorne um val=
+or do mesmo
+> dentro de 0 e 155 por exemplo.
+> O valor que der, vc reverte para um caracter da tabela asc e coloque no
+> lugar do caracter inicial da posi=C3=A7=C3=A3o que vc esta da string e va=
+i montando
+> esse embaralhamento desta forma at=C3=A9 varrer toda a string.
+> Depois que voc=C3=AA finalizar, devolva o resultado no retorno da fun=C3=
+=A7=C3=A3o e
+> utilize isso como o seu embaralhamento.
+>
+> Acho que esse pode ser um caminho.
+>
+> De qualquer forma vou pesquisar uma forma mais f=C3=A1cil e passarei para=
+ voc=C3=AA.
+>
+> Abra=C3=A7os,
+> Romilson Lemes
+>
+>
+> Em quinta-feira, 27 de dezembro de 2018 14:21:57 UTC-2, Carlos Henrique
+> escreveu:
+>>
+>> Ola!!! Muito boa tarde galera.
+>> Seguinte, estou querende desenvolver um script simples em python que
+>> converta as letras do alfabeto em seus respectivos valores num=C3=A9rico=
+s por
+>> exemplo: digitar um nome "Henrique"
+>> e terei como resposta: "85XXXXX". Ser=C3=A1 necess=C3=A1rio alguma bibli=
+oteca para
+>> isso?
+>> Grato.
+>>
+> --
+> --
+> ------------------------------------
+> Grupo Python-Brasil
+> https://wiki.python.org.br/AntesDePerguntar
+>
+> <*> Para visitar o site do grupo na web, acesse:
+> http://groups.google.com/group/python-brasil
+>
+> <*> Para sair deste grupo, envie um e-mail para:
+> python-brasil+unsubscribe@googlegroups.com
+> ---
+> Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo "Pytho=
+n Brasil"
+> dos Grupos do Google.
+> Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails =
+dele, envie
+> um e-mail para python-brasil+unsubscribe@googlegroups.com.
+> Para postar nesse grupo, envie um e-mail para
+> python-brasil@googlegroups.com.
+> Para ver essa discuss=C3=A3o na Web, acesse
+> https://groups.google.com/d/msgid/python-brasil/ff9d1dc2-d112-4fe8-8200-8=
+a9423bf1d16%40googlegroups.com
+> <https://groups.google.com/d/msgid/python-brasil/ff9d1dc2-d112-4fe8-8200-=
+8a9423bf1d16%40googlegroups.com?utm_medium=3Demail&utm_source=3Dfooter>
+> .
+> Para mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout.
+>
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/CABKQidsiPuxjuhEcVBrmDEizysnNm23c%3DJmn_5tmhZYJBVCn9g%40ma=
+il.gmail.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+--0000000000000f8765057e03f866
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Embora eu ache legal a resposta do Romils=
+on, verifique as funcoes built-in do python: chr, unichr, ord e unicode.=C2=
+=A0<div>Elas provavelmente fazem o que voce precisa.</div><div><br></div><d=
+iv><a href=3D"https://docs.python.org/2/library/functions.html">https://doc=
+s.python.org/2/library/functions.html</a><br></div></div></div><br><div cla=
+ss=3D"gmail_quote"><div dir=3D"ltr">On Thu, 27 Dec 2018 at 16:50, Romilson =
+Lemes &lt;<a href=3D"mailto:romilsonlemes@gmail.com">romilsonlemes@gmail.co=
+m</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
+:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
+><div dir=3D"ltr"><span style=3D"font-size:small">Boa tarde Carlos Henrique=
+, vc esta querendo embaralhar a string?</span><div style=3D"font-size:small=
+"><br></div><div style=3D"font-size:small">Seria uma forma de criptografar =
+o nome da pessoa no exemplo que vc passou?</div><div style=3D"font-size:sma=
+ll"><br></div><div style=3D"font-size:small">Eu sinceramente n=C3=A3o conhe=
+=C3=A7o uma fun=C3=A7=C3=A3o do python espec=C3=ADfica para isso.<br>Vale a=
+ dica.<br><br>Se eu estiver certo do que vc esta querendo, acredito que voc=
+=C3=AA possa desenvolver uma fun=C3=A7=C3=A3o DEF(sua) a qual vc passe a st=
+ring e o python possa retornar uma outra string toda embaralhada com a sua =
+pr=C3=B3pria l=C3=B3gica.</div><div style=3D"font-size:small"><br></div><di=
+v style=3D"font-size:small">EXEMPLO:</div><div style=3D"font-size:small"><b=
+r></div><div style=3D"font-size:small">=C2=A0 =C2=A0Nesta fun=C3=A7=C3=A3o =
+vc pode pegar toda a string recebida.</div><div style=3D"font-size:small">V=
+c pode pegar cada caracter da string. Pegue este caracter, encontre o c=C3=
+=B3digo asc dele, fa=C3=A7a um calculo dele e no final retorne um valor do =
+mesmo dentro de 0 e 155 por exemplo.<br>O valor que der, vc reverte para um=
+ caracter da tabela asc e coloque no lugar do caracter inicial da posi=C3=
+=A7=C3=A3o que vc esta da string e vai montando esse embaralhamento desta f=
+orma at=C3=A9 varrer toda a string.=C2=A0<br>Depois que voc=C3=AA finalizar=
+, devolva o resultado no retorno da fun=C3=A7=C3=A3o e utilize isso como o =
+seu embaralhamento.<br><br>Acho que esse pode ser um caminho.<br><br>De qua=
+lquer forma vou pesquisar uma forma mais f=C3=A1cil e passarei para voc=C3=
+=AA.<br><br>Abra=C3=A7os,</div><div style=3D"font-size:small">Romilson Leme=
+s</div><div><br></div><br>Em quinta-feira, 27 de dezembro de 2018 14:21:57 =
+UTC-2, Carlos Henrique  escreveu:<blockquote class=3D"gmail_quote" style=3D=
+"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-le=
+ft:1ex"><div dir=3D"ltr">Ola!!! Muito boa tarde galera.<div>Seguinte, estou=
+ querende desenvolver um script simples em python que converta as letras do=
+ alfabeto em seus respectivos valores num=C3=A9ricos por exemplo: digitar u=
+m nome &quot;Henrique&quot;</div><div>e terei como resposta: &quot;85XXXXX&=
+quot;. Ser=C3=A1 necess=C3=A1rio alguma biblioteca para isso?=C2=A0</div><d=
+iv>Grato.</div></div></blockquote></div>
+
+<p></p>
+
+-- <br>
+-- <br>
+------------------------------------<br>
+Grupo Python-Brasil<br>
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar" target=3D"_blank">h=
+ttps://wiki.python.org.br/AntesDePerguntar</a><br>
+=C2=A0<br>
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br>
+    <a href=3D"http://groups.google.com/group/python-brasil" target=3D"_bla=
+nk">http://groups.google.com/group/python-brasil</a><br>
+=C2=A0<br>
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br>
+    <a href=3D"mailto:python-brasil%2Bunsubscribe@googlegroups.com" target=
+=3D"_blank">python-brasil+unsubscribe@googlegroups.com</a><br>
+--- <br>
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br>
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com" target=3D"_blank">python-brasil+unsubscribe@googlegroups.com</a=
+>.<br>
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com" target=3D"_blank">python-brasil@googlegroups.com</a>.<=
+br>
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/ff9d1dc2-d112-4fe8-8200-8a9423bf1d16%40googlegr=
+oups.com?utm_medium=3Demail&amp;utm_source=3Dfooter" target=3D"_blank">http=
+s://groups.google.com/d/msgid/python-brasil/ff9d1dc2-d112-4fe8-8200-8a9423b=
+f1d16%40googlegroups.com</a>.<br>
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout" target=3D"_blank">https://groups.google.com/d/optout</a>.<br>
+</blockquote></div>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/CABKQidsiPuxjuhEcVBrmDEizysnNm23c%3DJmn_5tmhZYJ=
+BVCn9g%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://gro=
+ups.google.com/d/msgid/python-brasil/CABKQidsiPuxjuhEcVBrmDEizysnNm23c%3DJm=
+n_5tmhZYJBVCn9g%40mail.gmail.com</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+--0000000000000f8765057e03f866--

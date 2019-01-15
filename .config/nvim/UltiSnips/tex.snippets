@@ -1,0 +1,28 @@
+snippet mono "Snippet do pré corpo da monografia"
+\documentclass[a4paper,12pt]{article}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst, lipsum}
+\usepackage{setspace}
+
+\title{$1 \\ \vspace{3.5cm}}
+\author{Marco Eduardo Rodrigues da Silva \\ meduardo.r@gmail}
+\date{\today}
+
+\setstretch{1.5}
+
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+	\Large
+	\maketitle\Large
+    \end{center}
+\end{titlepage}
+\tableofcontents
+\newpage
+\section{$2}
+\section{$3}
+\section{$4}
+\end{document}
+endsnippet
+

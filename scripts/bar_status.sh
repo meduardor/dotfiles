@@ -1,0 +1,54 @@
+#!/bin/bash
+
+DIR=$( dirname $0 )
+source "${DIR}/../lib/sh/dwm-colors.sh"
+
+SPR='\uE931'
+SPL='\uE932'
+
+OS_ICON='\uE934'
+
+DATE=$( date +"%A, %B %d, %Y" )
+TIME=$( date +"%I:%M %p" )
+CURRENT_TEMP=$( jq '.currently.temperature' /tmp/myForecast.json | awk -F. '{ print $1 }' )
+CURRENT_SUMMARY=$( jq '.currently.summary' /tmp/myForecast.json | sed 's/\"//g' )
+CURRENT_ICON=$( jq '.currently.icon' /tmp/myForecast.json | sed 's/\"//g' )
+case $CURRENT_ICON in
+    "clear-day")
+        icon=""
+        ;;
+    "clear-night")
+        icon=""
+        ;;
+    "rain")
+        icon=""
+        ;;
+    "snow")
+        icon=""
+        ;;
+    "sleet")
+        icon=""
+        ;;
+    "wind")
+        icon=""
+        ;;
+    "fog")
+        icon=""
+        ;;
+    "cloudy")
+        icon=""
+        ;;
+    "partly-cloudy-day")
+        icon=""
+        ;;
+    "partly-cloudy-night")
+        icon=""
+        ;;
+esac
+
+WEATHER="${CURRENT_TEMP}°F $icon $CURRENT_SUMMARY"
+
+echo -e "${blue03_black03}  ${SPL}${black03_blue03} $WEATHER \
+${black03_blue03}${SPL}${brown03_black03}${SPL}${black03_brown03} $DATE \
+${black03_brown03}${SPL}${brown01_black03}${SPL}${black03_brown01} $TIME \
+${black03_brown01}${SPL}${blue02_black03} $OS_ICON "

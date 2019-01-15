@@ -1,0 +1,596 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:560a:0:0:0:0:0 with SMTP id l10-v6csp4917198wrv;
+        Wed, 3 Oct 2018 11:24:48 -0700 (PDT)
+X-Received: by 2002:a25:bccf:: with SMTP id l15-v6mr1729825ybm.182.1538591088266;
+        Wed, 03 Oct 2018 11:24:48 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1538591088; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=ajHVi4u17NInmGOQ1nQ4pVMHMwn2/AHa4H3D3VbYJbT2lbND/Ofc/TuYcGLdgBw9vQ
+         lwk6rHYnx65Xd94tBRbCQ+yjZvILCX4BcqSSiUimYbkN3qJvEagd/UZruiAYHbMPMq/a
+         Stnunmn9+SLPb9Cg2Sl2m6KlwZ5CM7VD6nUaxY9Xev93rGX6Q/NY8/lfBQn2JVWhg2yK
+         SUrnifN5OAwdsYhihJNcMY3lT+DpVcGk2snitS9N5qj0Yvr+YdQenf2PTlxOSiEukx6z
+         +98gOFoLyI/XtrF2ytC2tmLSWom2/mVTo+O5xzs9exc79fgNC29I/d1OaDdUjzpF2BI2
+         lYvg==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:sender:dkim-signature
+         :dkim-signature;
+        bh=JurOrZfCuD+ayzB02FY2K5yluYVIzzHv1jkCihmnj/g=;
+        b=Sc5KkFCtYJvb/GLMZuNEVxv/eUqgI0S2zKrC0eQD7ueqJorxF3igSwq/4iBeJnuH5e
+         wYVNcLfQHSd0N+iIBGU2Bt3ta1cY/po6JlZQJj+29OnEKaD/zQ7QPYNoEuTf1KiPN0YL
+         7TQHCABaxgpxNnIL9sEPZWd4r0GlNRgtZdHdmAXiIFuOSHfhjR3r/q1PUHwEg7nZWpXv
+         RCwTqeD67xjvM4/CzqHtwZar2SAkh+ARGFpXVVX9R7ISjQ/1EwWwAa/XlBN+o9Ey55So
+         nQ1LM+LFRQtY8uIJNCUsIxQco7/0lo4UQUAoK8mcCtx5GSTshvkjFj9bo9TGJrF38RQK
+         5lRA==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=kRYUIQJw;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qBcO6Nku;
+       arc=pass (i=2 spf=pass spfdomain=gmail.com dkim=pass dkdomain=gmail.com dmarc=pass fromdomain=gmail.com);
+       spf=pass (google.com: domain of python-brasil+bncbdn57kp2yujrbzus2toqkgqeuvwg5ry@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBDN57KP2YUJRBZUS2TOQKGQEUVWG5RY@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBDN57KP2YUJRBZUS2TOQKGQEUVWG5RY@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id 9-v6sor802948ybc.148.2018.10.03.11.24.47
+        (Google Transport Security);
+        Wed, 03 Oct 2018 11:24:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbdn57kp2yujrbzus2toqkgqeuvwg5ry@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=kRYUIQJw;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qBcO6Nku;
+       arc=pass (i=2 spf=pass spfdomain=gmail.com dkim=pass dkdomain=gmail.com dmarc=pass fromdomain=gmail.com);
+       spf=pass (google.com: domain of python-brasil+bncbdn57kp2yujrbzus2toqkgqeuvwg5ry@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBDN57KP2YUJRBZUS2TOQKGQEUVWG5RY@googlegroups.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+ARC-Seal: i=2; a=rsa-sha256; t=1538591087; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=S5UpXwHfS7Z+tsieg4RRNJ7lkJk5JGwYQvuMeWeVkmLIC3jJuqB9u3huaMPUBWnb5x
+         gclPZ/EYzwW07SCI3qRruCAIWPC3boGTxAxVZut2lOEeF4mq+ZBM3Bn+VWI0VFfbRS9j
+         aKZqnx7NI0ptPOjfaS7JOWzXe+FR48xPALbqMBRZYjwUdrIyO4CAC30HFqLjzl71LT4L
+         PglZBnsBjfPvsRhXYuvMIxtMWbcc62bB/R7g2JDiwY3vwJ+s3glOB5BZo6PAU1i5zcIJ
+         r8vmkxiVkA7h44z86fzFYGJzOGObGhBt2dRzOj0F3MMmktM16GX5eleGCXVNjQo6F6gW
+         n2xQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:sender:dkim-signature
+         :dkim-signature;
+        bh=JurOrZfCuD+ayzB02FY2K5yluYVIzzHv1jkCihmnj/g=;
+        b=tjOWZ3KqwpktS9uR7pkR/1/Omv3yah2FloJZLDrew3ICKPH+K/t7DpsEnsytVgGgja
+         ZklvlLBfE9ZpbFFk6zPifpGiHIRRmeiB5gvc/sSlFf9xl9mmbeWgSDuppvOdIX6ScwS3
+         F7xdm6bh/7cpDBBXMRHxVWn/dj2O30mVmpofVFvTsT4TjhUQcl/8tBJWD8FZz72IkgrX
+         mD23+e+w/GYqcwtS4NZv0LAeAuowpc3aY4G3/vYEOgCd923TRo0AqEzAdFz6AcNhfwdp
+         Z5UB0oiuwBWJLMa0MY6ezFglQRuVV6j498blpOrSAwCGCdz8pMemuHuj4gtJjXy+G0ox
+         zNgQ==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="p5AQAYt/";
+       spf=pass (google.com: domain of echiesse@gmail.com designates 2607:f8b0:4864:20::c35 as permitted sender) smtp.mailfrom=echiesse@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:mime-version:references:in-reply-to:from:date:message-id
+         :subject:to:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=JurOrZfCuD+ayzB02FY2K5yluYVIzzHv1jkCihmnj/g=;
+        b=kRYUIQJw9rgldPSZc5X1qKTVReEOlYDR4mtinPsuVmQnlpf8+1lyNtADNBvoP9APND
+         1uNtJsxsL4/dhtKVOiHP7WoRdayN+j6QrMADYTYdf4e/CQyOS+oWK8WrSaDgtWCoV5pu
+         ozcsDp1E/q/nCLcBeuTnFFB1iZKBXmOVrnQsT/Rg6FUszfleg/7GmUJ1RD22s45XhakJ
+         AfDnLeuQ+fAy15atHyQ/m0HlcIA5nY+1cVwF4CxTw87evtK7/mA98PLE3mDTLz0tR1t2
+         ERCvZHmksISiKn4S989sFYyJZTz6OiEEwRhigE0FORbIudZrFZYGxZqU1BN+2myrN+ax
+         NAdw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=JurOrZfCuD+ayzB02FY2K5yluYVIzzHv1jkCihmnj/g=;
+        b=qBcO6NkufnSYFcB47c2wbXxm+QX0d8oWFrdLU3SbNW5oA3ivHv2eywnAdr7bYidWqI
+         vljcqgEIEM40oimNwOWXgiu+Ki9MYdbtMjg0AcWDjre071AVdyyYijVLXvIuDxXWR7Sl
+         9KbAjfndQiTAJaYtHKrz9JFGQ2eFffu1073WqVY+5IvtILwFwV8zQmxnS2kGhOVlB5Ew
+         k9v2zly1tkTmeLRinrp8z8HRCvI62QQEJSjvrJ0Eqkc5mrITCxvA2nHjUaygBBcJO1os
+         q/YfuG/9Xgb9Lwut3NMLS5OGoo/+GA4lQhsykCZwMBbAy31/uRgmcJja//XhgfCfzWTk
+         mgJw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
+         :date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=JurOrZfCuD+ayzB02FY2K5yluYVIzzHv1jkCihmnj/g=;
+        b=qEAvGvJqJ9bnSGSR1XIaK+hp1PPSL3qoqXO1ZBLjdKw/iF4Ghvy1RDO+xXNckpiTyB
+         cGxSNVOxBwTzzsUKvJYf84ALfypL+IyORn5wrbfsfUE+2fmyaL/iWPmt7N7B6p910Pr6
+         rPEuQ4sJH8wy7CUv1MVg8tv8gXBaB0iOX9RsO+TGA2jBWAfK9fyO0FUOYyS4rjslFqr7
+         zqsIpj2we/mKOxNL6gg4Xa9Uu6h3rlE7eL6BofFLHDXczsMLBvgi1Fr5ByNRff/PmYXA
+         35dfLOzF6hQn9jr9kCKyckEp2wj2FmEaZfvtS0/ytvrlkxf4kYsYc9Pe8H0ej6Lansxe
+         hPvw==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: ABuFfoirzqvpYtCib/st+0EPgM0lrtR92qatOPOlqz1iCmyUQ1I1Qm6T
+	P94yWs03UJkXCLNwsisHsKY=
+X-Google-Smtp-Source: ACcGV60CcVCz/ovJWu7UJQdfRytcvd3p8F9qab1ex073QE/k+0JGXPEbXGN7kVUcMNnVmMX9dN0aVg==
+X-Received: by 2002:a25:7414:: with SMTP id p20-v6mr48873ybc.4.1538591087482;
+        Wed, 03 Oct 2018 11:24:47 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a81:24d1:: with SMTP id k200-v6ls765892ywk.6.gmail; Wed, 03
+ Oct 2018 11:24:37 -0700 (PDT)
+X-Received: by 2002:a81:7bd7:: with SMTP id w206-v6mr1484166ywc.25.1538591077937;
+        Wed, 03 Oct 2018 11:24:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538591077; cv=none;
+        d=google.com; s=arc-20160816;
+        b=BJBVJTA+yhiTaUGqqxXTsCG0+saXen96gy//CXw+gqIrFYaMHq38S7VSzFxElrAlnS
+         HVz3uy/6yNGt4rbb1yaCld2FzpZERTRKYVL8sQrBV5QMZBcZsZMu8PAoRln4md/OuYFn
+         XQ5DOALwj8klSvovMMm9bVhAogDp4iMcOzXhU6TC+lVaiOKJTTHkCojb5RQ7Rr0fTWy2
+         3AMFvTs4CWnXAia3wdS2k5udRDh5M54RXEI/3jsbzYfasEYHd7I6AKzTge92hywD6mOW
+         UpiEvCYdoBwbtsZ2JzlvjNVB4VXYsHGrWjbiq4Mbr1MqxOduhVLYV+TLsVYUWzW8gVhc
+         zJzQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=CfPY0m9ccLlCwjOM9Bw608fpGJ8D4xZiFrTo+mpqlFc=;
+        b=nm/Z8b03sGZXfHd7A4XijwvRiwaTXyhsxLGCOlyfbcQdQckmLRVBmbmXznDEXXfMDb
+         OIGzbWQv5IjG1uu5XP4vn0CWqDRJ2TUdhI5LRT6SASYLZT6Hxp7R4pOJad2PViyzayb2
+         lIhPxsF5sobKYTegNTaZQOrgxEJogTnZtJ5fwz1YT/0gbvtecvo2PX4oJH3qmE2act7U
+         3RbT7GColtSYiDSmiud8/H5znT1TA0ygIWbqJ65jaNNSt/9JY4wVcdAqMbpRYdjgk5Y+
+         oidK0asGEzDCYLPOkGNrOEgELKQwsSWHzOZlvWquCkaJ5MupYTFTf5I2nWxVHuSEBnvS
+         Ufjw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="p5AQAYt/";
+       spf=pass (google.com: domain of echiesse@gmail.com designates 2607:f8b0:4864:20::c35 as permitted sender) smtp.mailfrom=echiesse@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from mail-yw1-xc35.google.com (mail-yw1-xc35.google.com. [2607:f8b0:4864:20::c35])
+        by gmr-mx.google.com with ESMTPS id o125-v6si74635yba.3.2018.10.03.11.24.37
+        for <python-brasil@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 03 Oct 2018 11:24:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of echiesse@gmail.com designates 2607:f8b0:4864:20::c35 as permitted sender) client-ip=2607:f8b0:4864:20::c35;
+Received: by mail-yw1-xc35.google.com with SMTP id e201-v6so2698457ywa.3
+        for <python-brasil@googlegroups.com>; Wed, 03 Oct 2018 11:24:37 -0700 (PDT)
+X-Received: by 2002:a81:17d4:: with SMTP id 203-v6mr1606153ywx.423.1538591077328;
+ Wed, 03 Oct 2018 11:24:37 -0700 (PDT)
+MIME-Version: 1.0
+References: <045a3fcb-6f7c-1f69-b7a0-f5d445731a44@gmail.com>
+In-Reply-To: <045a3fcb-6f7c-1f69-b7a0-f5d445731a44@gmail.com>
+From: Eric Chiesse <echiesse@gmail.com>
+Date: Wed, 3 Oct 2018 15:24:25 -0300
+Message-ID: <CAE=v0fw8=Ldutex7F82FxfPqxqtR0vRFfppdKNcHOmh533nOQQ@mail.gmail.com>
+Subject: =?UTF-8?Q?Re=3A_=5Bpython=2Dbrasil=5D_Cria=C3=A7=C3=A3o_de_jogos=3A_Fazer_o_pers?=
+	=?UTF-8?Q?onagem_andar_no_mapa?=
+To: python-brasil@googlegroups.com
+Content-Type: multipart/alternative; boundary="0000000000009e6ee105775726de"
+X-Original-Sender: echiesse@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@gmail.com header.s=20161025 header.b="p5AQAYt/";       spf=pass
+ (google.com: domain of echiesse@gmail.com designates 2607:f8b0:4864:20::c35
+ as permitted sender) smtp.mailfrom=echiesse@gmail.com;       dmarc=pass
+ (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Spam-Checked-In-Group: python-brasil@googlegroups.com
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+--0000000000009e6ee105775726de
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Repare que seus expoentes s=C3=A3o da ordem de -16, -17 (Ex:
+Y=3D1.2246467991473532e-16). Ou seja, embora vc n=C3=A3o esteja obtendo exa=
+tamente
+0 vc est=C3=A1 obtendo um valor extremamente pequeno.
+
+Devido =C3=A0 maneira como o computador representa os n=C3=BAmeros decimais=
+ (como
+floating point base 2) sempre vai haver um erro na convers=C3=A3o de base10=
+ para
+base2 e al=C3=A9m disso como h=C3=A1 um n=C3=BAmero limitado de bits dispon=
+=C3=ADveis para a
+representa=C3=A7=C3=A3o de um n=C3=BAmero sempre vai haver uma imprecis=C3=
+=A3o ap=C3=B3s vc efetuar
+algumas opera=C3=A7=C3=B5es.
+
+Do que vi dos teus resultados seu programa est=C3=A1 ok. O que vc pode faze=
+r
+para for=C3=A7ar 0 =C3=A9 assumir um limite tipo:
+if abs(val) < 1e-15:
+    val =3D 0
+
+Qual o limite que faz sentido s=C3=B3 vc pode dizer.
+
+---
+Eric
+
+
+Em qua, 3 de out de 2018 =C3=A0s 10:36, T=C3=A2nio Scherer <tanioms3@gmail.=
+com>
+escreveu:
+
+> Ol=C3=A1 pessoal, muito boa noite!
+> Est=C3=A3o todos bem? Espero que sim. :D
+>
+> Quero pedir uma ajudinha de voc=C3=AAs, se poss=C3=ADvel ;)
+>
+> Eu estou tentando criar um joguinho com o Python 3, e estou com alguns
+> probleminhas para fazer o meu personagem se mover no mapa.
+>
+> Preciso que ele se mova baseado na dire=C3=A7=C3=A3o em que est=C3=A1 olh=
+ando, e essa
+> dire=C3=A7=C3=A3o =C3=A9 dada em graus (Ex: 0, 20, 30, 45, 90, 135, etc),=
+ como num jogo
+> de FPS, voc=C3=AA usa o mouse para olhar e usa a tecla W para andar naque=
+la
+> dire=C3=A7=C3=A3o, S para tr=C3=A1s, e A-D para os lados.
+> Andei dando umas "Googladas" por a=C3=AD e o que eu mais encontrei foram
+> tutoriais referentes a Unity e Unreal com os caras fazendo jogos de FPS
+> de v=C3=A1rias maneiras, mas n=C3=A3o =C3=A9 isso que eu preciso. Com alg=
+umas buscas
+> mais espec=C3=ADficas consegui descobrir algo referente ao uso de
+> trigonometria para fazer essa movimenta=C3=A7=C3=A3o no mapa.
+> Seguindo os exemplos de trigonometria que encontrei, tentei utilizar
+> seno e cosseno para fazer meu personagem andar pelo mapa, mas n=C3=A3o es=
+tou
+> conseguindo.
+>
+> Nota 1: Eu li em v=C3=A1rios locais que com o Python existiriam diversos
+> problemas de desempenho se eu quisesse desenvolver um jogo do tipo, mas
+> o projeto =C3=A9 um pouco diferente, n=C3=A3o vou utilizar renderiza=C3=
+=A7=C3=A3o de
+> gr=C3=A1ficos, apenas sons, e isso =C3=A9 feito atrav=C3=A9s do OpenAL.
+> Nota 2: N=C3=A3o estou usando o mouse para girar o personagem, mas sim as
+> setas esquerda e direita (apenas para os lados).
+>
+> Para o mapa eu estou tentando implementar uma matriz de tamanho X por Y
+> (na verdade uma lista e n=C3=A3o sei se =C3=A9 a melhor forma).
+> Criei um algoritmo simples para representar melhor os problemas que
+> estou enfrentando com seno e cosseno, n=C3=A3o sei se vai ficar formatado=
+ mas
+> segue o c=C3=B3digo:
+>
+> from math import cos, radians, sin
+> # Vari=C3=A1veis de posi=C3=A7=C3=A3o do personagem.
+> x =3D 0
+> y =3D 0
+> def andar(graus, andar_para_frente=3DTrue):
+>      global x, y
+>      graus =3D radians(graus)
+>      if andar_para_frente:
+>          x +=3D cos(graus)
+>          y +=3D sin(graus)
+>      else:   # Vai para tr=C3=A1s.
+>          x -=3D cos(graus)
+>          y -=3D sin(graus)
+>      print('X=3D{}, Y=3D{}'.format(x, y))
+>
+> Aqui eu tentei andar para frente com o personagem olhando para 0 graus,
+> e o resultado foi o esperado.
+>  >>> andar(0)
+> X=3D1.0, Y=3D0.0
+>  >>> andar(0, False)
+> X=3D0.0, Y=3D0.0
+>
+> Aqui tive problemas ao tentar andar para tr=C3=A1s com 180 graus, o X fic=
+ou
+> certinho, mas o Y ficou com um valor maior que 0, eu esperava que ele
+> ficasse com 0 porque n=C3=A3o andei para os lados, apenas para frente e p=
+ara
+> tr=C3=A1s.
+>  >>> andar(0)
+> X=3D1.0, Y=3D0.0
+>  >>> andar(180)
+> X=3D0.0, Y=3D1.2246467991473532e-16
+>
+> Aqui eu tentei andar para o lado direito, 90 graus, eu esperava que o X
+> ficasse em 0 e apenas o Y aumentasse, mas o X ficou com um valor pouco
+> maior que 6, e quando andei mais uma vez, o X ficou com o valor de 1
+> ponto alguma coisa.
+>  >>> andar(90)
+> X=3D6.123233995736766e-17, Y=3D1.0
+>  >>> andar(90)
+> X=3D1.2246467991473532e-16, Y=3D2.0
+>
+> A=C3=AD eu tentei voltar utilizando o 90, e parou na posi=C3=A7=C3=A3o X=
+=3D0 e Y=3D0, assim
+> como o esperado, mas o X deveria ter ficado em 0 o tempo todo.
+>  >>> andar(90, False)
+> X=3D6.123233995736766e-17, Y=3D1.0
+>  >>> andar(90, False)
+> X=3D0.0, Y=3D0.0
+>
+> Tentei andar para 90 graus e voltar utilizando 270 graus e n=C3=A3o deu m=
+uito
+> certo tamb=C3=A9m, o X ficou negativo.
+>  >>> andar(90)
+> X=3D6.123233995736766e-17, Y=3D1.0
+>  >>> andar(270)
+> X=3D-1.224646799147353e-16, Y=3D0.0
+>
+> Antes eu at=C3=A9 tinha criado um c=C3=B3digo meio na gambiarra para faze=
+r o
+> personagem andar verificando as dire=C3=A7=C3=B5es em graus e funcionou, =
+mas
+> queria uma forma mais certinha para fazer isso.
+> Estou procurando materiais na internet referente a esse assunto, mas n=C3=
+=A3o
+> consigo encontrar muita coisa.
+>
+> Eu n=C3=A3o estou sabendo implementar isso da forma correta, talvez at=C3=
+=A9 mesmo
+> a minha forma de pensar n=C3=A3o esteja correta.
+> Algu=C3=A9m a=C3=AD tem mais experi=C3=AAncia com isso?
+>
+> Muito obrigado a todos.
+>
+> Atenciosamente,
+>
+> --
+> --
+> ------------------------------------
+> Grupo Python-Brasil
+> https://wiki.python.org.br/AntesDePerguntar
+>
+> <*> Para visitar o site do grupo na web, acesse:
+>     http://groups.google.com/group/python-brasil
+>
+> <*> Para sair deste grupo, envie um e-mail para:
+>     python-brasil+unsubscribe@googlegroups.com
+> ---
+> Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo =
+"Python
+> Brasil" dos Grupos do Google.
+> Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails =
+dele, envie
+> um e-mail para python-brasil+unsubscribe@googlegroups.com.
+> Para postar neste grupo, envie um e-mail para
+> python-brasil@googlegroups.com.
+> Para ver esta discuss=C3=A3o na web, acesse
+> https://groups.google.com/d/msgid/python-brasil/045a3fcb-6f7c-1f69-b7a0-f=
+5d445731a44%40gmail.com
+> .
+> Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/opto=
+ut.
+>
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/CAE%3Dv0fw8%3DLdutex7F82FxfPqxqtR0vRFfppdKNcHOmh533nOQQ%40=
+mail.gmail.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+--0000000000009e6ee105775726de
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Repare que seus expoentes s=C3=A3o da ordem de -16, -17 (E=
+x: Y=3D1.2246467991473532e-16). Ou seja, embora vc n=C3=A3o esteja obtendo =
+exatamente 0 vc est=C3=A1 obtendo um valor extremamente pequeno.<div><br></=
+div><div>Devido =C3=A0 maneira como o computador representa os n=C3=BAmeros=
+ decimais (como floating point base 2) sempre vai haver um erro na convers=
+=C3=A3o de base10 para base2 e al=C3=A9m disso como h=C3=A1 um n=C3=BAmero =
+limitado de bits dispon=C3=ADveis para a representa=C3=A7=C3=A3o de um n=C3=
+=BAmero sempre vai haver uma imprecis=C3=A3o ap=C3=B3s vc efetuar algumas o=
+pera=C3=A7=C3=B5es.</div><div><br></div><div>Do que vi dos teus resultados =
+seu programa est=C3=A1 ok. O que vc pode fazer para for=C3=A7ar 0 =C3=A9 as=
+sumir um limite tipo:</div><div>if abs(val) &lt; 1e-15:</div><div>=C2=A0 =
+=C2=A0 val =3D 0</div><div><br></div><div>Qual o limite que faz sentido s=
+=C3=B3 vc pode dizer.</div><div><br></div><div><div><div dir=3D"ltr" class=
+=3D"gmail_signature" data-smartmail=3D"gmail_signature">---<br>Eric</div></=
+div><br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr">Em qua,=
+ 3 de out de 2018 =C3=A0s 10:36, T=C3=A2nio Scherer &lt;<a href=3D"mailto:t=
+anioms3@gmail.com">tanioms3@gmail.com</a>&gt; escreveu:<br></div><blockquot=
+e class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc sol=
+id;padding-left:1ex">Ol=C3=A1 pessoal, muito boa noite!<br>
+Est=C3=A3o todos bem? Espero que sim. :D<br>
+<br>
+Quero pedir uma ajudinha de voc=C3=AAs, se poss=C3=ADvel ;)<br>
+<br>
+Eu estou tentando criar um joguinho com o Python 3, e estou com alguns <br>
+probleminhas para fazer o meu personagem se mover no mapa.<br>
+<br>
+Preciso que ele se mova baseado na dire=C3=A7=C3=A3o em que est=C3=A1 olhan=
+do, e essa <br>
+dire=C3=A7=C3=A3o =C3=A9 dada em graus (Ex: 0, 20, 30, 45, 90, 135, etc), c=
+omo num jogo <br>
+de FPS, voc=C3=AA usa o mouse para olhar e usa a tecla W para andar naquela=
+ <br>
+dire=C3=A7=C3=A3o, S para tr=C3=A1s, e A-D para os lados.<br>
+Andei dando umas &quot;Googladas&quot; por a=C3=AD e o que eu mais encontre=
+i foram <br>
+tutoriais referentes a Unity e Unreal com os caras fazendo jogos de FPS <br=
+>
+de v=C3=A1rias maneiras, mas n=C3=A3o =C3=A9 isso que eu preciso. Com algum=
+as buscas <br>
+mais espec=C3=ADficas consegui descobrir algo referente ao uso de <br>
+trigonometria para fazer essa movimenta=C3=A7=C3=A3o no mapa.<br>
+Seguindo os exemplos de trigonometria que encontrei, tentei utilizar <br>
+seno e cosseno para fazer meu personagem andar pelo mapa, mas n=C3=A3o esto=
+u <br>
+conseguindo.<br>
+<br>
+Nota 1: Eu li em v=C3=A1rios locais que com o Python existiriam diversos <b=
+r>
+problemas de desempenho se eu quisesse desenvolver um jogo do tipo, mas <br=
+>
+o projeto =C3=A9 um pouco diferente, n=C3=A3o vou utilizar renderiza=C3=A7=
+=C3=A3o de <br>
+gr=C3=A1ficos, apenas sons, e isso =C3=A9 feito atrav=C3=A9s do OpenAL.<br>
+Nota 2: N=C3=A3o estou usando o mouse para girar o personagem, mas sim as <=
+br>
+setas esquerda e direita (apenas para os lados).<br>
+<br>
+Para o mapa eu estou tentando implementar uma matriz de tamanho X por Y <br=
+>
+(na verdade uma lista e n=C3=A3o sei se =C3=A9 a melhor forma).<br>
+Criei um algoritmo simples para representar melhor os problemas que <br>
+estou enfrentando com seno e cosseno, n=C3=A3o sei se vai ficar formatado m=
+as <br>
+segue o c=C3=B3digo:<br>
+<br>
+from math import cos, radians, sin<br>
+# Vari=C3=A1veis de posi=C3=A7=C3=A3o do personagem.<br>
+x =3D 0<br>
+y =3D 0<br>
+def andar(graus, andar_para_frente=3DTrue):<br>
+=C2=A0=C2=A0=C2=A0=C2=A0 global x, y<br>
+=C2=A0=C2=A0=C2=A0=C2=A0 graus =3D radians(graus)<br>
+=C2=A0=C2=A0=C2=A0=C2=A0 if andar_para_frente:<br>
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 x +=3D cos(graus)<br>
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 y +=3D sin(graus)<br>
+=C2=A0=C2=A0=C2=A0=C2=A0 else:=C2=A0=C2=A0 # Vai para tr=C3=A1s.<br>
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 x -=3D cos(graus)<br>
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 y -=3D sin(graus)<br>
+=C2=A0=C2=A0=C2=A0=C2=A0 print(&#39;X=3D{}, Y=3D{}&#39;.format(x, y))<br>
+<br>
+Aqui eu tentei andar para frente com o personagem olhando para 0 graus, <br=
+>
+e o resultado foi o esperado.<br>
+=C2=A0&gt;&gt;&gt; andar(0)<br>
+X=3D1.0, Y=3D0.0<br>
+=C2=A0&gt;&gt;&gt; andar(0, False)<br>
+X=3D0.0, Y=3D0.0<br>
+<br>
+Aqui tive problemas ao tentar andar para tr=C3=A1s com 180 graus, o X ficou=
+ <br>
+certinho, mas o Y ficou com um valor maior que 0, eu esperava que ele <br>
+ficasse com 0 porque n=C3=A3o andei para os lados, apenas para frente e par=
+a <br>
+tr=C3=A1s.<br>
+=C2=A0&gt;&gt;&gt; andar(0)<br>
+X=3D1.0, Y=3D0.0<br>
+=C2=A0&gt;&gt;&gt; andar(180)<br>
+X=3D0.0, Y=3D1.2246467991473532e-16<br>
+<br>
+Aqui eu tentei andar para o lado direito, 90 graus, eu esperava que o X <br=
+>
+ficasse em 0 e apenas o Y aumentasse, mas o X ficou com um valor pouco <br>
+maior que 6, e quando andei mais uma vez, o X ficou com o valor de 1 <br>
+ponto alguma coisa.<br>
+=C2=A0&gt;&gt;&gt; andar(90)<br>
+X=3D6.123233995736766e-17, Y=3D1.0<br>
+=C2=A0&gt;&gt;&gt; andar(90)<br>
+X=3D1.2246467991473532e-16, Y=3D2.0<br>
+<br>
+A=C3=AD eu tentei voltar utilizando o 90, e parou na posi=C3=A7=C3=A3o X=3D=
+0 e Y=3D0, assim <br>
+como o esperado, mas o X deveria ter ficado em 0 o tempo todo.<br>
+=C2=A0&gt;&gt;&gt; andar(90, False)<br>
+X=3D6.123233995736766e-17, Y=3D1.0<br>
+=C2=A0&gt;&gt;&gt; andar(90, False)<br>
+X=3D0.0, Y=3D0.0<br>
+<br>
+Tentei andar para 90 graus e voltar utilizando 270 graus e n=C3=A3o deu mui=
+to <br>
+certo tamb=C3=A9m, o X ficou negativo.<br>
+=C2=A0&gt;&gt;&gt; andar(90)<br>
+X=3D6.123233995736766e-17, Y=3D1.0<br>
+=C2=A0&gt;&gt;&gt; andar(270)<br>
+X=3D-1.224646799147353e-16, Y=3D0.0<br>
+<br>
+Antes eu at=C3=A9 tinha criado um c=C3=B3digo meio na gambiarra para fazer =
+o <br>
+personagem andar verificando as dire=C3=A7=C3=B5es em graus e funcionou, ma=
+s <br>
+queria uma forma mais certinha para fazer isso.<br>
+Estou procurando materiais na internet referente a esse assunto, mas n=C3=
+=A3o <br>
+consigo encontrar muita coisa.<br>
+<br>
+Eu n=C3=A3o estou sabendo implementar isso da forma correta, talvez at=C3=
+=A9 mesmo <br>
+a minha forma de pensar n=C3=A3o esteja correta.<br>
+Algu=C3=A9m a=C3=AD tem mais experi=C3=AAncia com isso?<br>
+<br>
+Muito obrigado a todos.<br>
+<br>
+Atenciosamente,<br>
+<br>
+-- <br>
+-- <br>
+------------------------------------<br>
+Grupo Python-Brasil<br>
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar" rel=3D"noreferrer" =
+target=3D"_blank">https://wiki.python.org.br/AntesDePerguntar</a><br>
+<br>
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br>
+=C2=A0 =C2=A0 <a href=3D"http://groups.google.com/group/python-brasil" rel=
+=3D"noreferrer" target=3D"_blank">http://groups.google.com/group/python-bra=
+sil</a><br>
+<br>
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br>
+=C2=A0 =C2=A0 <a href=3D"mailto:python-brasil%2Bunsubscribe@googlegroups.co=
+m" target=3D"_blank">python-brasil+unsubscribe@googlegroups.com</a><br>
+--- <br>
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo &q=
+uot;Python Brasil&quot; dos Grupos do Google.<br>
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil%2Bunsubscribe@goog=
+legroups.com" target=3D"_blank">python-brasil+unsubscribe@googlegroups.com<=
+/a>.<br>
+Para postar neste grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com" target=3D"_blank">python-brasil@googlegroups.com</a>.<=
+br>
+Para ver esta discuss=C3=A3o na web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/045a3fcb-6f7c-1f69-b7a0-f5d445731a44%40gmail.co=
+m" rel=3D"noreferrer" target=3D"_blank">https://groups.google.com/d/msgid/p=
+ython-brasil/045a3fcb-6f7c-1f69-b7a0-f5d445731a44%40gmail.com</a>.<br>
+Para obter mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.c=
+om/d/optout" rel=3D"noreferrer" target=3D"_blank">https://groups.google.com=
+/d/optout</a>.<br>
+</blockquote></div>
+
+<p></p>
+
+-- <br />
+-- <br />
+------------------------------------<br />
+Grupo Python-Brasil<br />
+<a href=3D"https://wiki.python.org.br/AntesDePerguntar">https://wiki.python=
+.org.br/AntesDePerguntar</a><br />
+&nbsp;<br />
+&lt;*&gt; Para visitar o site do grupo na web, acesse:<br />
+    <a href=3D"http://groups.google.com/group/python-brasil">http://groups.=
+google.com/group/python-brasil</a><br />
+&nbsp;<br />
+&lt;*&gt; Para sair deste grupo, envie um e-mail para:<br />
+    python-brasil+unsubscribe@googlegroups.com<br />
+--- <br />
+Voc=C3=AA recebeu essa mensagem porque est=C3=A1 inscrito no grupo &quot;Py=
+thon Brasil&quot; dos Grupos do Google.<br />
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para <a href=3D"mailto:python-brasil+unsubscribe@google=
+groups.com">python-brasil+unsubscribe@googlegroups.com</a>.<br />
+Para postar nesse grupo, envie um e-mail para <a href=3D"mailto:python-bras=
+il@googlegroups.com">python-brasil@googlegroups.com</a>.<br />
+Para ver essa discuss=C3=A3o na Web, acesse <a href=3D"https://groups.googl=
+e.com/d/msgid/python-brasil/CAE%3Dv0fw8%3DLdutex7F82FxfPqxqtR0vRFfppdKNcHOm=
+h533nOQQ%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://g=
+roups.google.com/d/msgid/python-brasil/CAE%3Dv0fw8%3DLdutex7F82FxfPqxqtR0vR=
+FfppdKNcHOmh533nOQQ%40mail.gmail.com</a>.<br />
+Para mais op=C3=A7=C3=B5es, acesse <a href=3D"https://groups.google.com/d/o=
+ptout">https://groups.google.com/d/optout</a>.<br />
+
+--0000000000009e6ee105775726de--

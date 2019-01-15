@@ -1,0 +1,1472 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:560a:0:0:0:0:0 with SMTP id l10-v6csp4784914wrv;
+        Wed, 3 Oct 2018 09:19:37 -0700 (PDT)
+X-Google-Smtp-Source: ACcGV61aDHdRvxC95F5tFyIwIUZSeYiE8xDOZfi9biMw5SpsLUUyWYXot4q5FO8ID1p5TSqgncif
+X-Received: by 2002:a25:aca1:: with SMTP id x33-v6mr1401846ybi.404.1538583577539;
+        Wed, 03 Oct 2018 09:19:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538583577; cv=none;
+        d=google.com; s=arc-20160816;
+        b=fMkpTu7IDjcxN3EMe9yQljArRfPzKYXy84ADhe9GgKJ6XL9t4ccxewciNxhHaOcmne
+         D6eCmoqXIug+w9FzkgxXAcZIR+12gnndA0BSsJmcNiW9xiL5PjzvJTOOJ1F9TIspXw25
+         V/lHT9kb3LQJqUeqheC9DnPY6Ho7Xw+GM5FiKHlVPV/Nq+DZpCnNBYdFFlNk9cpKnoYd
+         zxYUevg6TJjVvB+kCxfxg5elv1KndloFN6N+3LkoTAQ6JqVrBTU5Eew6OYNA+Ow7jBq5
+         7oR+rWLnoWMV+iJYWQwvkJqHu4M4qhCm+NNNOYLCQp/7mW6G70wU97C8kgO3VtxW/++o
+         5/Sw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:list-unsubscribe-post:list-unsubscribe:list-id
+         :feedback-id:message-id:date:to:reply-to:from:subject:dkim-signature
+         :dkim-signature;
+        bh=6FtunL3kbQA2SHlnZd4gTMKTe7uS3IqRoeOMuIH5MXU=;
+        b=idZH3vnfkArTfDAAPjvaZNYdR/fMFTNYH03lkQ5K3YGMfTuLLJDzyjXhKBz1xj6Wyh
+         njgT5IJ/iVSKW1OeiocueCOIw93ehF6XxWDewuMJ7QBRXdbTCgJvuGVqvaFn5XilWLb0
+         0usywZumfHwJrZ5VmCLdv1J5hCo+wk8zMFlw6/f60AlV7wbn3Ynj3Jyv0C5M56PibSPP
+         /eQ/ilXorSBwXLTc3NkXR6KJBrYKkRdi8s0z3zAPRrZElht6wlPvIgs0cRmkXhRGYTaL
+         cmfnBUWREj+eFOUlmLoJzs/ZcVP878KVDTNURNPP8b44CB4Y9+NE4QRzDh+MMbg7cvme
+         tbNg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@socioambiental.org header.s=k1 header.b="b/8v0VQl";
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=HZm+7VAR;
+       spf=pass (google.com: domain of bounce-mc.us8_32105050.1576589-meduardo.r=gmail.com@mail247.sea81.mcsv.net designates 148.105.14.247 as permitted sender) smtp.mailfrom="bounce-mc.us8_32105050.1576589-meduardo.r=gmail.com@mail247.sea81.mcsv.net"
+Return-Path: <bounce-mc.us8_32105050.1576589-meduardo.r=gmail.com@mail247.sea81.mcsv.net>
+Received: from mail247.sea81.mcsv.net (mail247.sea81.mcsv.net. [148.105.14.247])
+        by mx.google.com with ESMTPS id p12-v6si328080ywe.417.2018.10.03.09.19.36
+        for <meduardo.r@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 03 Oct 2018 09:19:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-mc.us8_32105050.1576589-meduardo.r=gmail.com@mail247.sea81.mcsv.net designates 148.105.14.247 as permitted sender) client-ip=148.105.14.247;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@socioambiental.org header.s=k1 header.b="b/8v0VQl";
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=HZm+7VAR;
+       spf=pass (google.com: domain of bounce-mc.us8_32105050.1576589-meduardo.r=gmail.com@mail247.sea81.mcsv.net designates 148.105.14.247 as permitted sender) smtp.mailfrom="bounce-mc.us8_32105050.1576589-meduardo.r=gmail.com@mail247.sea81.mcsv.net"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=socioambiental.org;
+ h=Subject:From:Reply-To:To:Date:Message-ID:List-ID:List-Unsubscribe:
+ Content-Type:MIME-Version; i=relacionamento@socioambiental.org;
+ bh=6FtunL3kbQA2SHlnZd4gTMKTe7uS3IqRoeOMuIH5MXU=;
+ b=b/8v0VQlVyGmP3JcDjyiPI8XuBJFRYWQmRVFY6x1Z+pvxEBhjQcwR0tMDTv48+GwtIaucWIlVRo9
+   GBcLanMnf8p8uDbkApjfDj5shOQmrSZyLuLsxAYBTKn3vtnGGrCvtKQOmMwafaCAhmOvdivDPw9Q
+   ZLEqkN5JQfynAgKjeEM=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=gmail.mcsv.net;
+ h=Subject:From:Reply-To:To:Date:Message-ID:Feedback-ID:List-ID:
+ List-Unsubscribe:Content-Type:MIME-Version;
+ bh=6FtunL3kbQA2SHlnZd4gTMKTe7uS3IqRoeOMuIH5MXU=;
+ b=HZm+7VARoktb+yk67rpyYhKZpvsh6xIc9LWUd+OtqL4KxsPMdmiRIgZlGXcpab1twc4MT8bRsjD3
+   ojpf75913BlXlWtCZcraCv/q245+4GmMCbYeh/WojbIUoSpO97MF7spfahA4tp2RAyd+QdGA8h5n
+   zwE3vaMHe+n+/3XtFFI=
+Received: from (127.0.0.1) by mail247.sea81.mcsv.net id hmjm1g2ddl40 for <meduardo.r@gmail.com>; Wed, 3 Oct 2018 16:18:47 +0000 (envelope-from <bounce-mc.us8_32105050.1576589-meduardo.r=gmail.com@mail247.sea81.mcsv.net>)
+Subject: =?utf-8?Q?Marco=2C=20comunidades=20se=20fortalecem=20com=20o=20turismo=20comunit=C3=A1rio?=
+From: =?utf-8?Q?Beto=20Ricardo?= <relacionamento@socioambiental.org>
+Reply-To: =?utf-8?Q?Beto=20Ricardo?= <relacionamento@socioambiental.org>
+To: =?utf-8?Q?Marco?= <meduardo.r@gmail.com>
+Date: Wed, 3 Oct 2018 16:18:47 +0000
+Message-ID: <90eb6ee369e9241ee16c009f5.ded194f247.20181003161759.2cd72c23dd.748ec276@mail247.sea81.mcsv.net>
+X-Mailer: MailChimp Mailer - **CID2cd72c23ddded194f247**
+X-Campaign: mailchimp90eb6ee369e9241ee16c009f5.2cd72c23dd
+X-campaignid: mailchimp90eb6ee369e9241ee16c009f5.2cd72c23dd
+X-Report-Abuse: Please report abuse for this campaign here: https://mailchimp.com/contact/abuse/?u=90eb6ee369e9241ee16c009f5&id=2cd72c23dd&e=ded194f247
+X-MC-User: 90eb6ee369e9241ee16c009f5
+Feedback-ID: 32105050:32105050.1576589:us8:mc
+List-ID: 90eb6ee369e9241ee16c009f5mc list <90eb6ee369e9241ee16c009f5.534177.list-id.mcsv.net>
+X-Accounttype: pr
+List-Unsubscribe: <https://socioambiental.us8.list-manage.com/unsubscribe?u=90eb6ee369e9241ee16c009f5&id=785d830054&e=ded194f247&c=2cd72c23dd>, <mailto:unsubscribe-mc.us8_90eb6ee369e9241ee16c009f5.2cd72c23dd-ded194f247@mailin.mcsv.net?subject=unsubscribe>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Content-Type: multipart/alternative; boundary="_----------=_MCPart_1752333379"
+MIME-Version: 1.0
+
+This is a multi-part message in MIME format
+
+--_----------=_MCPart_1752333379
+Content-Type: text/plain; charset="utf-8"; format="fixed"
+Content-Transfer-Encoding: quoted-printable
+
+
+
+Marco=2C
+
+Queremos contar boas novidades sobre dois projetos - uma expedi=C3=A7=C3=
+=A3o ativista e um projeto de turismo de base comunit=C3=A1ria - que estam=
+os ajudando a desenvolver=2C junto com nossos parceiros ind=C3=ADgenas e r=
+ibeirinhos do Xingu e do Rio Negro=2C na Amaz=C3=B4nia.
+
+O primeiro deles =C3=A9 a Canoada Xingu=2C uma expedi=C3=A7=C3=A3o ativist=
+a na volta grande do Xingu=2C regi=C3=A3o dos Juruna e Arara=2C  =C3=A1rea=
+ impactada por Belo Monte. Este ano=2C em sua 5=C2=AA edi=C3=A7=C3=A3o=2C=
+ a canoada reuniu mais de 100 participantes para ver de perto a luta de in=
+d=C3=ADgenas e ribeirinhos na Volta Grande do Xingu=2C no Par=C3=A1. A can=
+oada e atividades de observa=C3=A7=C3=A3o de peixes ornamentais =C3=BAnico=
+s pode se desdobrar futuramente em projetos de turismo de base comunit=C3=
+=A1ria caso seja vontade das comunidades. Saiba mais aqui sobre a canoada=
+ (https://medium.com/@socioambiental/o-c%C3%A9u-pode-cair-mas-os-yudj%C3%A=
+1-resistem-2ebf1e2e69dc) e aqui sobre os impactos de Belo Monte na Volta G=
+rande do Xingu (https://www.socioambiental.org/pt-br/noticias-socioambient=
+ais/xingu-o-rio-que-pulsa-em-nos-juruna-denunciam-impactos-de-belo-monte)=
+ .
+
+https://www.youtube.com/watch?v=3Dfh1mwlwOzLw
+
+Em Santa Isabel do Rio Negro (AM)=2C outra solu=C3=A7=C3=A3o est=C3=A1 con=
+tribuindo com a gera=C3=A7=C3=A3o de renda e com a garantia de direitos pa=
+ra comunidades de duas terras ind=C3=ADgenas. Uma alian=C3=A7a entre estas=
+ comunidades=2C ISA=2C  Foirn (Federa=C3=A7=C3=A3o das Organiza=C3=A7=C3=
+=B5es Ind=C3=ADgenas do Rio Negro)=2C ACIMRN (Associa=C3=A7=C3=A3o das Com=
+unidades Ind=C3=ADgenas do M=C3=A9dio Rio Negro)=2C Funai e Ibama colocou=
+ em pr=C3=A1tica um modelo pioneiro de ordenamento do turismo de pesca esp=
+ortiva. Com protagonismo das comunidades ind=C3=ADgenas e parceria com emp=
+resas segundo crit=C3=A9rios de sustentabilidade=2C esta iniciativa est=C3=
+=A1 afastando invasores que exploravam a regi=C3=A3o de maneira predat=C3=
+=B3ria e sem respeitar a cultura dos povos tradicionais.
+
+"Nosso objetivo =C3=A9 gerar renda=2C principalmente para os jovens=2C e p=
+roteger nosso territ=C3=B3rio e a Amaz=C3=B4nia. Com isso=2C atividades il=
+egais e predat=C3=B3rias s=C3=A3o afastadas e nossas comunidades ind=C3=AD=
+genas podem ter seu bem viver garantido=E2=80=9D=2C ressalta Marivelton Ba=
+rroso Bar=C3=A9=2C presidente da Foirn. Saiba mais sobre o projeto aqui. (=
+https://www.socioambiental.org/pt-br/noticias-socioambientais/tis-jurubaxi=
+-tea-e-uneuixi-transformam-o-turismo-de-pesca-esportiva-no-medio-rio-negro=
+)
+
+S=C3=A3o in=C3=BAmeras e crescentes as amea=C3=A7as aos direitos e territ=
+=C3=B3rios ind=C3=ADgenas. Apenas o fortalecimento das comunidades=2C a au=
+tonomia sobre a gest=C3=A3o de seus territ=C3=B3rios e a gera=C3=A7=C3=A3o=
+ de renda respeitando o meio ambiente tornar=C3=A3o a resist=C3=AAncia pos=
+s=C3=ADvel.
+
+Junte-se ao ISA! Precisamos da sua ajuda para que novas alternativas econ=
+=C3=B4micas fa=C3=A7am a diferen=C3=A7a para as comunidades tradicionais!
+
+Quero me juntar ao ISA! (https://filiacao.socioambiental.org/)
+
+Beto Ricardo
+Programa Rio Negro
+Instituto Socioambiental - ISA
+
+Mais informa=C3=A7=C3=B5es sobre o ISA (http://www.socioambiental.org/) .
+D=C3=BAvidas ou coment=C3=A1rios=2C ligue (11) 3515 8975 e fale com Marian=
+a Hessel ou escreva para relacionamento@socioambiental.org
+https://filiacao.socioambiental.org/
+
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+** Website (http://www.socioambiental.org)
+** Facebook (http://www.facebook.com/institutosocioambiental)
+** Twitter (http://www.twitter.com/socioambiental)
+** Instagram (https://www.facebook.com/institutosocioambiental/)
+** Medium (https://medium.com/@socioambiental/)
+Copyright =C2=A9 2018 Instituto Socioambiental - ISA=2C Todos os direitos=
+ reservados.
+ Voc=C3=AA est=C3=A1 recebendo este e-mail porque seu nome consta no nosso=
+ Cadastro Institucional.
+
+Instituto Socioambiental - ISA
+Av. Higien=C3=B3polis=2C 901
+sl 30
+Sao Paulo=2C S=C3=A3o Paulo 01238-001
+Brazil
+Quer alterar a forma como voc=C3=AA recebe estes e-mails?
+Voc=C3=AA pode ** atualizar suas prefer=C3=AAncias (https://socioambiental=
+=2Eus8.list-manage.com/profile?u=3D90eb6ee369e9241ee16c009f5&id=3D785d830054=
+&e=3Dded194f247)
+ou ** deixar de assinar a lista (https://socioambiental.us8.list-manage.co=
+m/unsubscribe?u=3D90eb6ee369e9241ee16c009f5&id=3D785d830054&e=3Dded194f247&c=
+=3D2cd72c23dd)
+=2E
+--_----------=_MCPart_1752333379
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html>
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-micros=
+oft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office">
+=09<head>
+=09=09<!-- NAME: 1 COLUMN -->
+=09=09<!--[if gte mso 15]>
+=09=09<xml>
+=09=09=09<o:OfficeDocumentSettings>
+=09=09=09<o:AllowPNG/>
+=09=09=09<o:PixelsPerInch>96</o:PixelsPerInch>
+=09=09=09</o:OfficeDocumentSettings>
+=09=09</xml>
+=09=09<![endif]-->
+=09=09<meta charset=3D"UTF-8">
+        <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+        <meta name=3D"viewport" content=3D"width=3Ddevice-width=2C initial=
+-scale=3D1">
+=09=09<title>*|FNAME|*=2C comunidades se fortalecem com o turismo comunit=
+=C3=A1rio</title>
+
+    <style type=3D"text/css">
+=09=09p{
+=09=09=09margin:10px 0;
+=09=09=09padding:0;
+=09=09}
+=09=09table{
+=09=09=09border-collapse:collapse;
+=09=09}
+=09=09h1=2Ch2=2Ch3=2Ch4=2Ch5=2Ch6{
+=09=09=09display:block;
+=09=09=09margin:0;
+=09=09=09padding:0;
+=09=09}
+=09=09img=2Ca img{
+=09=09=09border:0;
+=09=09=09height:auto;
+=09=09=09outline:none;
+=09=09=09text-decoration:none;
+=09=09}
+=09=09body=2C#bodyTable=2C#bodyCell{
+=09=09=09height:100%;
+=09=09=09margin:0;
+=09=09=09padding:0;
+=09=09=09width:100%;
+=09=09}
+=09=09.mcnPreviewText{
+=09=09=09display:none !important;
+=09=09}
+=09=09#outlook a{
+=09=09=09padding:0;
+=09=09}
+=09=09img{
+=09=09=09-ms-interpolation-mode:bicubic;
+=09=09}
+=09=09table{
+=09=09=09mso-table-lspace:0pt;
+=09=09=09mso-table-rspace:0pt;
+=09=09}
+=09=09.ReadMsgBody{
+=09=09=09width:100%;
+=09=09}
+=09=09.ExternalClass{
+=09=09=09width:100%;
+=09=09}
+=09=09p=2Ca=2Cli=2Ctd=2Cblockquote{
+=09=09=09mso-line-height-rule:exactly;
+=09=09}
+=09=09a[href^=3Dtel]=2Ca[href^=3Dsms]{
+=09=09=09color:inherit;
+=09=09=09cursor:default;
+=09=09=09text-decoration:none;
+=09=09}
+=09=09p=2Ca=2Cli=2Ctd=2Cbody=2Ctable=2Cblockquote{
+=09=09=09-ms-text-size-adjust:100%;
+=09=09=09-webkit-text-size-adjust:100%;
+=09=09}
+=09=09.ExternalClass=2C.ExternalClass p=2C.ExternalClass td=2C.ExternalCla=
+ss div=2C.ExternalClass span=2C.ExternalClass font{
+=09=09=09line-height:100%;
+=09=09}
+=09=09a[x-apple-data-detectors]{
+=09=09=09color:inherit !important;
+=09=09=09text-decoration:none !important;
+=09=09=09font-size:inherit !important;
+=09=09=09font-family:inherit !important;
+=09=09=09font-weight:inherit !important;
+=09=09=09line-height:inherit !important;
+=09=09}
+=09=09#bodyCell{
+=09=09=09padding:10px;
+=09=09}
+=09=09.templateContainer{
+=09=09=09max-width:600px !important;
+=09=09}
+=09=09a.mcnButton{
+=09=09=09display:block;
+=09=09}
+=09=09.mcnImage=2C.mcnRetinaImage{
+=09=09=09vertical-align:bottom;
+=09=09}
+=09=09.mcnTextContent{
+=09=09=09word-break:break-word;
+=09=09}
+=09=09.mcnTextContent img{
+=09=09=09height:auto !important;
+=09=09}
+=09=09.mcnDividerBlock{
+=09=09=09table-layout:fixed !important;
+=09=09}
+=09=09body=2C#bodyTable{
+=09=09=09background-color:#f5f5f5;
+=09=09}
+=09=09#bodyCell{
+=09=09=09border-top:0;
+=09=09}
+=09=09.templateContainer{
+=09=09=09border:0;
+=09=09}
+=09=09h1{
+=09=09=09color:#202020;
+=09=09=09font-family:Helvetica;
+=09=09=09font-size:26px;
+=09=09=09font-style:normal;
+=09=09=09font-weight:bold;
+=09=09=09line-height:125%;
+=09=09=09letter-spacing:normal;
+=09=09=09text-align:left;
+=09=09}
+=09=09h2{
+=09=09=09color:#202020;
+=09=09=09font-family:Helvetica;
+=09=09=09font-size:22px;
+=09=09=09font-style:normal;
+=09=09=09font-weight:bold;
+=09=09=09line-height:125%;
+=09=09=09letter-spacing:normal;
+=09=09=09text-align:left;
+=09=09}
+=09=09h3{
+=09=09=09color:#202020;
+=09=09=09font-family:Helvetica;
+=09=09=09font-size:20px;
+=09=09=09font-style:normal;
+=09=09=09font-weight:bold;
+=09=09=09line-height:125%;
+=09=09=09letter-spacing:normal;
+=09=09=09text-align:left;
+=09=09}
+=09=09h4{
+=09=09=09color:#202020;
+=09=09=09font-family:Helvetica;
+=09=09=09font-size:18px;
+=09=09=09font-style:normal;
+=09=09=09font-weight:bold;
+=09=09=09line-height:125%;
+=09=09=09letter-spacing:normal;
+=09=09=09text-align:left;
+=09=09}
+=09=09#templatePreheader{
+=09=09=09background-color:#f5f5f5;
+=09=09=09background-image:none;
+=09=09=09background-repeat:no-repeat;
+=09=09=09background-position:center;
+=09=09=09background-size:cover;
+=09=09=09border-top:0;
+=09=09=09border-bottom:0;
+=09=09=09padding-top:9px;
+=09=09=09padding-bottom:9px;
+=09=09}
+=09=09#templatePreheader .mcnTextContent=2C#templatePreheader .mcnTextCont=
+ent p{
+=09=09=09color:#8d8d8d;
+=09=09=09font-family:Helvetica;
+=09=09=09font-size:12px;
+=09=09=09line-height:150%;
+=09=09=09text-align:left;
+=09=09}
+=09=09#templatePreheader .mcnTextContent a=2C#templatePreheader .mcnTextCo=
+ntent p a{
+=09=09=09color:#8d8d8d;
+=09=09=09font-weight:normal;
+=09=09=09text-decoration:underline;
+=09=09}
+=09=09#templateHeader{
+=09=09=09background-color:#FFFFFF;
+=09=09=09background-image:none;
+=09=09=09background-repeat:no-repeat;
+=09=09=09background-position:center;
+=09=09=09background-size:cover;
+=09=09=09border-top:0;
+=09=09=09border-bottom:0;
+=09=09=09padding-top:0px;
+=09=09=09padding-bottom:0;
+=09=09}
+=09=09#templateHeader .mcnTextContent=2C#templateHeader .mcnTextContent p{
+=09=09=09color:#202020;
+=09=09=09font-family:Helvetica;
+=09=09=09font-size:16px;
+=09=09=09line-height:150%;
+=09=09=09text-align:left;
+=09=09}
+=09=09#templateHeader .mcnTextContent a=2C#templateHeader .mcnTextContent=
+ p a{
+=09=09=09color:#2BAADF;
+=09=09=09font-weight:normal;
+=09=09=09text-decoration:underline;
+=09=09}
+=09=09#templateBody{
+=09=09=09background-color:#FFFFFF;
+=09=09=09background-image:none;
+=09=09=09background-repeat:no-repeat;
+=09=09=09background-position:center;
+=09=09=09background-size:cover;
+=09=09=09border-top:0;
+=09=09=09border-bottom:2px solid #EAEAEA;
+=09=09=09padding-top:0;
+=09=09=09padding-bottom:9px;
+=09=09}
+=09=09#templateBody .mcnTextContent=2C#templateBody .mcnTextContent p{
+=09=09=09color:#202020;
+=09=09=09font-family:Helvetica;
+=09=09=09font-size:16px;
+=09=09=09line-height:150%;
+=09=09=09text-align:left;
+=09=09}
+=09=09#templateBody .mcnTextContent a=2C#templateBody .mcnTextContent p a{
+=09=09=09color:#dd2929;
+=09=09=09font-weight:normal;
+=09=09=09text-decoration:underline;
+=09=09}
+=09=09#templateFooter{
+=09=09=09background-color:#FAFAFA;
+=09=09=09background-image:none;
+=09=09=09background-repeat:no-repeat;
+=09=09=09background-position:center;
+=09=09=09background-size:cover;
+=09=09=09border-top:0;
+=09=09=09border-bottom:0;
+=09=09=09padding-top:9px;
+=09=09=09padding-bottom:9px;
+=09=09}
+=09=09#templateFooter .mcnTextContent=2C#templateFooter .mcnTextContent p{
+=09=09=09color:#656565;
+=09=09=09font-family:Helvetica;
+=09=09=09font-size:12px;
+=09=09=09line-height:150%;
+=09=09=09text-align:center;
+=09=09}
+=09=09#templateFooter .mcnTextContent a=2C#templateFooter .mcnTextContent=
+ p a{
+=09=09=09color:#656565;
+=09=09=09font-weight:normal;
+=09=09=09text-decoration:underline;
+=09=09}
+=09@media only screen and (min-width:768px){
+=09=09.templateContainer{
+=09=09=09width:600px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09body=2Ctable=2Ctd=2Cp=2Ca=2Cli=2Cblockquote{
+=09=09=09-webkit-text-size-adjust:none !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09body{
+=09=09=09width:100% !important;
+=09=09=09min-width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09#bodyCell{
+=09=09=09padding-top:10px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnRetinaImage{
+=09=09=09max-width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImage{
+=09=09=09width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnCartContainer=2C.mcnCaptionTopContent=2C.mcnRecContentContainer=
+=2C.mcnCaptionBottomContent=2C.mcnTextContentContainer=2C.mcnBoxedTextCont=
+entContainer=2C.mcnImageGroupContentContainer=2C.mcnCaptionLeftTextContent=
+Container=2C.mcnCaptionRightTextContentContainer=2C.mcnCaptionLeftImageCon=
+tentContainer=2C.mcnCaptionRightImageContentContainer=2C.mcnImageCardLeftT=
+extContentContainer=2C.mcnImageCardRightTextContentContainer=2C.mcnImageCa=
+rdLeftImageContentContainer=2C.mcnImageCardRightImageContentContainer{
+=09=09=09max-width:100% !important;
+=09=09=09width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnBoxedTextContentContainer{
+=09=09=09min-width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageGroupContent{
+=09=09=09padding:9px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnCaptionLeftContentOuter .mcnTextContent=2C.mcnCaptionRightConten=
+tOuter .mcnTextContent{
+=09=09=09padding-top:9px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageCardTopImageContent=2C.mcnCaptionBottomContent:last-child .=
+mcnCaptionBottomImageContent=2C.mcnCaptionBlockInner .mcnCaptionTopContent=
+:last-child .mcnTextContent{
+=09=09=09padding-top:18px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageCardBottomImageContent{
+=09=09=09padding-bottom:9px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageGroupBlockInner{
+=09=09=09padding-top:0 !important;
+=09=09=09padding-bottom:0 !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageGroupBlockOuter{
+=09=09=09padding-top:9px !important;
+=09=09=09padding-bottom:9px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnTextContent=2C.mcnBoxedTextContentColumn{
+=09=09=09padding-right:18px !important;
+=09=09=09padding-left:18px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageCardLeftImageContent=2C.mcnImageCardRightImageContent{
+=09=09=09padding-right:18px !important;
+=09=09=09padding-bottom:0 !important;
+=09=09=09padding-left:18px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcpreview-image-uploader{
+=09=09=09display:none !important;
+=09=09=09width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09h1{
+=09=09=09font-size:22px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09h2{
+=09=09=09font-size:20px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09h3{
+=09=09=09font-size:18px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09h4{
+=09=09=09font-size:16px !important;
+=09=09=09line-height:150% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnBoxedTextContentContainer .mcnTextContent=2C.mcnBoxedTextContent=
+Container .mcnTextContent p{
+=09=09=09font-size:14px !important;
+=09=09=09line-height:150% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09#templatePreheader{
+=09=09=09display:block !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09#templatePreheader .mcnTextContent=2C#templatePreheader .mcnTextCont=
+ent p{
+=09=09=09font-size:14px !important;
+=09=09=09line-height:150% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09#templateHeader .mcnTextContent=2C#templateHeader .mcnTextContent p{
+=09=09=09font-size:16px !important;
+=09=09=09line-height:150% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09#templateBody .mcnTextContent=2C#templateBody .mcnTextContent p{
+=09=09=09font-size:16px !important;
+=09=09=09line-height:150% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09#templateFooter .mcnTextContent=2C#templateFooter .mcnTextContent p{
+=09=09=09font-size:14px !important;
+=09=09=09line-height:150% !important;
+=09=09}
+
+}</style></head>
+    <body style=3D"height: 100%;margin: 0;padding: 0;width: 100%;-ms-text-=
+size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #f5f5f5=
+;">
+=09=09<!--
+-->
+        <center>
+            <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" height=3D"100%" width=3D"100%" id=3D"bodyTable" style=3D"border=
+-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-s=
+ize-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;pad=
+ding: 0;width: 100%;background-color: #f5f5f5;">
+                <tr>
+                    <td align=3D"center" valign=3D"top" id=3D"bodyCell" st=
+yle=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-te=
+xt-size-adjust: 100%;height: 100%;margin: 0;padding: 10px;width: 100%;bord=
+er-top: 0;">
+                        <!-- BEGIN TEMPLATE // -->
+=09=09=09=09=09=09<!--[if (gte mso 9)|(IE)]>
+=09=09=09=09=09=09<table align=3D"center" border=3D"0" cellspacing=3D"0" c=
+ellpadding=3D"0" width=3D"600" style=3D"width:600px;">
+=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td align=3D"center" valign=3D"top" width=3D"600" style=
+=3D"width:600px;">
+=09=09=09=09=09=09<![endif]-->
+                        <table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"100%" class=3D"templateContainer" style=3D"border-collapse=
+: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjus=
+t: 100%;-webkit-text-size-adjust: 100%;border: 0;max-width: 600px !importa=
+nt;">
+                            <tr>
+                                <td valign=3D"top" id=3D"templatePreheader=
+" style=3D"background:#f5f5f5 none no-repeat center/cover;mso-line-height-=
+rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;ba=
+ckground-color: #f5f5f5;background-image: none;background-repeat: no-repea=
+t;background-position: center;background-size: cover;border-top: 0;border-=
+bottom: 0;padding-top: 9px;padding-bottom: 9px;"></td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" id=3D"templateHeader" s=
+tyle=3D"background:#FFFFFF none no-repeat center/cover;mso-line-height-rul=
+e: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;backg=
+round-color: #FFFFFF;background-image: none;background-repeat: no-repeat;b=
+ackground-position: center;background-size: cover;border-top: 0;border-bot=
+tom: 0;padding-top: 0px;padding-bottom: 0;"><table border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"mcnTextBlock" style=3D"m=
+in-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-r=
+space: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;" width=3D"100%" class=3D"mcnTextContent=
+Container">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;font-size: 14px;mso-line-height-rule: exactly;-m=
+s-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-=
+word;color: #202020;font-family: Helvetica;line-height: 150%;text-align: l=
+eft;">
+
+                            <p dir=3D"ltr" id=3D"docs-internal-guid-0b71ec=
+61-6c95-e0fd-79f8-0c40ba3c172a" style=3D"font-size: 14px;margin: 10px 0;pa=
+dding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-=
+text-size-adjust: 100%;color: #202020;font-family: Helvetica;line-height:=
+ 150%;text-align: left;"><span style=3D"font-size:14px">Marco=
+=2C</span></p>
+
+<p dir=3D"ltr" style=3D"font-size: 14px;margin: 10px 0;padding: 0;mso-line=
+-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust:=
+ 100%;color: #202020;font-family: Helvetica;line-height: 150%;text-align:=
+ left;"><span style=3D"font-size:14px">Queremos contar boas novidades sobr=
+e dois projetos - uma expedi=C3=A7=C3=A3o ativista e um projeto de turismo=
+ de base comunit=C3=A1ria - que estamos ajudando a desenvolver=2C junto co=
+m nossos parceiros ind=C3=ADgenas e ribeirinhos do Xingu e do Rio Negro=2C=
+ na Amaz=C3=B4nia. </span></p>
+
+<p dir=3D"ltr" style=3D"font-size: 14px;margin: 10px 0;padding: 0;mso-line=
+-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust:=
+ 100%;color: #202020;font-family: Helvetica;line-height: 150%;text-align:=
+ left;"><span style=3D"font-size:14px">O primeiro deles =C3=A9 a Canoada X=
+ingu=2C uma expedi=C3=A7=C3=A3o ativista na volta grande do Xingu=2C regi=
+=C3=A3o dos Juruna e Arara=2C &nbsp;=C3=A1rea impactada por Belo Monte. Es=
+te ano=2C em sua 5=C2=AA edi=C3=A7=C3=A3o=2C a canoada reuniu mais de 100=
+ participantes para ver de perto a luta de ind=C3=ADgenas e ribeirinhos na=
+ Volta Grande do Xingu=2C no Par=C3=A1. A canoada e atividades de observa=
+=C3=A7=C3=A3o de peixes ornamentais =C3=BAnicos pode se desdobrar futurame=
+nte em projetos de turismo de base comunit=C3=A1ria caso seja vontade das=
+ comunidades. Saiba mais&nbsp;aqui sobre a <a href=3D"https://socioambient=
+al.us8.list-manage.com/track/click?u=3D90eb6ee369e9241ee16c009f5&id=3Dbc8a=
+3582ef&e=3Dded194f247" target=3D"_blank" style=3D"mso-line-height-rule: e=
+xactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #2=
+BAADF;font-weight: normal;text-decoration: underline;">canoada</a> e <a hr=
+ef=3D"https://socioambiental.us8.list-manage.com/track/click?u=3D90eb6ee36=
+9e9241ee16c009f5&id=3Dfdaeb74eaa&e=3Dded194f247" target=3D"_blank" style=
+=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;color: #2BAADF;font-weight: normal;text-decoration: unde=
+rline;">aqui sobre os impactos de Belo Monte na Volta Grande do Xingu</a>.=
+</span></p>
+
+<p dir=3D"ltr" style=3D"font-size: 14px;margin: 10px 0;padding: 0;mso-line=
+-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust:=
+ 100%;color: #202020;font-family: Helvetica;line-height: 150%;text-align:=
+ left;"></p>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnImageCardBlock" style=3D"border-collapse: collapse;mso-ta=
+ble-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-t=
+ext-size-adjust: 100%;">
+    <tbody class=3D"mcnImageCardBlockOuter">
+        <tr>
+            <td class=3D"mcnImageCardBlockInner" valign=3D"top" style=3D"p=
+adding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px=
+;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-siz=
+e-adjust: 100%;">
+
+<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cla=
+ss=3D"mcnImageCardBottomContent" width=3D"100%" style=3D"border-collapse:=
+ collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust=
+: 100%;-webkit-text-size-adjust: 100%;">
+    <tbody><tr>
+        <td class=3D"mcnImageCardBottomImageContent" align=3D"center" vali=
+gn=3D"top" style=3D"padding-top: 0px;padding-right: 0px;padding-bottom: 0;=
+padding-left: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%=
+;-webkit-text-size-adjust: 100%;">
+
+
+            <a href=3D"https://socioambiental.us8.list-manage.com/track/cl=
+ick?u=3D90eb6ee369e9241ee16c009f5&id=3D65151913d0&e=3Dded194f247" title=
+=3D"" class=3D"" target=3D"" style=3D"mso-line-height-rule: exactly;-ms-te=
+xt-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+
+
+            <img alt=3D"" src=3D"https://gallery.mailchimp.com/video_thumb=
+nails_new/183817e63a343718504bd567be598be5.png" width=3D"564" style=3D"max=
+-width: 640px;border: 0;height: auto;outline: none;text-decoration: none;-=
+ms-interpolation-mode: bicubic;vertical-align: bottom;" class=3D"mcnImage"=
+>
+            </a>
+
+        </td>
+    </tr>
+    <tr>
+        <td class=3D"mcnTextContent" valign=3D"top" style=3D"padding: 9px=
+ 18px;color: #F2F2F2;font-family: Helvetica;font-size: 14px;font-weight: n=
+ormal;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjus=
+t: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;line-height:=
+ 150%;" width=3D"546">
+
+        </td>
+    </tr>
+</tbody></table>
+
+
+
+
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;" width=3D"100%" class=3D"mcnTextContent=
+Container">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 1=
+8px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helve=
+tica;font-size: 16px;line-height: 150%;text-align: left;">
+
+                            <p dir=3D"ltr" style=3D"margin: 10px 0;padding=
+: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;li=
+ne-height: 150%;text-align: left;"><span style=3D"font-size:14px">Em Santa=
+ Isabel do Rio Negro (AM)=2C outra solu=C3=A7=C3=A3o est=C3=A1 contribuind=
+o com a gera=C3=A7=C3=A3o de renda e com a garantia de direitos para comun=
+idades de duas terras ind=C3=ADgenas. Uma alian=C3=A7a entre estas comunid=
+ades=2C ISA=2C &nbsp;Foirn (Federa=C3=A7=C3=A3o das Organiza=C3=A7=C3=B5es=
+ Ind=C3=ADgenas do Rio Negro)=2C ACIMRN (Associa=C3=A7=C3=A3o das Comunida=
+des Ind=C3=ADgenas do M=C3=A9dio Rio Negro)=2C Funai e Ibama colocou em pr=
+=C3=A1tica um modelo pioneiro de ordenamento do turismo de pesca esportiva=
+=2E Com protagonismo das comunidades ind=C3=ADgenas e parceria com empresas=
+ segundo crit=C3=A9rios de sustentabilidade=2C esta iniciativa est=C3=A1 a=
+fastando invasores que exploravam a regi=C3=A3o de maneira predat=C3=B3ria=
+ e sem respeitar a cultura dos povos tradicionais.</span></p>
+
+<p dir=3D"ltr" style=3D"margin: 10px 0;padding: 0;mso-line-height-rule: ex=
+actly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #20=
+2020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align:=
+ left;"></p>
+
+<p dir=3D"ltr" style=3D"margin: 10px 0;padding: 0;mso-line-height-rule: ex=
+actly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #20=
+2020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align:=
+ left;"><span style=3D"font-size:14px">"Nosso objetivo =C3=A9 gerar renda=
+=2C principalmente para os jovens=2C e proteger nosso territ=C3=B3rio e a=
+ Amaz=C3=B4nia. Com isso=2C atividades ilegais e predat=C3=B3rias s=C3=A3o=
+ afastadas e nossas comunidades ind=C3=ADgenas podem ter seu bem viver gar=
+antido=E2=80=9D=2C ressalta Marivelton Barroso Bar=C3=A9=2C presidente da=
+ Foirn.&nbsp;</span><a href=3D"https://socioambiental.us8.list-manage.com/=
+track/click?u=3D90eb6ee369e9241ee16c009f5&id=3D5dd5f033d5&e=3Dded194f247"=
+ target=3D"_blank" style=3D"mso-line-height-rule: exactly;-ms-text-size-ad=
+just: 100%;-webkit-text-size-adjust: 100%;color: #2BAADF;font-weight: norm=
+al;text-decoration: underline;"><span style=3D"font-size:14px">Saiba mais=
+ sobre o projeto aqui.</span></a></p>
+
+<p dir=3D"ltr" style=3D"margin: 10px 0;padding: 0;mso-line-height-rule: ex=
+actly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #20=
+2020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align:=
+ left;"><span style=3D"font-size:14px">S=C3=A3o in=C3=BAmeras e crescentes=
+ as amea=C3=A7as aos direitos e territ=C3=B3rios ind=C3=ADgenas. Apenas o=
+ fortalecimento das comunidades=2C a autonomia sobre a gest=C3=A3o de seus=
+ territ=C3=B3rios e a gera=C3=A7=C3=A3o de renda respeitando o meio ambien=
+te tornar=C3=A3o a resist=C3=AAncia poss=C3=ADvel. </span></p>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;" width=3D"100%" class=3D"mcnTextContent=
+Container">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 1=
+8px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helve=
+tica;font-size: 16px;line-height: 150%;text-align: left;">
+
+                            <p dir=3D"ltr" style=3D"text-align: center;mar=
+gin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica=
+;font-size: 16px;line-height: 150%;"><strong><span style=3D"font-size:14px=
+">Junte-se ao ISA! Precisamos da sua ajuda para que novas alternativas eco=
+n=C3=B4micas fa=C3=A7am a diferen=C3=A7a para as comunidades tradicionais!=
+ &nbsp;</span></strong></p>
+
+<p dir=3D"ltr" style=3D"text-align: center;margin: 10px 0;padding: 0;mso-l=
+ine-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adju=
+st: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height=
+: 150%;"></p>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnButtonBlock" style=3D"min-width: 100%;border-collapse: co=
+llapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnButtonBlockOuter">
+        <tr>
+            <td style=3D"padding-top: 0;padding-right: 18px;padding-bottom=
+: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adju=
+st: 100%;-webkit-text-size-adjust: 100%;" valign=3D"top" align=3D"center"=
+ class=3D"mcnButtonBlockInner">
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"mcnButtonContentContainer" style=3D"border-collapse: separate !impo=
+rtant;border-radius: 3px;background-color: #DF0C0C;mso-table-lspace: 0pt;m=
+so-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust:=
+ 100%;">
+                    <tbody>
+                        <tr>
+                            <td align=3D"center" valign=3D"middle" class=
+=3D"mcnButtonContent" style=3D"font-family: Arial;font-size: 24px;padding:=
+ 15px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-tex=
+t-size-adjust: 100%;">
+                                <a class=3D"mcnButton " title=3D"Quero me=
+ juntar ao ISA!" href=3D"https://socioambiental.us8.list-manage.com/track/=
+click?u=3D90eb6ee369e9241ee16c009f5&id=3D28814e1375&e=3Dded194f247" targe=
+t=3D"_blank" style=3D"font-weight: bold;letter-spacing: normal;line-height=
+: 100%;text-align: center;text-decoration: none;color: #FFFFFF;mso-line-he=
+ight-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 10=
+0%;display: block;">Quero me juntar ao ISA!</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;" width=3D"100%" class=3D"mcnTextContent=
+Container">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;font-size: 14px;mso-line-height-rule: exactly;-m=
+s-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-=
+word;color: #202020;font-family: Helvetica;line-height: 150%;text-align: l=
+eft;">
+
+                            <p dir=3D"ltr" style=3D"font-size: 14px;margin=
+: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;li=
+ne-height: 150%;text-align: left;"><span style=3D"font-size:19px"><strong>=
+<em>Beto Ricardo</em></strong></span><br>
+<span style=3D"font-size:16px"><em>Programa Rio Negro</em></span><br>
+<span style=3D"font-size:16px"><em>Instituto Socioambiental - ISA</em></sp=
+an><br>
+<br>
+<span style=3D"font-size:13px"><em><a href=3D"https://socioambiental.us8.l=
+ist-manage.com/track/click?u=3D90eb6ee369e9241ee16c009f5&id=3Dffaaeb0f76&e=
+=3Dded194f247" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjus=
+t: 100%;-webkit-text-size-adjust: 100%;color: #2BAADF;font-weight: normal;=
+text-decoration: underline;">Mais informa=C3=A7=C3=B5es sobre o ISA</a>.<b=
+r>
+D=C3=BAvidas ou coment=C3=A1rios=2C ligue (11) 3515 8975 e fale com Marian=
+a Hessel ou escreva para relacionamento@socioambiental.org</em></span></p>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnImageBlock" style=3D"min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnImageBlockOuter">
+            <tr>
+                <td valign=3D"top" style=3D"padding: 9px;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" c=
+lass=3D"mcnImageBlockInner">
+                    <table align=3D"left" width=3D"100%" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"mcnImageContentContainer" style=
+=3D"min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-ta=
+ble-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;=
+">
+                        <tbody><tr>
+                            <td class=3D"mcnImageContent" valign=3D"top" s=
+tyle=3D"padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom=
+: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;">
+
+                                    <a href=3D"https://socioambiental.us8.=
+list-manage.com/track/click?u=3D90eb6ee369e9241ee16c009f5&id=3Dde3da1bd93&=
+e=3Dded194f247" title=3D"" class=3D"" target=3D"_blank" style=3D"mso-line=
+-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust:=
+ 100%;">
+                                        <img align=3D"center" alt=3D"" src=
+=3D"https://gallery.mailchimp.com/90eb6ee369e9241ee16c009f5/_compresseds/c=
+01e0e37-94dd-4c17-8458-e5b70b556ed5.jpg" width=3D"564" style=3D"max-width:=
+ 2379px;padding-bottom: 0;display: inline !important;vertical-align: botto=
+m;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpola=
+tion-mode: bicubic;" class=3D"mcnImage">
+                                    </a>
+
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" id=3D"templateBody" sty=
+le=3D"background:#FFFFFF none no-repeat center/cover;mso-line-height-rule:=
+ exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;backgro=
+und-color: #FFFFFF;background-image: none;background-repeat: no-repeat;bac=
+kground-position: center;background-size: cover;border-top: 0;border-botto=
+m: 2px solid #EAEAEA;padding-top: 0;padding-bottom: 9px;"></td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" id=3D"templateFooter" s=
+tyle=3D"background:#FAFAFA none no-repeat center/cover;mso-line-height-rul=
+e: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;backg=
+round-color: #FAFAFA;background-image: none;background-repeat: no-repeat;b=
+ackground-position: center;background-size: cover;border-top: 0;border-bot=
+tom: 0;padding-top: 9px;padding-bottom: 9px;"><table border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"mcnFollowBlock" style=
+=3D"min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-ta=
+ble-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;=
+">
+    <tbody class=3D"mcnFollowBlockOuter">
+        <tr>
+            <td align=3D"center" valign=3D"top" style=3D"padding: 9px;mso-=
+line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adj=
+ust: 100%;" class=3D"mcnFollowBlockInner">
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"100%" class=3D"mcnFollowContentContainer" style=3D"min-width: 100%;=
+border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-=
+text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+    <tbody><tr>
+        <td align=3D"center" style=3D"padding-left: 9px;padding-right: 9px=
+;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-siz=
+e-adjust: 100%;">
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"100%" style=3D"min-width: 100%;border-collapse: collapse;mso-table-lsp=
+ace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-siz=
+e-adjust: 100%;" class=3D"mcnFollowContent">
+                <tbody><tr>
+                    <td align=3D"center" valign=3D"top" style=3D"padding-t=
+op: 9px;padding-right: 9px;padding-left: 9px;mso-line-height-rule: exactly=
+;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                        <table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse;mso-table-lspa=
+ce: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size=
+-adjust: 100%;">
+                            <tbody><tr>
+                                <td align=3D"center" valign=3D"top" style=
+=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;">
+                                    <!--[if mso]>
+                                    <table align=3D"center" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0">
+                                    <tr>
+                                    <![endif]-->
+
+                                        <!--[if mso]>
+                                        <td align=3D"center" valign=3D"top=
+">
+                                        <![endif]-->
+
+                                            <table align=3D"left" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnFollowStacked" styl=
+e=3D"display: inline;border-collapse: collapse;mso-table-lspace: 0pt;mso-t=
+able-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%=
+;">
+
+                                                <tbody><tr>
+                                                    <td align=3D"center" v=
+align=3D"top" class=3D"mcnFollowIconContent" style=3D"padding-right: 10px;=
+padding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;">
+                                                        <a href=3D"https:/=
+/socioambiental.us8.list-manage.com/track/click?u=3D90eb6ee369e9241ee16c00=
+9f5&id=3Dfb7ff6d591&e=3Dded194f247" target=3D"_blank" style=3D"mso-line-h=
+eight-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 1=
+00%;"><img src=3D"https://cdn-images.mailchimp.com/icons/social-block-v2/c=
+olor-link-96.png" alt=3D"Website" class=3D"mcnFollowBlockIcon" width=3D"48=
+" style=3D"width: 48px;max-width: 48px;display: block;border: 0;height: au=
+to;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;"><=
+/a>
+                                                    </td>
+                                                </tr>
+
+
+                                            </tbody></table>
+
+
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+
+                                        <!--[if mso]>
+                                        <td align=3D"center" valign=3D"top=
+">
+                                        <![endif]-->
+
+                                            <table align=3D"left" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnFollowStacked" styl=
+e=3D"display: inline;border-collapse: collapse;mso-table-lspace: 0pt;mso-t=
+able-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%=
+;">
+
+                                                <tbody><tr>
+                                                    <td align=3D"center" v=
+align=3D"top" class=3D"mcnFollowIconContent" style=3D"padding-right: 10px;=
+padding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;">
+                                                        <a href=3D"https:/=
+/socioambiental.us8.list-manage.com/track/click?u=3D90eb6ee369e9241ee16c00=
+9f5&id=3Dafc3a8e2eb&e=3Dded194f247" target=3D"_blank" style=3D"mso-line-h=
+eight-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 1=
+00%;"><img src=3D"https://cdn-images.mailchimp.com/icons/social-block-v2/c=
+olor-facebook-96.png" alt=3D"Facebook" class=3D"mcnFollowBlockIcon" width=
+=3D"48" style=3D"width: 48px;max-width: 48px;display: block;border: 0;heig=
+ht: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicub=
+ic;"></a>
+                                                    </td>
+                                                </tr>
+
+
+                                            </tbody></table>
+
+
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+
+                                        <!--[if mso]>
+                                        <td align=3D"center" valign=3D"top=
+">
+                                        <![endif]-->
+
+                                            <table align=3D"left" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnFollowStacked" styl=
+e=3D"display: inline;border-collapse: collapse;mso-table-lspace: 0pt;mso-t=
+able-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%=
+;">
+
+                                                <tbody><tr>
+                                                    <td align=3D"center" v=
+align=3D"top" class=3D"mcnFollowIconContent" style=3D"padding-right: 10px;=
+padding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;">
+                                                        <a href=3D"https:/=
+/socioambiental.us8.list-manage.com/track/click?u=3D90eb6ee369e9241ee16c00=
+9f5&id=3De8b5a1cccb&e=3Dded194f247" target=3D"_blank" style=3D"mso-line-h=
+eight-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 1=
+00%;"><img src=3D"https://cdn-images.mailchimp.com/icons/social-block-v2/c=
+olor-twitter-96.png" alt=3D"Twitter" class=3D"mcnFollowBlockIcon" width=3D=
+"48" style=3D"width: 48px;max-width: 48px;display: block;border: 0;height:=
+ auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;=
+"></a>
+                                                    </td>
+                                                </tr>
+
+
+                                            </tbody></table>
+
+
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+
+                                        <!--[if mso]>
+                                        <td align=3D"center" valign=3D"top=
+">
+                                        <![endif]-->
+
+                                            <table align=3D"left" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnFollowStacked" styl=
+e=3D"display: inline;border-collapse: collapse;mso-table-lspace: 0pt;mso-t=
+able-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%=
+;">
+
+                                                <tbody><tr>
+                                                    <td align=3D"center" v=
+align=3D"top" class=3D"mcnFollowIconContent" style=3D"padding-right: 10px;=
+padding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;">
+                                                        <a href=3D"https:/=
+/socioambiental.us8.list-manage.com/track/click?u=3D90eb6ee369e9241ee16c00=
+9f5&id=3D0acb099755&e=3Dded194f247" target=3D"_blank" style=3D"mso-line-h=
+eight-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 1=
+00%;"><img src=3D"https://cdn-images.mailchimp.com/icons/social-block-v2/c=
+olor-instagram-96.png" alt=3D"Instagram" class=3D"mcnFollowBlockIcon" widt=
+h=3D"48" style=3D"width: 48px;max-width: 48px;display: block;border: 0;hei=
+ght: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicu=
+bic;"></a>
+                                                    </td>
+                                                </tr>
+
+
+                                            </tbody></table>
+
+
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+
+                                        <!--[if mso]>
+                                        <td align=3D"center" valign=3D"top=
+">
+                                        <![endif]-->
+
+                                            <table align=3D"left" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnFollowStacked" styl=
+e=3D"display: inline;border-collapse: collapse;mso-table-lspace: 0pt;mso-t=
+able-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%=
+;">
+
+                                                <tbody><tr>
+                                                    <td align=3D"center" v=
+align=3D"top" class=3D"mcnFollowIconContent" style=3D"padding-right: 0;pad=
+ding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;=
+-webkit-text-size-adjust: 100%;">
+                                                        <a href=3D"https:/=
+/socioambiental.us8.list-manage.com/track/click?u=3D90eb6ee369e9241ee16c00=
+9f5&id=3Dca0a2e9158&e=3Dded194f247" target=3D"_blank" style=3D"mso-line-h=
+eight-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 1=
+00%;"><img src=3D"https://cdn-images.mailchimp.com/icons/social-block-v2/c=
+olor-medium-96.png" alt=3D"Medium" class=3D"mcnFollowBlockIcon" width=3D"4=
+8" style=3D"width: 48px;max-width: 48px;display: block;border: 0;height: a=
+uto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;">=
+</a>
+                                                    </td>
+                                                </tr>
+
+
+                                            </tbody></table>
+
+
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+
+                                    <!--[if mso]>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+</tbody></table>
+
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnDividerBlock" style=3D"min-width: 100%;border-collapse: c=
+ollapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%;pa=
+dding: 10px 18px 25px;mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-t=
+op: 2px solid #EEEEEE;border-collapse: collapse;mso-table-lspace: 0pt;mso-=
+table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100=
+%;">
+                    <tbody><tr>
+                        <td style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px;=
+">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-col=
+or:none; border-left-color:none; border-right-color:none; border-bottom-wi=
+dth:0; border-left-width:0; border-right-width:0; margin-top:0; margin-rig=
+ht:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;" width=3D"100%" class=3D"mcnTextContent=
+Container">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 1=
+8px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;word-break: break-word;color: #656565;font-family: Helve=
+tica;font-size: 12px;line-height: 150%;text-align: center;">
+
+                            <em>Copyright =C2=A9 2018 Instituto Socioambie=
+ntal - ISA=2C Todos os direitos reservados.</em><br>
+ Voc=C3=AA est=C3=A1 recebendo este e-mail porque seu nome consta no nosso=
+ Cadastro Institucional.<br>
+<br>
+<div class=3D"vcard"><span class=3D"org fn">Instituto Socioambiental - ISA=
+</span><div class=3D"adr"><div class=3D"street-address">Av. Higien=C3=B3po=
+lis=2C 901</div><div class=3D"extended-address">sl 30</div><span class=3D"=
+locality">Sao Paulo</span>=2C <span class=3D"region">S=C3=A3o Paulo</span>=
+  <span class=3D"postal-code">01238-001</span> <div class=3D"country-name"=
+>Brazil</div></div><br><a href=3D"//socioambiental.us8.list-manage.com/vca=
+rd?u=3D90eb6ee369e9241ee16c009f5&id=3D785d830054" class=3D"hcard-download"=
+>Add us to your address book</a></div>
+<br>
+<br>
+Quer alterar a forma como voc=C3=AA recebe estes e-mails?<br>
+Voc=C3=AA pode <a href=3D"https://socioambiental.us8.list-manage.com/profi=
+le?u=3D90eb6ee369e9241ee16c009f5&id=3D785d830054&e=3Dded194f247" style=3D"ms=
+o-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-a=
+djust: 100%;color: #656565;font-weight: normal;text-decoration: underline;=
+">atualizar suas prefer=C3=AAncias</a>&nbsp;ou&nbsp;<a href=3D"https://soc=
+ioambiental.us8.list-manage.com/unsubscribe?u=3D90eb6ee369e9241ee16c009f5&=
+id=3D785d830054&e=3Dded194f247&c=3D2cd72c23dd" style=3D"mso-line-height-rule=
+: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color:=
+ #656565;font-weight: normal;text-decoration: underline;">deixar de assina=
+r a lista</a>.<br>
+<br>
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnDividerBlock" style=3D"min-width: 100%;border-collapse: c=
+ollapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%;pa=
+dding: 10px 18px 25px;mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-t=
+op: 2px solid #EEEEEE;border-collapse: collapse;mso-table-lspace: 0pt;mso-=
+table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100=
+%;">
+                    <tbody><tr>
+                        <td style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px;=
+">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-col=
+or:none; border-left-color:none; border-right-color:none; border-bottom-wi=
+dth:0; border-left-width:0; border-right-width:0; margin-top:0; margin-rig=
+ht:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                        </table>
+=09=09=09=09=09=09<!--[if (gte mso 9)|(IE)]>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09<![endif]-->
+                        <!-- // END TEMPLATE -->
+                    </td>
+                </tr>
+            </table>
+        </center>
+    <img src=3D"https://socioambiental.us8.list-manage.com/track/open.php?=
+u=3D90eb6ee369e9241ee16c009f5&id=3D2cd72c23dd&e=3Dded194f247" height=3D"1=
+" width=3D"1"></body>
+</html>
+--_----------=_MCPart_1752333379--

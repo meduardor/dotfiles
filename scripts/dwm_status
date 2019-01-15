@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Icones
+S=' '
+F=' '
+ICON=' '
+CLOCK=''
+VOL=' '
+# Config do Volume
+VOLUME=$( pamixer --get-volume )
+# Config da Bateria
+BATTERY=$( acpi -b | sed 's/Battery 0: Full, //g' )
+# Config Data e Hora 
+DATE=$( date +"%A, %d %B, %Y")
+TIME=$( date +"%H:%M" )
+
+echo -e "${S}${VOL}$VOLUME ${S}${ICON}$BATTERY ${S}$DATE ${S}${CLOCK} $TIME"
+        

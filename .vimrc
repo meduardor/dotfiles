@@ -1,4 +1,4 @@
-"============================== Global Settings {{{
+"============================== Global Settings =========================== 
  
 set number
 syntax enable
@@ -9,6 +9,14 @@ set nocompatible
 filetype plugin on
 filetype indent plugin on
 set modeline
+set ruler
+set cursorline 
+set wrapmargin=10
+set textwidth=150
+set sidescroll=5
+set listchars+=precedes:<,extends:>
+set wrap
+set linebreak
 set tabstop=8
 set expandtab 
 set shiftwidth=4
@@ -36,7 +44,7 @@ augroup vimrc
   au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=syntax | endif
 augroup END
 
-"}}}
+
 
 "================================ Plugin =============================
 call plug#begin()
@@ -46,9 +54,9 @@ Plug 'sheerun/vim-polyglot'                                             "Syntax 
 Plug 'terryma/vim-multiple-cursors'                                     "Seleção de múltiplas linhas 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }      "Navegação por arquivos 
 Plug 'junegunn/fzf.vim'                                  
-"Plug 'Shougo/deoplete.nvim'
-"Plug 'roxma/nvim-yarp'
-"Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'motemen/git-vim'
 Plug 'vimwiki/vimwiki'
@@ -57,10 +65,10 @@ Plug 'vim-syntastic/syntastic'
 Plug 'lervag/vimtex'
 Plug 'Valloric/YouCompleteMe'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-"Plug 'tbabej/taskwiki'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'farseer90718/vim-taskwarrior'
-Plug 'majutsushi/tagbar' 
+Plug 'majutsushi/tagbar'
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 
@@ -75,13 +83,21 @@ augroup javascript_folding
 augroup END
 
 "============================ Atalhos =================================
-let mapleader="<space>"                  "Tecla lider(espaço)
+"let mapleader="<\space>"                  "Tecla lider(espaço)
 nnoremap <leader>; A;<esc>                 "Colocar (;) no final da linha de código
 nnoremap <c-p> :Files<cr>
+map <leader>c :w! \| !compiler <c-r>%<CR><CR>
+map <leader>p :!saida <c-r>%<CR><CR>
+
+"Split 
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 "=============================Multiplecursors=========================
 let g:multi_cursor_use_default_mapping=0
 
-" Default mapping
+" Mapping
 let g:multi_cursor_start_word_key      = '<C-n>'
 let g:multi_cursor_start_key           = '<A-n>'
 let g:multi_cursor_start_key           = 'g<C-n>'
@@ -101,13 +117,22 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_checkers = ['pylint', 'flake8', 'pep8', 'pycodestyle', 'pyflakes']
 let g:syntastic_python_checkers = ['pyflakes_with_warnings']
 let g:syntastic_tex_checkers = ['lacheck', 'text/language_check']
 
-autocmd FileType javascript let b:syntastic_javascript_jscs_args =
-    \ get(g:, 'syntastic_javascript_jscs_args', '') .
-    \ FindConfig('-c', '.jscsrc', expand('<afile>:p:h', 1))
+"============================ Themes/Arline ==========================
+let g:gruvbox_bold = 1
+let g:grubox_contrast_dark = 'hard'
+
+let g:airline_powerline_fonts = 0
+"let g:airline_symblos
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_theme='monochrome'
+"colorscheme gruvbox
+"set background=dark
 "============================ VimTeX =================================
 
 let g:matchup_override_vimtex = 1
@@ -163,9 +188,11 @@ let g:vimtex_indent_conditionals = {
 let g:polyglot_disable = ['latex']
 
 "============================== LaTeX Preview =======================
-let g:livepreview_previewer = 'mupdf'
-
-
+let g:livepreview_previewer = 'zathura'
+let g:livepreview_engine = 'pdflatex'
+let g:livepreview_cursorhold_recompile = 0
+let g:Tex_ViewRule_pdf = 'zathura'
+let g:Tex_ViewRuleComplete_pdf = 'zathura .tex/$1.pdf &'
 "=================================== Completion ======================
 let g:ycm_global_ycm_extra_conf = '$HOME/.vim/config_files/.ycm_extra_conf.py'
 let g:ycm_auto_trigger = 1
@@ -184,4 +211,24 @@ let g:ycm_semantic_triggers.tex =g:vimtex#re#youcompleteme
 nmap <F8> :TagbarToggle<CR>
 "let g:tagbar_ctags_bin = '/usr/bin/ctgas' 
 
+"Configurações VimWiki
 
+let index_personal = {}
+let index_personal.path = '~/MEGAsync/Notebooking/Personal'
+let index_personal.syntax ='markdown'
+let index_personal.ext = '.md'
+
+let index_work = {}
+let index_work.path = '~/MEGAsync/Notebooking/Work/'
+let index_work.syntax = 'markdown'
+let index_work.ext = '.md' 
+
+let g:vimwiki_list = [{'path': '$HOME/.wiki', 'syntax': 'markdown', 'ext': '.md'}, {'path': '$HOME/.cheat', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_ext2syntax = {'Rmd': 'markdown', 'rmd': 'markdown', '.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+autocmd BufRead,BufNewFile *.me, *.ms, *.mm, *.mom, *.man set filetype=groff
+autocmd BufRead,BufNewFile *.tex set filetype=tex
+
+
+" Vim Goyo
+"
+nmap <F9> :Goyo \| set linebreak<CR>

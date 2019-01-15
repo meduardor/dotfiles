@@ -1,0 +1,40 @@
+#! /usr/bin/python3
+# -*- conding: UTF-8 -*-
+
+import platform
+import re
+import subprocess
+from datetime import datetime
+
+subprocess.run('clear')
+
+uname = platform.uname()
+xid = subprocess.getoutput('xprop -root -notype _NET_SUPPORTING_WM_CHECK')
+xid = xid[-8:]
+
+BOLD = '\033[1m'
+END = '\033[0m'
+CY = '\033[1;36m'
+
+
+host = subprocess.getoutput('whoami') + "@" + uname[1]
+distro = subprocess.getoutput('cat /etc/os-release')
+distro = re.findall(r'_NAME=\"(.*)\"', distro)[0].lower()
+uptime = subprocess.getoutput('uptime -p').replace('up', '')
+if uptime == '':
+    uptime = 'meow'
+
+
+data = datetime.now()
+data_atual = data.strftime('%d/%m/%Y %H:%M')
+
+
+
+print(BOLD+ 'Host: '+END+'{}'.format(host))
+print(BOLD+ '   '+END+'{}'.format('-'*len(host)))
+print(BOLD+ 'Distro: '+END+'{}'.format(distro))
+print(BOLD+ 'Kernel: '+END+'{}'.format(platform.release()))
+print(BOLD+ 'TimeUp: '+END+'{}'.format(uptime))
+print(BOLD+ 'Date: '+END+'{}'.format(data_atual))
+
+

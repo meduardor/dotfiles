@@ -1,0 +1,133 @@
+Delivered-To: meduardo.r@gmail.com
+Received: by 2002:a5d:560a:0:0:0:0:0 with SMTP id l10-v6csp4592965wrv;
+        Wed, 3 Oct 2018 06:36:07 -0700 (PDT)
+X-Received: by 2002:a25:ba8c:: with SMTP id s12-v6mr880125ybg.305.1538573767603;
+        Wed, 03 Oct 2018 06:36:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1538573767; cv=none;
+        d=google.com; s=arc-20160816;
+        b=KVrenNnsdWeXGe++bHp8RnFMY9aiGN6Wod9tDvG7t7b99xdQuQt4UD6/S9qUpbqZJm
+         dic62O4/4VAWUSLvs6MI5D9SUlX9MGFZo/4KynCvEiFU8E3/cKY8hOpoyznbIz6WkvD/
+         t8FxFeeJ0jH7wI9wE0kT1jz8Q6LeiDWM+XLeLYAlGU+ze5hExCZLt/ST0sVhKPvc3o2/
+         ShsPIk9IJCaoxlg1eHBganZE0Ocy0ezJumYHOGOSALZBPtRV94wRo3wfxpvHPv4UB1ba
+         7Mzv2jaLiRLZmXVQxOb2uKX4ydirTpH4kVJcQ9WTeWjMdPOISlOvoaJl/ytCEyHklLN2
+         5rJw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:mime-version:subject
+         :message-id:to:from:date:sender:dkim-signature;
+        bh=FNBisPAb1XANJdZSwMbnLMlpGbVDcoXEEV/Mjhmjte4=;
+        b=tQIfp6lbESCnasT4/ULZOCLO638aauEqYt+O+8DPB0pg1RpUlDjm7d0j6dHLGEzvKU
+         8OBFB/HkNhdmnTZK8kFxtfHubllNipfvZd2m7a/oih5ogF43wBYKKcIfIYlQj60ONyQH
+         hmTFg4iNxEP2NGi74qXorbyxJ6V8kDnJnJOAPeo3b50tR8YewVvR+FTCfdwtS7ku1zTk
+         WglE+rJJIFGl6YPxDzNXOX7ma7XCbMnlXy7D61WUmO1RpHwXfy4FFnw2uZ8E+rWjPqLw
+         4E9sxSO82ur/U+BDxZkPKKht+6k9HQYMoKQszz9bxyvcgxADJi3wp15+7hd9rRbF/YII
+         MzMQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=bg4RsDG0;
+       spf=pass (google.com: domain of python-brasil+bncbdwyfhm47ambbpml2poqkgqeqnspxmq@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBDWYFHM47AMBBPML2POQKGQEQNSPXMQ@googlegroups.com;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <python-brasil+bncBDWYFHM47AMBBPML2POQKGQEQNSPXMQ@googlegroups.com>
+Received: from mail-sor-f55.google.com (mail-sor-f55.google.com. [209.85.220.55])
+        by mx.google.com with SMTPS id w6-v6sor77970ywj.358.2018.10.03.06.36.07
+        (Google Transport Security);
+        Wed, 03 Oct 2018 06:36:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of python-brasil+bncbdwyfhm47ambbpml2poqkgqeqnspxmq@googlegroups.com designates 209.85.220.55 as permitted sender) client-ip=209.85.220.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@googlegroups.com header.s=20161025 header.b=bg4RsDG0;
+       spf=pass (google.com: domain of python-brasil+bncbdwyfhm47ambbpml2poqkgqeqnspxmq@googlegroups.com designates 209.85.220.55 as permitted sender) smtp.mailfrom=python-brasil+bncBDWYFHM47AMBBPML2POQKGQEQNSPXMQ@googlegroups.com;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:date:from:to:message-id:subject:mime-version
+         :x-original-sender:reply-to:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=FNBisPAb1XANJdZSwMbnLMlpGbVDcoXEEV/Mjhmjte4=;
+        b=bg4RsDG0qCaHBVH54Yn56Wzt0PhMsBCgy4Zm6zqK2aw/sTyrhYNcFge3d4zveu+39j
+         57TCALk4wst37YnRnkP89jqiFV+yuxGMjZPJJBNWN6zFmJfqXWJgteVP/50cNr0ENMmj
+         JLLwTitDQjQD2XHNrWPFl1nHNTRWlDlyHxT22oGrBnVnI+IJw41PbvQ+BTrOOC5yyv60
+         S51sOFVCvTdWFoCcxeihZsTp5oKdUCUBmxE40EZpPv/3LHUGCUguLwqHTVJzBbbUv1rW
+         4G2Az9H74MpD0axRxH/qOWkEqTFc65ZfG1So6UmBsZtkfdG66vtlHfFIhttXkH6pA6Mb
+         6VDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:date:from:to:message-id:subject
+         :mime-version:x-original-sender:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:list-subscribe
+         :list-unsubscribe;
+        bh=FNBisPAb1XANJdZSwMbnLMlpGbVDcoXEEV/Mjhmjte4=;
+        b=d1eNNyRSyd3Jc4EMb7mE8shvg/1y1aSmMFSwY/TlGA/wc5jBtk+d/GqtIeX0+fLnN5
+         24AWOL4XHVx9T8C3Rp+Cm5E0UDWcRWz7y2ya6q/TBMNwigj417RAYcRN9hckjwAGIHbj
+         v3joSkBAwYV5UEIzdM077YQzvC7Mc8bpCC84tUiaaASP1LT/3mSHfpSBVH1rzv3e/Yps
+         UHJOuXGHBWZoXAOeRKcccNC3pCnVmUP+Xww1IvwAURJZ5YdLN3rO7k4dBqxZVaZP7Elk
+         KIVhO5dxJCXJYxGGjoB2v2NfyN5AwDCR1zZtKzzwYaLlZtwRZd79j4LJB0HMqYJPTEnl
+         x0QQ==
+Sender: python-brasil@googlegroups.com
+X-Gm-Message-State: ABuFfohlNPZ07HUVV3HnRe65+1dTLzbSy+6yckEPhcDdtA1F4RnrTnWH
+	B3skMAkku79nnVz0T1QVDsk=
+X-Google-Smtp-Source: ACcGV61tzkFSzZKNa4O1tVipERpvZdSup16p17r73m7LWQODD2ym+BQxck2H3yhem79/9itjb6R9Pw==
+X-Received: by 2002:a0d:ea0b:: with SMTP id t11-v6mr30510ywe.6.1538573767054;
+        Wed, 03 Oct 2018 06:36:07 -0700 (PDT)
+X-BeenThere: python-brasil@googlegroups.com
+Received: by 2002:a25:780e:: with SMTP id t14-v6ls393603ybc.16.gmail; Wed, 03
+ Oct 2018 06:35:57 -0700 (PDT)
+X-Received: by 2002:a25:bf8e:: with SMTP id l14-v6mr690994ybk.71.1538573757263;
+        Wed, 03 Oct 2018 06:35:57 -0700 (PDT)
+Received: by 2002:a81:234c:0:0:0:0:0 with SMTP id j73-v6msywj;
+        Wed, 3 Oct 2018 06:11:26 -0700 (PDT)
+X-Received: by 2002:a25:50c7:: with SMTP id e190-v6mr34255ybb.1.1538572285834;
+        Wed, 03 Oct 2018 06:11:25 -0700 (PDT)
+Date: Wed, 3 Oct 2018 06:11:25 -0700 (PDT)
+From: Ramon Rocha <todopoderoso23@gmail.com>
+To: Python Brasil <python-brasil@googlegroups.com>
+Message-Id: <9b774d08-2b23-4bd2-9d1b-f2758586ff07@googlegroups.com>
+Subject: [python-brasil] Desolvimento de plugin
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_113_854923290.1538572285635"
+X-Original-Sender: todopoderoso23@gmail.com
+Reply-To: python-brasil@googlegroups.com
+Precedence: list
+Mailing-list: list python-brasil@googlegroups.com; contact python-brasil+owners@googlegroups.com
+List-ID: <python-brasil.googlegroups.com>
+X-Google-Group-Id: 976534909641
+List-Post: <https://groups.google.com/group/python-brasil/post>, <mailto:python-brasil@googlegroups.com>
+List-Help: <https://groups.google.com/support/>, <mailto:python-brasil+help@googlegroups.com>
+List-Archive: <https://groups.google.com/group/python-brasil
+List-Subscribe: <https://groups.google.com/group/python-brasil/subscribe>, <mailto:python-brasil+subscribe@googlegroups.com>
+List-Unsubscribe: <mailto:googlegroups-manage+976534909641+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/group/python-brasil/subscribe>
+
+------=_Part_113_854923290.1538572285635
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Bom dia, estou bastante interessado em aprender a programar em python para =
+criar um plugin em um programa. Mas sou totalmente leigo, por onde come=C3=
+=A7ar? Se alguem se interessar em me "guiar" ou criar o plugin posso pagar
+
+Whats 85 996240802
+
+--=20
+--=20
+------------------------------------
+Grupo Python-Brasil
+https://wiki.python.org.br/AntesDePerguntar
+
+<*> Para visitar o site do grupo na web, acesse:
+    http://groups.google.com/group/python-brasil
+
+<*> Para sair deste grupo, envie um e-mail para:
+    python-brasil+unsubscribe@googlegroups.com
+---=20
+Voc=C3=AA est=C3=A1 recebendo esta mensagem porque se inscreveu no grupo "P=
+ython Brasil" dos Grupos do Google.
+Para cancelar inscri=C3=A7=C3=A3o nesse grupo e parar de receber e-mails de=
+le, envie um e-mail para python-brasil+unsubscribe@googlegroups.com.
+Para postar neste grupo, envie um e-mail para python-brasil@googlegroups.co=
+m.
+Para ver esta discuss=C3=A3o na web, acesse https://groups.google.com/d/msg=
+id/python-brasil/9b774d08-2b23-4bd2-9d1b-f2758586ff07%40googlegroups.com.
+Para obter mais op=C3=A7=C3=B5es, acesse https://groups.google.com/d/optout=
+.
+
+------=_Part_113_854923290.1538572285635--
