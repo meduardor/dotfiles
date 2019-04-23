@@ -1,0 +1,177 @@
+#Font configuration (changes require restart)
+font:
+  # The normal (roman) font face to use.
+  normal:
+    family: UbuntuMono Nerd Font
+   # Style can be specified to pick a specific face.
+    style: Regular
+
+  # The bold font face
+  bold:
+    family: UbuntuMono Nerd Font
+    # Style can be specified to pick a specific face.
+    # style: Bold
+
+  # The italic font face
+  italic:
+    family: UbuntuMono Nerd Font
+    # Style can be specified to pick a specific face.
+    # style: Italic
+    #
+  # Point size font
+  size: 12.0
+# Background opacity
+#
+# Window opacity as a floating point number from `0.0` to `1.0`.
+# The value `0.0` is completely transparent and `1.0` is opaque.
+background_opacity: 1.0
+
+# Mouse bindings
+#
+# Available fields:
+#   - mouse
+#   - action
+#   - mods (optional)
+#
+# Values for `mouse`:
+#   - Middle
+#   - Left
+#   - Right
+#   - Numeric identifier such as `5`
+#
+# All available `mods` and `action` values are documented in the key binding
+# section.
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+mouse:
+  # Click settings
+  #
+  # The `double_click` and `triple_click` settings control the time
+  # alacritty should wait for accepting multiple clicks as one double
+  # or triple click.
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+
+  # If this is `true`, the cursor is temporarily hidden when typing.
+  hide_when_typing: false
+
+  url:
+    # URL launcher
+    #
+    # This program is executed when clicking on a text which is recognized as a URL.
+    # The URL is always added to the command as the last parameter.
+    #
+    # When set to `None`, URL launching will be disabled completely.
+    #
+    # Default:
+    #   - (macOS) open
+    #   - (Linux) xdg-open
+    #   - (Windows) explorer
+    #launcher: xdg-open
+
+    # URL modifiers
+    #
+    # These are the modifiers that need to be held down for opening URLs when clicking
+    # on them. The available modifiers are documented in the key binding section.
+    modifiers: None
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+
+  # When set to `true`, selected text will be copied to the primary clipboard.
+  save_to_clipboard: false
+
+# Allow terminal applications to change Alacritty's window title.
+dynamic_title: true
+
+cursor:
+  # Cursor style
+  #
+  # Values for `style`:
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
+  style: Block
+
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors: true
+
+
+# ColorScheme
+#
+# Colors (Srcery)
+colors:
+ #Cursor colors
+ cursor:
+  text: '0x20201d'
+  cursor: '0xa6a28c'
+  # Default colors
+  primary:
+    background: '0x1C1B19'
+    foreground: '0xFCE8C3'
+
+  # Normal colors
+  normal:
+    black:   '0x1C1B19'
+    red:     '0xEF2F27'
+    green:   '0x519F50'
+    yellow:  '0xFBB829'
+    blue:    '0x2C78BF'
+    magenta: '0xE02C6D'
+    cyan:    '0x0AAEB3'
+    white:   '0x918175'
+
+  # Bright colors
+  bright:
+    black:   '0x2D2B28'
+    red:     '0xF75341'
+    green:   '0x98BC37'
+    yellow:  '0xFED06E'
+    blue:    '0x529CE0'
+    magenta: '0xFF5C8F'
+    cyan:    '0x53FDE9'
+    white: '0xFCE8C3'
+  #
+# Base16 Atelier Dune 256 - alacritty color config
+# # Bram de Haan (http://atelierbramdehaan.nl)
+# colors:
+##Default colors
+#  primary:
+#    background: '0x20201d'
+#    foreground: '0xa6a28c'
+
+## Colors the cursor will use if `custom_cursor_colors` is true
+#  cursor:
+#    text: '0x20201d'
+#    cursor: '0xa6a28c'
+
+## Normal colors
+#  normal:
+#    black:   '0x20201d'
+#    red:     '0xd73737'
+#    green:   '0x60ac39'
+#    yellow:  '0xae9513'
+#    blue:    '0x6684e1'
+#    magenta: '0xb854d4'
+#    cyan:    '0x1fad83'
+#    white:   '0xa6a28c'
+
+## Bright colors
+#  bright:
+#    black:   '0x7d7a68'
+#    red:     '0xd73737'
+#    green:   '0x60ac39'
+#    yellow:  '0xae9513'
+#    blue:    '0x6684e1'
+#    magenta: '0xb854d4'
+#    cyan:    '0x1fad83'
+#    white:   '0xfefbec'
+
+#  indexed_colors:
+#   - { index: 16, color: '0xb65611' }
+#   - { index: 17, color: '0xd43552' }
+#   - { index: 18, color: '0x292824' }
+#   - { index: 19, color: '0x6e6b5e' }
+#   - { index: 20, color: '0x999580' }
+#   - { index: 21, color: '0xe8e4cf' }

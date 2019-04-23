@@ -1,324 +1,161 @@
-;=====================================================
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;=====================================================
- 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #41221f
-bg0 = #282828
-blue = #83a598
-red = #e2161a
-purple = #b16286
-fg2 = #d5c4a1
+background = #1c1b19
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = #FEFEFC
-foreground-alt = #555
+foreground = #dfdfdf
+foreground-alt = #888
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/bar1]
+[bar/main]
+monitor = ${env:MONITOR:eDP-1}
 width = 100%
-height = 16
-offset-x = 0%
-offset-y = 0%
-radius = 0.0
-fixed-center = true
- 
-background = #282828 
-foreground = #fbf1c7
- 
+height = 2.5%
+radius = 6.0
+fixed-center = false
+bottom = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-size = 0
 line-size = 2
-line-color = #f00
- 
-border-size = 1
-border-color = #282828
- 
-padding-left = 1
-padding-right = 1
- 
-module-margin-left = 1
-module-margin-right = 2
- 
-font-0 = TerminessTTF Nerd Font:size=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = TerminessTTF Nerd Font:pixelsize=10;1
-font-3 = TerminessTTF Nerd Font:pixelsize=10;1
- 
-modules-left = workspaces xwindow 
-modules-center =  
-modules-right = battery pavuvolume date
- 
+padding = 1
+module-margin = 1
+
+font-0 = "Noto Sans Mono:size=10;1"
+font-1 = "Noto Sans Mono:size=10;1"
+font-2 = "Noto Sans Symbols:size=10;1"
+font-3 = "Noto Sans Symbols2:size=10;1"
+
+modules-left = date ewmh xwindow
+modules-center =
+modules-right = wlan cpu battery
+
 tray-position = right
 tray-padding = 2
-tray-transparent = false
-tray-background = #282828
- 
-wm-restack = bspwm
-;wm-restack = i3
- 
-;override-redirect = true
- 
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
- 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
- 
+tray-maxsize = 24
+
+[global/wm]
+margin-top = 0
+
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
 
-[module/pavuvolume]
-type = custom/script
-exec = ~/scripts/pavuvolume.sh
-tail = true
-click-right = exec pavucontrol &
-click-left = ~/scripts/pavuvolume.sh --mute
-scroll-up = ~/scripts/pavuvolume.sh --up
-scroll-down = ~/scripts/pavuvolume.sh --down
- 
-[module/xbacklight]
-type = internal/xbacklight
- 
-format = <label> <bar>
-label = BL
- 
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
- 
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
- 
+[module/ewmh]
+type = internal/xworkspaces
+pin-workspaces = false
+enable-click = false
+enable-scroll = false
+
+label-active = " %name% "
+label-active-underline = #fba922
+
+label-occupied = " %name% "
+label-occupied-foreground = #ffaa00
+
+label-urgent = " %name% "
+label-urgent-underline = #9b0a20
+
+label-empty = " %name% "
+label-empty-foreground = #555555
+
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = "💻 "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
-label = %percentage%%
- 
+label = %percentage:2%%
+
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = "🗍 "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
-label = %percentage_used%%
- 
+label = %percentage_used:2%%
+
 [module/wlan]
 type = internal/network
 interface = wlp6s0
-interval = 3.0
- 
+interval = 5.0
+
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = ${colors.red}
+format-connected-underline = #9f78e1
 label-connected = %essid%
- 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
- 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
 
-[module/workspaces]
-type = internal/bspwm
+label-disconnected =
 
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-pin-workspaces = true
-
-ws-icon-0 = discord;code
-ws-icon-1 = terminal;term
-ws-icon-2 = firefox;chat
-ws-icon-3 = code;mail
-ws-icon-4 = music;muisc
-ws-icon-5 = matrix;net
-ws-icon-default = 
-
-format = <label-state>
-
-label-empty = %icon%
-label-empty-foreground = ${colors.red}
-label-empty-padding = 1
-
-label-dimmed = %icon%
-label-dimmed-padding = 1
-
-label-occupied = %icon%
-label-occupied-underline = ${colors.red}
-label-occupied-padding = 1
-
-label-urgent = %icon%
-label-urgent-padding = 1
-label-urgent-background = #995641
-
-label-focused = %icon%
-label-focused-overline = #30313a
-label-focused-foreground = ${colors.fg2}
-label-focused-underline = ${colors.red}
-label-focused-padding = 1
+ramp-signal-0 = 🌧
+ramp-signal-1 = 🌦
+ramp-signal-2 = 🌥
+ramp-signal-3 = 🌤
+ramp-signal-4 = 🌣
 
 [module/eth]
 type = internal/network
-interface = eno1
+interface = enp0s25
 interval = 3.0
- 
+
 format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-prefix = "🖧 "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
- 
+
 format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
- 
+
 [module/date]
 type = internal/date
 interval = 5
- 
-date =
-date-alt = " %Y-%m-%d"
- 
-time = %H:%M
-time-alt = %H:%M:%S
- 
-format-prefix = 
+
+date = "%a %d"
+date-alt = %a %b %d
+
+time = %I:%M
+time-alt = %I:%M%p
+
+format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.red}
- 
+format-underline = #0a6cf5
+
 label = %date% %time%
 
-[module/pulseaudio]
-type = internal/pulseaudio
-sink = alsa_output.pci-0000_12_00.3.analog-stereo
-use-ui-max = true
-
-format-volume = <ramp-volume> <label-volume>
-
-label-muted = 🔇 muted
-label-muted-foreground = #666
-ramp-volume-0 = 🔈
-ramp-volume-1 = 🔉
-ramp-volume-2 = 🔊
-
-[module/volume]
-type = internal/volume
- 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
- 
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
- 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
- 
 [module/battery]
 type = internal/battery
 battery = BAT0
-adapter = ADP1
+adapter = ADP1 
 full-at = 98
- 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.red}
- 
+
+format-charging = <label-charging>
+format-charging-underline = #ffb52a
+
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
- 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.fg2}
+
+format-full = <label-full>
 format-full-underline = ${self.format-charging-underline}
- 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+
+ramp-capacity-0 = ⚋
+ramp-capacity-1 = ⚊
+ramp-capacity-2 = ⚍
+ramp-capacity-3 = ⚌
 ramp-capacity-foreground = ${colors.foreground-alt}
- 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
- 
-[module/powermenu]
-type = custom/menu
- 
-format-spacing = 1
- 
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
- 
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
- 
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
- 
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
- 
+
+label-charging = ⚡ %percentage%%
+label-discharging = %percentage%%
+label-full = " ☀ "
+
+[module/github]
+type = internal/github
+token = ${file:/home/merds/.config/github/notifications.token}
+empty-notifications = false
+;label = %{u#ff9900 +u} %notifications% %{u-}
+label = %{u#0099ff +u} 📫 %{u-}
+interval = 10
+
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
- 
-[global/wm]
-margin-top = 0
-margin-bottom = 0
- 
+
 ; vim:ft=dosini

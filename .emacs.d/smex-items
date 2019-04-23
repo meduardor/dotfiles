@@ -1,0 +1,30 @@
+
+;; ----- smex-history -----
+(
+ bookmark-load
+ bookmark-set
+ bookmark-delete
+ shell
+ magit-log
+ dante-mode
+ load-theme
+)
+
+;; ----- smex-data -----
+(
+ (package-install . 1)
+ (evil-mode . 3)
+ (customize-group . 6)
+ (list-packages . 1)
+ (shell-mode . 1)
+ (eshell . 1)
+ (load-theme . 1)
+ (intero-restart . 9)
+ (dante-restart . 12)
+ (dante-mode . 1)
+ (magit-log . 1)
+ (shell . 1)
+ (bookmark-set . 2)
+ (bookmark-delete . 1)
+ (bookmark-load . 1)
+)
