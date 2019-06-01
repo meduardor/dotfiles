@@ -36,9 +36,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-multiple-cursors'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
@@ -92,7 +90,14 @@ Plug 'srcery-colors/srcery-vim'
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
-
+" Markdown
+"
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax' 
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 " haskell
 "" Haskell Bundle
 Plug 'eagletmt/neco-ghc'
@@ -103,7 +108,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': './install.sh'
     \ }
 
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 " html
 "" HTML Bundle
 Plug 'hail2u/vim-css3-syntax'
@@ -218,58 +223,19 @@ let g:session_command_aliases = 1
 "*****************************************************************************
 syntax on
 set ruler
-set number
-set relativenumber
+" set number
+" set relativenumber
 
 set background=dark
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  colorscheme srcery
+  colorscheme merds_black
 endif
 
 "Theme Srcery
 let g:srcery_bold = 1
 let g:srcery_dim_lisp_paren = 1
 let g:srcery_inverse_match_paren = 1
-
-" Theme PaperColor
-" set background=dark
-" let g:PaperColor_Theme_Options = {
-" \   'theme' : {
-" \       'default.dark' : {
-" \           'allow_bold' : 1
-" \       },
-" \   },
-" \   'language' : {
-" \       'python' : {
-" \           'highlight_builtins' : 1
-" \       },
-" \   }
-" \ }
-
-" Theme Sierra
-"let g:sierra_Pitch = 1
-"let g:sierra_Midnight = 1
-"let g:sierra_Twilight = 1
-"let g:sierra_Sunset = 1
-
-
-" Theme Gruvbox
-" let g:gruvbox_bold = 1
-" let g:gruvbox_termcolors = 256
-" let g:gruvbox_contrast_dark = "hard"
-
-" Theme Base16
-"let base16colorspace=256  " Access colors present in 256 colorspace
-"function! s:base16_customize() abort
-""  call Base16hi("MatchParen", g:base16_gui05, g:base16_gui03, g:base16_cterm05, g:base16_cterm03, "bold,italic", "")
-"endfunction
-
-"augroup on_change_colorschema
-""  autocmd!
-""  autocmd ColorScheme * call s:base16_customize()
-"augroup END
-"set termguicolors
 
 set mousemodel=popup
 set t_Co=256
@@ -303,12 +269,10 @@ autocmd BufWinLeave * call clearmatches()
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-set list!
-set listchars=tab:>-
-set list listchars=tab:>-,trail:.,extends:>
-
-
-
+" set list
+" set list listchars=trail:.
+set showbreak=↪\ 
+set listchars=trail:•
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
@@ -325,23 +289,39 @@ set title
 set titleold="Terminal"
 set titlestring=%F
 
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+" set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+
+set statusline=
+set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ ':''}
+set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+set statusline+=\ %n\           " buffer number
+set statusline+=%#Visual#       " colour
+set statusline+=%{&paste?'\ PASTE\ ':''}
+set statusline+=%{&spell?'\ SPELL\ ':''}
+set statusline+=%#CursorIM#     " colour
+set statusline+=%R                        " readonly flag
+set statusline+=%M                        " modified [+] flag
+set statusline+=%#Cursor#               " colour
+set statusline+=%#CursorLine#     " colour
+set statusline+=\ %t\                   " short file name
+set statusline+=%=                          " right align
+set statusline+=%#CursorLine#   " colour
+set statusline+=\ %Y\                   " file type
+set statusline+=%#CursorIM#     " colour
+set statusline+=\ %3l:%-2c\         " line + column
+set statusline+=%#Cursor#       " colour
+set statusline+=\ %3p%%\                " percentage
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-if exists("*fugitive#statusline")
-  set statusline+=%{fugitive#statusline()}
-endif
-
-" let g:airline_theme = 'minimalist'
-" let g:airline#extensions#syntastic#enabled = 1
-" let g:airline#extensions#branch#enabled = 1
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tagbar#enabled = 1
-" let g:airline_skip_empty_sections = 1
+" if exists("*fugitive#statusline")
+"   set statusline+=%{fugitive#statusline()}
+" endif
 
 "*****************************************************************************
 "" Abbreviations
@@ -632,20 +612,20 @@ let g:jedi#smart_auto_mappings = 0
 " syntastic
 let g:syntastic_python_checkers=['python', 'flake8']
 
-" vim-airline
-" let g:airline#extensions#virtualenv#enabled = 1
-
 " Syntax highlight
 " Default highlight is better than polyglot
 let g:polyglot_disabled = ['python']
 let python_highlight_all = 1
+
 " Coc Config
+
 autocmd FileType json syntax match Comment +\/\/.\+$+
 function! SetupCommandAbbrs(from, to)
   exec 'cnoreabbrev <expr> '.a:from
         \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
         \ .'? ("'.a:to.'") : ("'.a:from.'"))'
 endfunction
+call SetupCommandAbbrs('C', 'CocConfig')
 
 " SyntaxJuliaLang
 ""
@@ -672,6 +652,7 @@ let g:go_fmt_fail_silently = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
+let g:go_highlight_functions_calls = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
@@ -718,6 +699,13 @@ augroup END
 
 " ale
 let g:ale_linters = {'go': ['golint', 'go vet']}
+let g:ale_go_langserver_executable = 'golps'
+let g:LanguageClient_serverCommands = {
+            \ 'go': ['golps']
+            \ }
+autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+let g:go_def_mode='golps'
+let g:go_info_mode='golps'
 
 " ocaml
 " Add Merlin to rtp
@@ -768,8 +756,59 @@ let g:LanguageClient_serverCommands = {
 \   'rust': ['rustup', 'run', 'nightly', 'rls']
 \}
 
+
+" Markdown-Pandoc
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_override_foldtext = 0
+let g:vim_markdown_folding_level = 6
+let g:vim_markdown_no_default_key_mappings = 1
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_conceal = 0
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_follow_anchor = 1
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_json_frontmatter = 1
+let g:vim_markdown_strikethrough = 1
+let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_edit_url_in = 'tab'
+augroup pandoc_syntax
+	au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+augroup END
+
+function s:MDSettings()
+    inoremap <buffer> <Leader>n \note[item]{}<Esc>i
+    noremap <buffer> <Leader>b :! pandoc -t beamer % -o %<.pdf<CR><CR>
+    noremap <buffer> <Leader>l :! pandoc -t latex % -o %<.pdf<CR>
+    noremap <buffer> <Leader>oo :! zathura %<.pdf 2>&1 >/dev/null &<CR><CR>
+
+    " adjust syntax highlighting for LaTeX parts
+    "   inline formulas:
+    syntax region Statement oneline matchgroup=Delimiter start="\$" end="\$"
+    "   environments:
+    syntax region Statement matchgroup=Delimiter start="\\begin{.*}" end="\\end{.*}" contains=Statement
+    "   commands:
+    syntax region Statement matchgroup=Delimiter start="{" end="}" contains=Statement
+endfunction
+autocmd FileType markdown :call <SID>MDSettings()
+
+map <leader>f :Goyo \| set bg=dark \| set linebreak<CR>
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+" let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+let g:limelight_paragraph_span = 1
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+let g:limelight_priority = -1
 "*****************************************************************************
 "*****************************************************************************
+" Spell
+map <leader>o :setlocal spell! spelllang=pt_br<CR>
+
+
+
 
 "" Include user's local vim config
 if filereadable(expand("~/.config/nvim/local_init.vim"))
@@ -782,49 +821,12 @@ endif
 " Light-line
 "
 "let g:lightline = { 'colorscheme': 'srcery' }
-let g:lightline ={
-\   'componet_function': {
-\    'filename': 'LightlineFilename', },
-\ }
-function! LightlineFilename()
-    return expand('%:t') !=# '' ? @% : '[No Name]'
-endfunction
+" let g:lightline ={
+" \   'componet_function': {
+" \    'filename': 'LightlineFilename', },
+" \ }
+" function! LightlineFilename()
+"     return expand('%:t') !=# '' ? @% : '[No Name]'
+" endfunction
 
-" vim-airline
-" if !exists('g:airline_symbols')
-"   let g:airline_symbols = {}
-" endif
-
-" if !exists('g:airline_powerline_fonts')
-"   let g:airline#extensions#tabline#left_sep = ' '
-"   let g:airline#extensions#tabline#left_alt_sep = '|'
-"   let g:airline_left_sep          = ''
-"   let g:airline_left_alt_sep      = ''
-"   let g:airline_right_sep         = ''
-"   let g:airline_right_alt_sep     = ''
-"   let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
-"   let g:airline#extensions#readonly#symbol   = '⊘'
-"   let g:airline#extensions#linecolumn#prefix = '¶'
-"   let g:airline#extensions#paste#symbol      = 'ρ'
-"   let g:airline_symbols.linenr    = '␊'
-"   let g:airline_symbols.branch    = '⎇'
-"   let g:airline_symbols.paste     = 'ρ'
-"   let g:airline_symbols.paste     = 'Þ'
-"   let g:airline_symbols.paste     = '∥'
-"   let g:airline_symbols.whitespace = 'Ξ'
-" else
-"   let g:airline#extensions#tabline#left_sep = ''
-"   let g:airline#extensions#tabline#left_alt_sep = ''
-
-"   let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-"   let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-"   " powerline symbols
-"   let g:airline_left_sep = ''
-"   let g:airline_left_alt_sep = ''
-"   let g:airline_right_sep = ''
-"   let g:airline_right_alt_sep = ''
-"   let g:airline_symbols.branch = ''
-"   let g:airline_symbols.readonly = ''
-"   let g:airline_symbols.linenr = ''
-" endif
 

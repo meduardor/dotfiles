@@ -82,13 +82,20 @@
 (show-paren-mode 1)
 
 ;; Delete trailing whitespace before save
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; Lines
+;; (global-display-line-numbers-mode 1)
+;; (setq display-line-numbers-type 'relative)
+;; (global-hl-line-mode +1)
+(line-number-mode +1)
+(column-number-mode t)
+(size-indication-mode t)
 
 ;; Set Fonts
 (set-face-attribute 'default nil
-		    :family "Hasklug Nerd Font"
-		    :height 110
-		    :weight 'medium
+		    :family "Hack Nerd Font Mono"
+		    :height 120
+		    :weight 'regular
 		    :width 'normal
 		    )
 

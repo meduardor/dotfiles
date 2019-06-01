@@ -1,4 +1,3 @@
-
 (use-package avy
   :bind
   ("C-c SPC" . avy-goto-char))
@@ -58,14 +57,14 @@
   (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))
 
 
-(use-package hlinum
-  :config
-  (hlinum-activate))
+;(use-package hlinum
+;  :config
+;  (hlinum-activate))
 
-(use-package linum
-  :config
-  (setq linum-format " %3d ")
-  (global-linum-mode nil))
+;(use-package linum
+;  :config
+;  (setq linum-format " %3d ")
+;  (global-linum-mode nil))
 
 (use-package magit
   :config
@@ -91,6 +90,9 @@
   ("C-<" . mc/mark-previous-like-this)
   ("C-c C->" . mc/mark-all-like-this))
 
+(use-package iedit
+  :ensure t)
+
 (use-package neotree
   :config
   (setq neo-theme 'arrow
@@ -103,6 +105,8 @@
   :config
   (setq org-directory "~/Dropbox/Documents/Org"
         org-default-notes-file (concat org-directory "/Org"))
+  (setq org-agenda-files (list "~/Dropbox/Documents/Org/Personal.org"
+			       "~/Dropbox/Documents/Org/Work.org"))
   :bind
   ("C-c l" . org-store-link)
   ("C-c a" . org-agenda))
@@ -110,7 +114,7 @@
 (use-package org-projectile
   :config
   (org-projectile-per-project)
-  (setq org-projectile-per-project-filepath "Org"
+  (setq org-projectile-per-project-filepath "~/Dropbox/Documents/Org/"
 	org-agenda-files (append org-agenda-files (org-projectile-todo-files))))
 
 (use-package org-bullets
@@ -139,6 +143,13 @@
 (use-package smartparens
     :config
     (smartparens-global-mode 1))
+
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (rainbow-delimiters-mode 1)
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
 
 (use-package smex)
 
@@ -169,6 +180,29 @@
 
 (use-package all-the-icons)
 
+
+(use-package doom-modeline
+  :ensure t
+  :init
+  (doom-modeline-mode 1)
+  :config
+  (setq doom-modeline-height 20)
+  (setq doom-modeline-bar-width 3)
+  (setq doom-modeline-buffer-file-name-style 'truncate-upto-project)
+  (setq doom-modeline-icon t)
+  (setq doom-modeline-minor-modes nil)
+  (setq doom-modeline-enable-word-count nil)
+  (setq doom-modeline-github nil)
+  (setq doom-modeline-github-interval (* 30 60))
+  (setq doom-modeline-env-enable-python t)
+  (setq doom-modeline-env-enable-go t)
+  (setq doom-modeline-env-enable-rust t)
+  (setq doom-modeline-env-python-executable "python")
+  (setq doom-modeline-env-go-executable "go")
+  (setq doom-modeline-env-rust-executable "rustc"))
+
+
+
 (use-package evil
   :ensure t
   :init
@@ -183,6 +217,7 @@
   :config
   (evil-collection-init))
 
+(use-package evil-nerd-commenter)
 
 (use-package prog-mode
   :ensure nil
@@ -240,37 +275,8 @@
 	     (not (or (markdown-code-at-point-p)
 		      (memp 'markdown-pre-face
 			    (face-at-point nil 'mult))))))
-;(use-package whitespace
-; :ensure nil
-; :config
-; (defun rc/turn-on-whitespace-mode ()
-;   (interactive)
-;   (whitespace-mode 1))
-; (defun rc/delete-trailing-whitespace-on-save()
-;   (interactive)
-;   (add-to-list 'write-file-functions 'delete-trailing-whitespace))
-; (defun rc/set-up-whitespace-handling ()
-;   (interactive)
-;   (rc/turn-on-whitespace-mode)
-;   (rc/delete-trailing-whitespace-on-save))
-; (custom-set-variables
-;  '(whitespace-style (quote (face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark))))
-; (let ((whitespace-enable-modes
-;	'(
-;	  tuareg-mode-hook
-;	  c++-mode-hook
-;	  emacs-lisp-mode
-;	  c-mode-hook
-;	  java-mode-hook
-;	  lua-mode-hook
-;	  rust-mode-hook
-;	  scala-mode-hook
-;	  python-mode-hook
-;	  haskell-mode-hook
-;	  js2-mode-hook
-;	  go-mode-hook
-;	  markdown-mode-hook)))
-;   (dolist (mode whitespace-enable-modes)
-;	     (add-hook mode 'rc/set-up-whitespace-handling))))
+
+
+
 
 (provide 'base-extensions)

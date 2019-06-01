@@ -60,5 +60,19 @@
 (add-hook 'after-init-hook 'pyenv-init)
 (add-hook 'projectile-after-switch-project-hook 'pyenv-activate-current-project)
 
+(use-package virtualenvwrapper
+  :ensure t
+  :init
+  :config
+  (venv-initialize-interactive-shells)
+  (venv-initialize-eshell)
+  (setq venv-location "~/.virtualenvs/")
+  (add-hook  'venv-postmkvirtualenv-hook
+	     (lambda  () (shell-command "pip3 install --user nose flake8 jedi")))
+  (setq projectile-switch-project-action
+	'(lambda ()
+	   (venv-projectile-auto-workon)
+	   (projectile-find-file))))
+
 (provide 'lang-python)
 ;;; base-python.el ends here

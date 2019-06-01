@@ -11,7 +11,7 @@
 (require 'base-extensions)
 (require 'base-functions)
 (require 'base-global-keys)
-;;(require 'evil)
+(require 'merds-black-theme)
 
 (require 'lang-python)
 

@@ -1,20 +1,20 @@
-Config { font = "xft:Dejavu Sans Mono:pixelsize=10"
-       , bgColor = "#1c1b19"
-       , fgColor = "#ffffff"
-       , position = BottomSize C 100 9
-       , lowerOnStart = True
-       , commands = [ Run Date "%a %_d %b %I:%M%p" "date" 10
-                    , Run BatteryP ["BAT0"]
-                     [ "-t", "<acstatus>"
-                     , "-L", "10", "-H", "80"
-                     , "-l", "red", "-h", "green"
-                     , "--", "-O", "Charging", "-o", "Battery: <left>%"
-                     ] 10
-                    , Run Volume "default" "Master"[] 10
-                    , Run StdinReader
-                    ]
-       , sepChar = "%"
-       , alignSep = "}{"
-       , template = "%StdinReader% }{%default:Master% | %battery% | <fc=#ee9a00>%date%</fc> "
+Config { font = "xft:Dejavu Sans Mono:pixelsize=10", 
+	bgColor = "#1c1b19", 
+	fgColor = "#ffffff", 
+	position = BottomSize C 100 9, 
+	lowerOnStart = True, 
+	commands = [ Run Date "%a %_d %b %I:%M%p" "date" 10,
+                     Run BatteryP ["BAT0"],
+                     [ "-t", "<acstatus>",
+                     "-L", "10", "-H", "80",
+                     "-l", "red", "-h", "green",
+                     "--", "-O", "Charging", "-o", "Battery: <left>%",
+                     ] 10,
+                    Run Volume "default" "Master"[] 10,
+                    Run StdinReader,
+                    ],
+       sepChar = "%",
+       alignSep = "}{",
+       template = "%StdinReader% }{%default:Master% | %battery% | <fc=#ee9a00>%date%</fc> "
        }
        }

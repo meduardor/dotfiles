@@ -21,7 +21,8 @@
       :config
       (progn
         ;; set racer rust source path environment variable
-        (setq racer-rust-src-path (getenv "/nix/store/s3r68j7zxkj5h4wfby5wfgwg0v1yw2xn-rustc-1.31.0/"))
+	(setq racer-cmd "~/.cargo/bin/racer")
+        (setq racer-rust-src-path (getenv "RUST_SRC_PATH=/home/marco/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"))
         (defun my-racer-mode-hook ()
           (set (make-local-variable 'company-backends)
                '((company-capf company-files))))

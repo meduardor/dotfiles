@@ -145,7 +145,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 --
 myStartupHook = do
   setWMName "LG3D"
-  -- spawnOnce "~/runpaper.sh"
+  spawnOnce "~/scripts/wallpaper &"
   spawnOnce "watch -n 1200 feh randomize --bg-fill ~/Imagens/*.jpg &"
   -- spawnOnce "/home/merds/.config/polybar/launch.sh"
     
