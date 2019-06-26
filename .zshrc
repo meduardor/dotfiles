@@ -32,32 +32,40 @@ bindkey -v
 
 # Alias Config 
 
-# Packages
-alias install="nix-env -i"
-alias search="nix-env -qaP | grep"
+# Packages 
+##############################NixOS
+#alias install="nix-env -i"
+#alias search="nix-env -qaP | grep"
 #alias search_ni="nix-env -f "<nixpkgs>" -qaP -A"
 #alias search_n="nix-env -f "<nixos>" -qaP -A"
-alias remove="nix-env --uninstall"
-alias del="nix-env garbage -d"
-alias pkg_in="nix-env -iA"
+#alias remove="nix-env --uninstall"
+#alias del="nix-env garbage -d"
+#alias pkg_in="nix-env -iA"
+###############################VoidLinux
+alias install="sudo xbps-install -S"
+alias search="xbps-query -Rs"
+alias remove="sudo xbps-remove -R"
+alias up="sudo xbps-install -Suv"
 
-# File System 
-alias ll="ls -Fal --color"
-alias ls="ls -F --color"
+# File System
+alias ls='ls --color=auto' 
+alias l="ls -l"
+alias ll="ls -Fla"
+alias la="ls -aF"
 
 # Source file
 alias sr="source ~/.zshrc"
 alias xr="xrdb -merge ~/.Xresources"
-alias xm="xmonad --recompile && xmonad --restart"
+#alias xm="xmonad --recompile && xmonad --restart"
 
 # Conf File 
 alias von="nvim ~/.config/nvim/init.vim"
 alias con="nvim ~/.config/i3/config"
-alias ala="nvim ~/.config/alacritty/alacritty.yml"
+#alias ala="nvim ~/.config/alacritty/alacritty.yml"
 alias zon="nvim ~/.zshrc"
 alias cob="nvim ~/.bashrc"
-alias conf="sudo nvim /etc/nixos/configuration.nix"
-alias note="nvim ~/Estudos/Anotações/Index.md"
+#alias conf="sudo nvim /etc/nixos/configuration.nix"
+#alias note="nvim ~/Estudos/Anotações/Index.md"
 
 # Config Programs
 alias vi="nvim"
@@ -74,8 +82,8 @@ export NNN_OPENER=zathura
 export NNN_FALLBACK_OPENER=zathura
 
 # Config ZSH 
-# source ~/Git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source ~/Git/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/Git/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/Git/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Only load Liquid Prompt in interactive shells, not from a script or from scp
  [[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
@@ -164,7 +172,8 @@ oxide_precmd() {
 }
 add-zsh-hook precmd oxide_precmd
 
-PROMPT=$'%B${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
+PROMPT=$'
+%{$limegreen%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
 %(?.%F{white}.%F{red})$%f '
 
 
